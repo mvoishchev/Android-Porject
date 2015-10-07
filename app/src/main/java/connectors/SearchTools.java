@@ -1,51 +1,69 @@
 package connectors;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+import tools.Recipe;
+
 /**
  *
  * Class to hold all enumerations for searches.  Ensures that filters are used properly
  * Created by AGCOSTFU on 10/6/2015.
  */
-public class SearchTools {
+public class SearchTools
+{
 
 
-    public enum SEARCH_TYPE{
+    public static enum INGREDIENT_SEARCH_TYPE
+    {
         ANY_INGREDIENT_IS_PRESENT,
         ALL_INGREDIENTS_PRESENT,
         ONLY_INGREDIENTS_PRESENT;
     }
- /*   //list of possible searchable cuisines are from Spoonacular documentation.
-    //TODO: verify that same parameters are used for cuisines in Yummly
-    public enum CUISINES{
-        AFRICAN("african"),
-        CHINESE("chinese"),
-        JAPANESE("japanese"),
-        KOREAN("korean"),
-        VIETNAMESE("vietnamese"),
-        THAI("thai"),
-        INDIAN("indian"),
-        BRITISH("british"),
-        IRISH("irish"),
-        FRENCH("french"),
-        ITALIAN("italian"),
-        MEXICAN("mexican"),
-        SPANISH("spanish"),
-        MIDDLE_EASTERN("middle eastern"),
-        JEWISH("jewish"),
-        AMERICAN("american"),
-        CAJUN("cajun"),
-        SOUTHERN("southern"),
-        GREEK("greek"),
-        GERMAN("german"),
-        NORDIC("nordic"),
-        EASTERN_EUROPEAN("eastern european"),
-        CARIBBEAN("caribbean"),
-        LATIN("latin american");
 
-        String search;
-        private CUISINES(String search_parameter)
-        {
-            search = search_parameter;
-        }
+    public static enum MEASUREMENTS
+    {
+        CUP,
+        TABLESPOON,
+        TEASPOON,
+        GRAMS,
+        OUNCES,
+        POUNDS,
+        GALLON,
+        QUARTS,
+        DASH,
+        PINCH;
     }
-*/
+
+    //ParseList will take in a String which will be a comma separated list (ingredients, allergies, cuisines, etc)
+    //and generate and ArrayList<String> with all elements of the list
+    public static ArrayList<String> ParseList(String _list)
+    {
+        ArrayList<String> list = new ArrayList<String>();
+
+        StringTokenizer strtok = new StringTokenizer(_list, ",");
+
+        String item = strtok.nextToken();
+        while(item != null)
+        {
+            list.add(item);
+            item = strtok.nextToken();
+        }
+
+        return list;
+
+    }
+
+    //GetRecipes will take in all parameters that are being used by AbstractRecipeFactory.getRecipes()
+    //and call all API Connectors.  GUI will call this function.
+    public static ArrayList<Recipe> GetRecipes(String ingredients, String allergies, String cuisine, INGREDIENT_SEARCH_TYPE search_type)
+    {
+
+        ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+
+        //TODO: Call API Connectors here and add the results to the return value
+
+        return recipes;
+    }
 }

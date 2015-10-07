@@ -3,7 +3,15 @@ package tools;
 /**
  * Created by AGCOSTFU on 10/6/2015.
  */
-public class Ingredient {
+public class Ingredient
+{
+
+    public String original_discription;
+
+    public Ingredient(String input_line)
+    {
+        original_discription = input_line;
+    }
 
 
 }
