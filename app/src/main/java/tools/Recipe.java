@@ -3,7 +3,7 @@ package tools;
 import java.util.ArrayList;
 
 /**
- * Created by Harjit on 10/6/2015.
+ * Created by Harjit Randhawa on 10/6/2015.
  *
  * Recipe class designed to make Recipes a usable object.
  *
@@ -18,6 +18,11 @@ public class Recipe
     int prepTime_hours, prepTime_minutes;
 
     public Recipe()
+    {
+        init();
+    }
+
+    private void init()
     {
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String>();

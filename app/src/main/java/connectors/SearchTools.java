@@ -9,7 +9,7 @@ import tools.Recipe;
 /**
  *
  * Class to hold all enumerations for searches.  Ensures that filters are used properly
- * Created by AGCOSTFU on 10/6/2015.
+ * Created by Harjit Randhawa on 10/6/2015.
  */
 public class SearchTools
 {
@@ -57,10 +57,12 @@ public class SearchTools
 
     //GetRecipes will take in all parameters that are being used by AbstractRecipeFactory.getRecipes()
     //and call all API Connectors.  GUI will call this function.
+    //Pass NULL into parameter function to ignore that parameter
     public static ArrayList<Recipe> GetRecipes(String ingredients, String allergies, String cuisine, INGREDIENT_SEARCH_TYPE search_type)
     {
 
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+
 
         //TODO: Call API Connectors here and add the results to the return value
 
