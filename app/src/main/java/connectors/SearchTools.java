@@ -68,6 +68,28 @@ public class SearchTools
         recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getRecipes(ingredients, allergies, cuisine, search_type));
         recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getRecipes(ingredients, allergies, cuisine, search_type));
 
+        RemoveRedundancies(recipes);
+
         return recipes;
+    }
+
+    //Method to ensure that any recipes were returned from both APIs are removed from the set of
+    //returned Recipes
+    private static ArrayList<Recipe> RemoveRedundancies(ArrayList<Recipe> _recipes)
+    {
+        ArrayList<String> existingRecipeNames = new ArrayList<String>();
+        for(int i = 0; i < _recipes.size(); i++)
+        {
+            if(existingRecipeNames.contains(_recipes.get(i).getName()))
+            {
+                _recipes.remove(i);
+            }else
+            {
+                existingRecipeNames.add(_recipes.get(i).getName());
+            }
+
+        }
+
+        return _recipes;
     }
 }

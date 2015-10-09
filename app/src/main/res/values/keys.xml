@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="google_maps_key"
+        tanslatable="false"
+        templateMergeStrategy="preserve">
+        <!--add key here-->
+        </string>
+
+    <string name="spoonacular_connector"
+        translatabe="false"
+        templateMergeStrategy="preserve">
+        <!--add key here-->
+        </string>
+
+    <string name="spoonacular_key"
+        translatable="false"
+        templateMergeStrategy="preserve">
+        <!--add key here-->
+        </string>
+
+    <string name="yummly_username"
+        translatable="false"
+        templateMergeStrategy="preserve">
+
+        <!--add key here-->
+        </string>
+
+    <string name="yummly_key"
+        translatable="false"
+        templateMergeStrategy="preserve">
+
+        <!--add key here-->
+        </string>
+
+
+</resources>
