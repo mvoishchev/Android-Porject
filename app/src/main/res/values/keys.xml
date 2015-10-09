@@ -9,27 +9,25 @@
     <string name="spoonacular_connector"
         translatabe="false"
         templateMergeStrategy="preserve">
-        <!--add key here-->
+        X-Mashape-Key
         </string>
 
     <string name="spoonacular_key"
         translatable="false"
         templateMergeStrategy="preserve">
-        <!--add key here-->
+        WJ0SImVjcAmshThFeMvrbwGTXVHEp12W62TjsnoSo6ixq8GwqR
         </string>
 
     <string name="yummly_username"
         translatable="false"
         templateMergeStrategy="preserve">
-
-        <!--add key here-->
-        </string>
+        8f371517
+    </string>
 
     <string name="yummly_key"
         translatable="false"
         templateMergeStrategy="preserve">
-
-        <!--add key here-->
+        0d24ad13bad93da625d68ba50920fe9d
         </string>
 
 
