@@ -13,7 +13,8 @@ import tools.Recipe;
  */
 public class SearchTools
 {
-
+    static String API_1 = "Spoonacular";
+    static String API_2 = "Yummly";
 
     public static enum INGREDIENT_SEARCH_TYPE
     {
@@ -63,8 +64,9 @@ public class SearchTools
 
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
-
-        //TODO: Call API Connectors here and add the results to the return value
+        //call on each API here and add results to return value for GUI
+        recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getRecipes(ingredients, allergies, cuisine, search_type));
+        recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getRecipes(ingredients, allergies, cuisine, search_type));
 
         return recipes;
     }
