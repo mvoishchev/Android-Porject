@@ -1,8 +1,17 @@
 package connectors.spoonacular;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +21,7 @@ public class SpoonacularModels
 {
 
 
-    public class GetRecipeByIdResultModel
+    public class FullRecipeResultModel
     {
 
         String title;
@@ -23,13 +32,30 @@ public class SpoonacularModels
         @SerializedName("imageUrls")
         List<String> imageUrls;
 
+        @SerializedName("sourceUrl")
+        String sourceUrl;
+
+        @SerializedName("instructions")
+        String instructions;
+
     }
 
-/*    public class GetRecipeListResult
+    public class RecipePreviewModel
     {
-       @SerializedName("")
-       List<SearchRecipesResultModel> recipes;
-    }*/
+        String title;
+
+        @SerializedName("imageUrls")
+        List<String> imageUrls;
+
+        @SerializedName("extendedIngredients")
+        List<IngredientModel> ingredients;
+
+        @SerializedName("sourceUrl")
+        String sourceUrl;
+    }
+
+
+
 
     public class SearchRecipesResultModel
     {
@@ -44,15 +70,12 @@ public class SpoonacularModels
 
         @SerializedName("originalString")
         @Expose
-        private String ingredientLine;
+        public String ingredientLine;
 
-        float amount;
-        String unitLong;
+        public float amount;
+        public String unitLong;
     }
 
 }
 
-/*
-
-*/
 

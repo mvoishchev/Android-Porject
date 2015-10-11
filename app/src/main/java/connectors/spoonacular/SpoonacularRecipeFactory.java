@@ -2,6 +2,8 @@ package connectors.spoonacular;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import retrofit.converter.GsonConverter;
+
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.logging.FileHandler;
 
 import connectors.AbstractRecipeFactory;
+import connectors.spoonacular.SpoonacularModels.*;
 import connectors.SearchTools;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -31,109 +34,108 @@ import tools.Recipe;
  */
 public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
+    public Recipe getRecipePreviewById(String id)
+    {
+        RestAdapter spoonacularAdapter = new RestAdapter.Builder().setEndpoint(SpoonacularAPI.API_URL).build();
 
-    public Recipe getRecipeById(String id)
+        SpoonacularAPI connector = spoonacularAdapter.create(SpoonacularAPI.class);
+
+        RecipePreviewModel result = connector.getRecipePreview(id);
+
+        Recipe rec = new Recipe();
+
+        rec.setRecipeUrl(result.sourceUrl);
+        rec.setName(result.title);
+        rec.addAllIngredientsFromModel(result.ingredients);
+        rec.setApi("Spoonacular");
+
+        return rec;
+    }
+
+    //Works
+    public Recipe getRecipeByUrl(String url)
     {
         Recipe rec = new Recipe();
+        rec.setRecipeUrl(url);
 
         RestAdapter spoonacularAdapter = new RestAdapter.Builder().setEndpoint(SpoonacularAPI.API_URL).build();
 
         SpoonacularAPI connector = spoonacularAdapter.create(SpoonacularAPI.class);
 
-        SpoonacularModels.GetRecipeByIdResultModel result = connector.getRecipe(id);
+        url = prepareUrlForExtraction(url);
+
+        System.err.println("SOMETHING HERE: " + url);
+        FullRecipeResultModel result = connector.getRecipe(url);
+
+        System.out.println("Results: " + result);
 
         rec.setName(result.title);
+        rec.addAllIngredientsFromModel(result.ingredients);
+        rec.setInstruction(result.instructions);
+        rec.addAllImageUrls(result.imageUrls);
 
         return rec;
     }
+
+
+    //transform URL to match what API accepts
+    private String prepareUrlForExtraction(String _url)
+    {
+        _url = "?forceExtraction=false&url=" + _url;
+        _url.replaceAll(":", "%3A");
+        _url.replaceAll("/", "%2f");
+
+        return _url;
+    }
+
 
     public ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type)
     {
         final ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
-        RestAdapter spoonacularAdapter = new RestAdapter.Builder().setEndpoint(SpoonacularAPI.API_URL).build();
+        String endpoint = SpoonacularAPI.API_URL;
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(GetRecipeListResult.class, new GetRecipeListDeserializerJson())
+                .create();
+
+        RestAdapter spoonacularAdapter = new RestAdapter.Builder().setEndpoint(SpoonacularAPI.API_URL)
+                .setConverter(new GsonConverter(gson))
+                .build();
+        //RestAdapter spoonacularAdapter = new RestAdapter()
 
         SpoonacularAPI connector = spoonacularAdapter.create(SpoonacularAPI.class);
 
-        JsonArray jstring = connector.getRecipeByIngredient(ingredients);
-        Gson gson = new Gson();
-        JsonParser parser = new JsonParser();
+        ingredients = prepareIngredientQuery(ingredients);
 
-        System.out.println("Jstring: " + jstring.toString());
+        JsonArray results = connector.getRecipeByIngredient(ingredients);
+        System.out.println("JsonArray: " + results.size());
 
-        Type collectionType = new TypeToken<Collection<SpoonacularModels.SearchRecipesResultModel>>(){}.getType();
-        Collection<SpoonacularModels.SearchRecipesResultModel> enums = gson.fromJson(jstring, collectionType);
-
-        System.out.println("Here: " + enums.size());
-
-
-    /*    for(JsonElement obj: jstring)
+        for(JsonElement e: results)
         {
-            SpoonacularModels.SearchRecipesResultModel model = gson.fromJson(obj, SpoonacularModels.SearchRecipesResultModel.class);
+            SearchRecipesResultModel model = new Gson().fromJson(e, SearchRecipesResultModel.class);
 
-            Recipe rec = new Recipe();
+            Recipe r = new Recipe();
+            r.setName(model.title);
+            r.setId(model.id);
+            r.setApi("Spoonacular");
+            r.addImageUrl(model.image);
 
-            rec.setName(model.title);
-            rec.setId(model.id);
-            rec.addImageUrl(model.image);
-
-
-            recipes.add(rec);
-        }*/
-
-
-
-        SearchTools.println("here");
-      /* connector.getRecipeByIngredient(ingredients, new Callback<List<SpoonacularModels.SearchRecipesResultModel>>(){
-
-
-           @Override
-           public void success(List<SpoonacularModels.SearchRecipesResultModel> results, Response r)
-           {
-               for(SpoonacularModels.SearchRecipesResultModel result : results)
-               {
-                   Recipe rec = new Recipe();
-
-                   rec.setName(result.title);
-                   rec.setId(result.id);
-                   rec.addImageUrl(result.image);
-
-
-                   recipes.add(rec);
-               }
-           }
-
-           @Override
-           public void failure(RetrofitError retrofitError)
-           {
-               MainActivity.setText("Got here atleast");
-
-               System.out.println("failed");
-               switch (retrofitError.getKind()) {
-                   case NETWORK:
-                       System.err.println("Network Error occured while contacting " + retrofitError.getUrl());
-                       break;
-                   case HTTP:
-                       System.err.println("HTTP Request error: " + retrofitError.getResponse().getStatus() +
-                               " while contacting " + retrofitError.getUrl());
-                       break;
-                   case CONVERSION:
-                       System.err.println("Unable to convert response body into json.");
-
-                       break;
-                   case UNEXPECTED:
-                       System.err.println("Unexpected error has occurred.");
-                       break;
-               }
-           }
-       });*/
-
-
-
-
-
-        System.out.println("Recipes size: " + recipes.size());
+            recipes.add(r);
+        }
 
         return recipes;
+    }
+
+    private String prepareIngredientQuery(String list)
+    {
+        ArrayList<String> ingredients = SearchTools.ParseList(list);
+        String query = "findByIngredients?ingredients=";
+        for(int i = 0; i < ingredients.size() - 1; i++)
+        {
+            query = query.concat(ingredients.get(i)).concat("%2C");
+        }
+            query = query.concat(ingredients.get(ingredients.size() - 1));
+
+        return query;
     }
 }

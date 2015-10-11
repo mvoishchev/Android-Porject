@@ -16,7 +16,8 @@ public abstract class AbstractRecipeFactory
     //so make sure to check if(parameter != null) before trying to use it
     public abstract ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type);
 
-    public abstract Recipe getRecipeById(String id);
+    public abstract Recipe getRecipePreviewById(String id);
+    //public abstract Recipe getRecipeByUrl(String id);
     //FactoryProducer will take in a String to specify which API will be used.  Is called in SearchTools.GetRecipes as a means of having an abstract way to
     //make sure we call the correct API. Simply change the Strings in SearchTools to change which API will be called
     public static AbstractRecipeFactory FactoryProducer(String api)
@@ -36,17 +37,27 @@ public abstract class AbstractRecipeFactory
         return null;
     }
 
-    public static Recipe getRecipe(String api, String id)
+    public static Recipe getRecipePreview(String api, String id)
     {
         if(api == "Yummly")
         {
 
-        }else if(api == "Spoonacular")
+        }
+
+        else if(api == "Spoonacular")
         {
-            return new SpoonacularRecipeFactory().getRecipeById(id);
+            return new SpoonacularRecipeFactory().getRecipePreviewById(id);
         }
 
         return null;
+    }
+    //Only API that provides instructions is Spoonacular and they have an extraction tool for any website's recipes
+    //So automatically call on that when user decides which recipe he wants to look at
+    public static Recipe getRecipe(String url)
+    {
+        System.out.println("Requested Url: " + url);
+       return new SpoonacularRecipeFactory().getRecipeByUrl(url);
+
     }
 
     protected void setApiName(String _name)

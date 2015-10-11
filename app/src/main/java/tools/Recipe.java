@@ -1,6 +1,9 @@
 package tools;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import connectors.spoonacular.SpoonacularModels;
 
 /**
  * Created by Harjit Randhawa on 10/6/2015.
@@ -15,7 +18,7 @@ public class Recipe
     String name, cuisine, recipeUrl, id;
     ArrayList<Ingredient> ingredients;
     ArrayList<String> imageUrls;
-    ArrayList<String> instructions;
+    String instructions;
     int prepTime_hours, prepTime_minutes;
 
     public Recipe()
@@ -26,7 +29,7 @@ public class Recipe
     private void init()
     {
         ingredients = new ArrayList<Ingredient>();
-        instructions = new ArrayList<String>();
+        instructions = "";
         imageUrls = new ArrayList<String>();
         prepTime_minutes = -1;
         prepTime_hours = -1;
@@ -75,14 +78,21 @@ public class Recipe
 
     public void addAllIngredients(ArrayList<Ingredient> array){ingredients.addAll(array);}
 
-    public void addAllInstructions(ArrayList<String> array){instructions.addAll(array);}
 
-    public void addInstruction(String _instruction)
+    public void addAllIngredientsFromModel(List<SpoonacularModels.IngredientModel> _list)
     {
-        instructions.add(_instruction);
+        for(SpoonacularModels.IngredientModel model: _list)
+        {
+            addIngredient(new Ingredient(model.ingredientLine, model.amount, model.unitLong));
+        }
     }
 
-    public ArrayList<String> getInstructions()
+    public void setInstruction(String _instruction)
+    {
+        instructions = _instruction;
+    }
+
+    public String getInstructions()
     {
         return instructions;
     }
@@ -110,5 +120,12 @@ public class Recipe
     public void setApi(String _url) {recipeUrl = _url;}
 
     public String getApi(){return recipeUrl;}
+
+    public void setRecipeUrl(String _url)
+    {recipeUrl = _url;}
+
+    public String getRecipeUrl(){return recipeUrl;}
+
+    public void addAllImageUrls(List<String> _urls){imageUrls.addAll(_urls);}
 
 }

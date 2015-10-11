@@ -52,20 +52,20 @@ public class SearchTools
 
         StringTokenizer strtok = new StringTokenizer(_list, ",");
 
-        String item = strtok.nextToken();
-        while(item != null)
+        String item;
+        while(strtok.hasMoreTokens())
         {
-            list.add(item);
             item = strtok.nextToken();
+            list.add(item);
         }
 
         return list;
 
     }
 
-    public static Recipe GetRecipeById(String api, String id)
+    public static Recipe GetRecipeByUrl(String url)
     {
-        return AbstractRecipeFactory.getRecipe(api, id);
+        return AbstractRecipeFactory.getRecipe(url);
     }
 
     //GetRecipes will take in all parameters that are being used by AbstractRecipeFactory.getRecipes()
