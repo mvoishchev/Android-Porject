@@ -1,9 +1,16 @@
 package connectors;
 
+import android.view.View;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import t4.csc413.smartchef.R;
 import tools.Recipe;
 
 /**
@@ -45,15 +52,20 @@ public class SearchTools
 
         StringTokenizer strtok = new StringTokenizer(_list, ",");
 
-        String item = strtok.nextToken();
-        while(item != null)
+        String item;
+        while(strtok.hasMoreTokens())
         {
-            list.add(item);
             item = strtok.nextToken();
+            list.add(item);
         }
 
         return list;
 
+    }
+
+    public static Recipe GetRecipeByUrl(String url)
+    {
+        return AbstractRecipeFactory.getRecipe(url);
     }
 
     //GetRecipes will take in all parameters that are being used by AbstractRecipeFactory.getRecipes()
@@ -66,8 +78,43 @@ public class SearchTools
 
         //call on each API here and add results to return value for GUI
         recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getRecipes(ingredients, allergies, cuisine, search_type));
-        recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getRecipes(ingredients, allergies, cuisine, search_type));
+        //recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getRecipes(ingredients, allergies, cuisine, search_type));
+
+        //RemoveRedundancies(recipes);
 
         return recipes;
     }
+
+
+    public static void println(String string){System.out.println(string);}
+    public static Recipe ExtractRecipe(String url)
+    {
+        Recipe recipe = new Recipe();
+        /*String login = v.getContext().getResources().getString(R.string.spoonacular_connector);
+        String key = v.getContext().getResources().getString(R.string.spoonacular_key);
+*/
+
+        return recipe;
+    }
+
+    //Method to ensure that any recipes were returned from both APIs are removed from the set of
+    //returned Recipes
+    private static ArrayList<Recipe> RemoveRedundancies(ArrayList<Recipe> _recipes)
+    {
+        ArrayList<String> existingRecipeNames = new ArrayList<String>();
+        for(int i = 0; i < _recipes.size(); i++)
+        {
+            if(existingRecipeNames.contains(_recipes.get(i).getName()))
+            {
+                _recipes.remove(i);
+            }else
+            {
+                existingRecipeNames.add(_recipes.get(i).getName());
+            }
+
+        }
+
+        return _recipes;
+    }
+
 }

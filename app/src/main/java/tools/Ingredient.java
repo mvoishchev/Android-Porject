@@ -12,10 +12,14 @@ public class Ingredient
 {
 
     public String original_discription;
+    public float amount;
+    public String measurement;
 
-    public Ingredient(String input_line)
+    public Ingredient(String input_line, float _amount, String _measurement)
     {
         original_discription = input_line;
+        amount = _amount;
+        measurement = _measurement;
     }
 
 
