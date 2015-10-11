@@ -1,19 +1,38 @@
 package t4.csc413.smartchef;
 
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import connectors.SearchTools;
+import tools.Recipe;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    static TextView v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
+        Recipe recipe = SearchTools.GetRecipeById("Spoonacular", "156992");
+        v = (TextView)findViewById(R.id.text);
+        v.setText(recipe.getName());
+
     }
 
+    public static void setText(String string)
+    {v.setText(string);}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

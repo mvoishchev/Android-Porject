@@ -12,8 +12,9 @@ import java.util.ArrayList;
 public class Recipe
 {
 
-    String name, cuisine;
+    String name, cuisine, recipeUrl, id;
     ArrayList<Ingredient> ingredients;
+    ArrayList<String> imageUrls;
     ArrayList<String> instructions;
     int prepTime_hours, prepTime_minutes;
 
@@ -26,9 +27,21 @@ public class Recipe
     {
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String>();
+        imageUrls = new ArrayList<String>();
         prepTime_minutes = -1;
         prepTime_hours = -1;
     }
+
+    public void setId(String _id)
+    {
+        id = _id;
+    }
+
+    public void addImageUrl(String _url){imageUrls.add(_url);}
+
+    public ArrayList<String> getImageUrls(){return imageUrls;}
+
+    public String getId(){return id;}
 
     public void setName(String _name)
     {
@@ -60,6 +73,10 @@ public class Recipe
         return ingredients;
     }
 
+    public void addAllIngredients(ArrayList<Ingredient> array){ingredients.addAll(array);}
+
+    public void addAllInstructions(ArrayList<String> array){instructions.addAll(array);}
+
     public void addInstruction(String _instruction)
     {
         instructions.add(_instruction);
@@ -89,5 +106,9 @@ public class Recipe
     {
         return prepTime_minutes;
     }
+
+    public void setApi(String _url) {recipeUrl = _url;}
+
+    public String getApi(){return recipeUrl;}
 
 }
