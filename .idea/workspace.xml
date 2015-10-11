@@ -17,21 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: t4.csc413.smartchef" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc6782cf-7dd3-445d-b9f3-c627aaebc164" name="Default" comment="Added API calls for Spoonacular. Only call that is functioning is grabbing a specific recipe.  Need to work on Retrieving a list of search results.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/connectors/spoonacular/SpoonacularAPI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/connectors/spoonacular/SpoonacularModels.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/connectors/spoonacular/SpoonacularRecipeFactory.java" />
-      <change type="DELETED" beforePath="C:\Users\AGCOSTFU\AndroidStudioProjects\t4\.idea\libraries\appcompat_v7_22_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\AGCOSTFU\AndroidStudioProjects\t4\.idea\libraries\support_annotations_22_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\AGCOSTFU\AndroidStudioProjects\t4\.idea\libraries\support_v4_22_1_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/connectors/AbstractRecipeFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/connectors/AbstractRecipeFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tools/Recipe.java" afterPath="$PROJECT_DIR$/app/src/main/java/tools/Recipe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/connectors/SearchTools.java" afterPath="$PROJECT_DIR$/app/src/main/java/connectors/SearchTools.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+    <list default="true" id="fc6782cf-7dd3-445d-b9f3-c627aaebc164" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartChef.iws" />
@@ -142,8 +128,8 @@
       <file leaf-file-name="SpoonacularModels.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/spoonacular/SpoonacularModels.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52131784" vertical-offset="275" max-vertical-offset="1088">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.11046512" vertical-offset="572" max-vertical-offset="1088">
+              <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1826,7 +1812,11 @@
       <created>1444420139478</created>
       <updated>1444420139478</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added API calls for Spoonacular. Only call that is functioning is grabbing a specific recipe.  Need to work on Retrieving a list of search results.">
+      <created>1444548987100</created>
+      <updated>1444548987100</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2305,8 +2295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/spoonacular/SpoonacularModels.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52131784" vertical-offset="275" max-vertical-offset="1088">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.11046512" vertical-offset="572" max-vertical-offset="1088">
+          <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
