@@ -7,32 +7,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import connectors.SearchTools;
+import tools.Ingredient;
 import tools.Recipe;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    static TextView v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
 
-        Recipe recipe = SearchTools.GetRecipeById("Spoonacular", "156992");
-        v = (TextView)findViewById(R.id.text);
-        v.setText(recipe.getName());
+
+
 
     }
-
-    public static void setText(String string)
-    {v.setText(string);}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
