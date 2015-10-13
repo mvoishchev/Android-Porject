@@ -1,24 +1,33 @@
 package t4.csc413.smartchef;
 
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
+import connectors.SearchTools;
+import tools.Ingredient;
+import tools.Recipe;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    public TextView buttonText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buttonText = (TextView) findViewById(R.id.firstPageText);
-    }
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
+        EnGps.displayPromptForEnablingGPS(this);
+        Eula.show(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,8 +49,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    public void firstPageButton(View v) {
-        buttonText.setText("button works");
     }
 }
