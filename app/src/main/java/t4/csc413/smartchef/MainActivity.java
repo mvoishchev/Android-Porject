@@ -25,10 +25,8 @@ public class MainActivity extends ActionBarActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
-
-
-
+        EnGps.displayPromptForEnablingGPS(this);
+        Eula.show(this);
     }
 
     @Override
