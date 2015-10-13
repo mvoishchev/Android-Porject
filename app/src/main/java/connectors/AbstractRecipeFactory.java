@@ -36,21 +36,6 @@ public abstract class AbstractRecipeFactory
         //returns null if API is not supported yet
         return null;
     }
-
-    public static Recipe getRecipePreview(String api, String id)
-    {
-        if(api == "Yummly")
-        {
-
-        }
-
-        else if(api == "Spoonacular")
-        {
-            return new SpoonacularRecipeFactory().getRecipePreviewById(id);
-        }
-
-        return null;
-    }
     //Only API that provides instructions is Spoonacular and they have an extraction tool for any website's recipes
     //So automatically call on that when user decides which recipe he wants to look at
     public static Recipe getRecipe(String url)

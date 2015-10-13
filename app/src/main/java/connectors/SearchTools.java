@@ -87,14 +87,10 @@ public class SearchTools
 
 
     public static void println(String string){System.out.println(string);}
-    public static Recipe ExtractRecipe(String url)
-    {
-        Recipe recipe = new Recipe();
-        /*String login = v.getContext().getResources().getString(R.string.spoonacular_connector);
-        String key = v.getContext().getResources().getString(R.string.spoonacular_key);
-*/
 
-        return recipe;
+    public static Recipe GetRecipePreviewById(String api, String id)
+    {
+        return AbstractRecipeFactory.FactoryProducer(api).getRecipePreviewById(id);
     }
 
     //Method to ensure that any recipes were returned from both APIs are removed from the set of
