@@ -14,14 +14,16 @@ import java.util.ArrayList;
 import connectors.SearchTools;
 import tools.Ingredient;
 import tools.Recipe;
+import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    private EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        et  =   (EditText) findViewById(R.id.EditText01);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -50,4 +52,11 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+/*
+    public ArrayList<Recipe> searchByIngredient()
+    {
+        return SearchTools.GetRecipes(search, null, null, null);
+    }
+    */
 }
