@@ -14,6 +14,7 @@ public class EvernoteActivity extends AppCompatActivity {
 
     String ingredientList = "";
     TextView ingredientView;
+    EvernoteSession mEvernoteSession;
 
     private static final String CONSUMER_KEY = "jurispuchin";
     private static final String CONSUMER_SECRET = "429acb859dbe6ecb";
@@ -24,6 +25,12 @@ public class EvernoteActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evernote);
+
+        mEvernoteSession = new EvernoteSession.Builder(this)
+                .setEvernoteService(EVERNOTE_SERVICE)
+                .setSupportAppLinkedNotebooks(true)
+                .build(CONSUMER_KEY, CONSUMER_SECRET)
+                .asSingleton();
 
         final EditText editText = (EditText) findViewById(R.id.add_ingredient_field);
         ingredientView = (TextView) findViewById(R.id.evernote_list_of_ingredients);
@@ -38,6 +45,7 @@ public class EvernoteActivity extends AppCompatActivity {
                     ingredientList = ingredientList + "\n" + editText.getText().toString();
 
                 ingredientView.setText(ingredientList);
+                editText.setText("");
                 return true;
             }
         });
