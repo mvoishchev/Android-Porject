@@ -6,12 +6,18 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.evernote.client.android.EvernoteSession;
+
 import t4.csc413.smartchef.R;
 
 public class EvernoteActivity extends AppCompatActivity {
 
     String ingredientList = "";
     TextView ingredientView;
+
+    private static final String CONSUMER_KEY = "jurispuchin";
+    private static final String CONSUMER_SECRET = "429acb859dbe6ecb";
+    private static final EvernoteSession.EvernoteService EVERNOTE_SERVICE = EvernoteSession.EvernoteService.SANDBOX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
