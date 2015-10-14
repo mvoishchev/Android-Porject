@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.content.Intent;
 
 
-/**
- * Created by poulomirajarshi on 10/5/15.
+/*
+   Created by poulomirajarshi on 10/5/15.
  */
 public class Splash extends Activity {
     @Override
