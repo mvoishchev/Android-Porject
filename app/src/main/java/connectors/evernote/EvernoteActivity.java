@@ -14,7 +14,12 @@ import com.evernote.client.android.EvernoteSession;
 import com.evernote.client.android.EvernoteUtil;
 import com.evernote.client.android.asyncclient.EvernoteCallback;
 import com.evernote.client.android.asyncclient.EvernoteNoteStoreClient;
+import com.evernote.client.android.type.NoteRef;
+import com.evernote.edam.error.EDAMNotFoundException;
+import com.evernote.edam.error.EDAMSystemException;
+import com.evernote.edam.error.EDAMUserException;
 import com.evernote.edam.type.Note;
+import com.evernote.thrift.TException;
 
 import t4.csc413.smartchef.R;
 
@@ -23,6 +28,7 @@ public class EvernoteActivity extends AppCompatActivity {
     String ingredientList = "";
     TextView ingredientView;
     EvernoteSession mEvernoteSession;
+    Note note;
     private Intent mCachedIntent;
 
     private static final String CONSUMER_KEY = "jurispuchin";
@@ -31,15 +37,38 @@ public class EvernoteActivity extends AppCompatActivity {
 
     public void uploadButtonClick(View view) {
 
+        note = new Note();
+        note.setGuid("smartchef");
+        note.setTitle("SmartChef Shopping List");
+        note.setContent(EvernoteUtil.NOTE_PREFIX + ingredientList + EvernoteUtil.NOTE_SUFFIX);
+
         if (!EvernoteSession.getInstance().isLoggedIn()) {
             return;
         }
 
-        EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
+        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
 
-        Note note = new Note();
-        note.setTitle("SmartChef Shopping List");
-        note.setContent(EvernoteUtil.NOTE_PREFIX + ingredientList + EvernoteUtil.NOTE_SUFFIX);
+//        noteStoreClient.getNoteAsync("smartchef", true, true, true, true, new EvernoteCallback<Note>() {
+//            @Override
+//            public void onSuccess(Note result) {
+//
+//            }
+//
+//            @Override
+//            public void onException(Exception exception) {
+//
+//                noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
+//                    @Override
+//                    public void onSuccess(Note result) {
+//                    }
+//
+//                    @Override
+//                    public void onException(Exception exception) {
+//                        Log.e("Creation Flog", "Error creating note", exception);
+//                    }
+//                });
+//            }
+//        });
 
         noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
             @Override
@@ -50,7 +79,7 @@ public class EvernoteActivity extends AppCompatActivity {
 
             @Override
             public void onException(Exception exception) {
-                Log.e("EVERNOTE LOG", "Error creating note", exception);
+                Log.e("Update Log", "Error updating note", exception);
             }
         });
     }
