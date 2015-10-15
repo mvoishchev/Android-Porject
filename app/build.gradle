@@ -36,4 +36,5 @@ dependencies {
             compile 'org.json:json:20140107'
             compile 'org.apache.httpcomponents:httpclient:4.3.6'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.google.android.gms:play-services:8.1.0'
 }

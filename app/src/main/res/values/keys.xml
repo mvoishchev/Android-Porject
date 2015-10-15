@@ -3,7 +3,7 @@
     <string name="google_maps_key"
         tanslatable="false"
         templateMergeStrategy="preserve">
-        <!--add key here-->
+        AIzaSyDlupXDIsm7-hj62X-fKRqQQy3urCZwAnM
         </string>
 
     <string name="spoonacular_connector"
@@ -29,6 +29,8 @@
         templateMergeStrategy="preserve">
         0d24ad13bad93da625d68ba50920fe9d
         </string>
+
+
 
 
 </resources>
