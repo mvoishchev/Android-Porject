@@ -1,6 +1,5 @@
 package t4.csc413.smartchef;
 
-import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,11 +15,9 @@ import connectors.SearchTools;
 import tools.Ingredient;
 import tools.Recipe;
 import android.widget.EditText;
-import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
-
     private EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +26,6 @@ public class MainActivity extends ActionBarActivity {
         et  =   (EditText) findViewById(R.id.EditText01);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        Button button = new Button(this);
-        button.setText("Search");
 
         EnGps.displayPromptForEnablingGPS(this);
         Eula.show(this);
@@ -57,16 +52,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void searchByIngredient()
-    {
-       /* String search = et.getText().toString()
-        Intent i = new Intent(Intent i = new Intent(MainActivity.this,searchActivity.class);
-        i.setsearch()(i);
-        )};*/
-
-    }
-
 
 /*
     public ArrayList<Recipe> searchByIngredient()
