@@ -15,6 +15,7 @@ import connectors.SearchTools;
 import tools.Ingredient;
 import tools.Recipe;
 import android.widget.EditText;
+import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,6 +27,8 @@ public class MainActivity extends ActionBarActivity {
         et  =   (EditText) findViewById(R.id.EditText01);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        Button button = new Button(this);
+        button.setText("Search");
 
         EnGps.displayPromptForEnablingGPS(this);
         Eula.show(this);

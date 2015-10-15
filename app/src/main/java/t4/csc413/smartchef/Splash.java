@@ -31,7 +31,6 @@ public class Splash extends Activity {
 
                 finish();
                 Intent i = new Intent(Splash.this,MainActivity.class);
-                System.out.print("hi");
                 startActivity(i);
             }
 

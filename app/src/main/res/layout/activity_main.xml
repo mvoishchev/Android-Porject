@@ -17,6 +17,8 @@
         android:id="@+id/EditText01"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:hint="search"/>
 
 
@@ -24,6 +26,8 @@
         android:id="@+id/the_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/button_text"
+
         android:onClick="searchByIngredient"/>
 
 
