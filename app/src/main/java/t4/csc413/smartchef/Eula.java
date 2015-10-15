@@ -30,6 +30,10 @@ public class Eula {
     }
     /*
     Displays the EULA if necessary
+    This method should be called from the onCreate() method of  main Activity.
+     *
+     * activity The Activity to finish if the user rejects the EULA.
+     * @return Whether the user has agreed already.
      */
     static boolean show(final Activity activity) {
         final SharedPreferences preferences = activity.getSharedPreferences(PREFERENCES_EULA,
