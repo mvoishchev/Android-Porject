@@ -3,9 +3,10 @@
     <string name="app_name">Smart Chef</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="eula_title">License</string>
+    <string name="eula_title">License  Version 1.1</string>
     <string name="eula_accept">Accept</string>
     <string name="eula_refuse">Decline</string>
+    <string name="button_text">search</string>
 
     <string name="action_settings">Settings</string>
 </resources>
