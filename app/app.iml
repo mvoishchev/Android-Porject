@@ -97,8 +97,8 @@
     <orderEntry type="library" exported="" name="httpasyncclient-4.0.2" level="project" />
     <orderEntry type="library" exported="" name="httpcore-nio-4.3.2" level="project" />
     <orderEntry type="library" exported="" name="retrofit-1.9.0" level="project" />
-    <orderEntry type="library" exported="" name="evernote-api-1.25.1" level="project" />
     <orderEntry type="library" exported="" name="httpmime-4.3.6" level="project" />
+    <orderEntry type="library" exported="" name="evernote-api-1.25.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="android-task-1.0.7" level="project" />
