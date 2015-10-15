@@ -1,5 +1,6 @@
 package t4.csc413.smartchef;
 
+import android.location.LocationManager;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -27,7 +28,10 @@ public class MainActivity extends ActionBarActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        EnGps.displayPromptForEnablingGPS(this);
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
+            EnGps.displayPromptForEnablingGPS(this);
+
         Eula.show(this);
     }
 
