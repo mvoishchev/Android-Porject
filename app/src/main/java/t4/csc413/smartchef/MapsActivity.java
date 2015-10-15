@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,13 +25,17 @@ import com.google.android.gms.maps.model.Marker;
 import android.location.Criteria;
 import android.location.Location;
 import android.view.View;
+import android.widget.EditText;
+
 import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.UiSettings;
+
+import java.io.StringReader;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
     private GoogleMap mMap;
-
+    private EditText userSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        //userSearch=(EditText) findViewById(R.id.userSearch);
+        //userSearch = (EditText) userSearch.getText();
 
     }
 
@@ -61,13 +68,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sanFrancisco).title("Marker in San Francisco"));    //new marker creation
         CameraPosition cameraPosition = new CameraPosition.Builder()    //change camera on the map
                 .target(sanFrancisco)      // Sets the center of the map to San Francisco
-                .zoom(15)                   // Sets the zoom
+                .zoom(12)                   // Sets the zoom
                 .bearing(90)                // Sets the orientation of the camera to east
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));  //move camera to marker
 
         mMap.setOnMapClickListener(this);
         mMap.setOnMyLocationButtonClickListener(this);
+        //mMap.startUserSearch(userSearch);
     }
 
     public void checkLocationSetting() {    //method to check location settings and enable them if necessary
@@ -100,7 +108,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             });
 
             Dialog alertDialog = builder.create();          //Dialog box creation
-            alertDialog.setCanceledOnTouchOutside(false);   //box does not disappear unless the back button is pressed
+            alertDialog.setCanceledOnTouchOutside(true);   //box does disappear
             alertDialog.show();                             //*
         }
     }
@@ -108,6 +116,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapClick(LatLng latLng) {
+        mMap.clear();
         mMap.addMarker(new MarkerOptions().position(latLng).title("Your specified marker"));
         CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
                 .target(latLng)      // Sets the center of the map to to the new created marker
@@ -116,7 +125,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
         Log.i("MAP", "Marker");
-        mMap.clear();
     }
 
 
@@ -125,6 +133,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         checkLocationSetting();
         return false;
     }
+
+    public void startUserSearch(String userSearch) {
+        Uri gmmIntentUri = Uri.parse(userSearch);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
 
    // Uri gmmIntentUri = Uri.parse("geo:0,0?q=restaurants");
    // Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
