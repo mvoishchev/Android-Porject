@@ -34,7 +34,7 @@
 
             <activity
                 android:name=".MapsActivity"
-                android:label="Find A Store" >
+                android:label="Smart Chef" >
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN" />
 
