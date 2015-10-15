@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
+
+import com.google.android.gms.location.places.PlaceDetectionApi;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -140,7 +142,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
-
 
    // Uri gmmIntentUri = Uri.parse("geo:0,0?q=restaurants");
    // Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
