@@ -9,8 +9,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:id="@+id/imageView"
-        android:src="@drawable/ban"
+        android:src="@drawable/ban3"
         android:layout_alignParentTop="true" />
 
     <EditText
@@ -28,7 +29,9 @@
         android:layout_height="wrap_content"
         android:text="@string/button_text"
 
-        android:onClick="searchByIngredient"/>
+        android:onClick="searchByIngredient"
+        android:layout_below="@+id/EditText01"
+        android:layout_centerHorizontal="true" />
 
 
     
