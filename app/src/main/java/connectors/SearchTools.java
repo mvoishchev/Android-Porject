@@ -56,6 +56,7 @@ public class SearchTools
         while(strtok.hasMoreTokens())
         {
             item = strtok.nextToken();
+            item.trim();
             list.add(item);
         }
 
@@ -77,7 +78,7 @@ public class SearchTools
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
         //call on each API here and add results to return value for GUI
-        //recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getRecipes(ingredients, allergies, cuisine, search_type));
+        recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getRecipes(ingredients, allergies, cuisine, search_type));
         recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getRecipes(ingredients, allergies, cuisine, search_type));
 
         //RemoveRedundancies(recipes);
@@ -90,7 +91,8 @@ public class SearchTools
 
     public static Recipe GetRecipePreviewById(String api, String id)
     {
-        return AbstractRecipeFactory.FactoryProducer(api).getRecipePreviewById(id);
+        AbstractRecipeFactory factory = AbstractRecipeFactory.FactoryProducer(api);
+        return factory.getRecipePreviewById(id);
     }
 
     //Method to ensure that any recipes were returned from both APIs are removed from the set of

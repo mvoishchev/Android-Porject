@@ -25,11 +25,11 @@ public abstract class AbstractRecipeFactory
     {
         AbstractRecipeFactory factory;
 
-        if(api == "Yummly")
+        if(api.contains("Yummly"))
         {
             return new YummlyRecipeFactory();
         }
-        else if(api == "Spoonacular")
+        else if(api.contains("Spoonacular"))
         {
             return new SpoonacularRecipeFactory();
         }

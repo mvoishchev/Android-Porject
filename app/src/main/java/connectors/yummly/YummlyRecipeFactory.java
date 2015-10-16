@@ -78,6 +78,7 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
         }
 
 
+        query = query.replaceAll(" ", "");
         return query;
     }
 }

@@ -1,11 +1,14 @@
 package t4.csc413.smartchef;
 
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -15,25 +18,24 @@ import java.util.ArrayList;
 import connectors.SearchTools;
 import tools.Ingredient;
 import tools.Recipe;
-import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
-    private EditText et;
+
+    EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        et  =   (EditText) findViewById(R.id.EditText01);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        et = (EditText)findViewById(R.id.EditText01);
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
             EnGps.displayPromptForEnablingGPS(this);
 
         Eula.show(this);
-
     }
 
     @Override
@@ -41,6 +43,22 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void searchByIngredient(View v)
+    {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("search", et.getText().toString());
+        Intent i = new Intent(this, The_Results.class);
+        i.putExtras(bundle);
+        startActivity(i);
+    }
+
+    public void onButtonClick(View view)
+    {
+        Intent i = new Intent(this, The_Results.class);
+        startActivity(i);
     }
 
     @Override
@@ -57,11 +75,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-/*
-    public ArrayList<Recipe> searchByIngredient()
-    {
-        return SearchTools.GetRecipes(search, null, null, null);
-    }
-    */
 }
