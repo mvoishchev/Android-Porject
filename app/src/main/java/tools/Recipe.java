@@ -15,7 +15,7 @@ import connectors.spoonacular.SpoonacularModels;
 public class Recipe
 {
 
-    String name, cuisine, recipeUrl, id;
+    String name, cuisine, recipeUrl, id, api;
     ArrayList<Ingredient> ingredients;
     ArrayList<String> imageUrls;
     String instructions;
@@ -117,9 +117,9 @@ public class Recipe
         return prepTime_minutes;
     }
 
-    public void setApi(String _url) {recipeUrl = _url;}
+    public void setApi(String _url) {api = _url;}
 
-    public String getApi(){return recipeUrl;}
+    public String getApi(){return api;}
 
     public void setRecipeUrl(String _url)
     {recipeUrl = _url;}

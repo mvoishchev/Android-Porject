@@ -11,4 +11,15 @@
         android:id="@+id/text"
     />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/SButton"
+        android:layout_below="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:onClick="onButtonClick" />
+
+
 </RelativeLayout>
