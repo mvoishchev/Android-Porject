@@ -136,6 +136,9 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         }
             query = query.concat(ingredients.get(ingredients.size() - 1));
 
+        query = query.replaceAll(" ", "");
+
+        System.out.println("query: " + query);
         return query;
     }
 }

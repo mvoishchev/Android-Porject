@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import connectors.SearchTools;
 import tools.Recipe;
@@ -27,8 +28,10 @@ public class The_Results extends Activity {
 
 
     ListView list;
-    String [] name;
-    String [] desc;
+    List<String> name;
+    List<String> desc;
+    List<Recipe> recipes;
+    String search;
     int [] images = {R.drawable.recimg1,R.drawable.recimg2,R.drawable.recimg3,
             R.drawable.recimg4,R.drawable.recimg5,R.drawable.recimg6,R.drawable.recimg7,
             R.drawable.recimg8,R.drawable.recimg9,R.drawable.recimg10,};
@@ -38,9 +41,22 @@ public class The_Results extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.the_results);
 
-        Resources res = getResources();
+        desc = new ArrayList<String>();
+        name = new ArrayList<String>();
+
+        search = getIntent().getExtras().getString("search");
+        recipes = SearchTools.GetRecipes(search, null, null, null);
+
+        for(int recipe = 0; recipe < recipes.size(); recipe++)
+        {
+            Recipe temp = recipes.get(recipe);
+            name.add(temp.getName());
+            desc.add(temp.getId());
+
+        }
+       /* Resources res = getResources();
         name = res.getStringArray(R.array.titles);
-        desc = res.getStringArray(R.array.descriptions);
+        desc = res.getStringArray(R.array.descriptions);*/
 
         list= (ListView) findViewById(R.id.listView);
 
@@ -61,7 +77,14 @@ public class The_Results extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                switch (position) {
+                Bundle bundle = new Bundle();
+                Intent i = new Intent(The_Results.this, Results_six.class);
+                bundle.putString("api", recipes.get(position).getApi());
+                bundle.putString("id", recipes.get(position).getId());
+                i.putExtras(bundle);
+                startActivity(i);
+
+                /*switch (position) {
                     case 0:
                         Intent newActivity = new Intent(The_Results.this, Results_one.class);
                         startActivity(newActivity);
@@ -84,6 +107,8 @@ public class The_Results extends Activity {
                         break;
                     case 5:
                         Intent newActivity6 = new Intent(The_Results.this, Results_six.class);
+                        newActivity6.putExtra("api", recipes.get(position).getApi());
+                        newActivity6.putExtra("id", recipes.get(position).getId());
                         startActivity(newActivity6);
                         break;
                     case 6:
@@ -101,10 +126,10 @@ public class The_Results extends Activity {
                     case 9:
                         Intent newActivity10 = new Intent(The_Results.this, Results_ten.class);
                         startActivity(newActivity10);
-                        break;
+                        break;*/
 
 
-                }
+                //}
 
 
             }

@@ -35,13 +35,15 @@ public class Results_six extends ActionBarActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_two);
+        String id = getIntent().getExtras().getString("id");
+        String api = getIntent().getExtras().getString("api");
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        System.out.println("api: " + api);
+        System.out.println("id: " + id);
 
         v = (TextView)findViewById(R.id.text);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById("Spoonacular", "682920");
+        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
         Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
 
         String text = rr.getName() + "\n\nIngredients:\n\n";

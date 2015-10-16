@@ -10,12 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Thomas X Mei on 10/14/2015.
  */
 class coolAdapter extends ArrayAdapter<String>
 {
-   public coolAdapter(Context context, String[] values)
+   public coolAdapter(Context context, List<String> values)
    {
        super(context,R.layout.single_row,values);
    }
