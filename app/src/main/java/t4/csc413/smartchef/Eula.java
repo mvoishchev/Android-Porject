@@ -11,21 +11,30 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
+/*
+Displays an EULA ("End User License Agreement") that the user has to accept
+before using the application.
+ */
 
 public class Eula {
     private static final String ASSET_EULA = "Eula";
     private static final String PREFERENCE_EULA_ACCEPTED = "Eula.accept";
     private static final String PREFERENCES_EULA = "Eula";
 
-    /*public Eula(Context activity)
-    {
-     myActivity = activity;
-    }
+    /*
+    callback to let the activity know when the user accepts the EULA.
     */
-    static interface OnEulaAgreedTo {
+     static interface OnEulaAgreedTo {
+
         void onEulaAgreedTo();
     }
+    /*
+    Displays the EULA if necessary
+    This method should be called from the onCreate() method of  main Activity.
+     *
+     * activity The Activity to finish if the user rejects the EULA.
+     * @return Whether the user has agreed already.
+     */
     static boolean show(final Activity activity) {
         final SharedPreferences preferences = activity.getSharedPreferences(PREFERENCES_EULA,
                 Activity.MODE_PRIVATE);
@@ -66,9 +75,7 @@ public class Eula {
     private static CharSequence readEula(Activity activity) {
         BufferedReader in = null;
         try {
-            System.out.println("Got here");
             in = new BufferedReader(new InputStreamReader(activity.getAssets().open(ASSET_EULA)));
-            System.out.println("Do we get here?");
             String line;
             StringBuilder buffer = new StringBuilder();
             while ((line = in.readLine()) != null) buffer.append(line).append('\n');
@@ -79,6 +86,8 @@ public class Eula {
             closeStream(in);
         }
     }
+
+    //Closes the specified stream.
     private static void closeStream(Closeable stream) {
         if (stream != null) {
             try {

@@ -30,8 +30,7 @@ public class Splash extends Activity {
             public void onAnimationEnd(Animation animation) {
 
                 finish();
-                Intent i = new Intent(getBaseContext(),MainActivity.class);
-                System.out.print("hi");
+                Intent i = new Intent(Splash.this,MainActivity.class);
                 startActivity(i);
             }
 

@@ -17,21 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".Results"></activity>
-        <activity android:name=".Results_one"></activity>
-        <activity android:name=".Results_two"></activity>
-        <activity android:name=".Results_three"></activity>
-        <activity android:name=".Results_four"></activity>
-        <activity android:name=".Results_five"></activity>
-        <activity android:name=".Results_six"></activity>
-        <activity android:name=".Results_seven"></activity>
-        <activity android:name=".Results_eight"></activity>
-        <activity android:name=".Results_nine"></activity>
-        <activity android:name=".Results_ten"></activity>
-        <activity android:name=".The_Results"></activity>
-
     </application>
 
 

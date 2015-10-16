@@ -1,12 +1,10 @@
 package t4.csc413.smartchef;
 
-import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -27,7 +25,10 @@ public class MainActivity extends ActionBarActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        EnGps.displayPromptForEnablingGPS(this);
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
+            EnGps.displayPromptForEnablingGPS(this);
+
         Eula.show(this);
     }
 
