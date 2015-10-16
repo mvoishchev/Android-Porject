@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity {
             EnGps.displayPromptForEnablingGPS(this);
 
         Eula.show(this);
+
     }
 
     @Override
