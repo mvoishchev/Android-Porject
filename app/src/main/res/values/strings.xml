@@ -3,51 +3,41 @@
     <string name="app_name">Smart Chef</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="eula_title">License  Version 1.1</string>
+    <string name="eula_title">License</string>
     <string name="eula_accept">Accept</string>
     <string name="eula_refuse">Decline</string>
     <string name="button_text">search</string>
 
-    //tom's titles
-    <string name="title_section1">Search Results</string>
-    <string name="title_section2">Grocery List</string>
-    <string name="title_section3">Supermarket</string>
-    <string name="title_section4">Cupboard</string>
-    <string name="title_section5">Alleriges</string>
-    <string name="title_section6">Search Options</string>
-    //tom's navigation drawer
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
 
-
-    <string name="action_settings">Settings</string><string-array name="titles">
-    <item>Char-grilled Beef Tenderloin with Three-Herb Chimichurri</item>
-    <item>Severed Finger Cheese Sticks</item>
-    <item>English Toffe</item>
-    <item>Sweet and Salty No Bake Peanut Butter bars</item>
-    <item>Crockpot Chicken and Quinoa Chili</item>
-    <item>Pumpkin Bars</item>
-    <item>Chocolate Avocado Pudding</item>
-    <item>Everything Bagel Dogs</item>
-    <item>Pumpkin Pie Twist</item>
-    <item>Hiyayakko Chilled Tofu</item>
-</string-array>
-
-    <string-array name="descriptions">
-        <item>Char-grilled Beef Tenderloin with Three-Herb Chimichurri</item>
-        <item>Severed Finger Cheese Sticks</item>
-        <item>English Toffe</item>
-        <item>Sweet and Salty No Bake Peanut Butter bars</item>
-        <item>Reis mit scheiss</item>
-        <item>Pumpkin Bars</item>
-        <item>Chocolate Avocado Pudding</item>
-        <item>Beyond the Ramen Burger</item>
-        <item>Pumpkin Pie Twist</item>
-        <item>Hiyayakko Chilled Tofu</item>
-    </string-array>
-
-
-    //Tom's search result strings
-
+    //Evernote connector strings START - JP
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+    <string name="notes">Notes</string>
+    <string name="notebooks">Notebooks</string>
+    <string name="label_logout">Sign out</string>
+    <string name="user_info">User Info</string>
+    <string name="label_login">Login</string>
+    <string name="empty">Empty %s</string>
+    <string name="evernote_not_installed">Evernote is not installed.</string>
+    <string name="share_public_link">Share public link</string>
+    <string name="delete">Delete</string>
+    <string name="raw_content">Raw content</string>
+    <string name="open_in_evernote_client">Open with Evernote app</string>
+    <string name="note_title">Note Title</string>
+    <string name="notebook_title">Notebook Title</string>
+    <string name="note_content">Note Content</string>
+    <string name="create_new_note">Create new note</string>
+    <string name="create_new_notebook">Create new notebook</string>
+    <string name="create">Create</string>
+    <string name="personal">Personal</string>
+    <string name="linked">Linked</string>
+    <string name="attach_image">Attach image</string>
+    <string name="mega_bytes">%.1f MB</string>
+    <string name="kilo_bytes">%.1f KB</string>
+    <string name="upload_limit">Upload limit</string>
+    <string name="email">Email</string>
+    <string name="search">Search</string>
+    <string name="query">Query</string>
+    //Evernote connector strings END
 </resources>
