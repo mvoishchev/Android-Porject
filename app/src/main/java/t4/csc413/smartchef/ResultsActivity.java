@@ -1,19 +1,12 @@
 package t4.csc413.smartchef;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +14,7 @@ import java.util.List;
 import connectors.SearchTools;
 import tools.Recipe;
 
-/**
- * Created by Thomas X Mei on 10/14/2015.
- */
-public class The_Results extends Activity {
+public class ResultsActivity extends Activity {
 
 
     ListView list;
@@ -61,12 +51,12 @@ public class The_Results extends Activity {
         list= (ListView) findViewById(R.id.listView);
 
 
-      //  ArrayList<Recipe> recipes = SearchTools.GetRecipes(Search,null,null,null);
+        //  ArrayList<Recipe> recipes = SearchTools.GetRecipes(Search,null,null,null);
 
 
 
 
-        ListAdapter theAdapter = new coolAdapter(this,name);
+        ListAdapter theAdapter = new CoolAdapter(this,name);
         ListView theListView = (ListView) findViewById(R.id.listView);
         list.setAdapter(theAdapter);
 
@@ -78,7 +68,7 @@ public class The_Results extends Activity {
                                     int position, long id) {
 
                 Bundle bundle = new Bundle();
-                Intent i = new Intent(The_Results.this, Results_six.class);
+                Intent i = new Intent(ResultsActivity.this, RecipeViewActivity.class);
                 bundle.putString("api", recipes.get(position).getApi());
                 bundle.putString("id", recipes.get(position).getId());
                 i.putExtras(bundle);
@@ -155,5 +145,3 @@ public class The_Results extends Activity {
 
 
 }
-
-
