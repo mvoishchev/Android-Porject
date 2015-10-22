@@ -23,14 +23,18 @@
         android:id="@+id/the_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="@string/button_text"
+        android:onClick="searchByIngredient"
+        android:layout_below="@+id/EditText01"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+<!--    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="button"
-        />
+        android:text="Evernote"
+        android:onClick="onButtonClick"
+        />-->
 
 </RelativeLayout>
