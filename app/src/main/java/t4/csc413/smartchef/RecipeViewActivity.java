@@ -1,32 +1,18 @@
 package t4.csc413.smartchef;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import connectors.AbstractRecipeFactory;
 import connectors.SearchTools;
-import connectors.spoonacular.SpoonacularRecipeFactory;
+import t4.csc413.smartchef.R;
 import tools.Ingredient;
 import tools.Recipe;
 
 /**
- * Created by Thomas X Mei on 10/13/2015.
+ * Created by AGCOSTFU on 10/21/2015.
  */
-public class Results_six extends ActionBarActivity
+public class RecipeViewActivity extends ActionBarActivity
 {
 
     static TextView v;
@@ -34,7 +20,7 @@ public class Results_six extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.results_two);
+        setContentView(R.layout.recipe_view);
         String id = getIntent().getExtras().getString("id");
         String api = getIntent().getExtras().getString("api");
 
