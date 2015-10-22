@@ -56,7 +56,7 @@ public class ResultsActivity extends Activity {
 
 
 
-        ListAdapter theAdapter = new CoolAdapter(this,name);
+        ListAdapter theAdapter = new RecipeAdapter(this,name);
         ListView theListView = (ListView) findViewById(R.id.listView);
         list.setAdapter(theAdapter);
 
