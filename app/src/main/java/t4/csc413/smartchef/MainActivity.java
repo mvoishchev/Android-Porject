@@ -1,6 +1,7 @@
 package t4.csc413.smartchef;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.location.LocationManager;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +14,9 @@ import android.widget.EditText;
 import connectors.evernote.LoginActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends NavBaseActivity {
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
 
     EditText et;
     @Override
@@ -29,6 +32,12 @@ public class MainActivity extends ActionBarActivity {
             EnGps.displayPromptForEnablingGPS(this);
 
         Eula.show(this);
+
+        // Nav Drawer
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
+        navMenuIcons = getResources()
+                .obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
+        set(navMenuTitles,navMenuIcons);
     }
 
     @Override

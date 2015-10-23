@@ -15,8 +15,27 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import connectors.evernote.EvernoteActivity;
+
 /*
  *  Create by: MG
+ *  For every activity that wants to use nav drawer, class must extend NavBaseActivity
+ *  Then do the following:
+ *
+ *      1) create two variables:
+ *              private String[] navMenuTitles;
+ *              private TypedArray navMenuIcons;
+ *
+ *      2) go on onCreate and copy paste at the bottom:
+ *              navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+ *              navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+ *		        set(navMenuTitles, navMenuIcons);
+ *
+ *		 3) go to your class xml layout:
+ *		        look at activity_main.xml for an example.  IMPORTANT:  the main content
+ *		        that you want to display on the screen has to be placed INSIDE the FrameLayout.
+ *		        Don't forget to include the ListView nav drawer.  Just copy and paste it
+ *
  */
 
 public class NavBaseActivity extends ActionBarActivity {
@@ -140,20 +159,20 @@ public class NavBaseActivity extends ActionBarActivity {
 
         switch (position) {
             case 0:
-                Intent intent = new Intent(this, TestActivity1.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();// finishes the current activity
                 break;
             case 1:
-                Intent intent1 = new Intent(this, TestActivity2.class);
+                Intent intent1 = new Intent(this, EvernoteActivity.class);
                 startActivity(intent1);
                 finish();// finishes the current activity
                 break;
-            // case 2:
-            // Intent intent2 = new Intent(this, third.class);
-            // startActivity(intent2);
-            // finish();
-            // break;
+             //case 2:
+             //Intent intent2 = new Intent(this, TestActivity2.class);
+             //startActivity(intent2);
+             //finish();break;
+
             // case 3:
             // Intent intent3 = new Intent(this, fourth.class);
             // startActivity(intent3);
