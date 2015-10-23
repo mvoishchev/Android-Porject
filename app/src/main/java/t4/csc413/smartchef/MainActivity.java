@@ -9,15 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-import connectors.SearchTools;
-import tools.Ingredient;
-import tools.Recipe;
+import connectors.evernote.LoginActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -50,14 +43,14 @@ public class MainActivity extends ActionBarActivity {
         Bundle bundle = new Bundle();
 
         bundle.putString("search", et.getText().toString());
-        Intent i = new Intent(this, The_Results.class);
+        Intent i = new Intent(this, ResultsActivity.class);
         i.putExtras(bundle);
         startActivity(i);
     }
 
     public void onButtonClick(View view)
     {
-        Intent i = new Intent(this, The_Results.class);
+        Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
 

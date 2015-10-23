@@ -14,11 +14,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.default" />
-            </intent-filter>
+            <category android:name="android.intent.category.default" />
+        </intent-filter>
         </activity>
         <activity
             android:name=".Splash"
@@ -39,25 +39,29 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Results"></activity>
-        <activity android:name=".Results_one"></activity>
-        <activity android:name=".Results_two"></activity>
-        <activity android:name=".Results_three"></activity>
-        <activity android:name=".Results_four"></activity>
-        <activity android:name=".Results_five"></activity>
-        <activity android:name=".Results_six"></activity>
-        <activity android:name=".Results_seven"></activity>
-        <activity android:name=".Results_eight"></activity>
-        <activity android:name=".Results_nine"></activity>
-        <activity android:name=".Results_ten"></activity>
-        <activity android:name=".The_Results"></activity>
+        <activity android:name=".RecipeViewActivity"></activity>
+        <activity android:name=".ResultsActivity"></activity>
 
 
+        <activity
+            android:name="connectors.evernote.LoginActivity"
+            android:label="@string/label_login"
+            android:theme="@style/Theme.Demo"/>
+
+        <activity android:name="connectors.evernote.EvernoteActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </activity>
+        
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
     </application>
+
 
 
 
