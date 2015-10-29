@@ -17,6 +17,13 @@
         android:text="Upload"
         android:onClick="uploadButtonClick"/>
 
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Update"
+        android:onClick="updateButtonClick"/>
+
     <EditText
         android:id="@+id/add_ingredient_field"
         android:layout_width="wrap_content"
