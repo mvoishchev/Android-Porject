@@ -20,6 +20,7 @@ public class Recipe
     ArrayList<String> imageUrls;
     String instructions;
     int prepTime_hours, prepTime_minutes;
+    String dummy;
 
     public Recipe()
     {
@@ -33,6 +34,7 @@ public class Recipe
         imageUrls = new ArrayList<String>();
         prepTime_minutes = -1;
         prepTime_hours = -1;
+        dummy = "https://yt3.ggpht.com/--LNjtIfd_Q4/AAAAAAAAAAI/AAAAAAAAAAA/Ab-m2XbhGgI/s100-c-k-no/photo.jpg";
     }
 
     public void setId(String _id)
@@ -127,5 +129,6 @@ public class Recipe
     public String getRecipeUrl(){return recipeUrl;}
 
     public void addAllImageUrls(List<String> _urls){imageUrls.addAll(_urls);}
+    public String getImageUrl(){return dummy;} //made just to test
 
 }

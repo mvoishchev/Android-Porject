@@ -29,7 +29,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="Find a Store" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".RecipeViewActivity"></activity>
+        <activity android:name=".ResultsActivity"></activity>
+
+
+        <activity
+            android:name="connectors.evernote.LoginActivity"
+            android:label="@string/label_login"
+            android:theme="@style/Theme.Demo"/>
+
+        <activity android:name="connectors.evernote.EvernoteActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </activity>
+        
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
     </application>
+
 
 
 

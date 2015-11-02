@@ -1,38 +1,43 @@
 package t4.csc413.smartchef;
 
+import android.content.Intent;
+import android.content.res.TypedArray;
 import android.location.LocationManager;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-import connectors.SearchTools;
-import tools.Ingredient;
-import tools.Recipe;
+import android.view.View;
 import android.widget.EditText;
 
+import connectors.evernote.LoginActivity;
 
-public class MainActivity extends ActionBarActivity {
-    private EditText et;
+
+public class MainActivity extends NavBaseActivity {
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
+
+    EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        et  =   (EditText) findViewById(R.id.EditText01);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        et = (EditText)findViewById(R.id.EditText01);
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
             EnGps.displayPromptForEnablingGPS(this);
 
         Eula.show(this);
+
+        // Nav Drawer
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
+        navMenuIcons = getResources()
+                .obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
+        set(navMenuTitles,navMenuIcons);
     }
 
     @Override
@@ -40,6 +45,22 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void searchByIngredient(View v)
+    {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("search", et.getText().toString());
+        Intent i = new Intent(this, ResultsActivity.class);
+        i.putExtras(bundle);
+        startActivity(i);
+    }
+
+    public void onButtonClick(View view)
+    {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
     }
 
     @Override
@@ -56,11 +77,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-/*
-    public ArrayList<Recipe> searchByIngredient()
-    {
-        return SearchTools.GetRecipes(search, null, null, null);
-    }
-    */
 }

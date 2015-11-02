@@ -3,6 +3,7 @@ package connectors;
 import java.util.ArrayList;
 
 import connectors.spoonacular.SpoonacularRecipeFactory;
+import connectors.yummly.YummlyRecipeFactory;
 import tools.Recipe;
 
 /**
@@ -24,11 +25,11 @@ public abstract class AbstractRecipeFactory
     {
         AbstractRecipeFactory factory;
 
-        if(api == "Yummly")
+        if(api.contains("Yummly"))
         {
-
+            return new YummlyRecipeFactory();
         }
-        else if(api == "Spoonacular")
+        else if(api.contains("Spoonacular"))
         {
             return new SpoonacularRecipeFactory();
         }
