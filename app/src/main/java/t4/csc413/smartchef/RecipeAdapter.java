@@ -1,8 +1,11 @@
 package t4.csc413.smartchef;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import tools.Recipe;
 
 /**
  * Created by Thomas X Mei on 10/14/2015.
@@ -20,7 +29,27 @@ class RecipeAdapter extends ArrayAdapter<String>
 {
     public RecipeAdapter(Context context, List<String> values)
     {
-        super(context, R.layout.single_row,values);
+        super(context,R.layout.single_row,values);
+    }
+
+
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            Log.e("src", src);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            Log.e("Bitmap","returned");
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Exception", e.getMessage());
+            return null;
+        }
     }
 
     @Override
@@ -34,28 +63,11 @@ class RecipeAdapter extends ArrayAdapter<String>
         theTextView.setText(results);
 
 
+        Recipe r = new Recipe();
+
+        String yes = r.getImageUrl();
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
-        if(position == 0) {
-            img.setImageResource(R.drawable.recimg1);
-        }else if(position == 1) {
-            img.setImageResource(R.drawable.recimg2);
-        }else if(position == 2) {
-            img.setImageResource(R.drawable.recimg3);
-        }else if(position == 3) {
-            img.setImageResource(R.drawable.recimg4);
-        }else if(position == 4) {
-            img.setImageResource(R.drawable.recimg5);
-        }else if(position == 5) {
-            img.setImageResource(R.drawable.recimg6);
-        }else if(position == 6) {
-            img.setImageResource(R.drawable.recimg7);
-        }else if(position == 7) {
-            img.setImageResource(R.drawable.recimg8);
-        }else if(position == 8) {
-            img.setImageResource(R.drawable.recimg9);
-        }else if(position == 9) {
-            img.setImageResource(R.drawable.recimg10);
-        }
+        img.setImageBitmap(getBitmapFromURL(yes));
 
         return theView;
 
