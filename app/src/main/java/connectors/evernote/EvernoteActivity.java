@@ -45,46 +45,46 @@ public class EvernoteActivity extends AppCompatActivity {
     public static final String EVERNOTE_PREF = "EvernotePreferencesFile";
     private static final String MAIN_LIST_NAME = "SmartChef Main Shopping List";
 
-    public void createNewShoppingList(String listName, String listContent) {
-
-        //Login and setup
-        mEvernoteSession = new EvernoteSession.Builder(this)
-                .setEvernoteService(EVERNOTE_SERVICE)
-                .setSupportAppLinkedNotebooks(false)
-                .build(CONSUMER_KEY, CONSUMER_SECRET)
-                .asSingleton();
-
-        if (!EvernoteSession.getInstance().isLoggedIn()) {
-            // Check if logged in
-            mCachedIntent = this.getIntent();
-            LoginActivity.launch(this);
-        }
-
-        //Make the new note
-        Note newList = new Note();
-        newList.setTitle(listName);
-        newList.setContent(listContent);
-
-        //Upload the note
-        if (!EvernoteSession.getInstance().isLoggedIn()) {
-            return;
-        }
-
-        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-
-        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
-            @Override
-            public void onSuccess(Note result) {
-                ingredientView.setText("Done!");
-                ingredientList = "";
-            }
-
-            @Override
-            public void onException(Exception exception) {
-                Log.e("Update Log", "Error updating note", exception);
-            }
-        });
-    }
+//    public void createNewShoppingList(String listName, String listContent) {
+//
+//        //Login and setup
+//        mEvernoteSession = new EvernoteSession.Builder(this)
+//                .setEvernoteService(EVERNOTE_SERVICE)
+//                .setSupportAppLinkedNotebooks(false)
+//                .build(CONSUMER_KEY, CONSUMER_SECRET)
+//                .asSingleton();
+//
+//        if (!EvernoteSession.getInstance().isLoggedIn()) {
+//            // Check if logged in
+//            mCachedIntent = this.getIntent();
+//            LoginActivity.launch(this);
+//        }
+//
+//        //Make the new note
+//        Note newList = new Note();
+//        newList.setTitle(listName);
+//        newList.setContent(listContent);
+//
+//        //Upload the note
+//        if (!EvernoteSession.getInstance().isLoggedIn()) {
+//            return;
+//        }
+//
+//        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
+//
+//        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
+//            @Override
+//            public void onSuccess(Note result) {
+//                ingredientView.setText("Done!");
+//                ingredientList = "";
+//            }
+//
+//            @Override
+//            public void onException(Exception exception) {
+//                Log.e("Update Log", "Error updating note", exception);
+//            }
+//        });
+//    }
 
     public void updateMainShoppingList(String listContent) {
 

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ygvyb"
+        android:id="@+id/butt"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="107dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="50dp"
+        android:onClick="onClickMethod" />
 
     <TextView android:text="SmartChef, CSC 413 Team 4, HELLO WORLD"
         android:layout_width="match_parent"
@@ -8,13 +22,19 @@
         android:padding="10dp"
         android:textSize="24sp"
         android:id="@+id/text"
-        />
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/butt"
+        android:layout_centerHorizontal="true" />
 
-    <RadioButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New RadioButton"
-        android:id="@+id/radioButton" />
+        android:text="Update List"
+        android:id="@+id/updateButton"
+        android:layout_below="@+id/butt"
+        android:layout_alignLeft="@+id/butt"
+        android:layout_alignStart="@+id/butt"
+        android:onClick="uploadButtonClick" />
 
 
-</LinearLayout>
+</RelativeLayout>
