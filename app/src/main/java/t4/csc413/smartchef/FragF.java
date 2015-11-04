@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import connectors.SearchTools;
 import connectors.evernote.EvernoteActivity;
+import connectors.evernote.EvernoteManager;
 import tools.Recipe;
 
 import static t4.csc413.smartchef.R.id.EButton;
@@ -50,15 +51,19 @@ public class FragF extends android.support.v4.app.Fragment {
                 startActivity(u);
             }
         });
+
+        //Changed to upload shopping list, instead of opening activity -Juris
         Button evernote = (Button)view.findViewById(EButton);
         evernote.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EvernoteActivity.class);
-                startActivity(intent);
+                //TODO change this so that real values are uploaded insted of "Test" and random()
+                EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList("Test Test", String.valueOf(Math.random()), getActivity());
             }
         });
+
         Button Gmaps = (Button)view.findViewById(GMButton);
         Gmaps.setOnClickListener(new View.OnClickListener() {
 
