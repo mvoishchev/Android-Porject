@@ -3,6 +3,7 @@ package connectors.evernote;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.util.Log;
 
 import com.evernote.client.android.EvernoteSession;

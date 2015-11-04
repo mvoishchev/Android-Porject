@@ -1,12 +1,15 @@
 package connectors.evernote;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +25,20 @@ import com.evernote.edam.error.EDAMUserException;
 import com.evernote.edam.type.Note;
 import com.evernote.thrift.TException;
 
+import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
 /**
  * This class describes the Evernote activity used to setup Evernote settings.
  */
-public class EvernoteActivity extends AppCompatActivity {
+public class EvernoteActivity extends NavBaseActivity {
+
+    //TODO enable callback
+    //TODO create view shopping list functionality
+
+    //NavBar variables
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
 
     //Setup class variables
     String ingredientList = "";
@@ -86,62 +97,65 @@ public class EvernoteActivity extends AppCompatActivity {
 //        });
 //    }
 
-    public void updateMainShoppingList(String listContent) {
 
-        //Login and setup
-        SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
-        mainListGuid = settings.getString("mainListGuid", null);
-        previousNoteExists = settings.getBoolean("listExists", false);
 
-        mEvernoteSession = new EvernoteSession.Builder(this)
-                .setEvernoteService(EVERNOTE_SERVICE)
-                .setSupportAppLinkedNotebooks(false)
-                .build(CONSUMER_KEY, CONSUMER_SECRET)
-                .asSingleton();
 
-        if (!EvernoteSession.getInstance().isLoggedIn()) {
-            // Check if logged in
-            mCachedIntent = this.getIntent();
-            LoginActivity.launch(this);
-        }
-
-        //Make the new note
-        final Note newList = new Note();
-        newList.setTitle(MAIN_LIST_NAME);
-        newList.setContent(listContent);
-
-        //Upload the note
-        if (!EvernoteSession.getInstance().isLoggedIn()) {
-            return;
-        }
-
-        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-
-        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
-            @Override
-            public void onSuccess(Note result) {
-                mainListGuid = result.getGuid();
-                previousNoteExists = true;
-
-                // We need an Editor object to make preference changes.
-                SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putString("mainListGuid", mainListGuid);
-                editor.putBoolean("listExists", previousNoteExists);
-
-                // Commit the edits!
-                editor.commit();
-
-                ingredientView.setText("Done!");
-                ingredientList = "";
-            }
-
-            @Override
-            public void onException(Exception exception) {
-                Log.e("Update Log", "Error updating note", exception);
-            }
-        });
-    }
+//    public void updateMainShoppingList(String listContent) {
+//
+//        //Login and setup
+//        SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
+//        mainListGuid = settings.getString("mainListGuid", null);
+//        previousNoteExists = settings.getBoolean("listExists", false);
+//
+//        mEvernoteSession = new EvernoteSession.Builder(this)
+//                .setEvernoteService(EVERNOTE_SERVICE)
+//                .setSupportAppLinkedNotebooks(false)
+//                .build(CONSUMER_KEY, CONSUMER_SECRET)
+//                .asSingleton();
+//
+//        if (!EvernoteSession.getInstance().isLoggedIn()) {
+//            // Check if logged in
+//            mCachedIntent = this.getIntent();
+//            LoginActivity.launch(this);
+//        }
+//
+//        //Make the new note
+//        final Note newList = new Note();
+//        newList.setTitle(MAIN_LIST_NAME);
+//        newList.setContent(listContent);
+//
+//        //Upload the note
+//        if (!EvernoteSession.getInstance().isLoggedIn()) {
+//            return;
+//        }
+//
+//        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
+//
+//        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
+//            @Override
+//            public void onSuccess(Note result) {
+//                mainListGuid = result.getGuid();
+//                previousNoteExists = true;
+//
+//                // We need an Editor object to make preference changes.
+//                SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
+//                SharedPreferences.Editor editor = settings.edit();
+//                editor.putString("mainListGuid", mainListGuid);
+//                editor.putBoolean("listExists", previousNoteExists);
+//
+//                // Commit the edits!
+//                editor.commit();
+//
+//                ingredientView.setText("Done!");
+//                ingredientList = "";
+//            }
+//
+//            @Override
+//            public void onException(Exception exception) {
+//                Log.e("Update Log", "Error updating note", exception);
+//            }
+//        });
+//    }
 
     /**
      * This function is clalled when the upload button is clicked.
@@ -156,32 +170,12 @@ public class EvernoteActivity extends AppCompatActivity {
         note.setContent(EvernoteUtil.NOTE_PREFIX + ingredientList + EvernoteUtil.NOTE_SUFFIX);
 
         if (!EvernoteSession.getInstance().isLoggedIn()) {
+            DialogFragment dialog = new LoginDialog();
+            dialog.show(getFragmentManager(), "LoginDialog");
             return;
         }
 
         final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-
-//        noteStoreClient.getNoteAsync("smartchef", true, true, true, true, new EvernoteCallback<Note>() {
-//            @Override
-//            public void onSuccess(Note result) {
-//
-//            }
-//
-//            @Override
-//            public void onException(Exception exception) {
-//
-//                noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
-//                    @Override
-//                    public void onSuccess(Note result) {
-//                    }
-//
-//                    @Override
-//                    public void onException(Exception exception) {
-//                        Log.e("Creation Flog", "Error creating note", exception);
-//                    }
-//                });
-//            }
-//        });
 
         noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
             @Override
@@ -206,6 +200,8 @@ public class EvernoteActivity extends AppCompatActivity {
     public void updateButtonClick(View view) {
 
         if (!EvernoteSession.getInstance().isLoggedIn()) {
+            DialogFragment dialog = new LoginDialog();
+            dialog.show(getFragmentManager(), "LoginDialog");
             return;
         }
 
@@ -242,6 +238,17 @@ public class EvernoteActivity extends AppCompatActivity {
 
     }
 
+    public void loginButtonClick(View view) {
+        Button thisButton = (Button) findViewById(R.id.loginLogoutButton);
+        if (thisButton.getText().equals("Login")) {
+            EvernoteSession.getInstance().authenticate(this);
+            thisButton.setText("Logout");
+        } else if (thisButton.getText().equals("Logout")) {
+            EvernoteSession.getInstance().logOut();
+            thisButton.setText("Login");
+        }
+    }
+
     /**
      * Sets up the main activity based on previous saved bundle state.
      * @param savedInstanceState passed from previous activity.
@@ -264,8 +271,8 @@ public class EvernoteActivity extends AppCompatActivity {
 
         if (!EvernoteSession.getInstance().isLoggedIn()) {
             // Check if logged in
-            mCachedIntent = this.getIntent();
-            LoginActivity.launch(this);
+            Button loginButton = (Button) findViewById(R.id.loginLogoutButton);
+            loginButton.setText("Logout");
         }
 
         final EditText editText = (EditText) findViewById(R.id.add_ingredient_field);
@@ -285,6 +292,10 @@ public class EvernoteActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        set(navMenuTitles, navMenuIcons);
     }
 
     @Override
