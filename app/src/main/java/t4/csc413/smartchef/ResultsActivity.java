@@ -68,7 +68,7 @@ public class ResultsActivity extends Activity {
                                     int position, long id) {
 
                 Bundle bundle = new Bundle();
-                Intent i = new Intent(ResultsActivity.this, RecipeViewActivity.class);
+                Intent i = new Intent(ResultsActivity.this, SlideMain.class);
                 bundle.putString("api", recipes.get(position).getApi());
                 bundle.putString("id", recipes.get(position).getId());
                 i.putExtras(bundle);
