@@ -18,17 +18,11 @@ public class FragC extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_frag_c,container,false);
 
-        String id = getActivity().getIntent().getExtras().getString("id");
-        String api = getActivity().getIntent().getExtras().getString("api");
-
-
+        SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFC);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-
-        int prep_Hours = rr.getPrepTime_hours();
-        int prep_Minutes = rr.getPrepTime_minutes();
+        int prep_Hours = m.rr.getPrepTime_hours();
+        int prep_Minutes = m.rr.getPrepTime_minutes();
 
         String text = "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tPreperation Time:\n\t\t\t\t\t\t" +
                 "\t\t\t\t\t\tHours: " + prep_Hours +

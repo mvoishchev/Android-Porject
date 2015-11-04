@@ -23,18 +23,12 @@ public class FragE extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_frag_e,container,false);
 
-        String id = getActivity().getIntent().getExtras().getString("id");
-        String api = getActivity().getIntent().getExtras().getString("api");
-
-
+        SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFE);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-
-        String text = rr.getRecipeUrl();
+        String text = m.rr.getRecipeUrl();
         v.setText(text);
-        url = rr.getRecipeUrl();
+        url = m.rr.getRecipeUrl();
 
         Button newPage = (Button)view.findViewById(SiteButton);
         newPage.setOnClickListener(new View.OnClickListener() {

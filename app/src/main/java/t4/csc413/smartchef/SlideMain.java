@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import connectors.SearchTools;
+import tools.Ingredient;
 import tools.Recipe;
 
 
@@ -22,6 +23,10 @@ public class SlideMain extends FragmentActivity {
     PagerTabStrip tab_strp;
     static TextView v;
 
+   public String id;
+   public String api;
+    public Recipe rr;
+    public String ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +39,24 @@ public class SlideMain extends FragmentActivity {
         tab_strp=(PagerTabStrip)findViewById(R.id.tab_strip);
         tab_strp.setTextColor(Color.BLACK);
 
-        String id = getIntent().getExtras().getString("id");
-        String api = getIntent().getExtras().getString("api");
+        id = getIntent().getExtras().getString("id");
+        api = getIntent().getExtras().getString("api");
+
+        String id1 = id;
+        String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
 
         Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+        rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
 
         String title = rr.getName();
+        for(Ingredient ingredient: rr.getIngredients())
+        {
+            ingredients =ingredient.original_discription + "\n--";
+        }
         v.setText(title);
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

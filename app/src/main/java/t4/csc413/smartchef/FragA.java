@@ -20,21 +20,14 @@ public class FragA extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
        view=inflater.inflate(R.layout.fragment_frag_a_,container,false);
 
-       String id = getActivity().getIntent().getExtras().getString("id");
-       String api = getActivity().getIntent().getExtras().getString("api");
-
-
+        SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFA);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-
-
-        String title = recipe.getName();
-        String text =  title
+        String title = m.rr.getName();
+        String text =  title + m.api
         + "\n\nIngredients:\n\n";
 
-        for(Ingredient ingredient: rr.getIngredients())
+        for(Ingredient ingredient: m.rr.getIngredients())
         {
             text = text.concat(ingredient.original_discription + "\n--");
         }
