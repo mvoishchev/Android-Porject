@@ -41,6 +41,8 @@
 
         <activity android:name=".RecipeViewActivity"></activity>
         <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".SlideMain"></activity>
+
 
 
         <activity

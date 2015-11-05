@@ -41,11 +41,12 @@
     <string name="query">Query</string>
     //Evernote connector strings END
 
+
     //NavBar - MG
     <string-array name="nav_drawer_items">
-        <item>First</item>
-        <item>Second</item>
-        <item>Third</item>
+        <item>Search Options</item>
+        <item>Evernote Activity</item>
+        <item>TestActivity2</item>
         <item>Fourth</item>
         <item>Fifth</item>
         <item>Sixth</item>

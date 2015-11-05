@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#10ffb7"
+    tools:context="t4.csc413.smartchef.FragA">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+    <TextView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Fragment B"
+        android:textSize="24sp"
+        android:id="@+id/TextFB"/>
+    </ScrollView>
+
+</RelativeLayout>

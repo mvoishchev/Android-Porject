@@ -23,7 +23,8 @@
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
-        android:paddingRight="40dp"/>
+        android:padding="25dp"/>
+
 
 
 </RelativeLayout>
