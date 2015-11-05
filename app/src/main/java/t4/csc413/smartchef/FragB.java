@@ -18,17 +18,10 @@ public class FragB extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_frag_b,container,false);
 
-        String id = getActivity().getIntent().getExtras().getString("id");
-        String api = getActivity().getIntent().getExtras().getString("api");
-
-
+        SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFB);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-
-
-        String instructions = rr.getInstructions();
+        String instructions = m.rr.getInstructions();
         String text = "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tInstructions:\n\n" +instructions + "\n";
         v.setText(text);
 

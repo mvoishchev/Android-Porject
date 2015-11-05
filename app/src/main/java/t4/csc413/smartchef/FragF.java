@@ -30,17 +30,10 @@ public class FragF extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_frag_f,container,false);
-
-         String id = getActivity().getIntent().getExtras().getString("id");
-         String api = getActivity().getIntent().getExtras().getString("api");
-
         setStar(4);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-
-        url = "https://www.youtube.com/results?search_query=" + rr.getName();
-
+        final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
+        url = "https://www.youtube.com/results?search_query=" + m.rr.getName();
 
         ImageView newPage = (ImageView)view.findViewById(YT);
         newPage.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +53,7 @@ public class FragF extends android.support.v4.app.Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EvernoteActivity.class);
                 //TODO change this so that real values are uploaded insted of "Test" and random()
-                EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList("Test Test", String.valueOf(Math.random()), getActivity());
+                EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList(m.rr.getName(),m.ingredients , getActivity());
             }
         });
 

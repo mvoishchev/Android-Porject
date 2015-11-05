@@ -18,16 +18,12 @@ public class FragD extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_frag_d,container,false);
 
-        String id = getActivity().getIntent().getExtras().getString("id");
-        String api = getActivity().getIntent().getExtras().getString("api");
 
-
+        SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFD);
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
 
-        String cuisine_Type = rr.getCuisine();
+        String cuisine_Type = m.rr.getCuisine();
 
         String text ="\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + cuisine_Type;
         v.setText(text);
