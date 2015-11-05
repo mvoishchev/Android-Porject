@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
 import connectors.evernote.LoginActivity;
 import android.widget.Button;
 import android.content.DialogInterface;
