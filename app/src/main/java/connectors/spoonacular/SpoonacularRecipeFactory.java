@@ -7,26 +7,11 @@ import retrofit.converter.GsonConverter;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonObject;
-
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.logging.FileHandler;
-
 import connectors.AbstractRecipeFactory;
 import connectors.spoonacular.SpoonacularModels.*;
 import connectors.SearchTools;
-import retrofit.Callback;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-import retrofit.converter.GsonConverter;
-import t4.csc413.smartchef.MainActivity;
 import tools.Recipe;
 
 /**
@@ -93,6 +78,8 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
     {
         final ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
+        //Spoonacular can't search by allergies and cuisine. Leave that to Yummly and just return out of it if it requests that
+        //search_type will just have to be a forced search
         String endpoint = SpoonacularAPI.API_URL;
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(GetRecipeListResult.class, new GetRecipeListDeserializerJson())
@@ -105,7 +92,8 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
         SpoonacularAPI connector = spoonacularAdapter.create(SpoonacularAPI.class);
 
-        ingredients = prepareIngredientQuery(ingredients);
+        ArrayList list = SearchTools.ParseList(ingredients);
+        ingredients = prepareIngredientQuery(list);
 
         JsonArray results = connector.getRecipeByIngredient(ingredients);
         System.out.println("JsonArray: " + results.size());
@@ -119,22 +107,42 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
             r.setId(model.id);
             r.setApi("Spoonacular");
             r.addImageUrl(model.image);
+            r.setMatchedIngredients(Integer.parseInt(model.usedIngredientCount));
+            r.setMissingIngredients(Integer.parseInt(model.missedIngredientCount));
+
 
             recipes.add(r);
+        }
+
+        if(search_type != null) {
+            if (search_type == SearchTools.INGREDIENT_SEARCH_TYPE.ALL_INGREDIENTS_PRESENT) {
+                for (Recipe recipe : recipes) {
+                    if (recipe.getMatchedIngredientCount() != list.size()) {
+                        recipes.remove(recipe);
+                    }
+
+                }
+            } else if (search_type == SearchTools.INGREDIENT_SEARCH_TYPE.ONLY_INGREDIENTS_PRESENT) {
+                for (Recipe recipe : recipes) {
+                    if (recipe.getMissingIngredientCount() > 0)
+                        recipes.remove(recipe);
+                }
+            }
         }
 
         return recipes;
     }
 
-    private String prepareIngredientQuery(String list)
+
+
+    private String prepareIngredientQuery(ArrayList<String> list)
     {
-        ArrayList<String> ingredients = SearchTools.ParseList(list);
         String query = "findByIngredients?ingredients=";
-        for(int i = 0; i < ingredients.size() - 1; i++)
+        for(int i = 0; i < list.size() - 1; i++)
         {
-            query = query.concat(ingredients.get(i)).concat("%2C");
+            query = query.concat(list.get(i)).concat("%2C");
         }
-            query = query.concat(ingredients.get(ingredients.size() - 1));
+        query = query.concat(list.get(list.size() - 1));
 
         query = query.replaceAll(" ", "");
 

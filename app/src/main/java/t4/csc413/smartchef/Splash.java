@@ -7,6 +7,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.content.Intent;
 
+import connectors.SearchTools;
+
 
 /*
    Created by poulomirajarshi on 10/5/15.
@@ -16,6 +18,7 @@ public class Splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+        init();
 
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
         final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
@@ -42,5 +45,10 @@ public class Splash extends Activity {
 
 
 
+    }
+
+    private void init()
+    {
+        SearchTools.init();
     }
 }

@@ -4,6 +4,7 @@ import android.view.View;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import t4.csc413.smartchef.R;
@@ -18,6 +19,10 @@ public class SearchTools
 {
     static String API_1 = "Spoonacular";
     static String API_2 = "Yummly";
+
+    static ArrayList<Recipe> cachedRecipes;
+    static HashMap<String, ArrayList<Recipe>> cachedSearches;
+    static int MAX_CACHED = 5;
 
     public static enum INGREDIENT_SEARCH_TYPE
     {
@@ -40,6 +45,14 @@ public class SearchTools
         PINCH;
     }
 
+
+    public static void init()
+    {
+        cachedRecipes = new ArrayList<Recipe>();
+        cachedSearches = new HashMap<String, ArrayList<Recipe>>();
+
+    }
+
     //ParseList will take in a String which will be a comma separated list (ingredients, allergies, cuisines, etc)
     //and generate and ArrayList<String> with all elements of the list
     public static ArrayList<String> ParseList(String _list)
@@ -60,9 +73,34 @@ public class SearchTools
 
     }
 
+    private static void cacheRecipe(Recipe recipe)
+    {
+        cachedRecipes.add(recipe);
+
+        if(cachedRecipes.size() > MAX_CACHED)
+        {
+            cachedRecipes.remove(0);
+        }
+    }
+
+    private static void cacheSearch(ArrayList<Recipe> search)
+    {
+        //cachedSearches.
+    }
+
     public static Recipe GetRecipeByUrl(String url)
     {
-        return AbstractRecipeFactory.getRecipe(url);
+        //checks if recipe is cached, if not make the search
+        for(int recipe = 0; recipe < cachedRecipes.size(); recipe++)
+        {
+            if(cachedRecipes.get(recipe).getRecipeUrl().equalsIgnoreCase(url))
+                return cachedRecipes.get(recipe);
+        }
+
+        Recipe recipe = AbstractRecipeFactory.getRecipe(url);
+        cacheRecipe(recipe);
+
+        return recipe;
     }
 
     //GetRecipes will take in all parameters that are being used by AbstractRecipeFactory.getRecipes()

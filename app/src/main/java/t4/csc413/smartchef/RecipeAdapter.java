@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import tools.Recipe;
@@ -27,9 +28,14 @@ import tools.Recipe;
  */
 class RecipeAdapter extends ArrayAdapter<String>
 {
-    public RecipeAdapter(Context context, List<String> values)
+    List<Recipe> recipes;
+    HashMap<String, Bitmap> cachedImages;
+    public RecipeAdapter(Context context, List<String> values, List<Recipe> results)
     {
         super(context,R.layout.single_row,values);
+        recipes = results;
+        cachedImages = new HashMap<String, Bitmap>();
+
     }
 
 
@@ -63,11 +69,19 @@ class RecipeAdapter extends ArrayAdapter<String>
         theTextView.setText(results);
 
 
-        Recipe r = new Recipe();
 
-        String yes = r.getImageUrl();
+
+        String yes = recipes.get(position).getImageUrl();
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
-        img.setImageBitmap(getBitmapFromURL(yes));
+
+        if(!cachedImages.containsKey(yes)) {
+            Bitmap bitmap = getBitmapFromURL(yes);
+            cachedImages.put(yes, bitmap);
+            img.setImageBitmap(bitmap);
+        }
+        else{
+            img.setImageBitmap(cachedImages.get(yes));
+        }
 
         return theView;
 
