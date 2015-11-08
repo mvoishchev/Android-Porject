@@ -49,9 +49,9 @@ public class MainActivity extends NavBaseActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         et = (EditText)findViewById(R.id.EditText01);
-        advanceSearchButton = (Button) findViewById(R.id.button);
+        advanceSearchButton = (Button) findViewById(R.id.advancedbutton);
 
-        _cuisineButton = (Button) findViewById(R.id.button2);
+        _cuisineButton = (Button) findViewById(R.id.cuisinebutton);
         _cuisineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +60,7 @@ public class MainActivity extends NavBaseActivity {
         });
         _cuisineButton.setVisibility(View.INVISIBLE);
 
-        _seasonalButton = (Button) findViewById(R.id.button3);
+        _seasonalButton = (Button) findViewById(R.id.seasonalbutton);
         _seasonalButton.setVisibility(View.INVISIBLE);
         _seasonalButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class MainActivity extends NavBaseActivity {
             }
         });
 
-        _allergiesButton = (Button) findViewById(R.id.button4);
+        _allergiesButton = (Button) findViewById(R.id.allergiesbutton);
         _allergiesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,7 @@ public class MainActivity extends NavBaseActivity {
         });
         _allergiesButton.setVisibility(View.INVISIBLE);
 
-        _cupboardButton = (Button) findViewById(R.id.button5);
+        _cupboardButton = (Button) findViewById(R.id.cupboardbutton);
         _cupboardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +88,7 @@ public class MainActivity extends NavBaseActivity {
         _cupboardButton.setVisibility(View.INVISIBLE);
 
 
-        _useFridgeButton = (Button) findViewById(R.id.button6);
+        _useFridgeButton = (Button) findViewById(R.id.fridgebutton);
         _useFridgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
