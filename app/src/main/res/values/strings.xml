@@ -46,7 +46,7 @@
     <string-array name="nav_drawer_items">
         <item>Search Options</item>
         <item>Evernote Activity</item>
-        <item>TestActivity2</item>
+        <item>DataBase</item>
         <item>Fourth</item>
         <item>Fifth</item>
         <item>Sixth</item>

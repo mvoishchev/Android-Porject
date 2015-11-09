@@ -11,6 +11,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -20,6 +22,8 @@
             <category android:name="android.intent.category.default" />
         </intent-filter>
         </activity>
+
+
         <activity
             android:name=".Splash"
             android:label="@string/app_name" >
@@ -30,6 +34,7 @@
             </intent-filter>
         </activity>
 
+
         <activity
             android:name=".MapsActivity"
             android:label="Find a Store" >
@@ -39,10 +44,10 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".RecipeViewActivity"></activity>
         <activity android:name=".ResultsActivity"></activity>
         <activity android:name=".SlideMain"></activity>
-
 
 
         <activity
@@ -50,14 +55,23 @@
             android:label="@string/label_login"
             android:theme="@style/Theme.Demo"/>
 
+
         <activity android:name="connectors.evernote.EvernoteActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.default" />
             </intent-filter>
         </activity>
-        
+
+
+        <activity android:name="database.DataBaseLayout" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </activity>
+
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

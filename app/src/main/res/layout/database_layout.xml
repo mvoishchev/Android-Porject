@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/drawer_layout"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<FrameLayout
+    android:id="@+id/content_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userInput"
+            android:layout_marginTop="73dp"
+            android:width="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/addButton"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_below="@+id/userInput"
+            android:layout_alignLeft="@+id/userInput"
+            android:layout_alignStart="@+id/userInput"
+            android:onClick="addButtonClicked"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:id="@+id/deleteButton"
+            android:layout_alignTop="@+id/addButton"
+            android:layout_alignRight="@+id/userInput"
+            android:layout_alignEnd="@+id/userInput"
+            android:layout_marginRight="33dp"
+            android:layout_marginEnd="33dp"
+            android:onClick="deleteButtonClicked" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/recipeText"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</FrameLayout>
+
+<!-- The navigation drawer -->
+<ListView
+    android:id="@+id/left_drawer"
+    android:layout_width="260dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#1a1c25"
+    android:choiceMode="singleChoice"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="0dp" />
+
+</android.support.v4.widget.DrawerLayout>
