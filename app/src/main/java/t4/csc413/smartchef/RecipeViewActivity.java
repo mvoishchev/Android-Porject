@@ -86,6 +86,7 @@ public class RecipeViewActivity extends ActionBarActivity
         String cuisine_Type = rr.getCuisine();
 
         text = text.concat("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tInstructions:\n\n" +instructions + "\n");
+
         String text2 = "Instructions:\n\n" +instructions + "\n";
 
 

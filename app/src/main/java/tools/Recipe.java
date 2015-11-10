@@ -104,8 +104,23 @@ public class Recipe {
         }
     }
 
-    public void setInstruction(String _instruction) {
+    public void setInstruction(String _instruction)
+    {
+
+        if(_instruction == null){
+            _instruction = "Please Visit Website for more details. Swipe left.";
+        }
+        else if(_instruction.contains("<li>")){
+           _instruction = _instruction.replace("<li>", "\n");
+
+           _instruction =_instruction.replace("</li>", "");
+           _instruction = _instruction.replace("<ol>", "");
+           _instruction = _instruction.replace("</ol>", "");
+
+       }
+
         instructions = _instruction;
+
     }
 
     public String getInstructions() {

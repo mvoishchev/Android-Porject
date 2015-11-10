@@ -31,28 +31,8 @@ import com.google.android.gms.maps.model.Marker;
 import android.location.Location;
 import android.widget.EditText;
 
-import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.UiSettings;
 import com.google.gson.Gson;
 
-import net.vrallev.android.task.TaskCacheFragmentInterface;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.util.List;
 
 import t4.csc413.smartchef.R;
 

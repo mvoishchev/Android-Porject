@@ -67,6 +67,8 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         rec.addAllImageUrls(result.imageUrls);
         rec.setPrepTime(result.minutes/60,result.minutes%60);
 
+        System.out.println("recipe instructions: " + result.instructions);
+
         return rec;
     }
 
