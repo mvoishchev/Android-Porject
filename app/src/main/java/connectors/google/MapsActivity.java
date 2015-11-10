@@ -1,4 +1,4 @@
-package t4.csc413.smartchef;
+package connectors.google;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -6,14 +6,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 
-import com.google.android.gms.location.places.PlaceDetectionApi;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -24,20 +28,53 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.maps.model.Marker;
-import android.location.Criteria;
 import android.location.Location;
-import android.view.View;
 import android.widget.EditText;
 
 import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.UiSettings;
+import com.google.gson.Gson;
 
+import net.vrallev.android.task.TaskCacheFragmentInterface;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.List;
+
+import t4.csc413.smartchef.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
     private GoogleMap mMap;
     private EditText userSearch;
+    //instance variables for Marker icon drawable resources
+    private int userIcon, foodIcon, drinkIcon, shopIcon, otherIcon;
+    //location manager
+    private LocationManager locMan;
+
+    //user marker
+    private Marker userMarker;
+
+    //places of interest
+    private Marker[] placeMarkers;
+    //max
+    private final int MAX_PLACES = 20;//most returned from google
+    //marker options
+    private MarkerOptions[] places;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +83,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        //updatePlaces();
         //userSearch=(EditText) findViewById(R.id.userSearch);
         //userSearch = (EditText) userSearch.getText();
 
     }
 
 
-    /**
+    /**'
+     *
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * If Google Play services is not installed on the device, the user will be prompted to install
@@ -101,6 +140,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             builder.setTitle("Location Services Not Active");               //
             builder.setMessage("Please enable Location Services and GPS");  //*
 
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing
+                    dialog.dismiss();
+                }
+            });
+
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { //listener to check if user click OK on the message box
                 public void onClick(DialogInterface dialogInterface, int i) {       //onClick method that directs user to location setting
                     // Show location settings when the user acknowledges the alert dialog
@@ -126,6 +174,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .bearing(90)                // Sets the orientation of the camera to east
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+        double lat= latLng.latitude;
+        double lng=latLng.longitude;
+        updatePlaces(lat,lng);
+
+        Log.v("MyMapActivity", "location changed");
         Log.i("MAP", "Marker");
     }
 
@@ -133,17 +186,72 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public boolean onMyLocationButtonClick() {
         checkLocationSetting();
-        return false;
+        locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        //get last location
+        Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        double lat=lastLoc.getLatitude();
+        double lng=lastLoc.getLongitude();
+        LatLng currentMarker = new LatLng(lat,lng);
+        CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
+                .target(currentMarker)      // Sets the center of the map to to the new created marker
+                .zoom(15)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+
+        updatePlaces(lat,lng);
+        return true;
     }
 
-    public void startUserSearch(String userSearch) {
-        Uri gmmIntentUri = Uri.parse(userSearch);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        startActivity(mapIntent);
+
+    public void updatePlaces(double mapLat,double mapLng) {
+        //get location manager
+        checkLocationSetting();
+        //locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        //get last location
+        //Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        double lat = mapLat;
+        double lng = mapLng;
+        //create LatLng
+        //build places query string
+        String supermarketSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=grocery_or_supermarket&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
+        //execute query
+
+        volleyRequest(supermarketSearchStr);
     }
 
-   // Uri gmmIntentUri = Uri.parse("geo:0,0?q=restaurants");
-   // Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-   // startActivity(mapIntent);
+
+    void volleyRequest(String placesUrl) {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        //Request a string response from the provided URL.
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, placesUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String stringRequest) {
+                        // Display the first 500 characters of the response string.
+                        //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
+                        GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequest, GooglePlacesData.class);
+                        for (int i = 0; i < ListOfPlaces.results.size(); i++) {
+                            //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
+                            //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
+                            Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
+                                    "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
+                            MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
+                                    .title(ListOfPlaces.results.get(i).name);
+                            placeMarker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                            mMap.addMarker(placeMarker);
+                        }
+                    }
+                },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.i("REQUEST RESPOSNE", "Gracefully failed");
+            }
+        });
+        queue.add(stringRequest);
+    }
+
 }

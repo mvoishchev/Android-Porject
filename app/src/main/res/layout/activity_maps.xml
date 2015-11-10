@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="40dp"
-        tools:context="t4.csc413.smartchef.MapsActivity"
+        tools:context="connectors.google.MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
 

@@ -34,4 +34,5 @@ dependencies {
     compile 'com.evernote:android-sdk:2.0.0-RC3'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.google.android.gms:play-services:8.1.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
 }

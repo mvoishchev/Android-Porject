@@ -11,10 +11,9 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import connectors.SearchTools;
 import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
-import tools.Recipe;
+import connectors.google.MapsActivity;
 
 import static t4.csc413.smartchef.R.id.EButton;
 import static t4.csc413.smartchef.R.id.GMButton;

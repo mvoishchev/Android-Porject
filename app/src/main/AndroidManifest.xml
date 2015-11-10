@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MapsActivity"
+            android:name="connectors.google.MapsActivity"
             android:label="Find a Store" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
