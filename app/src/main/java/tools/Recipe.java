@@ -34,6 +34,7 @@ public class Recipe {
         prepTime_minutes = -1;
         prepTime_hours = -1;
         dummy = "https://yt3.ggpht.com/--LNjtIfd_Q4/AAAAAAAAAAI/AAAAAAAAAAA/Ab-m2XbhGgI/s100-c-k-no/photo.jpg";
+        cuisine = "N/A";
     }
 
     public void setMatchedIngredients(int matches) {

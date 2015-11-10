@@ -35,8 +35,11 @@ public class SpoonacularModels
         @SerializedName("sourceUrl")
         String sourceUrl;
 
-        @SerializedName("instructions")
+        @SerializedName("text")
         String instructions;
+
+        @SerializedName("readyInMinutes")
+        int minutes;
 
     }
 

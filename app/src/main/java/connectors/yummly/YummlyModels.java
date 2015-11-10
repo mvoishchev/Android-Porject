@@ -15,7 +15,7 @@ public class YummlyModels {
         @SerializedName("id")
         String title;
 
-       /* @SerializedName("images")
+        /*@SerializedName("images")
         ImagesModel images;*/
 
        /* @SerializedName("ingredientLines")
@@ -46,6 +46,9 @@ public class YummlyModels {
 
         @SerializedName("recipeName")
         String title;
+
+        @SerializedName("smallImageUrls")
+        List<String> urls;
 
 
 

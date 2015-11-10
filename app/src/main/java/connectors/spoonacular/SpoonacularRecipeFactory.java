@@ -40,6 +40,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         rec.addAllIngredientsFromModel(result.ingredients);
         rec.setApi("Spoonacular");
 
+
         return rec;
     }
 
@@ -64,6 +65,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         rec.addAllIngredientsFromModel(result.ingredients);
         rec.setInstruction(result.instructions);
         rec.addAllImageUrls(result.imageUrls);
+        rec.setPrepTime(result.minutes/60,result.minutes%60);
 
         return rec;
     }
