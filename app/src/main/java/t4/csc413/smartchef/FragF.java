@@ -25,6 +25,7 @@ public class FragF extends android.support.v4.app.Fragment {
     String url;
     RatingBar star;
     View view;
+    ImageView newPage;
 
 
     @Override
@@ -35,7 +36,7 @@ public class FragF extends android.support.v4.app.Fragment {
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         url = "https://www.youtube.com/results?search_query=" + m.rr.getName();
 
-        ImageView newPage = (ImageView)view.findViewById(YT);
+        newPage = (ImageView)view.findViewById(YT);
         newPage.setOnClickListener(new View.OnClickListener() {
 
             @Override

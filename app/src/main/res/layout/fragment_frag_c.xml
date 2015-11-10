@@ -7,9 +7,39 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="Fragment C"
         android:id="@+id/TextFC"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="TEXT"
+        android:id="@+id/textTimer"
+        android:layout_below="@+id/TextFC"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:id="@+id/StartB"
+        android:layout_below="@+id/textTimer"
+        android:layout_toLeftOf="@+id/textTimer"
+        android:layout_toStartOf="@+id/textTimer" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP"
+        android:id="@+id/StopB"
+        android:layout_below="@+id/textTimer"
+        android:layout_toRightOf="@+id/textTimer"
+        android:layout_toEndOf="@+id/textTimer" />
 
 </RelativeLayout>

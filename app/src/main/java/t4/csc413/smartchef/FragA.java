@@ -24,8 +24,7 @@ public class FragA extends android.support.v4.app.Fragment {
         v = (TextView) view.findViewById(R.id.TextFA);
 
         String title = m.rr.getName();
-        String text =  title + m.api
-        + "\n\nIngredients:\n\n";
+        String text =  "\n\nIngredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {
