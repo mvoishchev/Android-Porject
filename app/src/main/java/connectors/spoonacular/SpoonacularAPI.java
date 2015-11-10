@@ -29,7 +29,7 @@ public interface SpoonacularAPI {
 
     @Headers("X-Mashape-Key: WJ0SImVjcAmshThFeMvrbwGTXVHEp12W62TjsnoSo6ixq8GwqR")
     @GET("/recipes/{id}")
-    public JsonArray getRecipeByIngredient(@Path(value = "id", encode = false) String id);
+    public void getRecipeByIngredient(@Path(value = "id", encode = false) String id, Callback<JsonArray> response);
 
     @Headers("X-Mashape-Key: WJ0SImVjcAmshThFeMvrbwGTXVHEp12W62TjsnoSo6ixq8GwqR")
     @GET("/recipes/{id}/information")

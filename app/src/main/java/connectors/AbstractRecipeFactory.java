@@ -13,6 +13,8 @@ public abstract class AbstractRecipeFactory
 {
 
     private String api;
+
+    boolean requesting = false;
     //Abstract class that must be defined for each API that will retrieve recipes.  Child classes must allow parameters to be passed in as null
     //so make sure to check if(parameter != null) before trying to use it
     public abstract ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type);
@@ -42,7 +44,7 @@ public abstract class AbstractRecipeFactory
     public static Recipe getRecipe(String url)
     {
         System.out.println("Requested Url: " + url);
-       return new SpoonacularRecipeFactory().getRecipeByUrl(url);
+        return new SpoonacularRecipeFactory().getRecipeByUrl(url);
 
     }
 
@@ -56,5 +58,9 @@ public abstract class AbstractRecipeFactory
     {
         return api;
     }
+
+    protected void setRequesting(boolean _requesting){requesting = _requesting;}
+
+    public boolean isRequesting(){return requesting;}
 
 }

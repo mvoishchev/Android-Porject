@@ -4,6 +4,7 @@ import android.view.View;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import t4.csc413.smartchef.R;
@@ -18,6 +19,13 @@ public class SearchTools
 {
     static String API_1 = "Spoonacular";
     static String API_2 = "Yummly";
+
+    static ArrayList<Recipe> cachedRecipes;
+    static HashMap<String, ArrayList<Recipe>> cachedSearches;
+    static ArrayList<String> cachedKeys;
+    static int MAX_CACHED = 5;
+    public static boolean WAITING_API_1 = false;
+    public static boolean WAITING_API_2 = false;
 
     public static enum INGREDIENT_SEARCH_TYPE
     {
@@ -40,6 +48,15 @@ public class SearchTools
         PINCH;
     }
 
+
+    public static void init()
+    {
+        cachedRecipes = new ArrayList<Recipe>();
+        cachedSearches = new HashMap<String, ArrayList<Recipe>>();
+        cachedKeys = new ArrayList<String>();
+
+    }
+
     //ParseList will take in a String which will be a comma separated list (ingredients, allergies, cuisines, etc)
     //and generate and ArrayList<String> with all elements of the list
     public static ArrayList<String> ParseList(String _list)
@@ -60,10 +77,75 @@ public class SearchTools
 
     }
 
+    private static void cacheRecipe(Recipe recipe)
+    {
+        cachedRecipes.add(recipe);
+
+        if(cachedRecipes.size() > MAX_CACHED)
+        {
+            cachedRecipes.remove(0);
+        }
+    }
+
+    public static void UpdateCacheSearch(String request, ArrayList<Recipe> search)
+    {
+        ArrayList<Recipe> old = new ArrayList<Recipe>();
+        if(cachedSearches.containsKey(request)) {
+            old = cachedSearches.remove(request);
+            cachedKeys.remove(request);
+        }
+
+        old.addAll(search);
+        cachedSearches.put(request, old);
+        cachedKeys.add(request);
+
+        if(cachedKeys.size() > MAX_CACHED)
+        {
+            cachedSearches.remove(cachedKeys.get(0));
+            cachedKeys.remove(0);
+        }
+
+
+    }
+
     public static Recipe GetRecipeByUrl(String url)
     {
-        return AbstractRecipeFactory.getRecipe(url);
+        //checks if recipe is cached, if not make the search
+        for(int recipe = 0; recipe < cachedRecipes.size(); recipe++)
+        {
+            if(cachedRecipes.get(recipe).getRecipeUrl().equalsIgnoreCase(url))
+                return cachedRecipes.get(recipe);
+        }
+
+        Recipe recipe = AbstractRecipeFactory.getRecipe(url);
+        cacheRecipe(recipe);
+
+        return recipe;
     }
+
+    public static boolean isWaiting(){
+        System.out.println("checking");
+        if(!WAITING_API_2 && !WAITING_API_1)
+            return false;
+        else {
+            return true;
+        }
+    }
+
+    public static String generateCacheKey(String ingredients, String allergies, String cuisine, INGREDIENT_SEARCH_TYPE search_type)
+    {
+        String key = ingredients;
+        if(allergies != null)
+            key.concat(", " + allergies);
+        if(cuisine != null)
+            key.concat(", " + cuisine);
+        if(search_type!= null)
+            key.concat(", " + search_type.name());
+
+        return key;
+    }
+
+    public static boolean isCached(String key){return cachedSearches.containsKey(key);}
 
     //GetRecipes will take in all parameters that are being used by AbstractRecipeFactory.getRecipes()
     //and call all API Connectors.  GUI will call this function.
@@ -72,12 +154,31 @@ public class SearchTools
     {
 
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+        String cacheKey = generateCacheKey(ingredients, allergies, cuisine, search_type);
 
-        //call on each API here and add results to return value for GUI
-        recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getRecipes(ingredients, allergies, cuisine, search_type));
-        recipes.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getRecipes(ingredients, allergies, cuisine, search_type));
 
-        //RemoveRedundancies(recipes);
+        if(cachedSearches.containsKey(cacheKey))
+        {
+            recipes = cachedSearches.get(cacheKey);
+            System.out.println(cachedSearches.toString());
+        }else
+        {
+            //call on each API here and add results to return value for GUI
+            //API_1 does not support allergy and cuisine filter with ingredient search
+            if(allergies == null && cuisine == null) {
+                AbstractRecipeFactory factory1 = AbstractRecipeFactory.FactoryProducer(API_1);
+                ArrayList<Recipe> result1 = factory1.getRecipes(ingredients, allergies, cuisine, search_type);
+            }
+
+            AbstractRecipeFactory factory2 = AbstractRecipeFactory.FactoryProducer(API_2);
+            //handles the requests on seperate threads
+            ArrayList<Recipe> result2 = factory2.getRecipes(ingredients, allergies, cuisine, search_type);
+
+
+            //
+            // recipes = RemoveRedundancies(recipes);
+        }
+
 
         return recipes;
     }

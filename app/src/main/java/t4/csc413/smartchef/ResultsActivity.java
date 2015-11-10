@@ -57,7 +57,7 @@ public class ResultsActivity extends Activity {
 
 
 
-        ListAdapter theAdapter = new RecipeAdapter(this, name);
+        ListAdapter theAdapter = new RecipeAdapter(this, name, recipes);
         ListView theListView = (ListView) findViewById(R.id.listView);
         list.setAdapter(theAdapter);
 
@@ -77,4 +77,5 @@ public class ResultsActivity extends Activity {
             }
         });
     }
+
 }

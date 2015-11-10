@@ -147,7 +147,7 @@ public class MainActivity extends NavBaseActivity {
         bundle.putString("useFridge", ""/*Use Fridge */);
         bundle.putString("cupboard",""/*Use Fridge */);
 
-        Intent i = new Intent(this, ResultsActivity.class);
+        Intent i = new Intent(this, LoadingActivity.class);
         i.putExtras(bundle);
         startActivity(i);
     }

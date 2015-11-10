@@ -2,37 +2,28 @@ package connectors.spoonacular;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import retrofit.converter.GsonConverter;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonObject;
-
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.logging.FileHandler;
-
 import connectors.AbstractRecipeFactory;
 import connectors.spoonacular.SpoonacularModels.*;
 import connectors.SearchTools;
-import retrofit.Callback;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-import retrofit.converter.GsonConverter;
-import t4.csc413.smartchef.MainActivity;
 import tools.Recipe;
 
 /**
  * Created by AGCOSTFU on 10/10/2015.
  */
 public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
+
+
 
     public Recipe getRecipePreviewById(String id)
     {
@@ -91,8 +82,11 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
     public ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type)
     {
-        final ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+        final ArrayList<Recipe> recipes= new ArrayList<Recipe>();;
+        final String cachekey = SearchTools.generateCacheKey(ingredients, allergies, cuisine, search_type);
 
+        //Spoonacular can't search by allergies and cuisine. Leave that to Yummly and just return out of it if it requests that
+        //search_type will just have to be a forced search
         String endpoint = SpoonacularAPI.API_URL;
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(GetRecipeListResult.class, new GetRecipeListDeserializerJson())
@@ -105,36 +99,79 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
         SpoonacularAPI connector = spoonacularAdapter.create(SpoonacularAPI.class);
 
-        ingredients = prepareIngredientQuery(ingredients);
+        ArrayList list = SearchTools.ParseList(ingredients);
+        final int listSize = list.size();
+        final SearchTools.INGREDIENT_SEARCH_TYPE type = search_type;
+        ingredients = prepareIngredientQuery(list);
 
-        JsonArray results = connector.getRecipeByIngredient(ingredients);
-        System.out.println("JsonArray: " + results.size());
 
-        for(JsonElement e: results)
-        {
-            SearchRecipesResultModel model = new Gson().fromJson(e, SearchRecipesResultModel.class);
 
-            Recipe r = new Recipe();
-            r.setName(model.title);
-            r.setId(model.id);
-            r.setApi("Spoonacular");
-            r.addImageUrl(model.image);
+        setRequesting(true);
+        SearchTools.WAITING_API_1 = true;
+        connector.getRecipeByIngredient(ingredients, new Callback<JsonArray>() {
+            @Override
+            public void success(JsonArray jsonElements, Response response) {
+                for(JsonElement e: jsonElements)
+                {
+                    SearchRecipesResultModel model = new Gson().fromJson(e, SearchRecipesResultModel.class);
+                    Recipe r = new Recipe();
+                    r.setName(model.title);
+                    r.setId(model.id);
+                    r.setApi("Spoonacular");
+                    r.addImageUrl(model.image);
+                    r.setMatchedIngredients(Integer.parseInt(model.usedIngredientCount));
+                    r.setMissingIngredients(Integer.parseInt(model.missedIngredientCount));
 
-            recipes.add(r);
-        }
+
+                    recipes.add(r);
+                }
+                if(type != null) {
+                    if (type == SearchTools.INGREDIENT_SEARCH_TYPE.ALL_INGREDIENTS_PRESENT) {
+                        for (Recipe recipe : recipes) {
+                            if (recipe.getMatchedIngredientCount() != listSize) {
+                                recipes.remove(recipe);
+                            }
+
+                        }
+                    } else if (type == SearchTools.INGREDIENT_SEARCH_TYPE.ONLY_INGREDIENTS_PRESENT) {
+                        for (Recipe recipe : recipes) {
+                            if (recipe.getMissingIngredientCount() > 0)
+                                recipes.remove(recipe);
+                        }
+                    }
+                }
+
+                System.out.println("Recipes added: " + recipes.size());
+                System.out.println("Spoonacular here JsonArray size: " + jsonElements.size());
+
+                SearchTools.UpdateCacheSearch(cachekey, recipes);
+
+                setRequesting(false);
+                SearchTools.WAITING_API_1 = false;
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        System.out.println("Recipes: " + recipes.size());
+
+
 
         return recipes;
     }
 
-    private String prepareIngredientQuery(String list)
+
+
+    private String prepareIngredientQuery(ArrayList<String> list)
     {
-        ArrayList<String> ingredients = SearchTools.ParseList(list);
         String query = "findByIngredients?ingredients=";
-        for(int i = 0; i < ingredients.size() - 1; i++)
+        for(int i = 0; i < list.size() - 1; i++)
         {
-            query = query.concat(ingredients.get(i)).concat("%2C");
+            query = query.concat(list.get(i)).concat("%2C");
         }
-            query = query.concat(ingredients.get(ingredients.size() - 1));
+        query = query.concat(list.get(list.size() - 1));
 
         query = query.replaceAll(" ", "");
 
