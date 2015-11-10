@@ -40,7 +40,11 @@ public class MainActivity extends NavBaseActivity {
     protected Button _cupboardButton;
     protected Button _useFridgeButton;
     EditText et;
-
+    private String selections;
+    private String selection;
+    private String allergySelection;
+    private String cupboardSelection;
+    private String fridgeSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -243,9 +247,11 @@ public class MainActivity extends NavBaseActivity {
         Bundle bundle = new Bundle();
 
         bundle.putString("search", et.getText().toString());
-        bundle.putString("allergies", ""/*allergies here**/);
-        bundle.putString("useFridge", ""/*Use Fridge */);
-        bundle.putString("cupboard",""/*Use Fridge */);
+        bundle.putString("cuisine", selection.toString());
+        bundle.putString("seaonal",selections.toString());/*use seasonal*/
+        bundle.putString("allergies",allergySelection.toString()); /*allergies here**/
+        bundle.putString("useFridge",fridgeSelection.toString());/*Use Fridge */
+        bundle.putString("cupboard",cupboardSelection.toString());/*Use cupborad */
 
         Intent i = new Intent(this, ResultsActivity.class);
         i.putExtras(bundle);
