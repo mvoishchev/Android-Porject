@@ -15,7 +15,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.maps.GoogleMap;
+
 import connectors.evernote.EvernoteActivity;
+import connectors.google.MapsActivity;
 import database.DataBaseLayout;
 
 /*
@@ -174,6 +177,10 @@ public class NavBaseActivity extends ActionBarActivity {
                 startActivity(intent2);
                 finish();// finishes the current activity
                 break;
+            case 3:
+                Intent intent3= new Intent (this, MapsActivity.class);
+                startActivity(intent3);
+                finish();
             default:
                 break;
         }
