@@ -52,10 +52,10 @@
         <item>Sixth</item>
     </string-array>
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/searchicon72</item>
+        <item>@drawable/evernote</item>
+        <item>@drawable/pantry</item>
+        <item>@drawable/placesmaps</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
     </array>
