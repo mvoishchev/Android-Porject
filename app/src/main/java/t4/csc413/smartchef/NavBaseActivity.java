@@ -1,6 +1,8 @@
 package t4.csc413.smartchef;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -216,3 +218,6 @@ public class NavBaseActivity extends ActionBarActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 }
+
+
+
