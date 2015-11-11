@@ -16,6 +16,8 @@ import android.widget.EditText;
 import connectors.evernote.LoginActivity;
 import android.widget.Button;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 public class MainActivity extends NavBaseActivity {
     private String[] navMenuTitles;
@@ -53,6 +55,20 @@ public class MainActivity extends NavBaseActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         et = (EditText)findViewById(R.id.EditText01);
+        et.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                    if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER) ||
+                            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        //do something
+                        //true because you handle the event
+                        return true;
+                    }
+                return false;
+            }
+        });
+
+
         advanceSearchButton = (Button) findViewById(R.id.advancedbutton);
 
         _cuisineButton = (Button) findViewById(R.id.cuisinebutton);
@@ -137,7 +153,7 @@ public class MainActivity extends NavBaseActivity {
         //System.out.println("THE ID IS: " + id);
         if (id == 4){
             return new AlertDialog.Builder(this).setTitle("Use Fridge")
-                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge",_useFridge))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
@@ -153,7 +169,7 @@ public class MainActivity extends NavBaseActivity {
         */
         else if (id == 3){
             return new AlertDialog.Builder(this).setTitle("Cupboard")
-                    .setMultiChoiceItems(_cupboard, _cupboardSelection, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_cupboard, _cupboardSelection, new DialogSelectionClickHandler("cupboard",_cupboard))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
 
                     .create();
@@ -171,7 +187,7 @@ public class MainActivity extends NavBaseActivity {
             //if
                 (id == 2){
             return new AlertDialog.Builder(this).setTitle("Allergies")
-                    .setMultiChoiceItems(_allergies, _allergySelection, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_allergies, _allergySelection, new DialogSelectionClickHandler("allergies",_allergies))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
@@ -188,12 +204,12 @@ public class MainActivity extends NavBaseActivity {
          */
                 (id == 1) {
             return new AlertDialog.Builder(this).setTitle("Seasonal")
-                    .setMultiChoiceItems(_seasonal, _selection, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_seasonal, _selection, new DialogSelectionClickHandler("seasonal",_seasonal))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
         } else if (id == 0) {
             return new AlertDialog.Builder(this).setTitle("Cuisine")
-                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler("cuisine", _cuisine))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
@@ -203,12 +219,21 @@ public class MainActivity extends NavBaseActivity {
     }
 
     public class DialogSelectionClickHandler implements DialogInterface.OnMultiChoiceClickListener {
+        CharSequence[] current;
+        String id;
+
+        public DialogSelectionClickHandler(String _id, CharSequence[] temp){
+            current = temp;
+            _id = id;
+        }
         public void onClick(DialogInterface dialog, int clicked, boolean selected) {
-            Log.i("ME", _useFridge[clicked] + " selected: " + selected);
-            Log.i("ME", _cupboard[clicked] + " selected: " + selected);
-            Log.i("ME", _allergies[clicked] + " selected: " + selected);
-            Log.i("ME", _seasonal[clicked] + " selected: " + selected);
-            Log.i("ME", _cuisine[clicked] + " selected: " + selected);
+            Log.i("ME", current[clicked] + " selected: " + selected);
+
+            if(id.equalsIgnoreCase("cuisine")){
+                selection = (String)current[clicked];
+            }else if(id.equalsIgnoreCase("seasonal")){
+                selections = (String) current[clicked];
+            }
 
         }
     }
@@ -248,7 +273,7 @@ public class MainActivity extends NavBaseActivity {
 
         bundle.putString("search", et.getText().toString());
         bundle.putString("cuisine", selection.toString());
-        bundle.putString("seaonal",selections.toString());/*use seasonal*/
+        bundle.putString("seasonal",selections.toString());/*use seasonal*/
         bundle.putString("allergies",allergySelection.toString()); /*allergies here**/
         bundle.putString("useFridge",fridgeSelection.toString());/*Use Fridge */
         bundle.putString("cupboard",cupboardSelection.toString());/*Use cupborad */
@@ -263,6 +288,7 @@ public class MainActivity extends NavBaseActivity {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
