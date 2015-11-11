@@ -16,6 +16,8 @@ import android.widget.EditText;
 import connectors.evernote.LoginActivity;
 import android.widget.Button;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 public class MainActivity extends NavBaseActivity {
     private String[] navMenuTitles;
@@ -23,25 +25,53 @@ public class MainActivity extends NavBaseActivity {
 
     protected CharSequence[] _seasonal = {"a", "b", "c", "d", "e", "f"};
     protected boolean[] _selection = new boolean[_seasonal.length];
-    protected CharSequence[] _cuisine = {"American", "Indian", "Italian", "Chinese", "Thai", "French", "Spanish", "Philipino"};
+    protected String[] _cuisine = {"American", "Indian", "Italian", "Chinese", "Thai", "French", "Spanish", "Philipino","Korean",};
     protected boolean[] _selections = new boolean[_cuisine.length];
+    protected CharSequence[] _allergies = {"Pecan-free", "Gluten-free", "Seafood", "Lactose-free", };
+    protected boolean[] _allergySelection = new boolean[_allergies.length];
+    protected CharSequence[] _cupboard = {"Cutting Board", "Colander", "Grater", "Ladle", "Measuring cup", "Measuring spoon","Mortar and pestle","Peeler","Tong","Wooden spoon","Zester","Knife"};
+    protected boolean[] _cupboardSelection = new boolean[_cupboard.length];
+    protected CharSequence[] _useFridge = {"Frozen mix-Veggies", "Brocolli", "Cabbage", "Beans", "Tomato", "Milk", "ButterNut","Pumpkin", "Green-Chillies", "Jalapeno", "Butter", "Cheese", "Eggplant","Egg"};
+    protected boolean[] _fridgeSelection = new boolean[_useFridge.length];
+
     protected Button advanceSearchButton;
+
     protected Button _seasonalButton;
     protected Button _cuisineButton;
-
+    protected Button _allergiesButton;
+    protected Button _cupboardButton;
+    protected Button _useFridgeButton;
     EditText et;
+    private String selections;
+    private String selection;
+    private String allergySelection;
+    private String cupboardSelection;
+    private String fridgeSelection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
-
         et = (EditText)findViewById(R.id.EditText01);
+        et.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                    if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER) ||
+                            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        //do something
+                        //true because you handle the event
+                        return true;
+                    }
+                return false;
+            }
+        });
 
-        advanceSearchButton = (Button) findViewById(R.id.button);
-        _cuisineButton = (Button) findViewById(R.id.button2);
+
+        advanceSearchButton = (Button) findViewById(R.id.advancedbutton);
+
+        _cuisineButton = (Button) findViewById(R.id.cuisinebutton);
         _cuisineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,24 +79,60 @@ public class MainActivity extends NavBaseActivity {
             }
         });
         _cuisineButton.setVisibility(View.INVISIBLE);
-        _seasonalButton = (Button) findViewById(R.id.button3);
+
+        _seasonalButton = (Button) findViewById(R.id.seasonalbutton);
         _seasonalButton.setVisibility(View.INVISIBLE);
-        _seasonalButton.setOnClickListener(new View.OnClickListener(){
+        _seasonalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog(1);
             }
         });
+
+        _allergiesButton = (Button) findViewById(R.id.allergiesbutton);
+        _allergiesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(2);
+            }
+        });
+        _allergiesButton.setVisibility(View.INVISIBLE);
+
+        _cupboardButton = (Button) findViewById(R.id.cupboardbutton);
+        _cupboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(3);
+            }
+        });
+        _cupboardButton.setVisibility(View.INVISIBLE);
+
+
+        _useFridgeButton = (Button) findViewById(R.id.fridgebutton);
+        _useFridgeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(4);
+            }
+        });
+        _useFridgeButton.setVisibility(View.INVISIBLE);
+
+
+
+
         advanceSearchButton.setVisibility(View.VISIBLE);
         advanceSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 _cuisineButton.setVisibility(View.VISIBLE);
                 _seasonalButton.setVisibility(View.VISIBLE);
+                _allergiesButton.setVisibility(View.VISIBLE);
+                _cupboardButton.setVisibility(View.VISIBLE);
+                _useFridgeButton.setVisibility(View.VISIBLE);
             }
         });
 
-            LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
             EnGps.displayPromptForEnablingGPS(this);
 
@@ -84,15 +150,66 @@ public class MainActivity extends NavBaseActivity {
 
         AlertDialog.Builder menu = new AlertDialog.Builder(this);
 
-        System.out.println("THE ID IS: " + id);
-        if (id == 1) {
+        //System.out.println("THE ID IS: " + id);
+        if (id == 4){
+            return new AlertDialog.Builder(this).setTitle("Use Fridge")
+                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge",_useFridge))
+                    .setPositiveButton("OK", new DialogButtonClickHandler())
+                    .create();
+
+        }
+        /*
+        else if (id == 0) {
+            return new AlertDialog.Builder(this).setTitle("Cuisine")
+                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler())
+                    .setPositiveButton("OK", new DialogButtonClickHandler())
+                    .create();
+
+        }
+        */
+        else if (id == 3){
+            return new AlertDialog.Builder(this).setTitle("Cupboard")
+                    .setMultiChoiceItems(_cupboard, _cupboardSelection, new DialogSelectionClickHandler("cupboard",_cupboard))
+                    .setPositiveButton("OK", new DialogButtonClickHandler())
+
+                    .create();
+
+        }
+        else if
+                /*(id == 0) {
+            return new AlertDialog.Builder(this).setTitle("Cuisine")
+                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler())
+                    .setPositiveButton("OK", new DialogButtonClickHandler())
+                    .create();
+
+        }
+*/
+            //if
+                (id == 2){
+            return new AlertDialog.Builder(this).setTitle("Allergies")
+                    .setMultiChoiceItems(_allergies, _allergySelection, new DialogSelectionClickHandler("allergies",_allergies))
+                    .setPositiveButton("OK", new DialogButtonClickHandler())
+                    .create();
+
+        }
+        else if
+                /*(id == 0) {
+            return new AlertDialog.Builder(this).setTitle("Cuisine")
+                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler())
+                    .setPositiveButton("OK", new DialogButtonClickHandler())
+                    .create();
+
+        }
+        if
+         */
+                (id == 1) {
             return new AlertDialog.Builder(this).setTitle("Seasonal")
-                    .setMultiChoiceItems(_seasonal, _selection, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_seasonal, _selection, new DialogSelectionClickHandler("seasonal",_seasonal))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
         } else if (id == 0) {
             return new AlertDialog.Builder(this).setTitle("Cuisine")
-                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler())
+                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler("cuisine", _cuisine))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
@@ -102,9 +219,22 @@ public class MainActivity extends NavBaseActivity {
     }
 
     public class DialogSelectionClickHandler implements DialogInterface.OnMultiChoiceClickListener {
+        CharSequence[] current;
+        String id;
+
+        public DialogSelectionClickHandler(String _id, CharSequence[] temp){
+            current = temp;
+            _id = id;
+        }
         public void onClick(DialogInterface dialog, int clicked, boolean selected) {
-            Log.i("ME", _seasonal[clicked] + " selected: " + selected);
-            Log.i("ME", _cuisine[clicked] + " selected: " + selected);
+            Log.i("ME", current[clicked] + " selected: " + selected);
+
+            if(id.equalsIgnoreCase("cuisine")){
+                selection = (String)current[clicked];
+            }else if(id.equalsIgnoreCase("seasonal")){
+                selections = (String) current[clicked];
+            }
+
         }
     }
 
@@ -130,7 +260,6 @@ public class MainActivity extends NavBaseActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -143,11 +272,13 @@ public class MainActivity extends NavBaseActivity {
         Bundle bundle = new Bundle();
 
         bundle.putString("search", et.getText().toString());
-        bundle.putString("allergies", ""/*allergies here**/);
-        bundle.putString("useFridge", ""/*Use Fridge */);
-        bundle.putString("cupboard",""/*Use Fridge */);
+        bundle.putString("cuisine", selection.toString());
+        bundle.putString("seasonal",selections.toString());/*use seasonal*/
+        bundle.putString("allergies",allergySelection.toString()); /*allergies here**/
+        bundle.putString("useFridge",fridgeSelection.toString());/*Use Fridge */
+        bundle.putString("cupboard",cupboardSelection.toString());/*Use cupborad */
 
-        Intent i = new Intent(this, LoadingActivity.class);
+        Intent i = new Intent(this, ResultsActivity.class);
         i.putExtras(bundle);
         startActivity(i);
     }
@@ -157,6 +288,7 @@ public class MainActivity extends NavBaseActivity {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
