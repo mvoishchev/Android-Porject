@@ -55,6 +55,29 @@ public class SearchTools
         cachedSearches = new HashMap<String, ArrayList<Recipe>>();
         cachedKeys = new ArrayList<String>();
 
+        AbstractRecipeFactory.FactoryProducer(API_1).init();
+        AbstractRecipeFactory.FactoryProducer(API_2).init();
+
+    }
+
+    public static ArrayList<String> getSupportedAllergies()
+    {
+        ArrayList<String> allergies = new ArrayList<String>();
+
+        allergies.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getSupportedAllergies());
+        allergies.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getSupportedAllergies());
+
+        return allergies;
+    }
+
+    public static ArrayList<String> getSupportedCuisines()
+    {
+        ArrayList<String> cuisines = new ArrayList<String>();
+
+        cuisines.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getSupportedCuisines());
+        cuisines.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getSupportedCuisines());
+
+        return cuisines;
     }
 
     //ParseList will take in a String which will be a comma separated list (ingredients, allergies, cuisines, etc)
@@ -165,10 +188,9 @@ public class SearchTools
         {
             //call on each API here and add results to return value for GUI
             //API_1 does not support allergy and cuisine filter with ingredient search
-            if(allergies == null && cuisine == null) {
-                AbstractRecipeFactory factory1 = AbstractRecipeFactory.FactoryProducer(API_1);
-                ArrayList<Recipe> result1 = factory1.getRecipes(ingredients, allergies, cuisine, search_type);
-            }
+            AbstractRecipeFactory factory1 = AbstractRecipeFactory.FactoryProducer(API_1);
+            ArrayList<Recipe> result1 = factory1.getRecipes(ingredients, allergies, cuisine, search_type);
+
 
             AbstractRecipeFactory factory2 = AbstractRecipeFactory.FactoryProducer(API_2);
             //handles the requests on seperate threads

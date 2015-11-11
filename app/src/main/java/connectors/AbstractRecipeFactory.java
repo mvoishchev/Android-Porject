@@ -19,6 +19,11 @@ public abstract class AbstractRecipeFactory
     //so make sure to check if(parameter != null) before trying to use it
     public abstract ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type);
 
+    public abstract void init();
+
+    public abstract ArrayList<String> getSupportedAllergies();
+    public abstract ArrayList<String> getSupportedCuisines();
+
     public abstract Recipe getRecipePreviewById(String id);
     //public abstract Recipe getRecipeByUrl(String id);
     //FactoryProducer will take in a String to specify which API will be used.  Is called in SearchTools.GetRecipes as a means of having an abstract way to

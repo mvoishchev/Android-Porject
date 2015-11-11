@@ -25,6 +25,19 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
 
 
+
+    public void init(){
+
+    }
+
+    public ArrayList<String> getSupportedAllergies()
+    {
+        return new ArrayList<String>();
+    }
+    public ArrayList<String> getSupportedCuisines()
+    {
+        return new ArrayList<String>();
+    }
     public Recipe getRecipePreviewById(String id)
     {
         RestAdapter spoonacularAdapter = new RestAdapter.Builder().setEndpoint(SpoonacularAPI.API_URL).build();
@@ -56,18 +69,13 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
         url = prepareUrlForExtraction(url);
 
-        System.err.println("SOMETHING HERE: " + url);
         FullRecipeResultModel result = connector.getRecipe(url);
-
-        System.out.println("Results: " + result);
 
         rec.setName(result.title);
         rec.addAllIngredientsFromModel(result.ingredients);
         rec.setInstruction(result.instructions);
         rec.addAllImageUrls(result.imageUrls);
         rec.setPrepTime(result.minutes/60,result.minutes%60);
-
-        System.out.println("recipe instructions: " + result.instructions);
 
         return rec;
     }
@@ -86,7 +94,12 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
     public ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type)
     {
-        final ArrayList<Recipe> recipes= new ArrayList<Recipe>();;
+        final ArrayList<Recipe> recipes= new ArrayList<Recipe>();
+
+        if(allergies == null || cuisine == null)
+        {
+            return recipes;
+        }
         final String cachekey = SearchTools.generateCacheKey(ingredients, allergies, cuisine, search_type);
 
         //Spoonacular can't search by allergies and cuisine. Leave that to Yummly and just return out of it if it requests that
@@ -144,10 +157,6 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
                         }
                     }
                 }
-
-                System.out.println("Recipes added: " + recipes.size());
-                System.out.println("Spoonacular here JsonArray size: " + jsonElements.size());
-
                 SearchTools.UpdateCacheSearch(cachekey, recipes);
 
                 setRequesting(false);
@@ -159,7 +168,6 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
             }
         });
-        System.out.println("Recipes: " + recipes.size());
 
 
 
@@ -177,7 +185,8 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         }
         query = query.concat(list.get(list.size() - 1));
 
-        query = query.replaceAll(" ", "");
+        query = query.trim();
+        query = query.replaceAll(" ", "+");
 
         System.out.println("query: " + query);
         return query;
