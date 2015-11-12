@@ -165,8 +165,6 @@ public class Recipe {
     }
 
     public String getImageUrl() {
-
-        System.out.println("ImageUrls: " + imageUrls.size() + " FOR: " + name);
         if (imageUrls.size() > 0)
             return imageUrls.get(0);
         else

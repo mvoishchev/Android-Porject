@@ -29,12 +29,69 @@
 
 
 
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/final1"
-        >
+        android:background="@drawable/background">
+
+        <ViewFlipper
+            android:id="@+id/view_flipper"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/food2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/food3" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/food1" />
+
+        </ViewFlipper>
+
+
+
+
+        <ImageView
+            android:id="@+id/swipe_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:src="@drawable/swipe_left"
+            android:layout_alignTop="@+id/swipe_right"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:id="@+id/swipe_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/swipe_right"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="79dp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <EditText
             android:id="@+id/EditText01"
@@ -50,74 +107,73 @@
 
 
 
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search"
-            android:id="@+id/button1"
-            android:onClick="searchByIngredient"
+            android:id="@+id/searchbutton"
+            android:onClick="search"
             android:layout_below="@+id/EditText01"
             android:layout_centerHorizontal="true" />
 
-        <Button android:id="@+id/button"
+        <Button android:id="@+id/advancedbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#6958"
+            android:background="#F5306B"
             android:text="Advanced Search"
             android:onClick="AdvancedSearchClicked"
-            android:layout_below="@id/button1"
-            android:layout_centerHorizontal="true"
-/>
+            android:layout_below="@id/searchbutton"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cuisine"
-            android:id="@+id/button2"
+            android:id="@+id/cuisinebutton"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:layout_below="@+id/button"
-            android:layout_alignLeft="@+id/button1"
-            android:layout_alignStart="@+id/button1" />
+            android:layout_below="@+id/advancedbutton"
+            android:layout_alignLeft="@+id/searchbutton"
+            android:layout_alignStart="@+id/searchbutton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Seasonal"
-            android:id="@+id/button3"
-            android:layout_below="@+id/button2"
-            android:layout_alignLeft="@+id/button2"
-            android:layout_alignStart="@+id/button2" />
+            android:id="@+id/seasonalbutton"
+            android:layout_below="@+id/cuisinebutton"
+            android:layout_alignLeft="@+id/cuisinebutton"
+            android:layout_alignStart="@+id/cuisinebutton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Allergies"
-            android:id="@+id/button4"
-            android:layout_below="@+id/button3"
-            android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3" />
+            android:id="@+id/allergiesbutton"
+            android:layout_below="@+id/seasonalbutton"
+            android:layout_alignLeft="@+id/seasonalbutton"
+            android:layout_alignStart="@+id/seasonalbutton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cupboard"
-            android:id="@+id/button5"
-            android:layout_below="@+id/button4"
-            android:layout_alignLeft="@+id/button4"
-            android:layout_alignStart="@+id/button4" />
+            android:id="@+id/cupboardbutton"
+            android:layout_below="@+id/allergiesbutton"
+            android:layout_alignLeft="@+id/allergiesbutton"
+            android:layout_alignStart="@+id/allergiesbutton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Use Fridge"
-            android:id="@+id/button6"
-            android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/button5"
-            android:layout_alignStart="@+id/button5" />
+            android:id="@+id/fridgebutton"
+            android:layout_below="@+id/cupboardbutton"
+            android:layout_alignLeft="@+id/cupboardbutton"
+            android:layout_alignStart="@+id/cupboardbutton" />
 
-
-</RelativeLayout>
+    </RelativeLayout>
 
 
 

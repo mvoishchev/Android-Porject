@@ -60,23 +60,37 @@ public class SearchTools
 
     }
 
-    public static ArrayList<String> getSupportedAllergies()
+    public static CharSequence[] getSupportedAllergies()
     {
-        ArrayList<String> allergies = new ArrayList<String>();
+        CharSequence[] allergies;
+        ArrayList<String> raw = new ArrayList<String>();
 
-        allergies.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getSupportedAllergies());
-        allergies.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getSupportedAllergies());
+        raw.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getSupportedAllergies());
+        raw.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getSupportedAllergies());
 
+        allergies = new CharSequence[raw.size()];
+
+        for(int i = 0; i < raw.size(); i++)
+        {
+            allergies[i] = raw.get(i);
+        }
         return allergies;
     }
 
-    public static ArrayList<String> getSupportedCuisines()
+    public static CharSequence[] getSupportedCuisines()
     {
-        ArrayList<String> cuisines = new ArrayList<String>();
+        CharSequence[] cuisines;
+        ArrayList<String> raw = new ArrayList<String>();
 
-        cuisines.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getSupportedCuisines());
-        cuisines.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getSupportedCuisines());
+        raw.addAll(AbstractRecipeFactory.FactoryProducer(API_1).getSupportedCuisines());
+        raw.addAll(AbstractRecipeFactory.FactoryProducer(API_2).getSupportedCuisines());
 
+        cuisines = new CharSequence[raw.size()];
+
+        for(int i = 0; i < raw.size(); i++)
+        {
+            cuisines[i] = raw.get(i);
+        }
         return cuisines;
     }
 
@@ -147,7 +161,7 @@ public class SearchTools
     }
 
     public static boolean isWaiting(){
-        System.out.println("checking");
+        System.out.println("Waiting 1: " + WAITING_API_1 + " Waiting 2: " + WAITING_API_2);
         if(!WAITING_API_2 && !WAITING_API_1)
             return false;
         else {
@@ -158,12 +172,12 @@ public class SearchTools
     public static String generateCacheKey(String ingredients, String allergies, String cuisine, INGREDIENT_SEARCH_TYPE search_type)
     {
         String key = ingredients;
-        if(allergies != null)
-            key.concat(", " + allergies);
+        if(allergies.length() > 2)
+            key = key.concat(", " + allergies);
         if(cuisine != null)
-            key.concat(", " + cuisine);
+            key = key.concat(", " + cuisine);
         if(search_type!= null)
-            key.concat(", " + search_type.name());
+            key = key.concat(", " + search_type.name());
 
         return key;
     }
@@ -183,7 +197,7 @@ public class SearchTools
         if(cachedSearches.containsKey(cacheKey))
         {
             recipes = cachedSearches.get(cacheKey);
-            System.out.println(cachedSearches.toString());
+            System.out.println("Hit cache: " + cacheKey);
         }else
         {
             //call on each API here and add results to return value for GUI

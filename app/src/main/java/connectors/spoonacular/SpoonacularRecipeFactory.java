@@ -96,7 +96,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
     {
         final ArrayList<Recipe> recipes= new ArrayList<Recipe>();
 
-        if(allergies == null || cuisine == null)
+        if(allergies.length() > 2 || cuisine != null)
         {
             return recipes;
         }
