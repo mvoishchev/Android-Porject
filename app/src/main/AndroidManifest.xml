@@ -45,6 +45,10 @@
         <activity android:name=".ResultsActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".SlideMain" />
+
+        <activity android:name="database.DataBaseLayout"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name="connectors.evernote.LoginActivity"
             android:label="@string/label_login"
