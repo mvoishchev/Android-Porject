@@ -62,6 +62,7 @@ public class MainActivity extends NavBaseActivity {
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
                     if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER) ||
                             (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                                searchByIngredient();
                         //do something
                         //true because you handle the event
                         return true;
@@ -261,7 +262,7 @@ public class MainActivity extends NavBaseActivity {
         return true;
     }
 
-    public void searchByIngredient(View v)
+    public void searchByIngredient()
     {
         Bundle bundle = new Bundle();
 
@@ -280,6 +281,11 @@ public class MainActivity extends NavBaseActivity {
         Intent i = new Intent(this, LoadingActivity.class);
         i.putExtras(bundle);
         startActivity(i);
+    }
+
+    public void search(View v)
+    {
+        searchByIngredient();
     }
 
     public void onButtonClick(View view)

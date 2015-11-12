@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:text="Search"
             android:id="@+id/searchbutton"
-            android:onClick="searchByIngredient"
+            android:onClick="search"
             android:layout_below="@+id/EditText01"
             android:layout_centerHorizontal="true" />
 
