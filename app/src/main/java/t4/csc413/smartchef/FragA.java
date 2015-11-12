@@ -28,7 +28,7 @@ public class FragA extends android.support.v4.app.Fragment {
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {
-            text = text.concat(ingredient.original_discription + "\n--");
+            text = text.concat("--"+ingredient.original_discription + "\n");
         }
        v.setText(text);
 

@@ -22,7 +22,7 @@ public class FragB extends android.support.v4.app.Fragment {
         v = (TextView) view.findViewById(R.id.TextFB);
 
         String instructions = m.rr.getInstructions();
-        String text = "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tInstructions:\n\n" +instructions + "\n";
+        String text = "Instructions:\n\n" +instructions + "\n";
         v.setText(text);
 
 

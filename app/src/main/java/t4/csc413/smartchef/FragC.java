@@ -35,40 +35,34 @@ public class FragC extends android.support.v4.app.Fragment {
         int prep_Hours = m.rr.getPrepTime_hours();
         int prep_Minutes = m.rr.getPrepTime_minutes();
 
-        String text = "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tPreperation Time:\n\t\t\t\t\t\t" +
-                "\t\t\t\t\t\tHours: " + prep_Hours +
+        String text = "Preperation Time:\n" +
+                "Hours: " + prep_Hours +
                 "\t\t\tMinutes: " + prep_Minutes;
         v.setText(text);
 
 
 
 
-        /*
-       Button newPage = (Button)view.findViewById(SiteButton);
-        newPage.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(url) );
-                startActivity(u);
-            }
-        });
-         */
 
 
         start = (Button)view.findViewById(StartB);
         stop = (Button)view.findViewById(StopB);
         textViewTime = (TextView)view.findViewById(textTimer);
 
-        textViewTime.setText("00:03:00");
+        textViewTime.setText("Click Start!");
+        int minute = prep_Minutes*60000;
+        int hour = prep_Hours*3600000;
+        int total = minute + hour;
 
-        final CounterClass timer = new CounterClass(180000, 1000);
+        final CounterClass timer = new CounterClass(total, 1000);
         start.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 timer.start();
+
 
             }
         });
