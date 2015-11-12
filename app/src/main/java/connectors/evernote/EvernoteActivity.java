@@ -269,7 +269,7 @@ public class EvernoteActivity extends NavBaseActivity {
                 .build(CONSUMER_KEY, CONSUMER_SECRET)
                 .asSingleton();
 
-        if (!EvernoteSession.getInstance().isLoggedIn()) {
+        if (EvernoteSession.getInstance().isLoggedIn()) {
             // Check if logged in
             Button loginButton = (Button) findViewById(R.id.loginLogoutButton);
             loginButton.setText("Logout");

@@ -1,6 +1,8 @@
 package connectors.evernote;
 
 import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
@@ -11,6 +13,9 @@ import com.evernote.client.android.EvernoteUtil;
 import com.evernote.client.android.asyncclient.EvernoteCallback;
 import com.evernote.client.android.asyncclient.EvernoteNoteStoreClient;
 import com.evernote.edam.type.Note;
+import com.google.android.gms.maps.SupportMapFragment;
+
+import t4.csc413.smartchef.R;
 
 /**
  * Created by Juris Puchin on 11/3/15.
@@ -35,6 +40,7 @@ public class EvernoteManager {
     boolean previousNoteExists;
     private static EvernoteManager instance;
     private SharedPreferences evernoteSettings;
+    public Activity currentParent;
 
     Note note;
 
@@ -72,10 +78,13 @@ public class EvernoteManager {
      */
     public void createNewShoppingList(String listName, String listContent, Activity parent) {
 
+        currentParent = parent;
+
         if (!EvernoteSession.getInstance().isLoggedIn()) {
-            // Check if logged in
-            //mCachedIntent = this.getIntent(); not sure why this was here
-            LoginActivity.launch(parent);
+            DialogFragment dialog = new LoginDialog();
+            FragmentManager manager = currentParent.getFragmentManager();
+            dialog.show(manager, "LoginDialog");
+            return;
         }
 
         //Make the new note
@@ -91,10 +100,13 @@ public class EvernoteManager {
         final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
 
         noteStoreClient.createNoteAsync(newNote, new EvernoteCallback<Note>() {
+
             @Override
             public void onSuccess(Note result) {
-//                ingredientView.setText("Done!");
-//                ingredientList = "";
+                DialogFragment dialog = new EvernoteSucess();
+                FragmentManager manager = currentParent.getFragmentManager();
+                dialog.show(manager, "Sucess");
+
             }
 
             @Override
@@ -105,6 +117,8 @@ public class EvernoteManager {
     }
 
     public void updateMainShoppingList(String listContent, Activity parent) {
+
+        currentParent = parent;
 
         //Login and setup
         mainListGuid = evernoteSettings.getString("mainListGuid", null);
@@ -120,9 +134,10 @@ public class EvernoteManager {
         }
 
         if (!EvernoteSession.getInstance().isLoggedIn()) {
-            // Check if logged in
-            // mCachedIntent = this.getIntent();
-            LoginActivity.launch(parent);
+            DialogFragment dialog = new LoginDialog();
+            FragmentManager manager = currentParent.getFragmentManager();
+            dialog.show(manager, "LoginDialog");
+            return;
         }
 
         //Make the new note
@@ -148,6 +163,10 @@ public class EvernoteManager {
 
                 // Commit the edits!
                 editor.commit();
+
+                DialogFragment dialog = new EvernoteSucess();
+                FragmentManager manager = currentParent.getFragmentManager();
+                dialog.show(manager, "Sucess");
 
             }
 
