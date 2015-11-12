@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".MapsActivity"
+            android:name="connectors.google.MapsActivity"
             android:label="Find a Store" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,6 +61,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".LoadingActivity"
+            android:label="@string/title_activity_loading"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

@@ -8,6 +8,7 @@ import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import connectors.SearchTools;
 import connectors.spoonacular.SpoonacularModels;
@@ -48,51 +49,62 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
     {
         allergies = new HashMap<String, String>();
 
-        allergies.put("Diary", "396^Dairy-Free");
-        allergies.put("Egg", "397^Egg-Free");
-        allergies.put("Gluten", "393^Gluten-Free");
-        allergies.put("Peanut", "394^Peanut-Free");
-        allergies.put("Seafood", "398^Seafood-Free");
-        allergies.put("Sesame", "399^Sesame-Free");
-        allergies.put("Soy", "400^Soy-Free");
-        allergies.put("Sulfite", "401^Sulfite-Free");
-        allergies.put("Wheat", "392^Wheat-Free");
+        allergies.put("Diary", "396%5EDairy-Free");
+        allergies.put("Egg", "397%5EEgg-Free");
+        allergies.put("Gluten", "393%5EGluten-Free");
+        allergies.put("Peanut", "394%5EPeanut-Free");
+        allergies.put("Seafood", "398%5ESeafood-Free");
+        allergies.put("Sesame", "399%5ESesame-Free");
+        allergies.put("Soy", "400%5ESoy-Free");
+        allergies.put("Sulfite", "401%5ESulfite-Free");
+        allergies.put("Wheat", "392%5EWheat-Free");
 
         cuisines = new HashMap<String, String>();
-        cuisines.put("American", "cuisine^cuisine-american");
-        cuisines.put("Kid-Friendly", "cuisine^cuisine-kid-friendly");
-        cuisines.put("Italian", "cuisine^cuisine-italian");
-        cuisines.put("Asian", "cuisine^cuisine-asian");
-        cuisines.put("Mexican", "cuisine^cuisine-mexican");
-        cuisines.put("Southern & Soul", "cuisine^cuisine-southern");
-        cuisines.put("BBQ", "cuisine^cuisine-barbecue-bbq");
-        cuisines.put("Indian", "cuisine^cuisine-indian");
-        cuisines.put("Chinese", "cuisine^cuisine-chinese");
-        cuisines.put("Cajun", "cuisine^cuisine-cajun");
-        cuisines.put("Mediterranean", "cuisine^cuisine-mediterranean");
-        cuisines.put("Greek", "cuisine^cuisine-greek");
-        cuisines.put("English", "cuisine^cuisine-english");
-        cuisines.put("Spanish", "cuisine^cuisine-spanish");
-        cuisines.put("Thai", "cuisine^cuisine-thai");
-        cuisines.put("German", "cuisine^cuisine-german");
-        cuisines.put("Morrocan", "cuisine^cuisine-morrocan");
-        cuisines.put("Irish", "cuisine^cuisine-irish");
-        cuisines.put("Japanese", "cuisine^cuisine-japanese");
-        cuisines.put("Cuban", "cuisine^cuisine-cuban");
-        cuisines.put("Portuguese", "cuisine^cuisine-portuguese");
-        cuisines.put("Swedish", "cuisine^cuisine-swedish");
-        cuisines.put("Hungarian", "cuisine^cuisine-hungarian");
-        cuisines.put("Hawaiian", "cuisine^cuisine-hawaiian");
+        cuisines.put("American", "cuisine%5Ecuisine-american");
+        cuisines.put("Kid-Friendly", "cuisine%5Ecuisine-kid-friendly");
+        cuisines.put("Italian", "cuisine%5Ecuisine-italian");
+        cuisines.put("Asian", "cuisine%5Ecuisine-asian");
+        cuisines.put("Mexican", "cuisine%5Ecuisine-mexican");
+        cuisines.put("Southern & Soul", "cuisine%5Ecuisine-southern");
+        cuisines.put("BBQ", "cuisine%5Ecuisine-barbecue-bbq");
+        cuisines.put("Indian", "cuisine%5Ecuisine-indian");
+        cuisines.put("Chinese", "cuisine%5Ecuisine-chinese");
+        cuisines.put("Cajun", "cuisine%5Ecuisine-cajun");
+        cuisines.put("Mediterranean", "cuisine%5Ecuisine-mediterranean");
+        cuisines.put("Greek", "cuisine%5Ecuisine-greek");
+        cuisines.put("English", "cuisine%5Ecuisine-english");
+        cuisines.put("Spanish", "cuisine%5Ecuisine-spanish");
+        cuisines.put("Thai", "cuisine%5Ecuisine-thai");
+        cuisines.put("German", "cuisine%5Ecuisine-german");
+        cuisines.put("Morrocan", "cuisine%5Ecuisine-morrocan");
+        cuisines.put("Irish", "cuisine%5Ecuisine-irish");
+        cuisines.put("Japanese", "cuisine%5Ecuisine-japanese");
+        cuisines.put("Cuban", "cuisine%5Ecuisine-cuban");
+        cuisines.put("Portuguese", "cuisine%5Ecuisine-portuguese");
+        cuisines.put("Swedish", "cuisine%5Ecuisine-swedish");
+        cuisines.put("Hungarian", "cuisine%5Ecuisine-hungarian");
+        cuisines.put("Hawaiian", "cuisine%5Ecuisine-hawaiian");
     }
 
     public ArrayList<String> getSupportedAllergies()
     {
-        return (ArrayList) allergies.keySet();
+
+        ArrayList<String> list = new ArrayList<String>();
+        Set<String> set = allergies.keySet();
+
+        list.addAll(set);
+
+        return list;
     }
 
     public ArrayList<String> getSupportedCuisines()
     {
-        return (ArrayList) cuisines.keySet();
+        ArrayList<String> list = new ArrayList<String>();
+        Set<String> set = cuisines.keySet();
+
+        list.addAll(set);
+
+        return list;
     }
 
 
@@ -112,11 +124,13 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
 
         search = prepareIngredientQuery(ingredients);
 
-        if(allergies != null)
+        if(allergies.length() > 2)
             search = appendAllergies(search, allergies);
 
         if(cuisine != null)
             search = appendCuisine(search, cuisine);
+
+        System.out.println("Yummly Search: " + search);
 
         setRequesting(true);
         SearchTools.WAITING_API_2 = true;
@@ -133,7 +147,6 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
 
                     if(model.urls.size() > 0) {
                         r.addImageUrl(model.urls.get(0));
-                        System.out.println("url added");
                     }
                     recipes.add(r);
                 }
@@ -161,6 +174,9 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
 
             @Override
             public void failure(RetrofitError error) {
+                System.out.println("Error");
+                error.printStackTrace();
+                SearchTools.WAITING_API_2 = false;
 
             }
         });
@@ -173,17 +189,19 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
     {
         ArrayList<String> list = SearchTools.ParseList(allergies);
 
+
         for(String al: list)
         {
-            original = original.concat("&allowedAllergy[]=").concat(YummlyRecipeFactory.allergies.get(al));
+            original = original.concat("&allowedAllergy[]=" + YummlyRecipeFactory.allergies.get(al));
         }
+
 
         return original;
     }
 
     private String appendCuisine(String original, String cuisine)
     {
-        return original.concat("allowedCuisine[]=").concat(YummlyRecipeFactory.cuisines.get(cuisine));
+        return original.concat("&allowedCuisine[]=" + YummlyRecipeFactory.cuisines.get(cuisine));
     }
 
     private String prepareIngredientQuery(String list)
@@ -192,11 +210,12 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
         String query = "?_app_id=8f371517&_app_key=0d24ad13bad93da625d68ba50920fe9d";
         for(int i = 0; i < ingredients.size(); i++)
         {
-            query = query.concat("&allowedIngredient[]="+ingredients.get(i));
+            String line = ingredients.get(i).trim();
+            query = query.concat("&allowedIngredient[]="+line);
         }
 
 
-        query = query.replaceAll(" ", "");
+        query = query.replaceAll(" ", "+");
         return query;
     }
 }

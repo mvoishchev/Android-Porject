@@ -1,6 +1,7 @@
 package t4.csc413.smartchef;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,13 +16,16 @@ import connectors.SearchTools;
  */
 public class LoadingActivity extends Activity {
     String search;
+    String allergies;
+    String cuisine;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
         search = getIntent().getExtras().getString("search");
-        System.out.println(search);
-        SearchTools.GetRecipes(search, null, null, null);
+        allergies = getIntent().getExtras().getString("allergies");
+        cuisine = getIntent().getExtras().getString("cuisine");
+        SearchTools.GetRecipes(search, allergies, cuisine, null);
 
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
         final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
@@ -38,12 +42,16 @@ public class LoadingActivity extends Activity {
                     finish();
                     Bundle bundle = new Bundle();
                     bundle.putString("search", search);
+                    if(cuisine != null)
+                        bundle.putString("cuisine", cuisine);
+                    if(allergies != null)
+                        bundle.putString("allergies",allergies); /*allergies here**/
+
                     Intent i = new Intent(LoadingActivity.this, ResultsActivity.class);
                     i.putExtras(bundle);
                     startActivity(i);
                 }else
                 {
-                    System.out.println("Still waiting");
                     iv.startAnimation(an);
                 }
             }
@@ -57,4 +65,5 @@ public class LoadingActivity extends Activity {
 
 
     }
+
 }
