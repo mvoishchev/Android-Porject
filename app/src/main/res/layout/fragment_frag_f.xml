@@ -59,4 +59,12 @@
         android:id="@+id/GMButton"
         android:layout_below="@+id/EButton"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Site"
+        android:id="@+id/SiteButton"
+        android:layout_below="@+id/GMButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

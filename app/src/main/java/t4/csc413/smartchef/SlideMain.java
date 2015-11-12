@@ -4,11 +4,13 @@ package t4.csc413.smartchef;
  * Created by Thomas X Mei on 11/2/2015.
  */
 
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -18,7 +20,7 @@ import tools.Ingredient;
 import tools.Recipe;
 
 
-public class SlideMain extends FragmentActivity {
+public class SlideMain extends NavBaseActivity {
     ViewPager pager;
     PagerTabStrip tab_strp;
     static TextView v;
@@ -27,6 +29,8 @@ public class SlideMain extends FragmentActivity {
    public String api;
     public Recipe rr;
     public String ingredients;
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,8 @@ public class SlideMain extends FragmentActivity {
 
         pager.setAdapter(mapager);
         tab_strp=(PagerTabStrip)findViewById(R.id.tab_strip);
-        tab_strp.setTextColor(Color.BLACK);
+        tab_strp.setTextColor(Color.WHITE);
+        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50);
 
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
@@ -56,6 +61,11 @@ public class SlideMain extends FragmentActivity {
             ingredients =ingredient.original_discription + "\n--";
         }
         v.setText(title);
+
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        set(navMenuTitles, navMenuIcons);
     }
 
     @Override

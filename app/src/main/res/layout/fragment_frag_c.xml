@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#10ffb7"
+    android:background="#E00AD6BE"
     tools:context="t4.csc413.smartchef.FragA">
 
     <!-- TODO: Update blank fragment layout -->
@@ -31,7 +31,9 @@
         android:id="@+id/StartB"
         android:layout_below="@+id/textTimer"
         android:layout_toLeftOf="@+id/textTimer"
-        android:layout_toStartOf="@+id/textTimer" />
+        android:layout_toStartOf="@+id/textTimer"
+        android:background="#f80b0b"
+        android:textColor="#fcf9f9"/>
 
     <Button
         android:layout_width="wrap_content"

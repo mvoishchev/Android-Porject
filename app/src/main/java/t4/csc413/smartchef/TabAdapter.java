@@ -31,12 +31,6 @@ public class TabAdapter extends FragmentPagerAdapter {
             case 3:
                 FragD f4 = new FragD();
                 return f4;
-            case 4:
-                FragE f5 = new FragE();
-                return f5;
-            case 5:
-                FragF f6 = new FragF();
-                return f6;
 
         }
         return null;
@@ -44,7 +38,7 @@ public class TabAdapter extends FragmentPagerAdapter {
 
     public int getCount()
     {
-        return 6;
+        return 4;
     }//set the number of tabs
 
 
@@ -59,10 +53,6 @@ public class TabAdapter extends FragmentPagerAdapter {
             case 2:
                 return "Preperation";
             case 3:
-                return "Cuisine Type";
-            case 4:
-                return "Url Source";
-            case 5:
                 return "Extra Options";
         }
         return null;

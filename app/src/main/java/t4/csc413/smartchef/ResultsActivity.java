@@ -17,7 +17,7 @@ import java.util.List;
 import connectors.SearchTools;
 import tools.Recipe;
 
-public class ResultsActivity extends Activity {
+public class ResultsActivity extends NavBaseActivity {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -30,6 +30,7 @@ public class ResultsActivity extends Activity {
     String allergies;
     String cuisine;
     String url = "http://www.mariomayhem.com/downloads/sprites/mariosprite.jpg";
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,10 @@ public class ResultsActivity extends Activity {
 
             }
         });
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        set(navMenuTitles, navMenuIcons);
     }
 
 }

@@ -17,6 +17,7 @@ import connectors.google.MapsActivity;
 
 import static t4.csc413.smartchef.R.id.EButton;
 import static t4.csc413.smartchef.R.id.GMButton;
+import static t4.csc413.smartchef.R.id.SiteButton;
 import static t4.csc413.smartchef.R.id.YT;
 
 public class FragF extends android.support.v4.app.Fragment {
@@ -25,6 +26,7 @@ public class FragF extends android.support.v4.app.Fragment {
     RatingBar star;
     View view;
     ImageView newPage;
+    String siteUrl;
 
 
     @Override
@@ -66,8 +68,16 @@ public class FragF extends android.support.v4.app.Fragment {
                 startActivity(intent);
             }
         });
+        siteUrl = m.rr.getRecipeUrl();
+        Button newPage = (Button)view.findViewById(SiteButton);
+        newPage.setOnClickListener(new View.OnClickListener() {
 
-
+            @Override
+            public void onClick(View v) {
+                Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(url) );
+                startActivity(u);
+            }
+        });
 
         return  view;
     }
