@@ -18,20 +18,25 @@ import android.widget.Button;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+import java.util.List;
 
 public class MainActivity extends NavBaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
     protected CharSequence[] _seasonal = {"a", "b", "c", "d", "e", "f"};
-    protected boolean[] _selection = new boolean[_seasonal.length];
+    protected boolean[] _seasonSelection = new boolean[_seasonal.length];
     protected String[] _cuisine = {"American", "Indian", "Italian", "Chinese", "Thai", "French", "Spanish", "Philipino","Korean",};
-    protected boolean[] _selections = new boolean[_cuisine.length];
-    protected CharSequence[] _allergies = {"Pecan-free", "Gluten-free", "Seafood", "Lactose-free", };
+    protected boolean[] _cuisineSelection = new boolean[_cuisine.length];
+    protected CharSequence[] _allergies = {"Allergies"};
     protected boolean[] _allergySelection = new boolean[_allergies.length];
     protected CharSequence[] _cupboard = {"Cutting Board", "Colander", "Grater", "Ladle", "Measuring cup", "Measuring spoon","Mortar and pestle","Peeler","Tong","Wooden spoon","Zester","Knife"};
     protected boolean[] _cupboardSelection = new boolean[_cupboard.length];
-    protected CharSequence[] _useFridge = {"Frozen mix-Veggies", "Brocolli", "Cabbage", "Beans", "Tomato", "Milk", "ButterNut","Pumpkin", "Green-Chillies", "Jalapeno", "Butter", "Cheese", "Eggplant","Egg"};
+    protected CharSequence[] _useFridge = {"UseFridge"};
     protected boolean[] _fridgeSelection = new boolean[_useFridge.length];
 
     protected Button advanceSearchButton;
@@ -42,8 +47,8 @@ public class MainActivity extends NavBaseActivity {
     protected Button _cupboardButton;
     protected Button _useFridgeButton;
     EditText et;
-    private String selections;
-    private String selection;
+    private String cuisine_selection;
+    private String seasonal_selection;
     private String allergySelection;
     private String cupboardSelection;
     private String fridgeSelection;
@@ -55,6 +60,10 @@ public class MainActivity extends NavBaseActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         et = (EditText)findViewById(R.id.EditText01);
+
+
+
+
         et.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
@@ -153,7 +162,7 @@ public class MainActivity extends NavBaseActivity {
         //System.out.println("THE ID IS: " + id);
         if (id == 4){
             return new AlertDialog.Builder(this).setTitle("Use Fridge")
-                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge",_useFridge))
+                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge", _useFridge))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
@@ -169,7 +178,7 @@ public class MainActivity extends NavBaseActivity {
         */
         else if (id == 3){
             return new AlertDialog.Builder(this).setTitle("Cupboard")
-                    .setMultiChoiceItems(_cupboard, _cupboardSelection, new DialogSelectionClickHandler("cupboard",_cupboard))
+                    .setMultiChoiceItems(_cupboard, _cupboardSelection, new DialogSelectionClickHandler("cupboard", _cupboard))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
 
                     .create();
@@ -204,12 +213,12 @@ public class MainActivity extends NavBaseActivity {
          */
                 (id == 1) {
             return new AlertDialog.Builder(this).setTitle("Seasonal")
-                    .setMultiChoiceItems(_seasonal, _selection, new DialogSelectionClickHandler("seasonal",_seasonal))
+                    .setMultiChoiceItems(_seasonal, _seasonSelection, new DialogSelectionClickHandler("seasonal",_seasonal))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
         } else if (id == 0) {
             return new AlertDialog.Builder(this).setTitle("Cuisine")
-                    .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler("cuisine", _cuisine))
+                    .setMultiChoiceItems(_cuisine, _cuisineSelection, new DialogSelectionClickHandler("cuisine", _cuisine))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
@@ -230,9 +239,15 @@ public class MainActivity extends NavBaseActivity {
             Log.i("ME", current[clicked] + " selected: " + selected);
 
             if(id.equalsIgnoreCase("cuisine")){
-                selection = (String)current[clicked];
+                cuisine_selection = (String)current[clicked];
             }else if(id.equalsIgnoreCase("seasonal")){
-                selections = (String) current[clicked];
+                seasonal_selection = (String) current[clicked];
+            }else if (id.equalsIgnoreCase("allergy")){
+                allergySelection = (String) current[clicked];
+            }else if (id.equalsIgnoreCase("useFridge")){
+                fridgeSelection = (String) current[clicked];
+            }else if (id.equalsIgnoreCase("cupboard")) {
+                cupboardSelection = (String) current[clicked];
             }
 
         }
@@ -250,7 +265,7 @@ public class MainActivity extends NavBaseActivity {
         }
         protected void printSelectedCuisine() {
             for (int i = 0; i < _cuisine.length; i++) {
-                Log.i("ME", _cuisine[i] + " selected: " + _selections[i]);
+                Log.i("ME", _cuisine[i] + " selected: " + _cuisineSelection[i]);
                 //Log.i( "ME", _seasonal[ i ] + " selected: " + _selection[i] );
 
             }
@@ -272,8 +287,8 @@ public class MainActivity extends NavBaseActivity {
         Bundle bundle = new Bundle();
 
         bundle.putString("search", et.getText().toString());
-        bundle.putString("cuisine", selection.toString());
-        bundle.putString("seasonal",selections.toString());/*use seasonal*/
+        bundle.putString("cuisine", cuisine_selection.toString());
+        bundle.putString("seasonal",seasonal_selection.toString());/*use seasonal*/
         bundle.putString("allergies",allergySelection.toString()); /*allergies here**/
         bundle.putString("useFridge",fridgeSelection.toString());/*Use Fridge */
         bundle.putString("cupboard",cupboardSelection.toString());/*Use cupborad */
