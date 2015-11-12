@@ -25,8 +25,6 @@ public class MainActivity extends NavBaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
-    protected CharSequence[] _seasonal = {"a", "b", "c", "d", "e", "f"};
-    protected boolean[] _selection = new boolean[_seasonal.length];
     protected CharSequence[] _cuisine = {"American", "Indian", "Italian", "Chinese", "Thai", "French", "Spanish", "Philipino","Korean",};
     protected boolean[] _selections = new boolean[_cuisine.length];
     protected CharSequence[] _allergies = {"Pecan-free", "Gluten-free", "Seafood", "Lactose-free", };
@@ -38,7 +36,6 @@ public class MainActivity extends NavBaseActivity {
 
     protected Button advanceSearchButton;
 
-    protected Button _seasonalButton;
     protected Button _cuisineButton;
     protected Button _allergiesButton;
     protected Button _cupboardButton;
@@ -88,14 +85,6 @@ public class MainActivity extends NavBaseActivity {
         });
         _cuisineButton.setVisibility(View.INVISIBLE);
 
-        _seasonalButton = (Button) findViewById(R.id.seasonalbutton);
-        _seasonalButton.setVisibility(View.INVISIBLE);
-        _seasonalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(1);
-            }
-        });
 
         _allergiesButton = (Button) findViewById(R.id.allergiesbutton);
         _allergiesButton.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +122,6 @@ public class MainActivity extends NavBaseActivity {
             @Override
             public void onClick(View view) {
                 _cuisineButton.setVisibility(View.VISIBLE);
-                _seasonalButton.setVisibility(View.VISIBLE);
                 _allergiesButton.setVisibility(View.VISIBLE);
                 _cupboardButton.setVisibility(View.VISIBLE);
                 _useFridgeButton.setVisibility(View.VISIBLE);
@@ -180,12 +168,7 @@ public class MainActivity extends NavBaseActivity {
                     .create();
 
         }
-        else if(id == 1) {
-            return new AlertDialog.Builder(this).setTitle("Seasonal")
-                    .setMultiChoiceItems(_seasonal, _selection, new DialogSelectionClickHandler("seasonal",_seasonal))
-                    .setPositiveButton("OK", new DialogButtonClickHandler())
-                    .create();
-        } else if (id == 0) {
+        else if (id == 0) {
             return new AlertDialog.Builder(this).setTitle("Cuisine")
                     .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler("cuisine", _cuisine))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
