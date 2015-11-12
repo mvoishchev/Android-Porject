@@ -145,7 +145,7 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
                     r.setId(model.id);
                     r.setApi("Yummly");
 
-                    if(model.urls.size() > 0) {
+                    if(model.urls != null && model.urls.size() > 0) {
                         r.addImageUrl(model.urls.get(0));
                     }
                     recipes.add(r);

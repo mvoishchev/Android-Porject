@@ -74,7 +74,8 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         rec.setName(result.title);
         rec.addAllIngredientsFromModel(result.ingredients);
         rec.setInstruction(result.instructions);
-        rec.addAllImageUrls(result.imageUrls);
+        if(result.imageUrls != null)
+                rec.addAllImageUrls(result.imageUrls);
         rec.setPrepTime(result.minutes/60,result.minutes%60);
 
         return rec;
