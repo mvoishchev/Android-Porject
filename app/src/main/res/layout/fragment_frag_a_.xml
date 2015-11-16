@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E00AD6BE"
+    android:background="#e0f7fcff"
     tools:context="t4.csc413.smartchef.FragA">
 
     <!-- TODO: Update blank fragment layout -->
@@ -17,8 +17,21 @@
         android:id="@+id/TextFA"
         android:textSize="24sp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:textColor="#040201"/>
     </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Add Ingredients to Evernote   "
+        android:id="@+id/SiteButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:background="@layout/button"
+        android:textColor="#040201"
+        />
 
 </RelativeLayout>
 

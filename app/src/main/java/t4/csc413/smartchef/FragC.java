@@ -50,7 +50,7 @@ public class FragC extends android.support.v4.app.Fragment {
         stop = (Button)view.findViewById(StopB);
         textViewTime = (TextView)view.findViewById(textTimer);
 
-        textViewTime.setText("Click Start!");
+        textViewTime.setText("0" + prep_Hours + ":" + prep_Minutes + ":00");
         int minute = prep_Minutes*60000;
         int hour = prep_Hours*3600000;
         int total = minute + hour;

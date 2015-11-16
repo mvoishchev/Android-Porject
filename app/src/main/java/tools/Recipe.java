@@ -108,7 +108,7 @@ public class Recipe {
     {
 
         if(_instruction == null){
-            _instruction = "Please Visit Website for more details. Swipe left.";
+            _instruction = "Please Visit Website for more details. Swipe Right.";
         }
         else if(_instruction.contains("<li>")){
            _instruction = _instruction.replace("<li>", "\n");

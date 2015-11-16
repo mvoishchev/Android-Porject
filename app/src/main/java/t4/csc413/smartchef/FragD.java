@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -16,9 +17,8 @@ import connectors.evernote.EvernoteManager;
 import connectors.google.MapsActivity;
 import tools.Ingredient;
 
-import static t4.csc413.smartchef.R.id.EButton;
-import static t4.csc413.smartchef.R.id.GMButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
+import static t4.csc413.smartchef.R.id.GMButton;
 import static t4.csc413.smartchef.R.id.YT;
 
 public class FragD extends android.support.v4.app.Fragment {
@@ -33,7 +33,7 @@ public class FragD extends android.support.v4.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_frag_f,container,false);
+        view=inflater.inflate(R.layout.fragment_frag_d,container,false);
         setStar(4);
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
@@ -57,18 +57,18 @@ public class FragD extends android.support.v4.app.Fragment {
         });
 
         //Changed to upload shopping list, instead of opening activity -Juris
-        Button evernote = (Button)view.findViewById(EButton);
-        evernote.setOnClickListener(new View.OnClickListener() {
+        siteUrl = m.rr.getRecipeUrl();
+        ImageButton newPage = (ImageButton)view.findViewById(SiteButton);
+        newPage.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), EvernoteActivity.class);
-                //TODO change this so that real values are uploaded insted of "Test" and random()
-                EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList(m.rr.getName(),text , getActivity());
+                Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(siteUrl) );
+                startActivity(u);
             }
         });
 
-        Button Gmaps = (Button)view.findViewById(GMButton);
+        ImageButton Gmaps = (ImageButton)view.findViewById(GMButton);
         Gmaps.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -77,16 +77,7 @@ public class FragD extends android.support.v4.app.Fragment {
                 startActivity(intent);
             }
         });
-        siteUrl = m.rr.getRecipeUrl();
-        Button newPage = (Button)view.findViewById(SiteButton);
-        newPage.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(url) );
-                startActivity(u);
-            }
-        });
 
         return  view;
     }

@@ -53,7 +53,7 @@ public class TabAdapter extends FragmentPagerAdapter {
             case 2:
                 return "Preperation";
             case 3:
-                return "Extra Options";
+                return "Google Maps & more";
         }
         return null;
     }
