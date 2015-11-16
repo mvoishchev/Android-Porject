@@ -29,136 +29,148 @@
 
 
 
+
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/yellow1">
 
-        <ViewFlipper
-            android:id="@+id/view_flipper"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back">
 
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_alignParentTop="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/food_collage" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_alignParentTop="true"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/food3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/food1" />
-
-        </ViewFlipper>
-
-
-
-
-        <ImageView
-            android:id="@+id/swipe_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:src="@drawable/swipe_left"
-            android:layout_alignTop="@+id/swipe_right"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:id="@+id/swipe_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/swipe_right"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="79dp" />
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
 
         <EditText
             android:id="@+id/EditText01"
-            android:layout_height="40dp"
-            android:layout_width="fill_parent"
-            android:hint="search"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:hint="Enter Your Ingredients"
             android:layout_gravity="center"
             android:background="@drawable/edits"
-            android:layout_above="@+id/searchbutton"
+            android:layout_marginTop="90dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
 
-
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:minHeight="80dp"
+            android:minWidth="100dp"
             android:id="@+id/searchbutton"
+            android:background="@drawable/chef"
+            android:text="Find a receipe"
             android:onClick="search"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"/>
-
-        <Button android:id="@+id/advancedbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#F5306B"
-            android:text="Advanced Search"
-            android:onClick="AdvancedSearchClicked"
-            android:layout_below="@+id/searchbutton"
-            android:layout_centerHorizontal="true"
-             />
+            android:textColor="#1F1C1C"
+            android:textStyle="italic"
+            android:textSize="12dp"
+            android:layout_weight="2"
+            android:layout_marginTop="39dp"
+            android:layout_below="@+id/EditText01"
+            android:layout_toLeftOf="@+id/advancedbutton"
+            android:layout_toStartOf="@+id/advancedbutton"
+            android:layout_marginRight="180dp"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cuisine"
+            android:minHeight="80dp"
+            android:minWidth="100dp"
+            android:text="More options"
+            android:textColor="#1F1C1C"
+            android:id="@+id/advancedbutton"
+            android:background="@drawable/chef"
+            android:textStyle="italic"
+            android:textSize="12dp"
+            android:layout_weight="2"
+            android:layout_marginRight="59dp"
+            android:layout_marginEnd="59dp"
+            android:layout_alignTop="@+id/searchbutton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chef"
+            android:minHeight="80dp"
+            android:minWidth="100dp"
+            android:text="Pick a Cuisine"
+            android:textStyle="italic"
+            android:textColor="#1F1C1C"
             android:id="@+id/cuisinebutton"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:layout_below="@+id/advancedbutton"
-            android:layout_centerHorizontal="true" />
+            android:textSize="12dp"
+            android:layout_weight="2"
+            android:layout_alignTop="@+id/allergiesbutton"
+            android:layout_alignLeft="@+id/searchbutton"
+            android:layout_alignStart="@+id/searchbutton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/chef"
+            android:minHeight="80dp"
+            android:minWidth="100dp"
             android:text="Allergies"
+            android:textColor="#1F1C1C"
+            android:textSize="12dp"
+            android:textStyle="italic"
+            android:layout_weight="2"
             android:id="@+id/allergiesbutton"
-            android:layout_below="@+id/cuisinebutton"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/advancedbutton"
+            android:layout_alignLeft="@+id/advancedbutton"
+            android:layout_alignStart="@+id/advancedbutton"
+            android:layout_marginTop="37dp" />
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/chef"
+            android:minHeight="80dp"
+            android:minWidth="100dp"
+            android:text="Use fridge"
+            android:textStyle="italic"
+            android:textColor="#1F1C1C"
+            android:id="@+id/fridgebutton"
+            android:textSize="12dp"
+            android:layout_weight="2"
+            android:layout_alignTop="@+id/cupboardbutton"
+            android:layout_alignLeft="@+id/cuisinebutton"
+            android:layout_alignStart="@+id/cuisinebutton" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chef"
+            android:minHeight="80dp"
+            android:minWidth="100dp"
             android:text="Cupboard"
+            android:textStyle="italic"
+            android:textColor="#1F1C1C"
+            android:textSize="12dp"
+            android:layout_weight="2"
             android:id="@+id/cupboardbutton"
             android:layout_below="@+id/allergiesbutton"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignLeft="@+id/allergiesbutton"
+            android:layout_alignStart="@+id/allergiesbutton"
+            android:layout_marginTop="31dp" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Use Fridge"
-            android:id="@+id/fridgebutton"
-            android:layout_below="@+id/cupboardbutton"
-            android:layout_centerHorizontal="true" />
+            android:text="FEELING HUNGRY?"
+            android:drawableLeft="@drawable/chef3"
+            android:minHeight="5dp"
+            android:minWidth="5dp"
+            android:id="@+id/textView2"
+
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:textStyle="italic"
+            android:textSize="30dp"
+            android:textIsSelectable="true"
+            android:textColor="#040404"
+            android:typeface="serif" />
 
     </RelativeLayout>
 
