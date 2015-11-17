@@ -59,7 +59,7 @@ public class MainActivity extends NavBaseActivity {
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
                     if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER) ||
                             (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                                searchByIngredient();
+                        searchByIngredient();
                         //do something
                         //true because you handle the event
                         return true;
@@ -140,6 +140,9 @@ public class MainActivity extends NavBaseActivity {
                 .obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles,navMenuIcons);
     }
+
+
+
     @Override
     public Dialog onCreateDialog(int id) {
         Log.i("output", "MainActivity");

@@ -47,7 +47,7 @@
             android:layout_marginTop="90dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
 
         <Button
@@ -56,8 +56,8 @@
             android:minHeight="80dp"
             android:minWidth="100dp"
             android:id="@+id/searchbutton"
-            android:background="@drawable/chef"
-            android:text="Find a receipe"
+            android:background="@mipmap/chafcap3"
+            android:text="Find receipes"
             android:onClick="search"
             android:textColor="#1F1C1C"
             android:textStyle="italic"
@@ -65,9 +65,7 @@
             android:layout_weight="2"
             android:layout_marginTop="39dp"
             android:layout_below="@+id/EditText01"
-            android:layout_toLeftOf="@+id/advancedbutton"
-            android:layout_toStartOf="@+id/advancedbutton"
-            android:layout_marginRight="180dp"
+            android:layout_alignParentLeft="true"
             />
 
         <Button
@@ -78,12 +76,12 @@
             android:text="More options"
             android:textColor="#1F1C1C"
             android:id="@+id/advancedbutton"
-            android:background="@drawable/chef"
+            android:background="@mipmap/chafcap3"
             android:textStyle="italic"
             android:textSize="12dp"
             android:layout_weight="2"
-            android:layout_marginRight="59dp"
-            android:layout_marginEnd="59dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_alignTop="@+id/searchbutton"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
@@ -91,7 +89,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chef"
+            android:background="@mipmap/chafcap3"
             android:minHeight="80dp"
             android:minWidth="100dp"
             android:text="Pick a Cuisine"
@@ -107,7 +105,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chef"
+            android:background="@mipmap/chafcap3"
             android:minHeight="80dp"
             android:minWidth="100dp"
             android:text="Allergies"
@@ -125,7 +123,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chef"
+            android:background="@mipmap/chafcap3"
             android:minHeight="80dp"
             android:minWidth="100dp"
             android:text="Use fridge"
@@ -140,7 +138,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chef"
+            android:background="@mipmap/chafcap3"
             android:minHeight="80dp"
             android:minWidth="100dp"
             android:text="Cupboard"
