@@ -36,7 +36,7 @@ public class FragA extends android.support.v4.app.Fragment {
         swipeText = "\n\n\nPlease swipe left to view more information on recipe   ---->";
 
 
-        text =  m.rr.getName() +"\n\nIngredients:\n\n";
+        text =  m.rr.getName() + "\n\nIngredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {

@@ -53,7 +53,7 @@ public class SlideMain extends NavBaseActivity {
         pager.setAdapter(mapager);
         tab_strp=(PagerTabStrip)findViewById(R.id.tab_strip);
         tab_strp.setTextColor(Color.WHITE);
-        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50);
+        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
 
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
