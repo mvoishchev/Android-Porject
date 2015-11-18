@@ -3,8 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="t4.csc413.smartchef.FragF"
-    android:background="#e0f7fcff"
+    android:background="#F6BBD1"
     android:backgroundTintMode="src_over">
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -82,3 +92,5 @@
         android:src="@drawable/arrow" />
 
 </RelativeLayout>
+</ScrollView>
+    </RelativeLayout>

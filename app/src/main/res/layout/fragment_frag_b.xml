@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e0f7fcff"
+    android:background="#F6BBD1"
 
     tools:context="t4.csc413.smartchef.FragA">
 

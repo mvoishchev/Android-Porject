@@ -1,37 +1,67 @@
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e0f7fcff"
+    android:background="#F6BBD1"
     tools:context="t4.csc413.smartchef.FragA">
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        >
+
     <TextView android:layout_width="match_parent"
-        android:layout_height="186dp"
+        android:layout_height="wrap_content"
         android:text="Fragment A"
         android:id="@+id/TextFA"
         android:textSize="24sp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
-        android:textColor="#040201"/>
-    </ScrollView>
-
+        android:textColor="#040201"
+         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Click below to add ingredients into Evernote"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/TextFA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="   Add Ingredients to Evernote   "
         android:id="@+id/SiteButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
         android:background="@layout/button"
         android:textColor="#040201"
-        />
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Please swipe left to view more information on recipe   ---->"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/SiteButton"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
+</ScrollView>
+
+
+
+
+
+
+
 
 </RelativeLayout>
 
