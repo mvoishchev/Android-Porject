@@ -1,7 +1,6 @@
 package t4.csc413.smartchef;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,11 +16,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.maps.GoogleMap;
-
 import connectors.evernote.EvernoteActivity;
 import connectors.google.MapsActivity;
-import database.DataBaseLayout;
+import database.RecipeDataBase.RecipeDBLayout;
 
 /*
  *  Create by: MG
@@ -37,7 +34,7 @@ import database.DataBaseLayout;
  *              navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
  *		        set(navMenuTitles, navMenuIcons);
  *
- *		 3) go to your class xml layout:
+ *      3) go to your class xml layout:
  *		        look at activity_main.xml for an example.  IMPORTANT:  the main content
  *		        that you want to display on the screen has to be placed INSIDE the FrameLayout.
  *		        Don't forget to include the ListView nav drawer.  Just copy and paste it
@@ -175,7 +172,7 @@ public class NavBaseActivity extends ActionBarActivity {
                 finish();// finishes the current activity
                 break;
             case 2:
-                Intent intent2 = new Intent(this, DataBaseLayout.class);
+                Intent intent2 = new Intent(this, RecipeDBLayout.class);
                 startActivity(intent2);
                 finish();// finishes the current activity
                 break;
