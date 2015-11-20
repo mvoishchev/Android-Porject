@@ -18,12 +18,8 @@ import static t4.csc413.smartchef.R.id.SiteButton;
 public class FragA extends android.support.v4.app.Fragment {
 
     static TextView v;
-    static TextView swipe;
     View view;
     String text;
-    String swipeText;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -31,10 +27,7 @@ public class FragA extends android.support.v4.app.Fragment {
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFA);
-        swipe = (TextView) view.findViewById(R.id.textView5);
-
-        swipeText = "\n\n\nPlease swipe left to view more information on recipe   ---->";
-
+       // swipe = (TextView) view.findViewById(R.id.textView5);
 
         text =  m.rr.getName() + "\n\nIngredients:\n\n";
 
@@ -43,13 +36,7 @@ public class FragA extends android.support.v4.app.Fragment {
             text = text.concat("--"+ingredient.original_discription + "\n");
         }
 
-        //text = text.concat("\n\n\n Please swipe left to view more information on recipe   ---->");
-
         v.setText(text);
-        swipe.setText(swipeText);
-
-
-
 
         Button evernote = (Button)view.findViewById(SiteButton);
         evernote.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +49,6 @@ public class FragA extends android.support.v4.app.Fragment {
                 EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList(m.rr.getName(), text, getActivity());
             }
         });
-
-
         return  view;
     }
-
-
-
 }

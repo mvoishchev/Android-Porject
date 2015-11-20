@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class ResultsActivity extends NavBaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
     ListView list;
+    TextView search_input;
     List<String> name;
     List<String> desc;
     List<String> iv;
@@ -29,7 +31,7 @@ public class ResultsActivity extends NavBaseActivity {
     String search;
     String allergies;
     String cuisine;
-    String url = "http://www.mariomayhem.com/downloads/sprites/mariosprite.jpg";
+    String text_for_results;
 
 
 
@@ -57,6 +59,9 @@ public class ResultsActivity extends NavBaseActivity {
 
         }
 
+        text_for_results = "Recipe Search results for: " +search;
+        search_input = (TextView) findViewById(R.id.textView17);
+        search_input.setText(text_for_results);
 
         list = (ListView) findViewById(R.id.listView);
 

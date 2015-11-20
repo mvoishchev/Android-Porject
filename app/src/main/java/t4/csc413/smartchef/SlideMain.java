@@ -62,22 +62,23 @@ public class SlideMain extends NavBaseActivity {
         String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
-        i = (ImageView)findViewById(R.id.imageView3);
+
 
         Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
         rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
 
-        //String title = rr.getName();
+        String title = rr.getName();
         for(Ingredient ingredient: rr.getIngredients())
         {
             ingredients =ingredient.original_discription + "\n--";
         }
-        //v.setText(title);
+        v.setText(title);
 
 
-
+        /*
         Bitmap bitmap = getBitmapFromURL(rr.getImageUrl());
         i.setImageBitmap(bitmap);
+        */
 
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);

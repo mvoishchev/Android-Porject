@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6BBD1"
+    android:background="#eafff9"
     tools:context="t4.csc413.smartchef.FragA">
 
     <!-- TODO: Update blank fragment layout -->
