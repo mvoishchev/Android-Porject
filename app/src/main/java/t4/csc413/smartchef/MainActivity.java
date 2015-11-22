@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 public class MainActivity extends NavBaseActivity {
     private String[] navMenuTitles;
@@ -47,6 +49,7 @@ public class MainActivity extends NavBaseActivity {
     private String cupboardSelection;
     private String fridgeSelection;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +57,19 @@ public class MainActivity extends NavBaseActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         et = (EditText)findViewById(R.id.EditText01);
+
+
         et.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
                     if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER) ||
                             (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                        searchByIngredient();
+                        String emptyString = et.getText().toString();
+                        if(TextUtils.isEmpty(emptyString)) {
+                            et.setError("Please enter an ingredient!");
+                        }else {
+                            searchByIngredient();
+                        }
                         //do something
                         //true because you handle the event
                         return true;
@@ -67,6 +77,8 @@ public class MainActivity extends NavBaseActivity {
                 return false;
             }
         });
+
+
 
         _allergies = SearchTools.getSupportedAllergies();
         _cuisine = SearchTools.getSupportedCuisines();
