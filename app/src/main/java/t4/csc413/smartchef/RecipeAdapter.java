@@ -65,6 +65,7 @@ class RecipeAdapter extends ArrayAdapter<String>
         View theView = theInflater.inflate(R.layout.single_row, parent, false);
 
         String results = getItem(position);
+
         TextView theTextView = (TextView) theView.findViewById(R.id.textView8);
         theTextView.setText(results);
 

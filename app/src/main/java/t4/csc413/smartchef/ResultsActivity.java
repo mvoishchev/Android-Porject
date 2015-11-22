@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import connectors.SearchTools;
@@ -24,6 +25,7 @@ public class ResultsActivity extends NavBaseActivity {
     private TypedArray navMenuIcons;
     ListView list;
     TextView search_input;
+
     List<String> name;
     List<String> desc;
     List<String> iv;
@@ -65,12 +67,10 @@ public class ResultsActivity extends NavBaseActivity {
 
         list = (ListView) findViewById(R.id.listView);
 
-
-
-
         ListAdapter theAdapter = new RecipeAdapter(this, name, recipes);
         ListView theListView = (ListView) findViewById(R.id.listView);
         list.setAdapter(theAdapter);
+
 
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
