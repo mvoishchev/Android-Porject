@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
+import connectors.google.MapsActivity;
 import tools.Ingredient;
+import database.recipedb.RecipeDBLayout;
 
+import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
 
 
@@ -21,27 +24,22 @@ public class FragA extends android.support.v4.app.Fragment {
     View view;
     String text;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
        view=inflater.inflate(R.layout.fragment_frag_a_,container,false);
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFA);
+       // swipe = (TextView) view.findViewById(R.id.textView5);
 
-
-        text =  m.rr.getName() +"\n\nIngredients:\n\n";
+        text =  m.rr.getName() + "\n\nIngredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {
             text = text.concat("--"+ingredient.original_discription + "\n");
         }
 
-        text = text.concat("\n\n\n Please swipe left to view more information on recipe   ---->");
-
         v.setText(text);
-
 
         Button evernote = (Button)view.findViewById(SiteButton);
         evernote.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +53,16 @@ public class FragA extends android.support.v4.app.Fragment {
             }
         });
 
+        Button SQL = (Button)view.findViewById(SQLButton);
+        SQL.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
+                startActivity(intent);
+            }
+        });
 
         return  view;
     }
-
-
-
 }

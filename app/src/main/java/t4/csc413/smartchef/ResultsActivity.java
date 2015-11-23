@@ -5,13 +5,19 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import connectors.SearchTools;
@@ -22,6 +28,8 @@ public class ResultsActivity extends NavBaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
     ListView list;
+    TextView search_input;
+
     List<String> name;
     List<String> desc;
     List<String> iv;
@@ -29,7 +37,7 @@ public class ResultsActivity extends NavBaseActivity {
     String search;
     String allergies;
     String cuisine;
-    String url = "http://www.mariomayhem.com/downloads/sprites/mariosprite.jpg";
+    String text_for_results;
 
 
 
@@ -48,6 +56,19 @@ public class ResultsActivity extends NavBaseActivity {
         cuisine = getIntent().getExtras().getString("cuisine");
 
         recipes = SearchTools.GetRecipes(search, allergies, cuisine, null);
+        int size = recipes.size();
+        Toast t = Toast.makeText(getApplicationContext(), "Sorry but there are no recipes for the searched ingredient(s). " +
+                        "Please go back and try again!",
+                Toast.LENGTH_LONG);
+        if(size == 0){
+            t.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+            LinearLayout toastLayout = (LinearLayout) t.getView();
+            TextView toastTV = (TextView) toastLayout.getChildAt(0);
+            toastTV.setTextSize(30);
+            t.show();
+        }
+
+
 
         for (int recipe = 0; recipe < recipes.size(); recipe++) {
             Recipe temp = recipes.get(recipe);
@@ -57,15 +78,16 @@ public class ResultsActivity extends NavBaseActivity {
 
         }
 
+        text_for_results = "Recipe Search results for: " +search;
+        search_input = (TextView) findViewById(R.id.textView17);
+        search_input.setText(text_for_results);
 
         list = (ListView) findViewById(R.id.listView);
-
-
-
 
         ListAdapter theAdapter = new RecipeAdapter(this, name, recipes);
         ListView theListView = (ListView) findViewById(R.id.listView);
         list.setAdapter(theAdapter);
+
 
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

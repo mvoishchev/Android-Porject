@@ -28,7 +28,7 @@ public class Flipper extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext = this;
-        mViewFlipper = (android.widget.ViewFlipper) this.findViewById(R.id.view_flipper);
+        mViewFlipper = (android.widget.ViewFlipper) this.findViewById(R.id.image);
         mViewFlipper.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View view, final MotionEvent event) {

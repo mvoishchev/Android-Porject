@@ -53,7 +53,7 @@ public class SlideMain extends NavBaseActivity {
         pager.setAdapter(mapager);
         tab_strp=(PagerTabStrip)findViewById(R.id.tab_strip);
         tab_strp.setTextColor(Color.WHITE);
-        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50);
+        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
 
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
@@ -62,22 +62,23 @@ public class SlideMain extends NavBaseActivity {
         String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
-        i = (ImageView)findViewById(R.id.imageView3);
+
 
         Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
         rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
 
-        //String title = rr.getName();
+        String title = rr.getName();
         for(Ingredient ingredient: rr.getIngredients())
         {
             ingredients =ingredient.original_discription + "\n--";
         }
-        //v.setText(title);
+        v.setText(title);
 
 
-
+        /*
         Bitmap bitmap = getBitmapFromURL(rr.getImageUrl());
         i.setImageBitmap(bitmap);
+        */
 
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
