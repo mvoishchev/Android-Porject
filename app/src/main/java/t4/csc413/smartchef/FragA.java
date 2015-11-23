@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
+import connectors.google.MapsActivity;
 import tools.Ingredient;
+import database.recipedb.RecipeDBLayout;
 
+import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
 
 
@@ -49,6 +52,17 @@ public class FragA extends android.support.v4.app.Fragment {
                 EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList(m.rr.getName(), text, getActivity());
             }
         });
+
+        Button SQL = (Button)view.findViewById(SQLButton);
+        SQL.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
+                startActivity(intent);
+            }
+        });
+
         return  view;
     }
 }
