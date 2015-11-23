@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.google.MapsActivity;
-import database.RecipeDataBase.RecipeDBLayout;
+import database.recipedb.RecipeDBLayout;
 
 /*
  *  Create by: MG

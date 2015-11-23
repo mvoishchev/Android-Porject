@@ -1,4 +1,4 @@
-package database.RecipeDataBase;
+package database.recipedb;
 
 
 import android.content.ContentValues;
@@ -20,29 +20,26 @@ public class DBAdapter {
     public static final String KEY_ROWID = "_id";
     public static final int COL_ROWID = 0;
 
-    public static final String KEY_RECIPESRCURL = "recipesourceurl";
     public static final String KEY_RECIPENAME = "recipename";
-    public static final String KEY_RECIPEIMGURL = "recipeimageurl";
+    public static final String KEY_RECIPESRCURL = "recipesourceurl";
 
-    public static final int COL_RECIPESRCURL = 1;
-    public static final int COL_RECIPENAME = 2;
-    public static final int COL_RECIPEIMGURL = 3;
+    public static final int COL_RECIPENAME = 1;
+    public static final int COL_RECIPESRCURL = 2;
 
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_RECIPESRCURL,
-            KEY_RECIPENAME, KEY_RECIPEIMGURL};
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_RECIPENAME,
+            KEY_RECIPESRCURL};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "RecipeDataBase";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
                     + " (" + KEY_ROWID + " integer primary key autoincrement, "
-                    + KEY_RECIPESRCURL + " string not null, "
                     + KEY_RECIPENAME + " string not null, "
-                    + KEY_RECIPEIMGURL + " string not null"
+                    + KEY_RECIPESRCURL + " string not null"
                     + ");";
 
     // Context of application who uses us.
@@ -68,14 +65,10 @@ public class DBAdapter {
     }
 
     // Add a new set of values to the database.
-    public long insertRow(String recipeURL, String recipeName, String recipeImageURL) {
-		/*
-		 * CHANGE 3:
-		 */
+    public long insertRow(String recipeName, String recipeURL) {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_RECIPESRCURL, recipeURL);
         initialValues.put(KEY_RECIPENAME, recipeName);
-        initialValues.put(KEY_RECIPEIMGURL, recipeImageURL);
+        initialValues.put(KEY_RECIPESRCURL, recipeURL);
 
         // Insert it into the database.
         return db.insert(DATABASE_TABLE, null, initialValues);
@@ -121,13 +114,13 @@ public class DBAdapter {
     }
 
     // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String recipeURL, String recipeName, String recipeImageURL) {
+    public boolean updateRow(long rowId, String recipeName, String recipeURL) {
         String where = KEY_ROWID + "=" + rowId;
 
         ContentValues newValues = new ContentValues();
-        newValues.put(KEY_RECIPESRCURL, recipeURL);
+
         newValues.put(KEY_RECIPENAME, recipeName);
-        newValues.put(KEY_RECIPEIMGURL, recipeImageURL);
+        newValues.put(KEY_RECIPESRCURL, recipeURL);
 
         return db.update(DATABASE_TABLE, newValues, where, null) != 0;
     }
