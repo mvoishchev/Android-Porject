@@ -6,7 +6,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Splash"
     android:background="#FFFFFF">
 
-
     <TextView android:text="HI" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
