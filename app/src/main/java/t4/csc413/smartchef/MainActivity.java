@@ -79,19 +79,6 @@ public class MainActivity extends NavBaseActivity {
             }
         });
 
-       /*
-        et.setOnKeyListener(new View.OnKeyListener() {
-                                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                                    if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                                        searchByIngredient();
-                                        return true;
-                                    }
-                                    return false;
-                                }
-                            }
-        );
-
-*/
 
         et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -99,6 +86,7 @@ public class MainActivity extends NavBaseActivity {
 
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     //Do something
+                    
                     searchByIngredient();
                 }
                 return false;
