@@ -18,8 +18,11 @@ import connectors.SearchTools;
 import connectors.evernote.LoginActivity;
 import android.widget.Button;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
+import android.content.DialogInterface.OnClickListener;
 import android.view.KeyEvent;
+import android.widget.TextView;
+import android.view.inputmethod.EditorInfo;
+import android.text.TextUtils;
 
 public class MainActivity extends NavBaseActivity {
     private String[] navMenuTitles;
@@ -34,7 +37,7 @@ public class MainActivity extends NavBaseActivity {
     protected CharSequence[] _useFridge = {"Frozen mix-Veggies", "Brocolli", "Cabbage", "Beans", "Tomato", "Milk", "ButterNut","Pumpkin", "Green-Chillies", "Jalapeno", "Butter", "Cheese", "Eggplant","Egg"};
     protected boolean[] _fridgeSelection = new boolean[_useFridge.length];
 
-    protected Button advanceSearchButton;
+    protected  Button advanceSearchButton;
 
     protected Button _cuisineButton;
     protected Button _allergiesButton;
@@ -47,6 +50,8 @@ public class MainActivity extends NavBaseActivity {
     private String cupboardSelection;
     private String fridgeSelection;
 
+    private boolean visible = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +59,18 @@ public class MainActivity extends NavBaseActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         et = (EditText)findViewById(R.id.EditText01);
+
         et.setOnKeyListener(new View.OnKeyListener() {
+
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                    if ((keyCode == KeyEvent.KEYCODE_DPAD_CENTER) ||
-                            (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                        searchByIngredient();
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                        String emptyString = et.getText().toString();
+                        if(TextUtils.isEmpty(emptyString)) {
+                            et.setError("Please enter an ingredient!");
+                        }else {
+                            searchByIngredient();
+                        }
+
                         //do something
                         //true because you handle the event
                         return true;
@@ -67,6 +78,33 @@ public class MainActivity extends NavBaseActivity {
                 return false;
             }
         });
+
+       /*
+        et.setOnKeyListener(new View.OnKeyListener() {
+                                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                                    if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                                        searchByIngredient();
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                            }
+        );
+
+*/
+
+        et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    //Do something
+                    searchByIngredient();
+                }
+                return false;
+            }
+        });
+
 
         _allergies = SearchTools.getSupportedAllergies();
         _cuisine = SearchTools.getSupportedCuisines();
@@ -125,8 +163,11 @@ public class MainActivity extends NavBaseActivity {
                 _allergiesButton.setVisibility(View.VISIBLE);
                 _cupboardButton.setVisibility(View.VISIBLE);
                 _useFridgeButton.setVisibility(View.VISIBLE);
+                Toggle();
             }
         });
+
+
 
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
@@ -141,6 +182,23 @@ public class MainActivity extends NavBaseActivity {
         set(navMenuTitles,navMenuIcons);
     }
 
+    private void Toggle(){
+        if(visible == true){
+            _cuisineButton.setVisibility(View.GONE);
+            _allergiesButton.setVisibility(View.GONE);
+            _cupboardButton.setVisibility(View.GONE);
+            _useFridgeButton.setVisibility(View.GONE);
+            visible = false;
+
+        }
+        else{
+            _cuisineButton.setVisibility(View.VISIBLE);
+            _allergiesButton.setVisibility(View.VISIBLE);
+            _cupboardButton.setVisibility(View.VISIBLE);
+            _useFridgeButton.setVisibility(View.VISIBLE);
+            visible = true;
+        }
+    }
 
 
     @Override
@@ -151,7 +209,7 @@ public class MainActivity extends NavBaseActivity {
 
         //System.out.println("THE ID IS: " + id);
         if (id == 4){
-            return new AlertDialog.Builder(this).setTitle("Use Fridge")
+            return new AlertDialog.Builder(this).setTitle("Ingredient on Hand")
                     .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge",_useFridge))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
@@ -165,14 +223,14 @@ public class MainActivity extends NavBaseActivity {
 
         }
         else if(id == 2){
-            return new AlertDialog.Builder(this).setTitle("Allergies")
+            return new AlertDialog.Builder(this).setTitle("My Food Allergies")
                     .setMultiChoiceItems(_allergies, _allergySelection, new DialogSelectionClickHandler("allergies",_allergies))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
         }
         else if (id == 0) {
-            return new AlertDialog.Builder(this).setTitle("Cuisine")
+            return new AlertDialog.Builder(this).setTitle("Enter My Favorite Cuisine")
                     .setMultiChoiceItems(_cuisine, _selections, new DialogSelectionClickHandler("cuisine", _cuisine))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
@@ -252,6 +310,7 @@ public class MainActivity extends NavBaseActivity {
     {
         Bundle bundle = new Bundle();
 
+
         bundle.putString("search", et.getText().toString());
         if(selection != null)
             bundle.putString("cuisine", selection.toString());
@@ -264,22 +323,27 @@ public class MainActivity extends NavBaseActivity {
         if(cupboardSelection != null)
             bundle.putString("cupboard",cupboardSelection.toString());/*Use cupborad */
 
-        Intent i = new Intent(this, LoadingActivity.class);
+
+            Intent i = new Intent(this, LoadingActivity.class);
         i.putExtras(bundle);
         startActivity(i);
+
     }
 
     public void search(View v)
+
+
     {
         searchByIngredient();
+
     }
+
 
     public void onButtonClick(View view)
     {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

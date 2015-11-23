@@ -38,4 +38,5 @@
         <item name="android:textSize">@dimen/action_bar_title_text_size</item>
     </style>
 
+  
 </resources>
