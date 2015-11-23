@@ -86,7 +86,7 @@ public class MainActivity extends NavBaseActivity {
 
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     //Do something
-                    
+
                     searchByIngredient();
                 }
                 return false;
