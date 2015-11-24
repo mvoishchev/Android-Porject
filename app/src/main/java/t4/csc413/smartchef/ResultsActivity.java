@@ -58,8 +58,7 @@ public class ResultsActivity extends NavBaseActivity {
         recipes = SearchTools.GetRecipes(search, allergies, cuisine, null);
         int size = recipes.size();
         Toast t = Toast.makeText(getApplicationContext(), "Sorry but there are no recipes for the searched ingredient(s). " +
-                        "Please go back and try again!",
-                Toast.LENGTH_LONG);
+                        "Please go back and try again!", Toast.LENGTH_LONG);
         if(size == 0){
             t.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_HORIZONTAL, 0, 0);
             LinearLayout toastLayout = (LinearLayout) t.getView();
