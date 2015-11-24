@@ -83,7 +83,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     }
 
     // removes recipes from db
-    public void removeRecipe(View v, Recipe rec) {
+    public void removeRecipe(View v) {
         db.deleteAll();
         populateListViewDB();
     }

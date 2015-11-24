@@ -10,6 +10,6 @@ import tools.Recipe;
 public interface RecipeInterFace {
 
     void addRecipe(View v, Recipe recipe);
-    void removeRecipe(View v, Recipe recipe);
+    void removeRecipe(View v);
     void getRecipe(View v);
 }
