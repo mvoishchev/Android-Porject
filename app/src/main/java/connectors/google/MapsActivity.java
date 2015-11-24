@@ -285,7 +285,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat, ListOfPlaces.results.get(i).geometry.location.lng))
                                     .title(ListOfPlaces.results.get(i).name)
                                     .snippet(ListOfPlaces.results.get(i).vicinity);
-                            //placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.baricon));
+                            placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.baricon));
                             mMap.addMarker(placeMarker);
                         }
                     }
@@ -322,7 +322,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat, ListOfPlaces.results.get(i).geometry.location.lng))
                                     .title(ListOfPlaces.results.get(i).name)
                                     .snippet(ListOfPlaces.results.get(i).vicinity);
-                            //placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.restauranticon));
+                            placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.restauranticon));
                             mMap.addMarker(placeMarker);
                         }
                     }
