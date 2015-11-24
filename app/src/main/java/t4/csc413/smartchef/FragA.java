@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
-import connectors.google.MapsActivity;
 import tools.Ingredient;
-import database.recipeDB.RecipeDBLayout;
+import database.recipedb.RecipeDBLayout;
 
 import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
@@ -23,6 +23,7 @@ public class FragA extends android.support.v4.app.Fragment {
     static TextView v;
     View view;
     String text;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -58,8 +59,12 @@ public class FragA extends android.support.v4.app.Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
+                startActivity(intent);*/
+                RecipeDBLayout.addRecipeToDB(m.rr);
+                Toast.makeText(m, "Recipe Saved!", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 

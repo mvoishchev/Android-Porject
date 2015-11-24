@@ -1,5 +1,6 @@
-package database.recipeDB;
+package database.recipedb;
 
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.SimpleCursorAdapter;
 
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
+import tools.Recipe;
 
 
 /**
@@ -26,7 +28,7 @@ import t4.csc413.smartchef.R;
 public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
 
     // DB
-    DBAdapter db;
+    public static DBAdapter db;
 
     // NavBar
     private String[] navMenuTitles;
@@ -46,17 +48,21 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
         set(navMenuTitles, navMenuIcons);
     }
 
+    public static void init(Context context){
+        db = new DBAdapter(context);
+    }
+
     protected void onDestroy() {
         super.onDestroy();
         closeDB();
     }
 
-    private void openDB() {
-        db = new DBAdapter(this);
+    private static void openDB() {
+        //db = new DBAdapter(this);
         db.open();
     }
 
-    private void closeDB() {
+    private static void closeDB() {
         db.close();
     }
 
@@ -65,13 +71,19 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
      * Recipe.getRecipeName();
      * Recipe.getRecipeUrl();
      */
-    public void addRecipe(View v) {
-        db.insertRow("RECIPENAME", "RECIPEURL");
+
+    public static void addRecipeToDB(Recipe rec){
+        openDB();
+        db.insertRow(rec.getName(), rec.getRecipeUrl());
+        closeDB();
+    }
+    public void addRecipe(View v, Recipe rec) {
+        db.insertRow(rec.getName(), rec.getRecipeUrl());
         populateListViewDB();
     }
 
     // removes recipes from db
-    public void removeRecipe(View v) {
+    public void removeRecipe(View v, Recipe rec) {
         db.deleteAll();
         populateListViewDB();
     }

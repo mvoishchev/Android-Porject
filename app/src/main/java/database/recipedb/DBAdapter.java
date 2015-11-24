@@ -1,4 +1,4 @@
-package database.recipeDB;
+package database.recipedb;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -322,8 +322,12 @@ public class MainActivity extends NavBaseActivity {
 
 
     {
-        searchByIngredient();
-
+        String emptyString = et.getText().toString();
+        if(TextUtils.isEmpty(emptyString)) {
+            et.setError("Please enter an ingredient!");
+        }else {
+            searchByIngredient();
+        }
     }
 
 

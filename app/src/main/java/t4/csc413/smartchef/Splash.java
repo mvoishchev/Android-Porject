@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.content.Intent;
 
 import connectors.SearchTools;
+import database.recipedb.RecipeDBLayout;
 
 
 /*
@@ -50,5 +51,6 @@ public class Splash extends Activity {
     private void init()
     {
         SearchTools.init();
+        RecipeDBLayout.init(this);
     }
 }

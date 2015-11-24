@@ -19,7 +19,7 @@ import android.widget.RelativeLayout;
 import connectors.evernote.EvernoteActivity;
 import connectors.google.MapsActivity;
 import database.allergiesDB.AllergiesDBLayout;
-import database.recipeDB.RecipeDBLayout;
+import database.recipedb.RecipeDBLayout;
 
 /*
  *  Create by: MG
