@@ -12,9 +12,30 @@
         android:layout_height="match_parent"
         android:paddingTop="40dp"
         tools:context="connectors.google.MapsActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
+     <ImageButton
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/barSearch"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true"
+         android:background="@drawable/coctail"
+         android:onClick="barSearch"/>
 
+     <ImageButton
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/restaurantSearch"
+         android:background="@drawable/restaurants"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:onClick="restaurantSearch"
+         />
 
 
  </RelativeLayout>

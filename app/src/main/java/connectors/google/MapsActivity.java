@@ -5,12 +5,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,15 +26,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-
 import com.google.android.gms.maps.model.Marker;
 import android.location.Location;
+import android.view.View;
 import android.widget.EditText;
-
 import com.google.gson.Gson;
-
-
 import t4.csc413.smartchef.R;
+
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
@@ -66,7 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //updatePlaces();
         //userSearch=(EditText) findViewById(R.id.userSearch);
         //userSearch = (EditText) userSearch.getText();
-
     }
 
 
@@ -84,19 +82,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);                //enables myLocation button
         this.checkLocationSetting();        //check location settings on the device
 
-        // Add a marker in San Francisco and move the camera
-        LatLng sanFrancisco = new LatLng(37.7833, -122.4167);   //SF coordinates
-        mMap.addMarker(new MarkerOptions().position(sanFrancisco).title("Marker in San Francisco"));    //new marker creation
-        CameraPosition cameraPosition = new CameraPosition.Builder()    //change camera on the map
-                .target(sanFrancisco)      // Sets the center of the map to San Francisco
-                .zoom(12)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
-                .build();                   // Creates a CameraPosition from the builder
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));  //move camera to marker
-
+    //Pan the camera to Users Current Location
         mMap.setOnMapClickListener(this);
         mMap.setOnMyLocationButtonClickListener(this);
         //mMap.startUserSearch(userSearch);
+        locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        //get last location
+        Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        double lat=lastLoc.getLatitude();
+        double lng=lastLoc.getLongitude();
+        LatLng currentMarker = new LatLng(lat,lng);
+        CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
+                .target(currentMarker)      // Sets the center of the map to to the new created marker
+                .zoom(15)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+
+        updatePlaces(lat, lng,1);
     }
 
     public void checkLocationSetting() {    //method to check location settings and enable them if necessary
@@ -156,7 +159,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
         double lat= latLng.latitude;
         double lng=latLng.longitude;
-        updatePlaces(lat,lng);
+        updatePlaces(lat,lng,1);
 
         Log.v("MyMapActivity", "location changed");
         Log.i("MAP", "Marker");
@@ -179,25 +182,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
 
-        updatePlaces(lat,lng);
+        updatePlaces(lat, lng, 1);
+
         return true;
     }
 
+    public void barSearch(View view) {
+        Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        double lat=lastLoc.getLatitude();
+        double lng=lastLoc.getLongitude();
+        updatePlaces(lat,lng,2);
+    }
 
-    public void updatePlaces(double mapLat,double mapLng) {
+    public void restaurantSearch(View view) {
+        Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        double lat=lastLoc.getLatitude();
+        double lng=lastLoc.getLongitude();
+        updatePlaces(lat,lng,3);
+    }
+
+    public void updatePlaces(double mapLat,double mapLng, int style) {
         //get location manager
         checkLocationSetting();
-        //locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        //get last location
-        //Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         double lat = mapLat;
         double lng = mapLng;
         //create LatLng
         //build places query string
         String supermarketSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=grocery_or_supermarket&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
-        //execute query
+        String barSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=bar|night_club&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
+        String restaurauntSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=cafe|restaurant&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
 
-        volleyRequest(supermarketSearchStr);
+        //execute query
+        if (style==1) {
+            volleyRequest(supermarketSearchStr);
+        }   else if (style==2){
+                volleyRequestForBar(barSearchStr);
+            } else if (style==3){
+                    volleyRequestForRestauraunt(restaurauntSearchStr);
+                }
     }
 
 
@@ -218,10 +240,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
                             Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
                                     "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
+                            /*MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
+                                    .title(ListOfPlaces.results.get(i).name)
+                                    .snippet(ListOfPlaces.results.get(i).vicinity);*/
                             MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
-                                    .title(ListOfPlaces.results.get(i).name);
-                            placeMarker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                            mMap.addMarker(placeMarker);
+                                    .title(ListOfPlaces.results.get(i).name)
+                                    .snippet(ListOfPlaces.results.get(i).vicinity);
+                                    placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.shopping));
+                                    mMap.addMarker(placeMarker);
+
                         }
                     }
                 },new Response.ErrorListener() {
@@ -232,6 +259,81 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
         queue.add(stringRequest);
+    }
+
+
+    void volleyRequestForBar(String placesUrl) {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        //Request a string response from the provided URL.
+        final StringRequest stringRequestForBars = new StringRequest(Request.Method.GET, placesUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String stringRequestForBars) {
+                        // Display the first 500 characters of the response string.
+                        //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
+                        GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequestForBars, GooglePlacesData.class);
+                        for (int i = 0; i < ListOfPlaces.results.size(); i++) {
+                            //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
+                            //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
+                            Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
+                                    "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
+                            /*MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
+                                    .title(ListOfPlaces.results.get(i).name)
+                                    .snippet(ListOfPlaces.results.get(i).vicinity);*/
+                            MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat, ListOfPlaces.results.get(i).geometry.location.lng))
+                                    .title(ListOfPlaces.results.get(i).name)
+                                    .snippet(ListOfPlaces.results.get(i).vicinity);
+                            placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.baricon));
+                            mMap.addMarker(placeMarker);
+                        }
+                    }
+                },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.i("REQUEST RESPOSNE", "Gracefully failed");
+            }
+        });
+        queue.add(stringRequestForBars);
+    }
+
+    void volleyRequestForRestauraunt(String placesUrl) {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        //Request a string response from the provided URL.
+        final StringRequest stringRequestForRestauraunt = new StringRequest(Request.Method.GET, placesUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String stringRequestForRestauraunt) {
+                        // Display the first 500 characters of the response string.
+                        //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
+                        GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequestForRestauraunt, GooglePlacesData.class);
+                        for (int i = 0; i < ListOfPlaces.results.size(); i++) {
+                            //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
+                            //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
+                            Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
+                                    "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
+                            /*MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
+                                    .title(ListOfPlaces.results.get(i).name)
+                                    .snippet(ListOfPlaces.results.get(i).vicinity);*/
+                            MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat, ListOfPlaces.results.get(i).geometry.location.lng))
+                                    .title(ListOfPlaces.results.get(i).name)
+                                    .snippet(ListOfPlaces.results.get(i).vicinity);
+                            placeMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.restauranticon));
+                            mMap.addMarker(placeMarker);
+                        }
+                    }
+                },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.i("REQUEST RESPOSNE", "Gracefully failed");
+            }
+        });
+        queue.add(stringRequestForRestauraunt);
     }
 
 }
