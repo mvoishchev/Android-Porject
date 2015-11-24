@@ -12,7 +12,7 @@ import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
 import connectors.google.MapsActivity;
 import tools.Ingredient;
-import database.recipedb.RecipeDBLayout;
+import database.recipeDB.RecipeDBLayout;
 
 import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;

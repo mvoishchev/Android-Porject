@@ -53,7 +53,10 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".SlideMain" />
 
-        <activity android:name="database.recipedb.RecipeDBLayout"
+        <activity android:name="database.recipeDB.RecipeDBLayout"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="database.allergiesDB.AllergiesDBLayout"
             android:screenOrientation="portrait"/>
 
         <activity

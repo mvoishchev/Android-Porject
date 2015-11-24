@@ -18,7 +18,8 @@ import android.widget.RelativeLayout;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.google.MapsActivity;
-import database.recipedb.RecipeDBLayout;
+import database.allergiesDB.AllergiesDBLayout;
+import database.recipeDB.RecipeDBLayout;
 
 /*
  *  Create by: MG
@@ -172,14 +173,20 @@ public class NavBaseActivity extends ActionBarActivity {
                 finish();// finishes the current activity
                 break;
             case 2:
-                Intent intent2 = new Intent(this, RecipeDBLayout.class);
+                Intent intent2 = new Intent(this, MapsActivity.class);
                 startActivity(intent2);
                 finish();// finishes the current activity
                 break;
             case 3:
-                Intent intent3= new Intent (this, MapsActivity.class);
+                Intent intent3 = new Intent (this, RecipeDBLayout.class);
                 startActivity(intent3);
                 finish();
+                break;
+            case 4:
+                Intent intent4 = new Intent (this, AllergiesDBLayout.class);
+                startActivity(intent4);
+                finish();
+                break;
             default:
                 break;
         }
