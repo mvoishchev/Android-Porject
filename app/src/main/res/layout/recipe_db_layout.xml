@@ -22,32 +22,34 @@ android:layout_height="match_parent">
         tools:context=".MainActivity" >
 
         <Button
-            android:id="@+id/btnClear"
+            android:id="@+id/btnClearRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="removeRecipe"
-            android:text="Clear List"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:text="Clear Recipes"
+            android:layout_alignTop="@+id/addRecipeBtn"
+            android:layout_alignRight="@+id/listViewRecipeDB"
+            android:layout_alignEnd="@+id/listViewRecipeDB" />
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/listViewRecipeDB"
-            android:layout_below="@+id/btnClear"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/btnClearRecipe" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Add"
-            android:id="@+id/button2"
-            android:layout_above="@+id/listViewRecipeDB"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:text="Add Recipe"
+            android:id="@+id/addRecipeBtn"
             android:onClick="addRecipe"
-            android:nestedScrollingEnabled="false" />
+            android:nestedScrollingEnabled="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

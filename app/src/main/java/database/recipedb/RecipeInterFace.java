@@ -1,4 +1,4 @@
-package database.recipedb;
+package database.recipeDB;
 
 import android.view.View;
 
@@ -10,5 +10,4 @@ public interface RecipeInterFace {
     void addRecipe(View v);
     void removeRecipe(View v);
     void getRecipe(View v);
-
 }

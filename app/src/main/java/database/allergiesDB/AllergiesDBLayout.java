@@ -1,4 +1,4 @@
-package database.recipeDB;
+package database.allergiesDB;
 
 import android.content.res.TypedArray;
 import android.database.Cursor;
@@ -10,23 +10,13 @@ import android.widget.SimpleCursorAdapter;
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
-
 /**
- * Created by Marc
- * NOTE:  other classes(evernote) can use methods
- *          addRecipe - manually insert recipe to db.insertRow()
- *                      1) instantiate DBAdapter
- *                      2) use object to access DBAdapter's insertRow function
- *          removeRecipe
- *          getRecipe
- *
- * CHECK TO DO.  Small minor problem
+ * Created by MG on 11/23/2015.
  */
-
-public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
+public class AllergiesDBLayout extends NavBaseActivity implements AllergiesInterFace {
 
     // DB
-    DBAdapter db;
+    DBAdapterAllergies db;
 
     // NavBar
     private String[] navMenuTitles;
@@ -35,7 +25,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_db_layout);
+        setContentView(R.layout.allergies_db_layout);
 
         openDB();
         populateListViewDB();
@@ -52,7 +42,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     }
 
     private void openDB() {
-        db = new DBAdapter(this);
+        db = new DBAdapterAllergies(this);
         db.open();
     }
 
@@ -60,24 +50,19 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
         db.close();
     }
 
-    /*
-     * TODO: make it so it actually accepts recipe name and recipe url from Harjit's recipe class
-     * Recipe.getRecipeName();
-     * Recipe.getRecipeUrl();
-     */
-    public void addRecipe(View v) {
-        db.insertRow("RECIPENAME", "RECIPEURL");
+    public void addAllergies(View v) {
+        db.insertRow("ALLERGY HERE");
         populateListViewDB();
     }
 
-    // removes recipes from db
-    public void removeRecipe(View v) {
+    // removes allergies from db
+    public void removeAllergies(View v) {
         db.deleteAll();
         populateListViewDB();
     }
 
-    // get all recipes from db
-    public void getRecipe(View v) {
+    // get all allergies from db
+    public void getAllergies(View v) {
         db.getAllRows();
     }
 
@@ -87,20 +72,20 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
         startManagingCursor(cursor);
 
         String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_RECIPENAME, DBAdapter.KEY_RECIPESRCURL};
+                {DBAdapterAllergies.KEY_ALLERGYNAME};
         int[] toViewIDs = new int[]
-                {R.id.recipe_name,      R.id.recipe_url};
+                {R.id.allergy};
 
         SimpleCursorAdapter myCursorAdapter =
                 new SimpleCursorAdapter(
                         this,
-                        R.layout.recipe_db_listview,
+                        R.layout.allergies_db_listview,
                         cursor,
                         fromFieldNames,
                         toViewIDs);
 
         // set adapter
-        ListView myList = (ListView) findViewById(R.id.listViewRecipeDB);
+        ListView myList = (ListView) findViewById(R.id.listViewAllergiesDB);
         myList.setAdapter(myCursorAdapter);
     }
 

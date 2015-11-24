@@ -3,12 +3,12 @@
     <string name="app_name">Smart Chef</string>
     <string name="multilines">WHAT IS IN YOUR\nFRIDGE</string>
     <string name="multilines1"> PICK ALLERGIES-FREE\nFOOD</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="eula_title">License</string>
     <string name="eula_accept">Accept</string>
     <string name="eula_refuse">Decline</string>
     <string name="button_text">search</string>
+
 
     //Evernote connector strings START - JP
     <string name="open_drawer">Open drawer</string>
@@ -46,17 +46,17 @@
     <string-array name="nav_drawer_items">
         <item>Search Options</item>
         <item>Evernote Activity</item>
-        <item>DataBase</item>
         <item>Google Maps</item>
-        <item>Fifth</item>
+        <item>My Recipes</item>
+        <item>Allergies</item>
         <item>Sixth</item>
     </string-array>
     <array name="nav_drawer_icons">
         <item>@drawable/searchicon72</item>
         <item>@drawable/evernote</item>
-        <item>@drawable/pantry</item>
         <item>@drawable/placesmaps</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/pantry</item>
+        <item>@drawable/allergies</item>
         <item>@drawable/ic_launcher</item>
     </array>
     <string name="title_activity_loading">LoadingActivity</string>
