@@ -40,7 +40,6 @@ public class ResultsActivity extends NavBaseActivity {
     String text_for_results;
 
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.the_results);
