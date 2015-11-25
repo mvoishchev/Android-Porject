@@ -27,29 +27,28 @@ android:layout_height="match_parent">
             android:layout_height="wrap_content"
             android:onClick="removeRecipe"
             android:text="Clear Recipes"
-            android:layout_alignTop="@+id/addRecipeBtn"
-            android:layout_alignRight="@+id/listViewRecipeDB"
-            android:layout_alignEnd="@+id/listViewRecipeDB" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/listViewRecipeDB"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/btnClearRecipe"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/btnClearRecipe" />
+            android:layout_below="@+id/titleRecipe" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Recipe"
-            android:id="@+id/addRecipeBtn"
-            android:onClick="addRecipe"
-            android:nestedScrollingEnabled="false"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Your Saved Recipes"
+            android:id="@+id/titleRecipe"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
