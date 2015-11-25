@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import database.shoppinglist.ShoppingListLayout;
 import t4.csc413.smartchef.R;
 
 /**
@@ -19,8 +20,8 @@ import t4.csc413.smartchef.R;
 public class IngredientDisplayAdapter extends BaseAdapter implements ListAdapter{
 
     private ArrayList<String> ingredients;
-    private FridgeLayout context;
-    public IngredientDisplayAdapter(ArrayList<String> list, FridgeLayout context){
+    private Context context;
+    public IngredientDisplayAdapter(ArrayList<String> list, Context context){
         ingredients = list;
         this.context = context;
     }
@@ -57,7 +58,10 @@ public class IngredientDisplayAdapter extends BaseAdapter implements ListAdapter
             @Override
             public void onClick(View v) {
                 ingredients.remove(position);
-                context.removeIngredient(position);
+                if(context instanceof FridgeLayout)
+                    ((FridgeLayout)context).removeIngredient(position);
+                else if(context instanceof ShoppingListLayout)
+                    ((ShoppingListLayout)context).removeIngredient(position);
                 notifyDataSetChanged();
             }
         });

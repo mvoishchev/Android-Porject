@@ -1,4 +1,4 @@
-package database.fridge;
+package database.shoppinglist;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
  *  DB to handle recipes
  */
 
-public class FridgeDB {
+public class ShoppingListDB {
 
-    private static final String TAG = "DBAdapterIngredients";
+    private static final String TAG = "DBAdapterShoppingList";
 
     public static final String KEY_ROWID = "_id";
     public static final int COL_ROWID = 0;
@@ -26,7 +26,7 @@ public class FridgeDB {
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_INGREDIENTNAME};
 
     // DB info: it's name, and the table we are using (just one).
-    public static final String DATABASE_NAME = "IngredientDataBase";
+    public static final String DATABASE_NAME = "ShoppingListDataBase";
     public static final String DATABASE_TABLE = "ingredientTable";
     // Track DB version if a new version of your app changes the format.
     public static final int DATABASE_VERSION = 3;
@@ -43,42 +43,32 @@ public class FridgeDB {
     private DatabaseHelper myDBHelper;
     private SQLiteDatabase db;
 
-    public FridgeDB(Context ctx) {
+    public ShoppingListDB(Context ctx) {
         this.context = ctx;
         myDBHelper = new DatabaseHelper(context);
     }
 
-    public static ArrayList<String> GetIngredientsInFridge(){
+    //TODO
+   /* public static ArrayList<String> GetShoppingList(){
+        FridgeLayout.db.open();
+        Cursor cursor = FridgeLayout.db.getAllRows();
+
+        String[] names = cursor.getColumnNames();
+
         ArrayList<String> args = new ArrayList<String>();
-        if(FridgeLayout.db != null) {
-            FridgeLayout.db.open();
-            Cursor cursor = FridgeLayout.db.getAllRows();
 
-            String[] names = cursor.getColumnNames();
-
-            while (!cursor.isAfterLast()) {
-                args.add(cursor.getString(1));
-                cursor.moveToNext();
-            }
-
-            FridgeLayout.db.close();
+        while(!cursor.isAfterLast()){
+            args.add(cursor.getString(1));
+            cursor.moveToNext();
         }
+
+        FridgeLayout.db.close();
         return args;
-    }
+    }*/
 
-    public static CharSequence[] GetIngredientsForFridgeButton(){
-        ArrayList<String> lines = GetIngredientsInFridge();
-        CharSequence[] ingredients = new CharSequence[lines.size() + 1];
-        ingredients[0] = "Use Entire Fridge";
-        for(int line = 1; line <= lines.size(); line++){
-            ingredients[line] = lines.get(line - 1);
-        }
-
-        return ingredients;
-    }
 
     // Open the database connection.
-    public FridgeDB open() {
+    public ShoppingListDB open() {
         db = myDBHelper.getWritableDatabase();
         return this;
     }
@@ -135,7 +125,7 @@ public class FridgeDB {
         return c;
     }
 
-     // Private class which handles database creation and upgrading.
+    // Private class which handles database creation and upgrading.
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);

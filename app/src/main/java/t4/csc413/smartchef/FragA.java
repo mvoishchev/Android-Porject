@@ -2,6 +2,7 @@ package t4.csc413.smartchef;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,13 @@ import android.widget.Toast;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
+import database.DataBaseManager;
 import tools.Ingredient;
 import database.recipedb.RecipeDBLayout;
 
 import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
+import static t4.csc413.smartchef.R.id.shoppinglist;
 
 
 public class FragA extends android.support.v4.app.Fragment {
@@ -61,11 +64,21 @@ public class FragA extends android.support.v4.app.Fragment {
             public void onClick(View v) {
                 /*Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
                 startActivity(intent);*/
-                RecipeDBLayout.addRecipeToDB(m.rr);
+                DataBaseManager.AddRecipeToFavorites(m.rr);
                 Toast.makeText(m, "Recipe Saved!", Toast.LENGTH_SHORT).show();
 
 
             }
+        });
+
+        Button shoppingList = (Button)view.findViewById(shoppinglist);
+        shoppingList.setOnClickListener(new View.OnClickListener(){
+
+           @Override
+            public void onClick(View v){
+               DataBaseManager.UpdateShoppingList(m.rr);
+               Toast.makeText(m, "Shopping List updated!", Toast.LENGTH_SHORT).show();
+           }
         });
 
         return  view;

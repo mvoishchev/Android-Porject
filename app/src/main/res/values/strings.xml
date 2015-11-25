@@ -48,7 +48,7 @@
         <item>Evernote Activity</item>
         <item>Google Maps</item>
         <item>My Recipes</item>
-        <item>Allergies</item>
+        <item>Shopping List</item>
         <item>Fridge</item>
     </string-array>
     <array name="nav_drawer_icons">

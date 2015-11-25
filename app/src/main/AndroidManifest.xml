@@ -61,7 +61,8 @@
 
         <activity android:name="database.fridge.FridgeLayout"
             android:screenOrientation="portrait"/>
-
+        <activity android:name="database.shoppinglist.ShoppingListLayout"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="connectors.evernote.LoginActivity"
             android:label="@string/label_login"

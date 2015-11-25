@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import connectors.SearchTools;
 import connectors.evernote.LoginActivity;
+import database.DataBaseManager;
 import database.fridge.FridgeDB;
 import database.fridge.FridgeLayout;
 
@@ -59,7 +60,7 @@ public class MainActivity extends NavBaseActivity {
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        instance = this;
+        init();
         et = (EditText)findViewById(R.id.EditText01);
 
         et.setOnKeyListener(new View.OnKeyListener() {
@@ -374,5 +375,16 @@ public class MainActivity extends NavBaseActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void init()
+    {
+        //initialize on first run, otherwise don't waste time
+        if(instance == null){
+            SearchTools.init();
+            DataBaseManager.init(this);
+        }
+        instance = this;
     }
 }

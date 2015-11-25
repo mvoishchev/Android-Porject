@@ -22,6 +22,7 @@ import connectors.google.MapsActivity;
 import database.allergiesDB.AllergiesDBLayout;
 import database.fridge.FridgeLayout;
 import database.recipedb.RecipeDBLayout;
+import database.shoppinglist.ShoppingListLayout;
 
 /*
  *  Create by: MG
@@ -184,7 +185,7 @@ public class NavBaseActivity extends ActionBarActivity {
                 finish();
                 break;
             case 4:
-                Intent intent4 = new Intent (this, AllergiesDBLayout.class);
+                Intent intent4 = new Intent (this, ShoppingListLayout.class);
                 startActivity(intent4);
                 finish();
                 break;
