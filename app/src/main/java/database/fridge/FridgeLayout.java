@@ -11,6 +11,7 @@ import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
+import t4.csc413.smartchef.MainActivity;
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
@@ -58,6 +59,7 @@ public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
 
     protected void onDestroy() {
         super.onDestroy();
+        MainActivity.updateInstance();
         closeDB();
     }
 

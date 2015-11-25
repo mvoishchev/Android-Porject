@@ -65,6 +65,17 @@ public class FridgeDB {
         return args;
     }
 
+    public static CharSequence[] GetIngredientsForFridgeButton(){
+        ArrayList<String> lines = GetIngredientsInFridge();
+        CharSequence[] ingredients = new CharSequence[lines.size() + 1];
+        ingredients[0] = "Use Entire Fridge";
+        for(int line = 1; line <= lines.size(); line++){
+            ingredients[line] = lines.get(line - 1);
+        }
+
+        return ingredients;
+    }
+
     // Open the database connection.
     public FridgeDB open() {
         db = myDBHelper.getWritableDatabase();

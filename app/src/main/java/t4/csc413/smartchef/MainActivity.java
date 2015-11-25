@@ -16,6 +16,9 @@ import android.widget.EditText;
 
 import connectors.SearchTools;
 import connectors.evernote.LoginActivity;
+import database.fridge.FridgeDB;
+import database.fridge.FridgeLayout;
+
 import android.widget.Button;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -25,6 +28,7 @@ import android.view.inputmethod.EditorInfo;
 import android.text.TextUtils;
 
 public class MainActivity extends NavBaseActivity {
+    private static MainActivity instance;
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
@@ -32,8 +36,6 @@ public class MainActivity extends NavBaseActivity {
     protected boolean[] _selections = new boolean[_cuisine.length];
     protected CharSequence[] _allergies = {"Pecan-free", "Gluten-free", "Seafood", "Lactose-free", };
     protected boolean[] _allergySelection = new boolean[_allergies.length];
-    protected CharSequence[] _cupboard = {"Cutting Board", "Colander", "Grater", "Ladle", "Measuring cup", "Measuring spoon","Mortar and pestle","Peeler","Tong","Wooden spoon","Zester","Knife"};
-    protected boolean[] _cupboardSelection = new boolean[_cupboard.length];
     protected CharSequence[] _useFridge = {"Frozen mix-Veggies", "Brocolli", "Cabbage", "Beans", "Tomato", "Milk", "ButterNut","Pumpkin", "Green-Chillies", "Jalapeno", "Butter", "Cheese", "Eggplant","Egg"};
     protected boolean[] _fridgeSelection = new boolean[_useFridge.length];
 
@@ -41,14 +43,13 @@ public class MainActivity extends NavBaseActivity {
 
     protected Button _cuisineButton;
     protected Button _allergiesButton;
-    protected Button _cupboardButton;
+    protected Button _goToFridgeButton;
     protected Button _useFridgeButton;
     EditText et;
     private String selections;
     private String selection;
     private String allergySelection = "";
-    private String cupboardSelection;
-    private String fridgeSelection;
+    private String fridgeSelection = "";
 
     private boolean visible = true;
 
@@ -58,6 +59,7 @@ public class MainActivity extends NavBaseActivity {
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        instance = this;
         et = (EditText)findViewById(R.id.EditText01);
 
         et.setOnKeyListener(new View.OnKeyListener() {
@@ -96,9 +98,11 @@ public class MainActivity extends NavBaseActivity {
 
         _allergies = SearchTools.getSupportedAllergies();
         _cuisine = SearchTools.getSupportedCuisines();
+        _useFridge = FridgeDB.GetIngredientsForFridgeButton();
 
         _selections = new boolean[_cuisine.length];
         _allergySelection = new boolean[_allergies.length];
+        _fridgeSelection = new boolean[_useFridge.length];
 
         advanceSearchButton = (Button) findViewById(R.id.advancedbutton);
 
@@ -121,14 +125,15 @@ public class MainActivity extends NavBaseActivity {
         });
         _allergiesButton.setVisibility(View.INVISIBLE);
 
-        _cupboardButton = (Button) findViewById(R.id.cupboardbutton);
-        _cupboardButton.setOnClickListener(new View.OnClickListener() {
+        _goToFridgeButton = (Button) findViewById(R.id.gotofridge);
+        _goToFridgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(3);
+                Intent i = new Intent(getApplicationContext(), FridgeLayout.class);
+                startActivity(i);
             }
         });
-        _cupboardButton.setVisibility(View.INVISIBLE);
+        _goToFridgeButton.setVisibility(View.INVISIBLE);
 
 
         _useFridgeButton = (Button) findViewById(R.id.fridgebutton);
@@ -149,7 +154,7 @@ public class MainActivity extends NavBaseActivity {
             public void onClick(View view) {
                 _cuisineButton.setVisibility(View.VISIBLE);
                 _allergiesButton.setVisibility(View.VISIBLE);
-                _cupboardButton.setVisibility(View.VISIBLE);
+                _goToFridgeButton.setVisibility(View.VISIBLE);
                 _useFridgeButton.setVisibility(View.VISIBLE);
                 Toggle();
             }
@@ -170,11 +175,17 @@ public class MainActivity extends NavBaseActivity {
         set(navMenuTitles,navMenuIcons);
     }
 
+    public static void updateInstance(){
+        instance._useFridge = FridgeDB.GetIngredientsForFridgeButton();
+        instance._fridgeSelection = new boolean[instance._useFridge.length];
+
+    }
+
     private void Toggle(){
         if(visible == true){
             _cuisineButton.setVisibility(View.GONE);
             _allergiesButton.setVisibility(View.GONE);
-            _cupboardButton.setVisibility(View.GONE);
+            _goToFridgeButton.setVisibility(View.GONE);
             _useFridgeButton.setVisibility(View.GONE);
             visible = false;
 
@@ -182,7 +193,7 @@ public class MainActivity extends NavBaseActivity {
         else{
             _cuisineButton.setVisibility(View.VISIBLE);
             _allergiesButton.setVisibility(View.VISIBLE);
-            _cupboardButton.setVisibility(View.VISIBLE);
+            _goToFridgeButton.setVisibility(View.VISIBLE);
             _useFridgeButton.setVisibility(View.VISIBLE);
             visible = true;
         }
@@ -196,20 +207,14 @@ public class MainActivity extends NavBaseActivity {
         AlertDialog.Builder menu = new AlertDialog.Builder(this);
 
         //System.out.println("THE ID IS: " + id);
-        if (id == 4){
+        if (id == 4) {
             return new AlertDialog.Builder(this).setTitle("Ingredient on Hand")
-                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge",_useFridge))
+                    .setMultiChoiceItems(_useFridge, _fridgeSelection, new DialogSelectionClickHandler("fridge", _useFridge))
                     .setPositiveButton("OK", new DialogButtonClickHandler())
                     .create();
 
         }
-        else if (id == 3){
-            return new AlertDialog.Builder(this).setTitle("Cupboard")
-                    .setMultiChoiceItems(_cupboard, _cupboardSelection, new DialogSelectionClickHandler("cupboard",_cupboard))
-                    .setPositiveButton("OK", new DialogButtonClickHandler())
-                    .create();
 
-        }
         else if(id == 2){
             return new AlertDialog.Builder(this).setTitle("My Food Allergies")
                     .setMultiChoiceItems(_allergies, _allergySelection, new DialogSelectionClickHandler("allergies",_allergies))
@@ -236,6 +241,7 @@ public class MainActivity extends NavBaseActivity {
             current = temp;
             id = _id;
         }
+
         public void onClick(DialogInterface dialog, int clicked, boolean selected) {
 
             if(selected) {
@@ -245,6 +251,18 @@ public class MainActivity extends NavBaseActivity {
                     selections = (String) current[clicked];
                 } else if (id.equalsIgnoreCase("allergies")) {
                     allergySelection = allergySelection.concat((String) current[clicked]).concat(",");
+                } else if(id.equalsIgnoreCase("fridge")){
+                    //if they select All Ingredients From Fridge
+                    if(clicked == 0){
+                        for(int item = 1; item < _fridgeSelection.length; item++){
+                            fridgeSelection = fridgeSelection.concat((String) current[item]).concat(",");
+                        }
+                    }else {
+                        if(!fridgeSelection.contains(current[clicked]))
+                            fridgeSelection = fridgeSelection.concat((String) current[clicked]).concat(",");
+                    }
+
+                        et.setText(fridgeSelection);
                 }
             }else{
                 //if unclicked, remove them from being passed
@@ -259,6 +277,17 @@ public class MainActivity extends NavBaseActivity {
                 if(allergySelection != null) {
                     if (allergySelection.contains((String) current[clicked]))
                         allergySelection = allergySelection.replace(((String) current[clicked]).concat(","), "");
+                }
+
+                if(fridgeSelection != null){
+                    if(clicked == 0){
+                        fridgeSelection = "";
+                        et.setText(fridgeSelection);
+                    }
+                    else if(fridgeSelection.contains((String)current[clicked])) {
+                        fridgeSelection = fridgeSelection.replace(((String) current[clicked]).concat(","), "");
+                        et.setText(fridgeSelection);
+                    }
                 }
             }
 
@@ -308,11 +337,8 @@ public class MainActivity extends NavBaseActivity {
             bundle.putString("allergies",allergySelection.toString()); /*allergies here**/
         if(fridgeSelection != null)
             bundle.putString("useFridge",fridgeSelection.toString());/*Use Fridge */
-        if(cupboardSelection != null)
-            bundle.putString("cupboard",cupboardSelection.toString());/*Use cupborad */
 
-
-            Intent i = new Intent(this, LoadingActivity.class);
+        Intent i = new Intent(this, LoadingActivity.class);
         i.putExtras(bundle);
         startActivity(i);
 
