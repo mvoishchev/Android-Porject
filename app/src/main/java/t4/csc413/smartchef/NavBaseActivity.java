@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -57,10 +58,6 @@ public class NavBaseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer);
-        // if (savedInstanceState == null) {
-        // // on first time display view for first nav item
-        // // displayView(0);
-        // }
     }
 
     public void set(String[] navMenuTitles, TypedArray navMenuIcons) {
@@ -91,14 +88,14 @@ public class NavBaseActivity extends ActionBarActivity {
         mDrawerList.setAdapter(adapter);
 
         // enabling action bar app icon and behaving it as toggle button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        // getSupportActionBar().setIcon(R.drawable.ic_drawer);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.smart_chef);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, // nav menu toggle icon
-                R.string.app_name,
-                R.string.app_name
+                R.drawable.smart_chef, // nav menu toggle icon
+                R.string.drawer_open,
+                R.string.drawer_close
         ) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(mTitle);
@@ -112,8 +109,12 @@ public class NavBaseActivity extends ActionBarActivity {
                 supportInvalidateOptionsMenu();
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
 
+    @Override
+    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        mDrawerToggle.syncState();
     }
 
     private class SlideMenuClickListener implements
@@ -146,14 +147,13 @@ public class NavBaseActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /***
+    /**
      * Called when invalidateOptionsMenu() is triggered
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         // boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        // menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -166,17 +166,17 @@ public class NavBaseActivity extends ActionBarActivity {
             case 0:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-                finish();// finishes the current activity
+                finish();
                 break;
             case 1:
                 Intent intent1 = new Intent(this, EvernoteActivity.class);
                 startActivity(intent1);
-                finish();// finishes the current activity
+                finish();
                 break;
             case 2:
                 Intent intent2 = new Intent(this, MapsActivity.class);
                 startActivity(intent2);
-                finish();// finishes the current activity
+                finish();
                 break;
             case 3:
                 Intent intent3 = new Intent (this, RecipeDBLayout.class);
@@ -188,13 +188,11 @@ public class NavBaseActivity extends ActionBarActivity {
                 startActivity(intent4);
                 finish();
                 break;
-
             case 5:
-                Intent intent5 = new Intent(this, FridgeLayout.class);
+                Intent intent5 = new Intent (this, FridgeLayout.class);
                 startActivity(intent5);
                 finish();
                 break;
-
             default:
                 break;
         }
@@ -210,11 +208,6 @@ public class NavBaseActivity extends ActionBarActivity {
         mTitle = title;
         getActionBar().setTitle(mTitle);
     }
-
-    /**
-     * When using the ActionBarDrawerToggle, you must call it during
-     * onPostCreate() and onConfigurationChanged()...
-     */
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
