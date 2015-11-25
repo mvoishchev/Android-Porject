@@ -57,9 +57,11 @@
         <item>@drawable/placesmaps</item>
         <item>@drawable/pantry</item>
         <item>@drawable/allergies</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/fridge</item>
     </array>
     <string name="title_activity_loading">LoadingActivity</string>
+    <string name="drawer_open">Open Navigation Drawer</string>
+    <string name="drawer_close">Close Navigation Drawer</string>
     //NavBar END
 
 </resources>
