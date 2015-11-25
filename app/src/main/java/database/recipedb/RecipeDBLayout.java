@@ -16,13 +16,7 @@ import tools.Recipe;
 /**
  * Created by Marc
  * NOTE:  other classes(evernote) can use methods
- *          addRecipe - manually insert recipe to db.insertRow()
- *                      1) instantiate DBAdapter
- *                      2) use object to access DBAdapter's insertRow function
- *          removeRecipe
- *          getRecipe
- *
- * CHECK TO DO.  Small minor problem
+ *          addRecipeToDB
  */
 
 public class RecipeDBLayout extends NavBaseActivity {
