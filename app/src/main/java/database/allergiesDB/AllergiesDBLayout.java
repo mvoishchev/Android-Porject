@@ -13,7 +13,7 @@ import t4.csc413.smartchef.R;
 /**
  * Created by MG on 11/23/2015.
  */
-public class AllergiesDBLayout extends NavBaseActivity implements AllergiesInterFace {
+public class AllergiesDBLayout extends NavBaseActivity {
 
     // DB
     DBAdapterAllergies db;

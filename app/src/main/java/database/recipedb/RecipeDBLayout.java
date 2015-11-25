@@ -25,7 +25,7 @@ import tools.Recipe;
  * CHECK TO DO.  Small minor problem
  */
 
-public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
+public class RecipeDBLayout extends NavBaseActivity {
 
     // DB
     public static DBAdapter db;
@@ -66,20 +66,11 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
         db.close();
     }
 
-    /*
-     * TODO: make it so it actually accepts recipe name and recipe url from Harjit's recipe class
-     * Recipe.getRecipeName();
-     * Recipe.getRecipeUrl();
-     */
-
+    // add recipe to db
     public static void addRecipeToDB(Recipe rec){
         openDB();
         db.insertRow(rec.getName(), rec.getRecipeUrl());
         closeDB();
-    }
-    public void addRecipe(View v, Recipe rec) {
-        db.insertRow(rec.getName(), rec.getRecipeUrl());
-        populateListViewDB();
     }
 
     // removes recipes from db
@@ -89,7 +80,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     }
 
     // get all recipes from db
-    public void getRecipe(View v) {
+    public static void getRecipe(View v) {
         db.getAllRows();
     }
 
