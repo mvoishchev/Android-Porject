@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.content.Intent;
 
 import connectors.SearchTools;
+import database.fridge.FridgeDB;
+import database.fridge.FridgeLayout;
 import database.recipedb.RecipeDBLayout;
 
 
@@ -52,5 +54,6 @@ public class Splash extends Activity {
     {
         SearchTools.init();
         RecipeDBLayout.init(this);
+        FridgeLayout.init(this);
     }
 }

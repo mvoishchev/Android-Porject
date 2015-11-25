@@ -1,16 +1,18 @@
-package database.recipedb;
+package database.fridge;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.util.ArrayList;
+
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
-import tools.Recipe;
 
 
 /**
@@ -25,23 +27,25 @@ import tools.Recipe;
  * CHECK TO DO.  Small minor problem
  */
 
-public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
+public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
 
     // DB
-    public static DBAdapter db;
+    public static FridgeDB db;
 
     // NavBar
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
+    private EditText et;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_db_layout);
+        setContentView(R.layout.fridge_db_layout);
 
         openDB();
         populateListViewDB();
 
+        et = (EditText)findViewById(R.id.edit);
         // Nav Drawer
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
@@ -49,7 +53,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     }
 
     public static void init(Context context){
-        db = new DBAdapter(context);
+        db = new FridgeDB(context);
     }
 
     protected void onDestroy() {
@@ -71,21 +75,29 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
      * Recipe.getRecipeName();
      * Recipe.getRecipeUrl();
      */
+    public void addIngredient(View v) {
+        String line = et.getText().toString();
+        if(line.length() > 0)
+            db.insertRow(line);
 
-    public static void addRecipeToDB(Recipe rec){
-        openDB();
-        db.insertRow(rec.getName(), rec.getRecipeUrl());
-        closeDB();
-    }
-    public void addRecipe(View v, Recipe rec) {
-        db.insertRow(rec.getName(), rec.getRecipeUrl());
         populateListViewDB();
     }
 
     // removes recipes from db
-    public void removeRecipe(View v) {
-        db.deleteAll();
+    public void removeIngredient(int position) {
+        Cursor cursor = db.getAllRows();
+        cursor.move(position);
+        db.deleteRow(cursor.getLong(0));
         populateListViewDB();
+    }
+
+    public static ArrayList<String> getIngredients(){
+        ArrayList<String> ingredients = new ArrayList<String>();
+        String[] data = db.getAllRows().getColumnNames();
+        for(int ingredient = 0; ingredient < data.length; ingredient++){
+            ingredients.add(data[ingredient]);
+        }
+        return ingredients;
     }
 
     // get all recipes from db
@@ -96,24 +108,19 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     private void populateListViewDB() {
         Cursor cursor = db.getAllRows();
 
-        startManagingCursor(cursor);
+        String[] names = cursor.getColumnNames();
 
-        String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_RECIPENAME, DBAdapter.KEY_RECIPESRCURL};
-        int[] toViewIDs = new int[]
-                {R.id.recipe_name, R.id.recipe_url};
+        ArrayList<String> args = new ArrayList<String>();
 
-        SimpleCursorAdapter myCursorAdapter =
-                new SimpleCursorAdapter(
-                        this,
-                        R.layout.recipe_db_listview,
-                        cursor,
-                        fromFieldNames,
-                        toViewIDs);
+        while(!cursor.isAfterLast()){
+            args.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
 
+        IngredientDisplayAdapter displayAdapter = new IngredientDisplayAdapter(args, this);
         // set adapter
-        ListView myList = (ListView) findViewById(R.id.listViewRecipeDB);
-        myList.setAdapter(myCursorAdapter);
+        ListView myList = (ListView) findViewById(R.id.listViewIngredientDB);
+        myList.setAdapter(displayAdapter);
     }
 
 }

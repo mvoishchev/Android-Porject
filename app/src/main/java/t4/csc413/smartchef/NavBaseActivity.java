@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import connectors.evernote.EvernoteActivity;
 import connectors.google.MapsActivity;
 import database.allergiesDB.AllergiesDBLayout;
+import database.fridge.FridgeLayout;
 import database.recipedb.RecipeDBLayout;
 
 /*
@@ -187,6 +188,13 @@ public class NavBaseActivity extends ActionBarActivity {
                 startActivity(intent4);
                 finish();
                 break;
+
+            case 5:
+                Intent intent5 = new Intent(this, FridgeLayout.class);
+                startActivity(intent5);
+                finish();
+                break;
+
             default:
                 break;
         }

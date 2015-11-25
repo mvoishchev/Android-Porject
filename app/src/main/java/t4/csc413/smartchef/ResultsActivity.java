@@ -83,7 +83,6 @@ public class ResultsActivity extends NavBaseActivity {
         list = (ListView) findViewById(R.id.listView);
 
         ListAdapter theAdapter = new RecipeAdapter(this, name, recipes);
-        ListView theListView = (ListView) findViewById(R.id.listView);
         list.setAdapter(theAdapter);
 
 
