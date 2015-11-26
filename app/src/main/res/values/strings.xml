@@ -55,8 +55,8 @@
         <item>@drawable/searchicon72</item>
         <item>@drawable/evernote</item>
         <item>@drawable/placesmaps</item>
-        <item>@drawable/pantry</item>
-        <item>@drawable/allergies</item>
+        <item>@drawable/recipe_icon</item>
+        <item>@drawable/shoppingcart</item>
         <item>@drawable/fridge</item>
     </array>
     <string name="title_activity_loading">LoadingActivity</string>

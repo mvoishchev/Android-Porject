@@ -31,11 +31,13 @@ import android.location.Location;
 import android.view.View;
 import android.widget.EditText;
 import com.google.gson.Gson;
+
+import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener {
+public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback, OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
     private GoogleMap mMap;
     private EditText userSearch;
@@ -54,6 +56,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //marker options
     private MarkerOptions[] places;
 
+    // NavBar
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //updatePlaces();
         //userSearch=(EditText) findViewById(R.id.userSearch);
         //userSearch = (EditText) userSearch.getText();
+
+        // Nav Drawer
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        set(navMenuTitles, navMenuIcons);
     }
 
 
