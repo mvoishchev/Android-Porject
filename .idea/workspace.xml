@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2f3b1cb-ec2d-4df5-8f59-f1c1f28afc47" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="t4.iws" />
@@ -88,8 +87,8 @@
       <file leaf-file-name="EvernoteManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.51111114">
-              <caret line="188" column="67" selection-start-line="188" selection-start-column="67" selection-end-line="188" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.47111112">
+              <caret line="214" column="36" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
               <folding>
                 <element signature="docComment;class#EvernoteManager#0" expanded="false" />
                 <element signature="docComment;method#getInstance#0;class#EvernoteManager#0" expanded="false" />
@@ -2351,7 +2350,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448529024142</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added evernote getter function">
+      <created>1448529983097</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1448529983097</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2440,7 +2445,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Imporived evernote activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Imporived evernote activity" />
+    <MESSAGE value="Added evernote getter function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added evernote getter function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3135,8 +3141,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.51111114">
-          <caret line="188" column="67" selection-start-line="188" selection-start-column="67" selection-end-line="188" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.47111112">
+          <caret line="214" column="36" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
           <folding>
             <element signature="docComment;class#EvernoteManager#0" expanded="false" />
             <element signature="docComment;method#getInstance#0;class#EvernoteManager#0" expanded="false" />
