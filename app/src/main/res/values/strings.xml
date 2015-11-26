@@ -44,12 +44,12 @@
 
     //NavBar - MG
     <string-array name="nav_drawer_items">
-        <item>Search Options</item>
-        <item>Evernote Activity</item>
-        <item>Google Maps</item>
-        <item>My Recipes</item>
-        <item>Shopping List</item>
-        <item>Fridge</item>
+        <item>Search Recipes</item>
+        <item>Manage Evernote</item>
+        <item>Find Supermarkets</item>
+        <item>View Saved Recipes</item>
+        <item>View Shopping List</item>
+        <item>View Fridge</item>
     </string-array>
     <array name="nav_drawer_icons">
         <item>@drawable/searchicon72</item>
