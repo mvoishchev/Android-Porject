@@ -12,6 +12,7 @@ import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
+import database.fridge.FridgeLayout;
 import database.fridge.IngredientDisplayAdapter;
 import t4.csc413.smartchef.MainActivity;
 import t4.csc413.smartchef.NavBaseActivity;
@@ -21,15 +22,8 @@ import tools.Recipe;
 
 
 /**
- * Created by Marc
- * NOTE:  other classes(evernote) can use methods
- *          addRecipe - manually insert recipe to db.insertRow()
- *                      1) instantiate DBAdapter
- *                      2) use object to access DBAdapter's insertRow function
- *          removeRecipe
- *          getRecipe
+ * Created by Harjt Randhawa based on Marc's RecipeDB
  *
- * CHECK TO DO.  Small minor problem
  */
 
 public class ShoppingListLayout extends NavBaseActivity {
@@ -66,16 +60,24 @@ public class ShoppingListLayout extends NavBaseActivity {
         set(navMenuTitles, navMenuIcons);
     }
 
+    /**
+     * Initialize Database for lifetime of application
+     * @param context
+     */
     public static void init(Context context){
         db = new ShoppingListDB(context);
     }
 
+    /**
+     *
+     * @param rec Recipe object to add to the database
+     */
     public static void addToShoppingList(Recipe rec){
         ArrayList<Ingredient> ing = rec.getIngredients();
 
         openDB();
         for(int i = 0; i < ing.size(); i++){
-            addIngredient(ing.get(i).original_discription);
+            addIngredient(ing.get(i).name);
         }
         closeDB();
 
@@ -87,7 +89,6 @@ public class ShoppingListLayout extends NavBaseActivity {
     }
 
     private static void openDB() {
-        //db = new DBAdapter(this);
         db.open();
     }
 
@@ -95,15 +96,17 @@ public class ShoppingListLayout extends NavBaseActivity {
         db.close();
     }
 
-    /*
-     * TODO: make it so it actually accepts recipe name and recipe url from Harjit's recipe class
-     * Recipe.getRecipeName();
-     * Recipe.getRecipeUrl();
+    /**
+     *
+     * @param ing Ingredient to add the database from another activity
      */
-
     private static void addIngredient(String ing){
         db.insertRow(ing);
     }
+
+    /**
+     * Method to add ingredient to database from current Activity
+     */
     private void addIngredient() {
         String line = et.getText().toString();
         if(line.length() > 0)
@@ -112,6 +115,36 @@ public class ShoppingListLayout extends NavBaseActivity {
         populateListViewDB();
     }
 
+    /**
+     * Method that checks the fridge for ingredients that user already has and generates a list of
+     * missing ingredients
+     * @return List of Ingredients that are not in the FridgeDB
+     */
+    public static ArrayList<String> GetShoppingList(){
+        ArrayList<String> owned = FridgeLayout.getIngredients();
+        ArrayList<String> shopping = new ArrayList<String>();
+
+        Cursor cursor = db.getAllRows();
+
+        while(!cursor.isAfterLast()){
+            boolean have = false;
+            String curr = cursor.getString(1);
+            //check our fridge to see if we already have it
+            for(int check = 0; check < owned.size(); check++){
+                if(curr.contains(owned.get(check)))
+                    have = true;
+            }
+
+            //if we don't have it, add it to the list
+            if(!have)
+                shopping.add(cursor.getString(1));
+
+            cursor.moveToNext();
+        }
+
+
+        return shopping;
+    }
     // removes recipes from db
     public void removeIngredient(int position) {
         Cursor cursor = db.getAllRows();
@@ -123,8 +156,6 @@ public class ShoppingListLayout extends NavBaseActivity {
     public static ArrayList<String> getIngredients(){
         Cursor cursor = db.getAllRows();
 
-        String[] names = cursor.getColumnNames();
-
         ArrayList<String> args = new ArrayList<String>();
 
         while(!cursor.isAfterLast()){
@@ -135,10 +166,11 @@ public class ShoppingListLayout extends NavBaseActivity {
         return args;
     }
 
+    /**
+     * Method to reflect changes to the Database
+     */
     private void populateListViewDB() {
         Cursor cursor = db.getAllRows();
-
-        String[] names = cursor.getColumnNames();
 
         ArrayList<String> args = new ArrayList<String>();
 

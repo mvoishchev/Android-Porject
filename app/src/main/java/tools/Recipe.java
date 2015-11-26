@@ -100,7 +100,7 @@ public class Recipe {
 
     public void addAllIngredientsFromModel(List<SpoonacularModels.IngredientModel> _list) {
         for (SpoonacularModels.IngredientModel model : _list) {
-            addIngredient(new Ingredient(model.ingredientLine, model.amount, model.unitLong));
+            addIngredient(new Ingredient(model.ingredientLine,model.name, model.amount, model.unitLong));
         }
     }
 
@@ -116,6 +116,8 @@ public class Recipe {
            _instruction =_instruction.replace("</li>", "");
            _instruction = _instruction.replace("<ol>", "");
            _instruction = _instruction.replace("</ol>", "");
+            _instruction = _instruction.replace("<p>", "");
+            _instruction = _instruction.replace("</p>", "");
 
        }
 

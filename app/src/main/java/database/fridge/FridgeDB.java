@@ -10,8 +10,8 @@ import android.util.Log;
 import java.util.ArrayList;
 
 /**
- *  Created by Marc
- *  DB to handle recipes
+ *  Created by Harjit Randhawa
+ *  DB to handle Fridge
  */
 
 public class FridgeDB {
@@ -48,13 +48,15 @@ public class FridgeDB {
         myDBHelper = new DatabaseHelper(context);
     }
 
+    /**
+     *
+     * @return List of Ingredients stored in fridge
+     */
     public static ArrayList<String> GetIngredientsInFridge(){
         ArrayList<String> args = new ArrayList<String>();
         if(FridgeLayout.db != null) {
             FridgeLayout.db.open();
             Cursor cursor = FridgeLayout.db.getAllRows();
-
-            String[] names = cursor.getColumnNames();
 
             while (!cursor.isAfterLast()) {
                 args.add(cursor.getString(1));
@@ -66,6 +68,10 @@ public class FridgeDB {
         return args;
     }
 
+    /**
+     *
+     * @return CharSequence[] of Ingredients stored in the FridgeDB
+     */
     public static CharSequence[] GetIngredientsForFridgeButton(){
         ArrayList<String> lines = GetIngredientsInFridge();
         CharSequence[] ingredients = new CharSequence[lines.size() + 1];
@@ -77,18 +83,27 @@ public class FridgeDB {
         return ingredients;
     }
 
-    // Open the database connection.
+    /**
+     *
+     * @return FridgeDB opened for writing
+     */
     public FridgeDB open() {
         db = myDBHelper.getWritableDatabase();
         return this;
     }
 
-    // Close the database connection.
+    /**
+     * Close current open database
+     */
     public void close() {
         myDBHelper.close();
     }
 
-    // Add a new set of values to the database.
+    /**
+     *
+     * @param ingredientName Ingredient to be added to database
+     * @return Location in database of Ingredient stored
+     */
     public long insertRow(String ingredientName) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_INGREDIENTNAME, ingredientName);
@@ -96,24 +111,20 @@ public class FridgeDB {
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
-    // Delete a row from the database, by rowId
+    /**
+     *
+     * @param rowId RowID of the Ingredient to delete
+     * @return True if the deletion was successful
+     */
     public boolean deleteRow(long rowId) {
         String where = KEY_ROWID + "=" + rowId;
         return db.delete(DATABASE_TABLE, where, null) != 0;
     }
 
-    public void deleteAll() {
-        Cursor c = getAllRows();
-        long rowId = c.getColumnIndexOrThrow(KEY_ROWID);
-        if (c.moveToFirst()) {
-            do {
-                deleteRow(c.getLong((int) rowId));
-            } while (c.moveToNext());
-        }
-        c.close();
-    }
-
-    // Return all data in the database.
+    /**
+     *
+     * @return Cursor object placed at the first row in database
+     */
     public Cursor getAllRows() {
         String where = null;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
@@ -124,7 +135,11 @@ public class FridgeDB {
         return c;
     }
 
-    // Get a specific row (by rowId)
+    /**
+     *
+     * @param rowId RowID of the desired location in database
+     * @return Cursor positioned at the location of desired Ingredient
+     */
     public Cursor getRow(long rowId) {
         String where = KEY_ROWID + "=" + rowId;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
@@ -135,7 +150,7 @@ public class FridgeDB {
         return c;
     }
 
-     // Private class which handles database creation and upgrading.
+     // Private class from Marc
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);

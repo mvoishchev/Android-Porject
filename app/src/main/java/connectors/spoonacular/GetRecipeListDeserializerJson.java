@@ -17,24 +17,20 @@ import java.lang.reflect.Type;
  */
 public class GetRecipeListDeserializerJson implements JsonDeserializer<GetRecipeListResult>
 {
+    /**
+     *
+     * @param je Json Element to deserialize
+     * @param type Override param
+     * @param jdc
+     * @return GetRecipeListResult object generated from JSON returned from Spoonacular API
+     * @throws JsonParseException
+     */
     @Override
     public GetRecipeListResult deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException
     {
 
        JsonElement content = je.getAsJsonObject();
        return new Gson().fromJson(content, GetRecipeListResult.class);
-        /*GetRecipeListResult list = new GetRecipeListResult();
-        JsonArray array = je.getAsJsonArray();
-        Gson gson = new Gson();
-        System.out.println("array: " + je);
 
-        for(JsonElement element: array)
-        {
-            JsonObject obj = element.getAsJsonObject();
-            SearchRecipesResultModel model = gson.fromJson(obj, SearchRecipesResultModel.class);
-            list.add(model);
-        }
-
-        return list;*/
     }
 }

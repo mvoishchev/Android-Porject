@@ -15,12 +15,6 @@ public class YummlyModels {
         @SerializedName("id")
         String title;
 
-        /*@SerializedName("images")
-        ImagesModel images;*/
-
-       /* @SerializedName("ingredientLines")
-        List<IngredientModel> ingredients;*/
-
         @SerializedName("source")
         SourcesModel sourceUrl;
 

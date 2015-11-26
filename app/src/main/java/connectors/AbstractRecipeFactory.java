@@ -17,17 +17,46 @@ public abstract class AbstractRecipeFactory
     boolean requesting = false;
     //Abstract class that must be defined for each API that will retrieve recipes.  Child classes must allow parameters to be passed in as null
     //so make sure to check if(parameter != null) before trying to use it
+
+    /**
+     *
+     * @param ingredients Comma seperated list of ingredients
+     * @param allergies Comma seperated list of allergies, can be null
+     * @param cuisine Desired cuisine, can be null
+     * @param search_type Desired type of search defined by SearchTools.INGREDIENT_SEARCH_TYPE
+     * @return List of Recipes that are returned from API
+     */
     public abstract ArrayList<Recipe> getRecipes(String ingredients, String allergies, String cuisine, SearchTools.INGREDIENT_SEARCH_TYPE search_type);
 
+    /**
+     * Initialization method for any Allergies or Cuisines supported
+     */
     public abstract void init();
 
+    /**
+     *
+     * @return List of Allergies the API will support. Returns empty if no allergies are supported
+     */
     public abstract ArrayList<String> getSupportedAllergies();
+
+    /**
+     *
+     * @return List of Cuisines that API will support. Returns empty if no cuisines are supported
+     */
     public abstract ArrayList<String> getSupportedCuisines();
 
+    /**
+     *
+     * @param id ID of Recipe for API to search for
+     * @return Recipe object with Url
+     */
     public abstract Recipe getRecipePreviewById(String id);
-    //public abstract Recipe getRecipeByUrl(String id);
-    //FactoryProducer will take in a String to specify which API will be used.  Is called in SearchTools.GetRecipes as a means of having an abstract way to
-    //make sure we call the correct API. Simply change the Strings in SearchTools to change which API will be called
+
+    /**
+     *
+     * @param api Defines which API is being requested
+     * @return AbstractRecipeFactory that has implemented required abstract functions
+     */
     public static AbstractRecipeFactory FactoryProducer(String api)
     {
         AbstractRecipeFactory factory;
@@ -46,13 +75,21 @@ public abstract class AbstractRecipeFactory
     }
     //Only API that provides instructions is Spoonacular and they have an extraction tool for any website's recipes
     //So automatically call on that when user decides which recipe he wants to look at
+
+    /**
+     *
+     * @param url Url of Recipe that needs all information extracted from website
+     * @return Complete Recipe object from Spoonacular API
+     */
     public static Recipe getRecipe(String url)
     {
-        System.out.println("Requested Url: " + url);
         return new SpoonacularRecipeFactory().getRecipeByUrl(url);
-
     }
 
+    /**
+     *
+     * @param _name API name to define where the recipe came from in the results
+     */
     protected void setApiName(String _name)
     {
         api = _name;
