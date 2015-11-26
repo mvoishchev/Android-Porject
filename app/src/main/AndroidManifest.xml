@@ -21,7 +21,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="Search Options"
+            android:label="Search Recipes"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -42,7 +42,7 @@
 
         <activity
             android:name="connectors.google.MapsActivity"
-            android:label="Find A Store" >
+            android:label="Find Supermarkets" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.default" />
@@ -59,7 +59,7 @@
 
         <activity
             android:name="database.recipedb.RecipeDBLayout"
-            android:label="My Recipes"
+            android:label="View Saved Recipes"
             android:screenOrientation="portrait"/>
 
         <activity android:name="database.allergiesDB.AllergiesDBLayout"
@@ -67,13 +67,13 @@
 
         <activity
             android:name="database.fridge.FridgeLayout"
-            android:label="Fridge"
+            android:label="View Fridge"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
 
         <activity
             android:name="database.shoppinglist.ShoppingListLayout"
-            android:label="Shopping List"
+            android:label="View Shopping List"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
 
@@ -84,7 +84,7 @@
 
         <activity
             android:name="connectors.evernote.EvernoteActivity"
-            android:label="Evernote">
+            android:label="Manage Evernote">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.default" />

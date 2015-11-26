@@ -10,9 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2f3b1cb-ec2d-4df5-8f59-f1c1f28afc47" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="DELETED" beforePath="C:\Users\Marc\Desktop\SmartChef\t4\SmartChef.iml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="t4.iws" />
@@ -45,29 +49,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NavBaseActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NavBaseActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.43238434">
+              <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
               <folding>
-                <element signature="class#3598:4304" expanded="false" />
-                <element signature="method#onDrawerClosed#0;class#3598:4304" expanded="false" />
-                <element signature="method#onDrawerOpened#0;class#3598:4304" expanded="false" />
-                <element signature="method#onPostCreate#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="class#SlideMenuClickListener#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="method#onItemClick#0;class#SlideMenuClickListener#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="docComment;method#onPrepareOptionsMenu#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="method#onPrepareOptionsMenu#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="e#5576#5625#0" expanded="false" />
-                <element signature="docComment;method#displayView#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="method#displayView#0;class#NavBaseActivity#0" expanded="false" />
-                <element signature="method#setTitle#0;class#NavBaseActivity#0" expanded="false" />
                 <element signature="method#onPostCreate#1;class#NavBaseActivity#0" expanded="false" />
                 <element signature="method#onConfigurationChanged#0;class#NavBaseActivity#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recipe_db_layout.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recipe_db_layout.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,7 +91,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7586207">
+            <state vertical-scroll-proportion="0.0">
               <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
               <folding />
             </state>
@@ -90,7 +103,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="e#321#322#0" expanded="false" />
+                <element signature="e#355#356#0" expanded="false" />
+                <element signature="e#387#388#0" expanded="false" />
+                <element signature="e#420#421#0" expanded="false" />
+                <element signature="e#448#449#0" expanded="false" />
+                <element signature="e#480#481#0" expanded="false" />
+                <element signature="e#522#523#0" expanded="false" />
+                <element signature="e#556#557#0" expanded="false" />
+                <element signature="e#593#594#0" expanded="false" />
+                <element signature="e#625#626#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,15 +124,23 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#669#670#0" expanded="false" />
+                <element signature="e#713#714#0" expanded="false" />
+                <element signature="e#770#771#0" expanded="false" />
+                <element signature="e#821#822#0" expanded="false" />
+                <element signature="e#878#879#0" expanded="false" />
+                <element signature="e#909#910#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35714287">
+            <state vertical-scroll-proportion="-12.9375">
               <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
               <folding />
             </state>
@@ -126,19 +158,19 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="SmartChef" />
+              <option name="name" value="t4" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value=":app" />
-                <option name="path" value="$PROJECT_DIR$/app" />
+                <option name="name" value="t4" />
+                <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="SmartChef" />
-                <option name="path" value="$PROJECT_DIR$" />
+                <option name="name" value=":app" />
+                <option name="path" value="$PROJECT_DIR$/app" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -151,17 +183,17 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'SmartChef'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 't4'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'SmartChef'." />
+                <option name="description" value="Displays all dependencies declared in root project 't4'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'SmartChef'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 't4'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -176,22 +208,22 @@
                 <option name="name" value="init" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'SmartChef'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 't4'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'SmartChef'." />
+                <option name="description" value="Displays the sub-projects of root project 't4'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'SmartChef'." />
+                <option name="description" value="Displays the properties of root project 't4'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'SmartChef' (some of the displayed tasks may belong to subprojects)." />
+                <option name="description" value="Displays the tasks runnable from root project 't4' (some of the displayed tasks may belong to subprojects)." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -1502,6 +1534,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="C:\Users\Juris\AndroidStudioProjects\SmartChef" value="4342445373603" />
+        <entry key="C:\Users\Marc\Desktop\SmartChef\t4" value="4345725886119" />
         <entry key="C:\Users\Thomas\Desktop\t4" value="4339814810960" />
       </map>
     </option>
@@ -1726,7 +1759,7 @@
                   </entry>
                 </map>
               </option>
-              <option name="name" value="app" />
+              <option name="name" value="t4" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="$APPLICATION_HOME_DIR$/gradle/gradle-2.4/src/announce" />
@@ -1877,6 +1910,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java" />
       </list>
     </option>
   </component>
@@ -1894,10 +1929,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1064" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -1922,10 +1957,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2018,177 +2052,27 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connectors" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="t4" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connectors" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="evernote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="06b10e8e003b89e8" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="TA098047RP" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
     <property name="FullScreen" value="false" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/AndroidManifest.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/database/fridge/FridgeDB.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/database/fridge/FridgeLayout.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/database/fridge/IngredientDisplayAdapter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/Splash.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/values/strings.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/database/DataBaseManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/database/shoppinglist/ShoppingListDB.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/database/shoppinglist/ShoppingListLayout.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/shopping_list_layout.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -2203,8 +2087,7 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -2234,8 +2117,7 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -2327,7 +2209,6 @@
     <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="app" />
       <option name="ACTIVITY_CLASS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -2342,8 +2223,7 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -2413,67 +2293,68 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1064" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31175467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5008518" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46678025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51277685" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34582624" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5025554" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5025554" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51277685" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20272315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5758092" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34582624" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5749718" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919955" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2026738" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46678025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5008518" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31175467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037935" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037935" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2497,7 +2378,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java</url>
-          <line>214</line>
+          <line>223</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -2507,34 +2388,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/tools/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2542,9 +2399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2552,7 +2406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2560,9 +2413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2570,7 +2420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2578,22 +2427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2601,9 +2434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2611,7 +2441,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2619,9 +2448,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2629,7 +2455,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2637,22 +2462,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2660,9 +2469,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2711,7 +2517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.013661202">
           <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="17" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2757,7 +2562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.90710384">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2765,9 +2569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2775,7 +2576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2701252">
           <caret line="148" column="5" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2783,9 +2583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2793,7 +2590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2801,7 +2597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2809,7 +2604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3227848">
           <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2817,67 +2611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.9409282">
           <caret line="309" column="24" selection-start-line="309" selection-start-column="24" selection-end-line="309" selection-end-column="24" />
-          <folding>
-            <element signature="docComment;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;field#REQUEST_CODE_OAUTH#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;field#REQUEST_CODE_LOGIN#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#getInstance#1;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#getInstance#1;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#EvernoteSession#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#getEvernoteService#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#getClientFactory#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="e#7381#7413#0" expanded="false" />
-            <element signature="e#7381#7413#0" expanded="false" />
-            <element signature="docComment;method#getEvernoteClientFactory#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#getEvernoteClientFactory#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#setEvernoteClientFactoryBuilder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#setEvernoteClientFactoryBuilder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#getApplicationContext#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#getAuthToken#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#getAuthToken#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#getAuthenticationResult#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#authenticate#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#authenticate#1;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#authenticate#2;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#asSingleton#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#asSingleton#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#setAuthenticationResult#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#isLoggedIn#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="e#12544#12545#0" expanded="false" />
-            <element signature="e#12596#12597#0" expanded="false" />
-            <element signature="docComment;method#logOut#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#logOut#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#isForceAuthenticationInThirdPartyApp#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;class#EvernoteService#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="class#EvernoteService#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;field#SANDBOX#0;class#EvernoteService#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;field#PRODUCTION#0;class#EvernoteService#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="class#14025:14392" expanded="false" />
-            <element signature="method#createFromParcel#0;class#14025:14392" expanded="false" />
-            <element signature="docComment;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#Builder#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#Builder#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#setEvernoteService#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#setEvernoteService#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#setSupportAppLinkedNotebooks#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#setSupportAppLinkedNotebooks#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#setForceAuthenticationInThirdPartyApp#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#setForceAuthenticationInThirdPartyApp#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#setLocale#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#setLocale#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="e#18125#18157#0" expanded="false" />
-            <element signature="e#18125#18157#0" expanded="false" />
-            <element signature="method#setUserAgent#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="e#18355#18387#0" expanded="false" />
-            <element signature="e#18355#18387#0" expanded="false" />
-            <element signature="method#setMessageCacheDir#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#build#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#build#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="docComment;method#buildForSingleUser#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#buildForSingleUser#0;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-            <element signature="method#build#1;class#Builder#0;class#EvernoteSession#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2885,151 +2618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33663365">
           <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-          <folding>
-            <element signature="docComment;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#EvernoteNoteStoreClient#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSyncState#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSyncStateAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSyncStateWithMetrics#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSyncStateWithMetricsAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSyncChunk#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSyncChunkAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getFilteredSyncChunk#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getFilteredSyncChunkAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getLinkedNotebookSyncState#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getLinkedNotebookSyncStateAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getLinkedNotebookSyncChunk#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getLinkedNotebookSyncChunkAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listNotebooks#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listNotebooksAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getDefaultNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getDefaultNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listTags#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listTagsAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listTagsByNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listTagsByNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getTag#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getTagAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createTag#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createTagAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateTag#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateTagAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#untagAll#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#untagAllAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeTag#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeTagAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listSearches#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listSearchesAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSearch#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSearchAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createSearch#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createSearchAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateSearch#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateSearchAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeSearch#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeSearchAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNotes#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNotesAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNoteOffset#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNoteOffsetAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNotesMetadata#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNotesMetadataAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNoteCounts#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findNoteCountsAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#setNoteApplicationDataEntry#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#setNoteApplicationDataEntryAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#unsetNoteApplicationDataEntry#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#unsetNoteApplicationDataEntryAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteContentAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteSearchText#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteSearchTextAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceSearchText#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceSearchTextAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteTagNames#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteTagNamesAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#deleteNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#deleteNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeNotes#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeNotesAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeInactiveNotes#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeInactiveNotesAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#copyNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#copyNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listNoteVersions#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listNoteVersionsAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteVersion#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getNoteVersionAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResource#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceApplicationData#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceApplicationDataAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceApplicationDataEntry#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceApplicationDataEntryAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#setResourceApplicationDataEntry#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#setResourceApplicationDataEntryAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#unsetResourceApplicationDataEntry#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#unsetResourceApplicationDataEntryAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateResource#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateResourceAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceData#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceDataAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceByHash#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceByHashAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceRecognition#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceRecognitionAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceAlternateData#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceAlternateDataAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceAttributes#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getResourceAttributesAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getPublicNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getPublicNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createSharedNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createSharedNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateSharedNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateSharedNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#setSharedNotebookRecipientSettings#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#setSharedNotebookRecipientSettingsAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#sendMessageToSharedNotebookMembers#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#sendMessageToSharedNotebookMembersAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listSharedNotebooks#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listSharedNotebooksAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeSharedNotebooks#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeSharedNotebooksAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createLinkedNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#createLinkedNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateLinkedNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#updateLinkedNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listLinkedNotebooks#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#listLinkedNotebooksAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeLinkedNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#expungeLinkedNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#authenticateToSharedNotebook#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#authenticateToSharedNotebookAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSharedNotebookByAuth#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#getSharedNotebookByAuthAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#emailNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#emailNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#shareNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#shareNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#stopSharingNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#stopSharingNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#authenticateToSharedNote#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#authenticateToSharedNoteAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findRelated#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-            <element signature="method#findRelatedAsync#0;class#EvernoteNoteStoreClient#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3037,7 +2625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48658317">
           <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3045,15 +2632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.91234344">
           <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-22/android/view/inputmethod/EditorInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3078,17 +2656,6 @@
             <element signature="e#855#890#0" expanded="true" />
             <element signature="e#922#955#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/allergies_db_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5932202">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3129,16 +2696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.388679">
           <caret line="188" column="46" selection-start-line="188" selection-start-column="46" selection-end-line="188" selection-end-column="46" />
-          <folding>
-            <element signature="docComment;class#EvernoteManager#0" expanded="false" />
-            <element signature="docComment;method#getInstance#0;class#EvernoteManager#0" expanded="false" />
-            <element signature="method#getInstance#0;class#EvernoteManager#0" expanded="false" />
-            <element signature="docComment;method#createNewShoppingList#0;class#EvernoteManager#0" expanded="false" />
-            <element signature="method#createNewShoppingList#0;class#EvernoteManager#0" expanded="false" />
-            <element signature="class#5706:6628" expanded="false" />
-            <element signature="method#onSuccess#0;class#5706:6628" expanded="false" />
-            <element signature="method#onException#0;class#5706:6628" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3157,22 +2714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.8226416">
           <caret line="298" column="55" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3180,35 +2721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.343396">
           <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2525#3253#0" expanded="true" />
-            <element signature="e#3252#3253#0" expanded="true" />
-            <element signature="e#3295#3540#0" expanded="true" />
-            <element signature="e#3539#3540#0" expanded="true" />
-            <element signature="e#4079#4229#0" expanded="true" />
-            <element signature="e#4228#4229#0" expanded="true" />
-            <element signature="e#4404#4554#0" expanded="true" />
-            <element signature="e#4553#4554#0" expanded="true" />
-            <element signature="e#4727#4964#0" expanded="true" />
-            <element signature="e#4963#4964#0" expanded="true" />
-            <element signature="e#5139#5289#0" expanded="true" />
-            <element signature="e#5288#5289#0" expanded="true" />
-            <element signature="e#5456#5848#0" expanded="true" />
-            <element signature="e#5847#5848#0" expanded="true" />
-            <element signature="method#updateInstance#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#Toggle#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateDialog#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#DialogSelectionClickHandler#0;class#DialogSelectionClickHandler#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#DialogButtonClickHandler#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onClick#0;class#DialogButtonClickHandler#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#printSelectedCuisine#0;class#DialogButtonClickHandler#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onButtonClick#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#13268#13326#0" expanded="false" />
-            <element signature="method#init#0;class#MainActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3216,7 +2728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33207548">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3224,7 +2735,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#669#670#0" expanded="false" />
+            <element signature="e#713#714#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
+            <element signature="e#821#822#0" expanded="false" />
+            <element signature="e#878#879#0" expanded="false" />
+            <element signature="e#909#910#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3232,31 +2751,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding>
-            <element signature="class#3598:4304" expanded="false" />
-            <element signature="method#onDrawerClosed#0;class#3598:4304" expanded="false" />
-            <element signature="method#onDrawerOpened#0;class#3598:4304" expanded="false" />
-            <element signature="method#onPostCreate#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="class#SlideMenuClickListener#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#onItemClick#0;class#SlideMenuClickListener#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="docComment;method#onPrepareOptionsMenu#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#onPrepareOptionsMenu#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="e#5576#5625#0" expanded="false" />
-            <element signature="docComment;method#displayView#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#displayView#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#setTitle#0;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#onPostCreate#1;class#NavBaseActivity#0" expanded="false" />
-            <element signature="method#onConfigurationChanged#0;class#NavBaseActivity#0" expanded="false" />
+            <element signature="e#321#322#0" expanded="false" />
+            <element signature="e#355#356#0" expanded="false" />
+            <element signature="e#387#388#0" expanded="false" />
+            <element signature="e#420#421#0" expanded="false" />
+            <element signature="e#448#449#0" expanded="false" />
+            <element signature="e#480#481#0" expanded="false" />
+            <element signature="e#522#523#0" expanded="false" />
+            <element signature="e#556#557#0" expanded="false" />
+            <element signature="e#593#594#0" expanded="false" />
+            <element signature="e#625#626#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3266,7 +2771,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7586207">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
           <folding />
         </state>
@@ -3274,9 +2779,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35714287">
+        <state vertical-scroll-proportion="-12.9375">
           <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recipe_view.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recipe_db_layout.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/NavBaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43238434">
+          <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
+          <folding>
+            <element signature="method#onPostCreate#1;class#NavBaseActivity#0" expanded="false" />
+            <element signature="method#onConfigurationChanged#0;class#NavBaseActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

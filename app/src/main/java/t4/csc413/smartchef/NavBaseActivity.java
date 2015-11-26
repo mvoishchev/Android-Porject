@@ -91,10 +91,10 @@ public class NavBaseActivity extends ActionBarActivity {
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.smart_chef);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu_icon);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.smart_chef, // nav menu toggle icon
+                R.drawable.menu_icon, // nav menu toggle icon
                 R.string.drawer_open,
                 R.string.drawer_close
         ) {
