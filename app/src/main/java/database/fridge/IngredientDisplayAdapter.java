@@ -16,6 +16,9 @@ import t4.csc413.smartchef.R;
 
 /**
  * Created by Harjit on 11/24/2015.
+ *
+ * Class to handle how Database Activities that are involved with showing a database of ingredients
+ * will display the ingredients
  */
 public class IngredientDisplayAdapter extends BaseAdapter implements ListAdapter{
 
@@ -41,6 +44,13 @@ public class IngredientDisplayAdapter extends BaseAdapter implements ListAdapter
         return 0;
     }
 
+    /**
+     *
+     * @param position position of object on the ListView
+     * @param convertView View that is displayed
+     * @param parent
+     * @return Updated View that reflects changes to a Database
+     */
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
         View view = convertView;
@@ -58,10 +68,13 @@ public class IngredientDisplayAdapter extends BaseAdapter implements ListAdapter
             @Override
             public void onClick(View v) {
                 ingredients.remove(position);
+
                 if(context instanceof FridgeLayout)
                     ((FridgeLayout)context).removeIngredient(position);
+
                 else if(context instanceof ShoppingListLayout)
                     ((ShoppingListLayout)context).removeIngredient(position);
+
                 notifyDataSetChanged();
             }
         });

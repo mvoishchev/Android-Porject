@@ -28,7 +28,7 @@ import t4.csc413.smartchef.R;
  * CHECK TO DO.  Small minor problem
  */
 
-public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
+public class FridgeLayout extends NavBaseActivity {
 
     // DB
     public static FridgeDB db;
@@ -53,6 +53,10 @@ public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
         set(navMenuTitles, navMenuIcons);
     }
 
+    /**
+     * Initialize FridgeDB
+     * @param context Activity to bind the Database to
+     */
     public static void init(Context context){
         db = new FridgeDB(context);
     }
@@ -64,7 +68,6 @@ public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
     }
 
     private static void openDB() {
-        //db = new DBAdapter(this);
         db.open();
     }
 
@@ -72,20 +75,23 @@ public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
         db.close();
     }
 
-    /*
-     * TODO: make it so it actually accepts recipe name and recipe url from Harjit's recipe class
-     * Recipe.getRecipeName();
-     * Recipe.getRecipeUrl();
+    /**
+     * Method to add Ingredient to the database
+     * @param v Mandatory argument for OnClick(View v)
      */
     public void addIngredient(View v) {
         String line = et.getText().toString();
-        if(line.length() > 0)
+        if(line.length() > 0) {
             db.insertRow(line);
-
+            et.setText("");
+        }
         populateListViewDB();
     }
 
-    // removes recipes from db
+    /**
+     *
+     * @param position position of ingredient on layout to delete from database
+     */
     public void removeIngredient(int position) {
         Cursor cursor = db.getAllRows();
         cursor.move(position);
@@ -93,7 +99,11 @@ public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
         populateListViewDB();
     }
 
-    public static ArrayList<String> getIngredients(){
+    /**
+     *
+     * @return List of all ingredients stored in FridgeDB
+     */
+    private static ArrayList<String> getIngredients(){
         Cursor cursor = db.getAllRows();
 
         ArrayList<String> args = new ArrayList<String>();
@@ -105,15 +115,11 @@ public class FridgeLayout extends NavBaseActivity implements FridgeInterface {
         return args;
     }
 
-    // get all recipes from db
-    public void getRecipe(View v) {
-        db.getAllRows();
-    }
-
+    /**
+     * Method to update Activity to show changes in FridgeDB
+     */
     private void populateListViewDB() {
         Cursor cursor = db.getAllRows();
-
-        String[] names = cursor.getColumnNames();
 
         ArrayList<String> args = new ArrayList<String>();
 

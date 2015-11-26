@@ -30,6 +30,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
     }
 
+
     public ArrayList<String> getSupportedAllergies()
     {
         return new ArrayList<String>();
@@ -57,7 +58,11 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
         return rec;
     }
 
-    //Works
+    /**
+     *
+     * @param url Url of the recipe to extract information from
+     * @return Full Recipe object defined by tools.Recipe
+     */
     public Recipe getRecipeByUrl(String url)
     {
         Recipe rec = new Recipe();
@@ -82,7 +87,11 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
     }
 
 
-    //transform URL to match what API accepts
+    /**
+     *
+     * @param _url Original url of a recipe
+     * @return Url formatted to Spoonacular HTTP conventions
+     */
     private String prepareUrlForExtraction(String _url)
     {
         _url = "?forceExtraction=false&url=" + _url;
@@ -176,7 +185,11 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
     }
 
 
-
+    /**
+     *
+     * @param list List of ingredients to search with
+     * @return HTTP url formatted to Spoonacular conventions
+     */
     private String prepareIngredientQuery(ArrayList<String> list)
     {
         String query = "findByIngredients?ingredients=";
@@ -185,11 +198,8 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
             query = query.concat(list.get(i)).concat("%2C");
         }
         query = query.concat(list.get(list.size() - 1));
-
         query = query.trim();
         query = query.replaceAll(" ", "+");
-
-        System.out.println("query: " + query);
         return query;
     }
 }

@@ -68,11 +68,13 @@
         <activity
             android:name="database.fridge.FridgeLayout"
             android:label="Fridge"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
 
         <activity
             android:name="database.shoppinglist.ShoppingListLayout"
             android:label="Shopping List"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
 
         <activity

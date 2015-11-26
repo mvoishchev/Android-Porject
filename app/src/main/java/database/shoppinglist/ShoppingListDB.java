@@ -9,9 +9,11 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import database.fridge.FridgeLayout;
+
 /**
- *  Created by Marc
- *  DB to handle recipes
+ *  Created by Harjit Randhawa based on class from Marc
+ *  DB to handle shopping list
  */
 
 public class ShoppingListDB {
@@ -47,25 +49,6 @@ public class ShoppingListDB {
         this.context = ctx;
         myDBHelper = new DatabaseHelper(context);
     }
-
-    //TODO
-   /* public static ArrayList<String> GetShoppingList(){
-        FridgeLayout.db.open();
-        Cursor cursor = FridgeLayout.db.getAllRows();
-
-        String[] names = cursor.getColumnNames();
-
-        ArrayList<String> args = new ArrayList<String>();
-
-        while(!cursor.isAfterLast()){
-            args.add(cursor.getString(1));
-            cursor.moveToNext();
-        }
-
-        FridgeLayout.db.close();
-        return args;
-    }*/
-
 
     // Open the database connection.
     public ShoppingListDB open() {
