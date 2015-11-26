@@ -21,27 +21,34 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context="connectors.evernote.EvernoteActivity">
 
-            <Button
-                android:id="@+id/loginLogoutButton"
-                android:layout_width="100dp"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="loginButtonClick"
-                android:text="Login" />
+                android:orientation="horizontal">
 
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="uploadButtonClick"
-                android:text="Upload" />
+                <Button
+                    android:id="@+id/loginLogoutButton"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="loginButtonClick"
+                    android:text="Login" />
 
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="updateButtonClick"
-                android:text="Update" />
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="clearButtonClick"
+                    android:text="Clear" />
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="updateButtonClick"
+                    android:text="Update" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/add_ingredient_field"

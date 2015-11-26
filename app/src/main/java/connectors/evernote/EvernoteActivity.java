@@ -1,6 +1,7 @@
 package connectors.evernote;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
@@ -28,12 +29,13 @@ import com.evernote.thrift.TException;
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
+import android.text.Html;
+
 /**
  * This class describes the Evernote activity used to setup Evernote settings.
  */
 public class EvernoteActivity extends NavBaseActivity {
 
-    //TODO enable callback
     //TODO create view shopping list functionality
 
     //NavBar variables
@@ -55,6 +57,9 @@ public class EvernoteActivity extends NavBaseActivity {
     private static final EvernoteSession.EvernoteService EVERNOTE_SERVICE = EvernoteSession.EvernoteService.SANDBOX;
     public static final String EVERNOTE_PREF = "EvernotePreferencesFile";
     private static final String MAIN_LIST_NAME = "SmartChef Main Shopping List";
+
+    private static final String PL_LOGIN = "(Please Login to Evernote)";
+    private static final String LST_EMPTY = "(Shoping List is Empty)";
 
 //    public void createNewShoppingList(String listName, String listContent) {
 //
@@ -158,16 +163,12 @@ public class EvernoteActivity extends NavBaseActivity {
 //    }
 
     /**
-     * This function is clalled when the upload button is clicked.
+     * This function is clalled when the clar button is pressede.
      *
-     * It uploads a new shopping list.
+     * The whopping list is deleted.
      * @param view  Passed from the button click.
      */
-    public void uploadButtonClick(View view) {
-
-        note = new Note();
-        note.setTitle("Temp Shopping List");
-        note.setContent(EvernoteUtil.NOTE_PREFIX + ingredientList + EvernoteUtil.NOTE_SUFFIX);
+    public void clearButtonClick(View view) {
 
         if (!EvernoteSession.getInstance().isLoggedIn()) {
             DialogFragment dialog = new LoginDialog();
@@ -177,18 +178,45 @@ public class EvernoteActivity extends NavBaseActivity {
 
         final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
 
-        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
-            @Override
-            public void onSuccess(Note result) {
-                ingredientView.setText("Done!");
-                ingredientList = "";
-            }
+        if (previousNoteExists) {
+            try {
+                noteStoreClient.deleteNote(mainListGuid);
+                mainListGuid = null;
+                previousNoteExists = false;
 
-            @Override
-            public void onException(Exception exception) {
-                Log.e("Update Log", "Error updating note", exception);
+                // We need an Editor object to make preference changes.
+                SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("mainListGuid", mainListGuid);
+                editor.putBoolean("listExists", previousNoteExists);
+
+                // Commit the edits!
+                editor.commit();
+
+                //Update user's view
+                ingredientList = LST_EMPTY;
+                ingredientView.setText(ingredientList);
+
+                //Toast your sucess
+                Context context = getApplicationContext();
+                CharSequence text = "Shopping List Cleared";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "Shopping List is already Empty!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     /**
@@ -226,13 +254,24 @@ public class EvernoteActivity extends NavBaseActivity {
                 mainListGuid = note.getGuid();
                 previousNoteExists = true;
 
-                ingredientView.setText("Done!");
-                ingredientList = "";
+                Context context = getApplicationContext();
+                CharSequence text = "Evernote Updated";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
 
             @Override
             public void onException(Exception exception) {
                 Log.e("Update Log", "Error updating note", exception);
+
+                Context context = getApplicationContext();
+                CharSequence text = "Please Login to Evernote!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
 
@@ -246,7 +285,10 @@ public class EvernoteActivity extends NavBaseActivity {
         } else if (thisButton.getText().equals("Logout")) {
             EvernoteSession.getInstance().logOut();
             thisButton.setText("Login");
+            ingredientList = PL_LOGIN;
+
         }
+        ingredientView.setText(ingredientList);
     }
 
     /**
@@ -255,6 +297,7 @@ public class EvernoteActivity extends NavBaseActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Evernotre", "Created!");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evernote);
@@ -269,12 +312,6 @@ public class EvernoteActivity extends NavBaseActivity {
                 .build(CONSUMER_KEY, CONSUMER_SECRET)
                 .asSingleton();
 
-        if (EvernoteSession.getInstance().isLoggedIn()) {
-            // Check if logged in
-            Button loginButton = (Button) findViewById(R.id.loginLogoutButton);
-            loginButton.setText("Logout");
-        }
-
         final EditText editText = (EditText) findViewById(R.id.add_ingredient_field);
         ingredientView = (TextView) findViewById(R.id.evernote_list_of_ingredients);
 
@@ -282,10 +319,12 @@ public class EvernoteActivity extends NavBaseActivity {
 
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-                if (ingredientList.equals(""))
+                if (ingredientList.equals(LST_EMPTY))
                     ingredientList = editText.getText().toString();
+                else if (ingredientList.equals(PL_LOGIN)){}
+                    //Do nothing
                 else
-                    ingredientList = ingredientList + "\n" + editText.getText().toString();
+                    ingredientList = editText.getText().toString() + "\n" + ingredientList;
 
                 ingredientView.setText(ingredientList);
                 editText.setText("");
@@ -310,5 +349,43 @@ public class EvernoteActivity extends NavBaseActivity {
 
         // Commit the edits!
         editor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("Evernotre", "Resumed!");
+        Button loginButton = (Button) findViewById(R.id.loginLogoutButton);
+
+        if (EvernoteSession.getInstance().isLoggedIn()) {
+            Log.d("Evernotre", "Logged in!");
+            // Check if logged in
+            loginButton.setText("Logout");
+            if (previousNoteExists) {
+                final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
+                try {
+                    String rawNote = noteStoreClient.getNoteContent(mainListGuid);
+                    ingredientList = Html.fromHtml(rawNote).toString();
+                } catch (EDAMUserException e) {
+                    e.printStackTrace();
+                } catch (EDAMSystemException e) {
+                    e.printStackTrace();
+                } catch (EDAMNotFoundException e) {
+                    e.printStackTrace();
+                } catch (TException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                ingredientList = LST_EMPTY;
+            }
+
+        } else {
+            //If not logged in
+            Log.d("Evernotre", "NOT Logged in!");
+            loginButton.setText("Login");
+            ingredientList = PL_LOGIN;
+        }
+
+        ingredientView.setText(ingredientList);
     }
 }
