@@ -29,6 +29,8 @@ public class DataBaseManager {
     }
 
     public static ArrayList<String> GetShoppingList(){
-        return ShoppingListLayout.getIngredients();
+        return ShoppingListLayout.GetShoppingList();
     }
+
+
 }

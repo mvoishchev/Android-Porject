@@ -103,7 +103,7 @@ public class FridgeLayout extends NavBaseActivity {
      *
      * @return List of all ingredients stored in FridgeDB
      */
-    public static ArrayList<String> getIngredients(){
+    private static ArrayList<String> getIngredients(){
         Cursor cursor = db.getAllRows();
 
         ArrayList<String> args = new ArrayList<String>();

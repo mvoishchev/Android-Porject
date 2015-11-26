@@ -12,6 +12,7 @@ import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
+import database.fridge.FridgeDB;
 import database.fridge.FridgeLayout;
 import database.fridge.IngredientDisplayAdapter;
 import t4.csc413.smartchef.MainActivity;
@@ -74,10 +75,19 @@ public class ShoppingListLayout extends NavBaseActivity {
      */
     public static void addToShoppingList(Recipe rec){
         ArrayList<Ingredient> ing = rec.getIngredients();
+        ArrayList<String> owned = FridgeDB.GetIngredientsInFridge();
 
         openDB();
         for(int i = 0; i < ing.size(); i++){
-            addIngredient(ing.get(i).name);
+            boolean have = false;
+            String curr = ing.get(i).name;
+            for(int o = 0; o < owned.size(); o++){
+                String currOwned = owned.get(o);
+                if(curr.contains(currOwned.toLowerCase()))
+                    have = true;
+            }
+            if(!have)
+                addIngredient(ing.get(i).name);
         }
         closeDB();
 
@@ -121,27 +131,17 @@ public class ShoppingListLayout extends NavBaseActivity {
      * @return List of Ingredients that are not in the FridgeDB
      */
     public static ArrayList<String> GetShoppingList(){
-        ArrayList<String> owned = FridgeLayout.getIngredients();
+        db.open();
         ArrayList<String> shopping = new ArrayList<String>();
 
         Cursor cursor = db.getAllRows();
 
         while(!cursor.isAfterLast()){
-            boolean have = false;
             String curr = cursor.getString(1);
-            //check our fridge to see if we already have it
-            for(int check = 0; check < owned.size(); check++){
-                if(curr.contains(owned.get(check)))
-                    have = true;
-            }
-
-            //if we don't have it, add it to the list
-            if(!have)
-                shopping.add(cursor.getString(1));
-
+            shopping.add(curr);
             cursor.moveToNext();
         }
-
+        db.close();
 
         return shopping;
     }
