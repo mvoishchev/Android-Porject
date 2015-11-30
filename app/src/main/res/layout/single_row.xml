@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
-        android:textSize="15sp"
+        android:textSize="24sp"
         android:id="@+id/textView9"
         android:layout_below="@+id/textView8"
         android:layout_alignLeft="@+id/textView8"

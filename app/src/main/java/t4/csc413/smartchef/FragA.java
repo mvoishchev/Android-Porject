@@ -36,7 +36,7 @@ public class FragA extends android.support.v4.app.Fragment {
         v = (TextView) view.findViewById(R.id.TextFA);
        // swipe = (TextView) view.findViewById(R.id.textView5);
 
-        text =  m.rr.getName() + "\n\nIngredients:\n\n";
+        text = "Ingredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {
