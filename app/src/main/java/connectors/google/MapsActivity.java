@@ -179,6 +179,7 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
 
     @Override
     public boolean onMyLocationButtonClick() {
+        mMap.clear();
         checkLocationSetting();
         locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //get last location
@@ -285,6 +286,7 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
                         // Display the first 500 characters of the response string.
                         //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
                         GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequestForBars, GooglePlacesData.class);
+                        mMap.clear();
                         for (int i = 0; i < ListOfPlaces.results.size(); i++) {
                             //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
                             //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
@@ -322,6 +324,7 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
                         // Display the first 500 characters of the response string.
                         //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
                         GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequestForRestauraunt, GooglePlacesData.class);
+                        mMap.clear();
                         for (int i = 0; i < ListOfPlaces.results.size(); i++) {
                             //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
                             //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
