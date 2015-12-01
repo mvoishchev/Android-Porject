@@ -76,15 +76,28 @@
       </file>
       <file leaf-file-name="activity_evernote.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3883495">
-              <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
               <folding>
-                <element signature="e#679#712#0" expanded="true" />
-                <element signature="e#745#780#0" expanded="true" />
-                <element signature="e#814#849#0" expanded="true" />
-                <element signature="e#881#914#0" expanded="true" />
+                <element signature="e#716#749#0" expanded="true" />
+                <element signature="e#782#817#0" expanded="true" />
+                <element signature="e#851#886#0" expanded="true" />
+                <element signature="e#918#951#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_frag_a_.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.25">
+              <caret line="48" column="35" selection-start-line="47" selection-start-column="8" selection-end-line="48" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
@@ -1892,6 +1905,62 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="t4" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="t4" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="t4" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="t4" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -2346,7 +2415,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448950009399</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Improved EvernoteActivityUI">
+      <created>1448950730799</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1448950730799</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2359,7 +2434,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37704918" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37704918" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2438,11 +2513,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///media/Orion/Google Drive/11 Graduate Work 11/CSC413 Final Report/layout-2015-11-30-203537.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2803,10 +2873,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="47" selection-start-line="50" selection-start-column="16" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="e#679#712#0" expanded="true" />
-            <element signature="e#745#780#0" expanded="true" />
-            <element signature="e#814#849#0" expanded="true" />
-            <element signature="e#881#914#0" expanded="true" />
+            <element signature="e#716#749#0" expanded="true" />
+            <element signature="e#782#817#0" expanded="true" />
+            <element signature="e#851#886#0" expanded="true" />
+            <element signature="e#918#951#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2987,10 +3057,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="47" selection-start-line="50" selection-start-column="16" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="e#679#712#0" expanded="true" />
-            <element signature="e#745#780#0" expanded="true" />
-            <element signature="e#814#849#0" expanded="true" />
-            <element signature="e#881#914#0" expanded="true" />
+            <element signature="e#716#749#0" expanded="true" />
+            <element signature="e#782#817#0" expanded="true" />
+            <element signature="e#851#886#0" expanded="true" />
+            <element signature="e#918#951#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3117,10 +3187,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="47" selection-start-line="50" selection-start-column="16" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="e#679#712#0" expanded="true" />
-            <element signature="e#745#780#0" expanded="true" />
-            <element signature="e#814#849#0" expanded="true" />
-            <element signature="e#881#914#0" expanded="true" />
+            <element signature="e#716#749#0" expanded="true" />
+            <element signature="e#782#817#0" expanded="true" />
+            <element signature="e#851#886#0" expanded="true" />
+            <element signature="e#918#951#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3294,6 +3364,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///media/Orion/Google Drive/11 Graduate Work 11/CSC413 Final Report/layout-2015-11-30-220720.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="48" column="35" selection-start-line="47" selection-start-column="8" selection-end-line="48" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3317,11 +3403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///media/Orion/Google Drive/11 Graduate Work 11/CSC413 Final Report/layout-2015-11-30-220720.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3331,18 +3412,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3883495">
-          <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
           <folding>
-            <element signature="e#679#712#0" expanded="true" />
-            <element signature="e#745#780#0" expanded="true" />
-            <element signature="e#814#849#0" expanded="true" />
-            <element signature="e#881#914#0" expanded="true" />
+            <element signature="e#716#749#0" expanded="true" />
+            <element signature="e#782#817#0" expanded="true" />
+            <element signature="e#851#886#0" expanded="true" />
+            <element signature="e#918#951#0" expanded="true" />
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
+      <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
     </entry>

@@ -8,7 +8,8 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#eafff9">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -31,14 +32,18 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:onClick="loginButtonClick"
-                    android:text="Login to Evernote" />
+                    android:text="Login to Evernote"
+                    android:background="@layout/button"
+                    android:textColor="#040201"/>
 
                 <Button
                     android:id="@+id/updateEverActButton"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:onClick="updateButtonClick"
-                    android:text="Update Shopping List to Evernote" />
+                    android:text="Update Shopping List to Evernote"
+                    android:background="@layout/button"
+                    android:textColor="#040201"/>
 
                 <EditText
                     android:id="@+id/add_ingredient_field"
@@ -85,7 +90,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:onClick="clearButtonClick"
-                android:text="Clear Evernote Shopping List" />
+                android:text="Clear Evernote Shopping List"
+                android:background="@layout/button"
+                android:textColor="#040201"/>
 
         </RelativeLayout>
     </FrameLayout>
