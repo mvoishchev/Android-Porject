@@ -11,11 +11,19 @@ public class GetRecipeListResult
 {
     List<SearchRecipesResultModel> recipes;
 
+    /**
+     *
+     * @return List of Result Models generated from JSONArray
+     */
     public List<SearchRecipesResultModel> getResults()
     {
         return recipes;
     }
 
+    /**
+     *
+     * @param item SearchRecipesResultModel to add into the List of results
+     */
     public void add(SearchRecipesResultModel item)
     {
         if(recipes == null)

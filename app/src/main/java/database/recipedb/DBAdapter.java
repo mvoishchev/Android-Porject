@@ -1,6 +1,5 @@
 package database.recipedb;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,7 +14,7 @@ import android.util.Log;
 
 public class DBAdapter {
 
-    private static final String TAG = "DBAdapter";
+    private static final String TAG = "DBAdapterRecipes";
 
     public static final String KEY_ROWID = "_id";
     public static final int COL_ROWID = 0;

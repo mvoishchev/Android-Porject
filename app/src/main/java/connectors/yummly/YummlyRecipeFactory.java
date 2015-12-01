@@ -90,20 +90,23 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
     {
 
         ArrayList<String> list = new ArrayList<String>();
-        Set<String> set = allergies.keySet();
+        if(allergies != null) {
+            Set<String> set = allergies.keySet();
 
-        list.addAll(set);
-
+            list.addAll(set);
+        }
         return list;
     }
 
     public ArrayList<String> getSupportedCuisines()
     {
         ArrayList<String> list = new ArrayList<String>();
-        Set<String> set = cuisines.keySet();
 
-        list.addAll(set);
+        if(cuisines != null) {
+            Set<String> set = cuisines.keySet();
 
+            list.addAll(set);
+        }
         return list;
     }
 

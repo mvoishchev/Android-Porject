@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by AGCOSTFU on 10/9/2015.
+ * Created by Harjit Randhawa on 10/9/2015.
+ *
+ * Class that defines models that are created from Json Objects received from Spoonacular API
  */
 public class SpoonacularModels
 {
@@ -74,6 +76,8 @@ public class SpoonacularModels
         @SerializedName("originalString")
         @Expose
         public String ingredientLine;
+
+        public String name;
 
         public float amount;
         public String unitLong;

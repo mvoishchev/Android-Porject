@@ -87,6 +87,5 @@ class RecipeAdapter extends ArrayAdapter<String>
         }
 
         return theView;
-
     }
 }

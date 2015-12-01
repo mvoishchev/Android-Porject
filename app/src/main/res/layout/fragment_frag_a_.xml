@@ -69,7 +69,26 @@
         android:layout_below="@+id/SQLText"
         android:layout_centerHorizontal="true" />
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shoppingtext"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Click below to save ingredients to shopping list"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/SQLButton"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shoppinglist"
+        android:background="@layout/button"
+        android:textColor="#040201"
+        android:layout_below="@+id/shoppingtext"
+        android:layout_centerHorizontal="true"
+        android:text="Add to Shopping List"/>
 
 </RelativeLayout>
 </ScrollView>

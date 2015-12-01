@@ -1,12 +1,12 @@
 package database.recipedb;
 
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
@@ -16,18 +16,13 @@ import tools.Recipe;
 /**
  * Created by Marc
  * NOTE:  other classes(evernote) can use methods
- *          addRecipe
- *          removeRecipe
- *          getRecipe
- *
- * CHECK TO DO.  Small minor problem
+ *          addRecipeToDB
  */
 
-public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
+public class RecipeDBLayout extends NavBaseActivity {
 
     // DB
-    DBAdapter db;
-    Recipe recipe;
+    public static DBAdapter db;
 
     // NavBar
     private String[] navMenuTitles;
@@ -47,28 +42,29 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
         set(navMenuTitles, navMenuIcons);
     }
 
+    public static void init(Context context){
+        db = new DBAdapter(context);
+    }
+
     protected void onDestroy() {
         super.onDestroy();
         closeDB();
     }
 
-    private void openDB() {
-        db = new DBAdapter(this);
+    private static void openDB() {
+        //db = new DBAdapter(this);
         db.open();
     }
 
-    private void closeDB() {
+    private static void closeDB() {
         db.close();
     }
 
-    /*
-     * TODO: make it so it actually accepts recipe name and recipe url from Harjit's recipe class
-     * Recipe.getRecipeName();
-     * Recipe.getRecipeUrl();
-     */
-    public void addRecipe(View v) {
-        db.insertRow("RECIPE NAME", "RECIPE URL");
-        populateListViewDB();
+    // add recipe to db
+    public static void addRecipeToDB(Recipe rec){
+        openDB();
+        db.insertRow(rec.getName(), rec.getRecipeUrl());
+        closeDB();
     }
 
     // removes recipes from db
@@ -78,7 +74,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
     }
 
     // get all recipes from db
-    public void getRecipe(View v) {
+    public static void getRecipe(View v) {
         db.getAllRows();
     }
 
@@ -90,7 +86,7 @@ public class RecipeDBLayout extends NavBaseActivity implements RecipeInterFace {
         String[] fromFieldNames = new String[]
                 {DBAdapter.KEY_RECIPENAME, DBAdapter.KEY_RECIPESRCURL};
         int[] toViewIDs = new int[]
-                {R.id.recipe_name,      R.id.recipe_url};
+                {R.id.recipe_name, R.id.recipe_url};
 
         SimpleCursorAdapter myCursorAdapter =
                 new SimpleCursorAdapter(

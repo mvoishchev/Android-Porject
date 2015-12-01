@@ -2,20 +2,23 @@ package t4.csc413.smartchef;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import connectors.evernote.EvernoteActivity;
 import connectors.evernote.EvernoteManager;
-import connectors.google.MapsActivity;
+import database.DataBaseManager;
 import tools.Ingredient;
 import database.recipedb.RecipeDBLayout;
 
 import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
+import static t4.csc413.smartchef.R.id.shoppinglist;
 
 
 public class FragA extends android.support.v4.app.Fragment {
@@ -23,6 +26,7 @@ public class FragA extends android.support.v4.app.Fragment {
     static TextView v;
     View view;
     String text;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class FragA extends android.support.v4.app.Fragment {
         v = (TextView) view.findViewById(R.id.TextFA);
        // swipe = (TextView) view.findViewById(R.id.textView5);
 
-        text =  m.rr.getName() + "\n\nIngredients:\n\n";
+        text = "Ingredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {
@@ -58,9 +62,23 @@ public class FragA extends android.support.v4.app.Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getActivity(), RecipeDBLayout.class);
+                startActivity(intent);*/
+                DataBaseManager.AddRecipeToFavorites(m.rr);
+                Toast.makeText(m, "Recipe Saved!", Toast.LENGTH_SHORT).show();
+
+
             }
+        });
+
+        Button shoppingList = (Button)view.findViewById(shoppinglist);
+        shoppingList.setOnClickListener(new View.OnClickListener(){
+
+           @Override
+            public void onClick(View v){
+               DataBaseManager.UpdateShoppingList(m.rr);
+               Toast.makeText(m, "Shopping List updated!", Toast.LENGTH_SHORT).show();
+           }
         });
 
         return  view;

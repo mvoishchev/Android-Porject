@@ -22,18 +22,19 @@
         android:id="@+id/textTimer"
         android:layout_below="@+id/TextFC"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
+        android:layout_marginTop="41dp"
+        android:textSize="78sp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start"
         android:id="@+id/StartB"
-        android:layout_below="@+id/textTimer"
-        android:layout_toLeftOf="@+id/textTimer"
-        android:layout_toStartOf="@+id/textTimer"
         android:background="#f80b0b"
-        android:textColor="#fcf9f9"/>
+        android:textColor="#fcf9f9"
+        android:layout_below="@+id/textTimer"
+        android:layout_alignLeft="@+id/textTimer"
+        android:layout_alignStart="@+id/textTimer" />
 
     <Button
         android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
         android:text="STOP"
         android:id="@+id/StopB"
         android:layout_below="@+id/textTimer"
-        android:layout_toRightOf="@+id/textTimer"
-        android:layout_toEndOf="@+id/textTimer" />
+        android:layout_alignRight="@+id/textTimer"
+        android:layout_alignEnd="@+id/textTimer" />
 
 </RelativeLayout>
