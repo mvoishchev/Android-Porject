@@ -29,25 +29,26 @@
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true" />
 
-         <ImageButton
+         <Button
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:id="@+id/barSearch"
+             android:text=" Bars Nearby "
+             android:background="@drawable/my_shape"
+             android:id="@+id/barButton"
+             android:onClick="barSearch"
              android:layout_alignParentBottom="true"
              android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:background="@drawable/coctail"
-             android:onClick="barSearch"/>
+             android:layout_alignParentStart="true" />
 
-         <ImageButton
+         <Button
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:id="@+id/restaurantSearch"
-             android:background="@drawable/restaurants"
-             android:layout_alignParentBottom="true"
-             android:layout_centerHorizontal="true"
+             android:text=" Restaurants Nearby "
+             android:background="@drawable/my_shape"
+             android:id="@+id/restarauntButton"
              android:onClick="restaurantSearch"
-             />
+             android:layout_alignTop="@+id/barButton"
+             android:layout_centerHorizontal="true" />
 
 
      </RelativeLayout>
