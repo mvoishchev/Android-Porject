@@ -47,13 +47,13 @@ public class TabAdapter extends FragmentPagerAdapter {
         Locale l = Locale.getDefault();
         switch (position) {
             case 0:
-                return "Ingredients -->";
+                return "Ingredients";
             case 1:
-                return "<-- Instructions -->";
+                return "Instructions";
             case 2:
-                return "<-- Preperation -->";
+                return "Preperation";
             case 3:
-                return "<-- Google Maps & more";
+                return "Google Maps & more";
         }
         return null;
     }

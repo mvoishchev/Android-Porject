@@ -16,6 +16,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,6 +64,9 @@ public class SlideMain extends NavBaseActivity {
         String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
+
+
+
 
 
         Recipe recipe = SearchTools.GetRecipePreviewById(api, id);

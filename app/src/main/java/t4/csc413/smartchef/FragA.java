@@ -6,6 +6,8 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,17 @@ public class FragA extends android.support.v4.app.Fragment {
         v = (TextView) view.findViewById(R.id.TextFA);
        // swipe = (TextView) view.findViewById(R.id.textView5);
 
+        TextView myText = (TextView)view.findViewById(R.id.blinkText);
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(15); //You can manage the time of the blink with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        myText.startAnimation(anim);
+
+
+
         text = "Ingredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
@@ -44,6 +57,7 @@ public class FragA extends android.support.v4.app.Fragment {
         }
 
         v.setText(text);
+
 
         Button evernote = (Button)view.findViewById(SiteButton);
         evernote.setOnClickListener(new View.OnClickListener() {

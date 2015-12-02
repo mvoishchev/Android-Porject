@@ -17,13 +17,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ab5d6f1-7416-4b4c-bc77-95b6086f82cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/t4.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragC.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_c.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_c.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/TabAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/TabAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_sdk_2_0_0_RC3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_sdk_2_0_0_RC3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_task_1_0_7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_task_1_0_7.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/evernote_api_1_25_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/evernote_api_1_25_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/library_1_0_19.xml" afterPath="$PROJECT_DIR$/.idea/libraries/library_1_0_19.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_22_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_22_2_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/okhttp_2_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/okhttp_2_4_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/okio_1_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/okio_1_4_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_ads_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_ads_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appstate_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_appstate_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_cast_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_cast_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_fitness_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_fitness_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_games_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_games_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_location_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_location_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_panorama_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_panorama_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_vision_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_vision_8_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/retrofit_1_9_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/retrofit_1_9_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/scribe_1_3_7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/scribe_1_3_7.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_22_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_22_2_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartChef.iws" />
@@ -45,43 +63,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fragment_frag_c.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_c.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
+      <file leaf-file-name="fragment_frag_a_.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml">
           <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FragC.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragC.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37777779">
-              <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2537#4830#0" expanded="true" />
-                <element signature="e#4215#4459#0" expanded="true" />
-                <element signature="e#4458#4459#0" expanded="true" />
-                <element signature="e#4503#4804#0" expanded="true" />
-                <element signature="e#4803#4804#0" expanded="true" />
-                <element signature="e#4829#4830#0" expanded="true" />
-              </folding>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SlideMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java">
+      <file leaf-file-name="slidemain.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/slidemain.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/TabAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlideMain.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.37777779">
+              <caret line="62" column="24" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragA.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding>
+                <element signature="e#1971#2440#0" expanded="true" />
+                <element signature="e#2439#2440#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1839,9 +1875,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/connectors/evernote/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/connectors/evernote/LoginDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_c.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragC.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/TabAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/slidemain.xml" />
       </list>
     </option>
   </component>
@@ -1878,8 +1918,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1964,7 +2002,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2227,21 +2267,21 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948717" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17394821" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17313915" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37704918" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896176" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2252,11 +2292,11 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896176" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32896176" sideWeight="0.5021299" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16347177" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896176" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
@@ -2273,8 +2313,8 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896176" sideWeight="0.4978701" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2301,26 +2341,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2333,25 +2365,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="35" selection-start-line="47" selection-start-column="8" selection-end-line="48" selection-end-column="35" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/LoginActivity.java">
@@ -2365,22 +2397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="74" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2431,22 +2447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="74" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2487,36 +2487,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="47" selection-start-line="50" selection-start-column="16" selection-end-line="51" selection-end-column="47" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="74" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2557,36 +2541,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="47" selection-start-line="50" selection-start-column="16" selection-end-line="51" selection-end-column="47" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2599,14 +2567,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="47" selection-start-line="50" selection-start-column="16" selection-end-line="51" selection-end-column="47" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/LoginChecker.java">
@@ -2645,14 +2613,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_evernote.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/connectors/evernote/EvernoteManager.java">
@@ -2667,67 +2635,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.027925532">
           <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-          <folding>
-            <element signature="docComment;class#EvernoteActivity#0" expanded="false" />
-            <element signature="e#2218#2296#0" expanded="false" />
-            <element signature="docComment;method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#clearButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#updateButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="class#8892:9848" expanded="false" />
-            <element signature="method#onSuccess#0;class#8892:9848" expanded="false" />
-            <element signature="method#onException#0;class#8892:9848" expanded="false" />
-            <element signature="method#loginButtonClick#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#EvernoteActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#EvernoteActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/edits.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="35" selection-start-line="47" selection-start-column="8" selection-end-line="48" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/slidemain.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/RecipeAdapter.java">
@@ -2738,23 +2668,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/TabAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13737373">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5107296">
           <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="99" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/MainActivity.java">
@@ -2769,59 +2691,76 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24848485">
           <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="67" selection-end-column="13" />
-          <folding>
-            <element signature="e#1985#2216#0" expanded="true" />
-            <element signature="e#2215#2216#0" expanded="true" />
-            <element signature="e#2323#2558#0" expanded="true" />
-            <element signature="e#2557#2558#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5151515">
-          <caret line="48" column="64" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
-          <folding>
-            <element signature="e#1964#1965#0" expanded="true" />
-            <element signature="e#2059#2441#0" expanded="true" />
-            <element signature="e#2440#2441#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_c.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37777779">
+        <state vertical-scroll-proportion="0.0">
           <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2537#4830#0" expanded="true" />
-            <element signature="e#4215#4459#0" expanded="true" />
-            <element signature="e#4458#4459#0" expanded="true" />
-            <element signature="e#4503#4804#0" expanded="true" />
-            <element signature="e#4803#4804#0" expanded="true" />
-            <element signature="e#4829#4830#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frag_a_.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/FragA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#1971#2440#0" expanded="true" />
+            <element signature="e#2439#2440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/slidemain.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/TabAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/t4/csc413/smartchef/SlideMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37777779">
+          <caret line="62" column="24" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
