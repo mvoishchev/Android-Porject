@@ -5,15 +5,22 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
 
+import static t4.csc413.smartchef.R.id.GMButton;
+import static t4.csc413.smartchef.R.id.Go_Button;
+import static t4.csc413.smartchef.R.id.HourText;
+import static t4.csc413.smartchef.R.id.MinutesText;
+import static t4.csc413.smartchef.R.id.SecondsText;
 import static t4.csc413.smartchef.R.id.StartB;
 import static t4.csc413.smartchef.R.id.StopB;
 import static t4.csc413.smartchef.R.id.textTimer;
@@ -22,7 +29,11 @@ public class FragC extends android.support.v4.app.Fragment {
     static TextView v;
     View view;
     Button start, stop;
-    TextView textViewTime;
+    TextView textViewTime,test_view;
+    EditText editHours, editMinutes , editeSeconds;
+    String hours_String, minutes_String, seconds_String;
+    int input_hours, input_minutes,input_seconds;
+
 
 
     @Override
@@ -37,39 +48,85 @@ public class FragC extends android.support.v4.app.Fragment {
 
         String text = "This recipe will take a total of " + prep_Hours + " hours and " + prep_Minutes
                 + " minutes to prepare. Please use the stop watch below to track your time." +
-                "Please click the start button to start timer countdown and the Stop button to " +
-                "stop the countdown completely";
+                "Enter values for the textfields below and hit Go to set up the timer and then press " +
+                "Start to start the countdown! Anything left blank would automatically turn into 0";
         v.setText(text);
 
-        start = (Button)view.findViewById(StartB);
-        stop = (Button)view.findViewById(StopB);
-        textViewTime = (TextView)view.findViewById(textTimer);
+        start = (Button) view.findViewById(StartB);
+        stop = (Button) view.findViewById(StopB);
+        textViewTime = (TextView) view.findViewById(textTimer);
+        editHours = (EditText) view.findViewById(HourText);
+        editMinutes = (EditText) view.findViewById(MinutesText);
+        editeSeconds = (EditText) view.findViewById(SecondsText);
 
-        textViewTime.setText("0" + prep_Hours + ":" + prep_Minutes + ":00");
-        int minute = prep_Minutes*60000;
-        int hour = prep_Hours*3600000;
-        int total = minute + hour;
 
-        final CounterClass timer = new CounterClass(total, 1000);
-        start.setOnClickListener(new OnClickListener() {
-
+        Button go_button = (Button) view.findViewById(Go_Button);
+        go_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                timer.start();
+                hours_String = editHours.getText().toString();
+
+                if (TextUtils.isEmpty(hours_String)) {
+                    input_hours = 0;
+                } else {
+                    input_hours = new Integer(Integer.parseInt(hours_String));
+                }
+
+                minutes_String = editMinutes.getText().toString();
+                if (TextUtils.isEmpty(minutes_String)) {
+                    input_minutes = 0;
+                } else {
+                    input_minutes = new Integer(Integer.parseInt(minutes_String));
+                    if (input_minutes > 60) {
+                        input_minutes = 60;
+                    }
+                }
+
+                seconds_String = editeSeconds.getText().toString();
+                if (TextUtils.isEmpty(seconds_String)) {
+                    input_seconds = 0;
+                } else {
+                    input_seconds = new Integer(Integer.parseInt(seconds_String));
+                    if (input_seconds > 60) {
+                        input_seconds = 60;
+                    }
+                }
+
+                input_seconds = new Integer(Integer.parseInt(seconds_String));
+
+                textViewTime.setText(input_hours + ":" + input_minutes + ":" + input_seconds);
+
+                int hour = input_hours * 3600000;
+                int minute = input_minutes * 60000;
+                int seconds = input_seconds * 1000;
 
 
+                int total = minute + hour + seconds;
+
+                final CounterClass timer = new CounterClass(total, 1000);
+                start.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        // TODO Auto-generated method stub
+                        timer.start();
+
+
+                    }
+                });
+
+                stop.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        // TODO Auto-generated method stub
+                        timer.cancel();
+                        textViewTime.setText("00:00:00");
+                    }
+                });
             }
         });
 
-        stop.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                timer.cancel();
-            }
-        });
         return  view;
     }
 

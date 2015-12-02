@@ -18,12 +18,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="TEXT"
+        android:text="00:00:00"
         android:id="@+id/textTimer"
-        android:layout_below="@+id/TextFC"
+        android:textSize="78sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:textSize="78sp"/>
+        android:layout_below="@+id/Go_Button" />
 
     <Button
         android:layout_width="wrap_content"
@@ -39,10 +38,46 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="STOP"
+        android:text="RESET"
         android:id="@+id/StopB"
         android:layout_below="@+id/textTimer"
         android:layout_alignRight="@+id/textTimer"
         android:layout_alignEnd="@+id/textTimer" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/HourText"
+        android:hint="Enter value for hours"
+        android:layout_alignTop="@+id/MinutesText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MinutesText"
+        android:hint="Enter value for minutes"
+        android:layout_alignTop="@+id/SecondsText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SecondsText"
+        android:hint="Enter value for seconds"
+        android:layout_below="@+id/TextFC"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO!"
+        android:id="@+id/Go_Button"
+        android:layout_below="@+id/HourText"
+        android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>
