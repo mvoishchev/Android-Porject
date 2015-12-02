@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/HourText"
-        android:hint="Enter value for hours"
+        android:hint="hours"
         android:layout_alignTop="@+id/MinutesText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/MinutesText"
-        android:hint="Enter value for minutes"
+        android:hint="minutes"
         android:layout_alignTop="@+id/SecondsText"
         android:layout_centerHorizontal="true" />
 
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/SecondsText"
-        android:hint="Enter value for seconds"
+        android:hint="seconds"
         android:layout_below="@+id/TextFC"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
