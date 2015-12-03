@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.location.LocationManager;
 import android.provider.Settings;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import com.android.volley.Request;
@@ -26,40 +25,32 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import android.location.Location;
 import android.view.View;
-import android.widget.EditText;
 import com.google.gson.Gson;
 
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
 
-
+/**
+ * This Activity deals with Google Map creation
+ * Activity Extends NavBaseActivity
+ * NavBaseActivity extends FragmentActivity
+ * This allows MapsActivity to work as a Fragment as well
+ */
 public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback, OnMapClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
     private GoogleMap mMap;
-    private EditText userSearch;
-    //instance variables for Marker icon drawable resources
-    private int userIcon, foodIcon, drinkIcon, shopIcon, otherIcon;
-    //location manager
     private LocationManager locMan;
-
-    //user marker
-    private Marker userMarker;
-
-    //places of interest
-    private Marker[] placeMarkers;
-    //max
-    private final int MAX_PLACES = 20;//most returned from google
-    //marker options
-    private MarkerOptions[] places;
-
     // NavBar
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
+    /**
+     * OnCreate design the map and Naw Drawer
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +59,6 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        //updatePlaces();
-        //userSearch=(EditText) findViewById(R.id.userSearch);
-        //userSearch = (EditText) userSearch.getText();
 
         // Nav Drawer
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -79,13 +67,16 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
     }
 
 
-    /**'
+    /**
      *
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
+     * It will ensure that Location Services are enabled
+     * And pan the camera to users current location
+     * And send volley request to Google Places
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {       //Map creation with default marker in SF
@@ -100,8 +91,8 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
         locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //get last location
         Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        double lat=lastLoc.getLatitude();
-        double lng=lastLoc.getLongitude();
+        double lat=lastLoc.getLatitude();   //Get Current Lat
+        double lng=lastLoc.getLongitude();  //Get Current Longitude
         LatLng currentMarker = new LatLng(lat,lng);
         CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
                 .target(currentMarker)      // Sets the center of the map to to the new created marker
@@ -110,9 +101,16 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
 
-        updatePlaces(lat, lng,1);
+        updatePlaces(lat, lng,1);   //Send Request to updatePlaces
     }
 
+    /**
+     * In this method activity checks if Location Services  are Enabled
+     * Based on the Android Manifest Permissions
+     * set Two boolean values for network and gps
+     * If disabled Dialog Box is displayed to allow the user
+     * enable location services in Phone settings
+     */
     public void checkLocationSetting() {    //method to check location settings and enable them if necessary
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE); //// Get Location Manager
         boolean gps_enabled = false;    //and check for GPS & Network location services
@@ -157,7 +155,12 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
         }
     }
 
-
+    /**
+     * onMapClick method changes the CameraPosition to mapClick position
+     * @param latLng
+     * And send a request to find nearBy Supermarkets
+     * Recording in the log about the changes on the map
+     */
     @Override
     public void onMapClick(LatLng latLng) {
         mMap.clear();
@@ -176,7 +179,13 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
         Log.i("MAP", "Marker");
     }
 
-
+    /**
+     * The boolean Listener to the default method of the Current location button
+     * Checks location setting to ensure they are enabled
+     * And pans the camera to current position
+     * Sends out the request to find nearBy supermarkets by updatePlaces
+     * @return
+     */
     @Override
     public boolean onMyLocationButtonClick() {
         mMap.clear();
@@ -199,42 +208,89 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
         return true;
     }
 
+    /**
+     * Bar Search method
+     * Based on the button click
+     * Gets current location of user
+     * And send updatePlaces to find nearBy Bars
+     * based on the GooglePlaces API
+     * @param view
+     */
     public void barSearch(View view) {
         Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        double lat=lastLoc.getLatitude();
+        double lat= lastLoc.getLatitude();
         double lng=lastLoc.getLongitude();
         updatePlaces(lat,lng,2);
+        LatLng currentMarker = new LatLng(lat,lng);
+        CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
+                .target(currentMarker)      // Sets the center of the map to to the new created marker
+                .zoom(15)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+
     }
 
+    /**
+     * Restauraunt Search method
+     * Based on the button click
+     * Gets current location of user
+     * And send updatePlaces to find nearBy restaurants
+     * based on the GooglePlaces API
+     * @param view
+     */
     public void restaurantSearch(View view) {
         Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         double lat=lastLoc.getLatitude();
         double lng=lastLoc.getLongitude();
         updatePlaces(lat,lng,3);
+        LatLng currentMarker = new LatLng(lat,lng);
+        CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
+                .target(currentMarker)      // Sets the center of the map to to the new created marker
+                .zoom(15)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+
     }
 
+    /**
+     * updatePlaces method to distinguish which Url to use
+     * to send a request to Places API
+     * pass the coordinates fo the mapPosition
+     * and generate a volleyRequest for Places API
+     * @param mapLat
+     * @param mapLng
+     * @param style
+     */
     public void updatePlaces(double mapLat,double mapLng, int style) {
         //get location manager
         checkLocationSetting();
         double lat = mapLat;
         double lng = mapLng;
-        //create LatLng
+
         //build places query string
         String supermarketSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=grocery_or_supermarket&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
         String barSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=bar|night_club&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
         String restaurauntSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=1000&types=cafe|restaurant&key=AIzaSyBrpZ3JtyykGKAdjdSdM5Tu9vIM9L-O4co";
 
         //execute query
-        if (style==1) {
+        if (style==1) { //supermarket search
             volleyRequest(supermarketSearchStr);
-        }   else if (style==2){
+        }   else if (style==2){ //bar search
                 volleyRequestForBar(barSearchStr);
-            } else if (style==3){
+            } else if (style==3){   //restaurant search
                     volleyRequestForRestauraunt(restaurauntSearchStr);
                 }
     }
 
-
+    /**
+     * Execution of string URL request for supermarkets
+     * generate a new volley request
+     * Generate onResponse parsing from Json response
+     * GooglePlacesData is where the values of the response separated
+     * @param placesUrl
+     */
     void volleyRequest(String placesUrl) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -244,17 +300,10 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String stringRequest) {
-                        // Display the first 500 characters of the response string.
-                        //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
                         GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequest, GooglePlacesData.class);
-                        for (int i = 0; i < ListOfPlaces.results.size(); i++) {
-                            //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
-                            //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
-                            Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
-                                    "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
-                            /*MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
-                                    .title(ListOfPlaces.results.get(i).name)
-                                    .snippet(ListOfPlaces.results.get(i).vicinity);*/
+                        for (int i = 0; i < ListOfPlaces.results.size(); i++) { //Placing markers on the map of the objects that were returned
+                            Log.i("REQUEST RESPONSE", "The name of the responses: " + ListOfPlaces.results.get(i).name +    //Record log values
+                                    "And the Address: " + ListOfPlaces.results.get(i).vicinity);
                             MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
                                     .title(ListOfPlaces.results.get(i).name)
                                     .snippet(ListOfPlaces.results.get(i).vicinity);
@@ -267,13 +316,19 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Log.i("REQUEST RESPOSNE", "Gracefully failed");
+                Log.i("REQUEST RESPONSE", "Gracefully failed");
             }
         });
         queue.add(stringRequest);
     }
 
-
+    /**
+     * Execution of string URL request for Bars
+     * generate a new volley request
+     * Generate onResponse parsing from Json response
+     * GooglePlacesData is where the values of the response separated
+     * @param placesUrl
+     */
     void volleyRequestForBar(String placesUrl) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -283,18 +338,11 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String stringRequestForBars) {
-                        // Display the first 500 characters of the response string.
-                        //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
                         GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequestForBars, GooglePlacesData.class);
                         mMap.clear();
                         for (int i = 0; i < ListOfPlaces.results.size(); i++) {
-                            //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
-                            //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
-                            Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
-                                    "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
-                            /*MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
-                                    .title(ListOfPlaces.results.get(i).name)
-                                    .snippet(ListOfPlaces.results.get(i).vicinity);*/
+                            Log.i("REQUEST RESPONSE", "The name of the responses: " + ListOfPlaces.results.get(i).name +    //Record log values
+                                    "And the Address: " + ListOfPlaces.results.get(i).vicinity);
                             MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat, ListOfPlaces.results.get(i).geometry.location.lng))
                                     .title(ListOfPlaces.results.get(i).name)
                                     .snippet(ListOfPlaces.results.get(i).vicinity);
@@ -306,12 +354,19 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Log.i("REQUEST RESPOSNE", "Gracefully failed");
+                Log.i("REQUEST RESPONSE", "Gracefully failed");
             }
         });
         queue.add(stringRequestForBars);
     }
 
+    /**
+     * Execution of string URL request for Restaurant
+     * generate a new volley request
+     * Generate onResponse parsing from Json response
+     * GooglePlacesData is where the values of the response separated
+     * @param placesUrl
+     */
     void volleyRequestForRestauraunt(String placesUrl) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -321,18 +376,12 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String stringRequestForRestauraunt) {
-                        // Display the first 500 characters of the response string.
-                        //Log.i("REQUEST RESPOSNE", "THE RESPONSE IS: " + stringRequest);
+
                         GooglePlacesData ListOfPlaces = new Gson().fromJson(stringRequestForRestauraunt, GooglePlacesData.class);
                         mMap.clear();
                         for (int i = 0; i < ListOfPlaces.results.size(); i++) {
-                            //Log.i("REQUEST RESPOSNE", "First lat and lng: " + ListOfPlaces.results.get(i).geometry.location.lat +
-                            //        " , " + ListOfPlaces.results.get(i).geometry.location.lng);
-                            Log.i("REQUEST RESPOSNE", "The name of the responses: " + ListOfPlaces.results.get(i).name +
-                                    "And the Andress: " + ListOfPlaces.results.get(i).vicinity);
-                            /*MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat,ListOfPlaces.results.get(i).geometry.location.lng))
-                                    .title(ListOfPlaces.results.get(i).name)
-                                    .snippet(ListOfPlaces.results.get(i).vicinity);*/
+                            Log.i("REQUEST RESPONSE", "The name of the responses: " + ListOfPlaces.results.get(i).name +    //Record log values
+                                    "And the Address: " + ListOfPlaces.results.get(i).vicinity);
                             MarkerOptions placeMarker = new MarkerOptions().position(new LatLng(ListOfPlaces.results.get(i).geometry.location.lat, ListOfPlaces.results.get(i).geometry.location.lng))
                                     .title(ListOfPlaces.results.get(i).name)
                                     .snippet(ListOfPlaces.results.get(i).vicinity);
@@ -344,7 +393,7 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Log.i("REQUEST RESPOSNE", "Gracefully failed");
+                Log.i("REQUEST RESPONSE", "Gracefully failed");
             }
         });
         queue.add(stringRequestForRestauraunt);
