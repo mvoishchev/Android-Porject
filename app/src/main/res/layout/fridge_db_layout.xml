@@ -44,6 +44,7 @@
                 android:text="Put in the Fridge"
                 android:id="@+id/addIngredientBtn"
                 android:onClick="addIngredient"
+                android:background="@layout/button"
                 android:nestedScrollingEnabled="false"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
