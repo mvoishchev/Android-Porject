@@ -20,7 +20,9 @@
         android:layout_height="match_parent"
         android:text="Fragment B"
         android:textSize="24sp"
-        android:id="@+id/TextFB"/>
+        android:id="@+id/TextFB"
+        android:textColor="#222222"
+        />
     </ScrollView>
 
 </RelativeLayout>

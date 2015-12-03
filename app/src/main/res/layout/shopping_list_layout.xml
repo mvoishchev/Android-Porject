@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="Put in the Fridge"
                 android:id="@+id/addIngredientBtn"
+                android:background="@layout/button"
                 android:nestedScrollingEnabled="false"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
