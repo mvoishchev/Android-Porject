@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import java.util.ArrayList;
 
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
@@ -15,8 +15,7 @@ import tools.Recipe;
 
 /**
  * Created by Marc
- * NOTE:  other classes(evernote) can use methods
- *          addRecipeToDB
+ * Database to handle saved recipes
  */
 
 public class RecipeDBLayout extends NavBaseActivity {
@@ -52,7 +51,6 @@ public class RecipeDBLayout extends NavBaseActivity {
     }
 
     private static void openDB() {
-        //db = new DBAdapter(this);
         db.open();
     }
 
@@ -68,37 +66,54 @@ public class RecipeDBLayout extends NavBaseActivity {
     }
 
     // removes recipes from db
-    public void removeRecipe(View v) {
+    public void removeAllRecipes(View v) {
         db.deleteAll();
         populateListViewDB();
     }
 
-    // get all recipes from db
-    public static void getRecipe(View v) {
-        db.getAllRows();
+    public void removeRecipe(int position) {
+        Cursor cursor = db.getAllRows();
+        cursor.move(position);
+        db.deleteRow(cursor.getLong(0));
+        populateListViewDB();
+    }
+
+    public static String getRecipeUrl(int position){
+
+        String url;
+        Cursor cursor = db.getAllRows();
+        cursor.moveToPosition(position);
+        url = cursor.getString(2);
+        return url;
+    }
+
+
+    public static ArrayList<String> getRecipes(){
+        Cursor cursor = db.getAllRows();
+
+        ArrayList<String> args = new ArrayList<String>();
+
+        while(!cursor.isAfterLast()){
+            args.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
+        return args;
     }
 
     private void populateListViewDB() {
         Cursor cursor = db.getAllRows();
 
-        startManagingCursor(cursor);
+        ArrayList<String> args = new ArrayList<String>();
 
-        String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_RECIPENAME, DBAdapter.KEY_RECIPESRCURL};
-        int[] toViewIDs = new int[]
-                {R.id.recipe_name, R.id.recipe_url};
+        while(!cursor.isAfterLast()){
+            args.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
 
-        SimpleCursorAdapter myCursorAdapter =
-                new SimpleCursorAdapter(
-                        this,
-                        R.layout.recipe_db_listview,
-                        cursor,
-                        fromFieldNames,
-                        toViewIDs);
-
+        RecipeDisplayAdapter displayAdapter = new RecipeDisplayAdapter(args, this);
         // set adapter
         ListView myList = (ListView) findViewById(R.id.listViewRecipeDB);
-        myList.setAdapter(myCursorAdapter);
+        myList.setAdapter(displayAdapter);
     }
 
 }

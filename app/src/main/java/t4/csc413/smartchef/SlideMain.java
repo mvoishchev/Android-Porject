@@ -1,6 +1,7 @@
 package t4.csc413.smartchef;
 
 /**
+ *
  * Created by Thomas X Mei on 11/2/2015.
  */
 
@@ -16,6 +17,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +33,8 @@ import tools.Ingredient;
 import tools.Recipe;
 
 
-public class SlideMain extends NavBaseActivity {
+public class SlideMain extends NavBaseActivity
+{
     ViewPager pager;
     PagerTabStrip tab_strp;
     static TextView v;
@@ -44,7 +48,8 @@ public class SlideMain extends NavBaseActivity {
     ImageView i;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slidemain);
         TabAdapter mapager=new TabAdapter(getSupportFragmentManager());
@@ -53,10 +58,11 @@ public class SlideMain extends NavBaseActivity {
         pager.setAdapter(mapager);
         tab_strp=(PagerTabStrip)findViewById(R.id.tab_strip);
         tab_strp.setTextColor(Color.WHITE);
-        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
+        String url = getIntent().getExtras().getString("url");
 
         String id1 = id;
         String api1 = api;
@@ -64,8 +70,15 @@ public class SlideMain extends NavBaseActivity {
         v = (TextView)findViewById(R.id.title);
 
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+
+
+
+        if(api != null && id != null) {
+            Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
+            rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+        }else{
+            rr = SearchTools.GetRecipeByUrl(url);
+        }
 
         String title = rr.getName();
         for(Ingredient ingredient: rr.getIngredients())

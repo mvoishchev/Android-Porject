@@ -6,6 +6,8 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +21,14 @@ import database.recipedb.RecipeDBLayout;
 import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
 import static t4.csc413.smartchef.R.id.shoppinglist;
+/**
+ *
+ * Fragment to display information for General information
+ * Created by Thomas X Mei
+ */
 
-
-public class FragA extends android.support.v4.app.Fragment {
+public class FragA extends android.support.v4.app.Fragment
+{
 
     static TextView v;
     View view;
@@ -29,12 +36,24 @@ public class FragA extends android.support.v4.app.Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
        view=inflater.inflate(R.layout.fragment_frag_a_,container,false);
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFA);
        // swipe = (TextView) view.findViewById(R.id.textView5);
+
+        TextView myText = (TextView)view.findViewById(R.id.blinkText);
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(15); //You can manage the time of the blink with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        myText.startAnimation(anim);
+
+
 
         text = "Ingredients:\n\n";
 
@@ -45,14 +64,13 @@ public class FragA extends android.support.v4.app.Fragment {
 
         v.setText(text);
 
+
         Button evernote = (Button)view.findViewById(SiteButton);
         evernote.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EvernoteActivity.class);
-                //TODO change this so that real values are uploaded insted of "Test" and random()
-                //TODO done
                 EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList(m.rr.getName(), text, getActivity());
             }
         });

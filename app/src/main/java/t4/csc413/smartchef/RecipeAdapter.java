@@ -35,12 +35,11 @@ class RecipeAdapter extends ArrayAdapter<String>
         super(context,R.layout.single_row,values);
         recipes = results;
         cachedImages = new HashMap<String, Bitmap>();
-
     }
 
 
-
-    public static Bitmap getBitmapFromURL(String src) {
+    public static Bitmap getBitmapFromURL(String src)
+    {
         try {
             Log.e("src", src);
             URL url = new URL(src);
@@ -51,7 +50,8 @@ class RecipeAdapter extends ArrayAdapter<String>
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
             Log.e("Bitmap","returned");
             return myBitmap;
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
             Log.e("Exception", e.getMessage());
             return null;
@@ -59,7 +59,8 @@ class RecipeAdapter extends ArrayAdapter<String>
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
         LayoutInflater theInflater = LayoutInflater.from(getContext());
 
         View theView = theInflater.inflate(R.layout.single_row, parent, false);
@@ -77,12 +78,14 @@ class RecipeAdapter extends ArrayAdapter<String>
         String yes = recipes.get(position).getImageUrl();
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
 
-        if(!cachedImages.containsKey(yes)) {
+        if(!cachedImages.containsKey(yes))
+        {
             Bitmap bitmap = getBitmapFromURL(yes);
             cachedImages.put(yes, bitmap);
             img.setImageBitmap(bitmap);
         }
-        else{
+        else
+        {
             img.setImageBitmap(cachedImages.get(yes));
         }
 

@@ -22,6 +22,12 @@ import java.util.List;
 
 import connectors.SearchTools;
 import tools.Recipe;
+/**
+ *
+ * Fragment to display information for preparation time
+ * Created by Thomas X Mei
+ * Also worked on by Harjit
+ */
 
 public class ResultsActivity extends NavBaseActivity {
 
@@ -40,11 +46,10 @@ public class ResultsActivity extends NavBaseActivity {
     String text_for_results;
 
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.the_results);
-        // StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        // StrictMode.setThreadPolicy(policy);
 
         desc = new ArrayList<String>();
         name = new ArrayList<String>();
@@ -68,7 +73,8 @@ public class ResultsActivity extends NavBaseActivity {
 
 
 
-        for (int recipe = 0; recipe < recipes.size(); recipe++) {
+        for (int recipe = 0; recipe < recipes.size(); recipe++)
+        {
             Recipe temp = recipes.get(recipe);
             name.add(temp.getName());
             desc.add(temp.getId());
@@ -87,10 +93,12 @@ public class ResultsActivity extends NavBaseActivity {
 
 
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+                                    int position, long id)
+            {
 
                 Bundle bundle = new Bundle();
                 Intent i = new Intent(ResultsActivity.this, SlideMain.class);
