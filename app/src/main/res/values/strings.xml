@@ -45,16 +45,16 @@
     //NavBar - MG
     <string-array name="nav_drawer_items">
         <item>Search Recipes</item>
-        <item>Manage Evernote</item>
         <item>Find Supermarkets</item>
+        <item>Manage Evernote</item>
         <item>View Saved Recipes</item>
         <item>View Shopping List</item>
         <item>View Fridge</item>
     </string-array>
     <array name="nav_drawer_icons">
         <item>@drawable/searchicon72</item>
-        <item>@drawable/evernote</item>
         <item>@drawable/placesmaps</item>
+        <item>@drawable/evernote</item>
         <item>@drawable/recipe_icon</item>
         <item>@drawable/shoppingcart</item>
         <item>@drawable/fridge</item>

@@ -25,8 +25,8 @@ android:layout_height="match_parent">
             android:id="@+id/btnClearRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="removeRecipe"
-            android:text="Clear Recipes"
+            android:onClick="removeAllRecipes"
+            android:text="Clear All Recipes"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
