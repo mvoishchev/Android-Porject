@@ -86,7 +86,6 @@ public class RecipeDisplayAdapter extends BaseAdapter implements ListAdapter{
             public void onClick(View v) {
 
                 Bundle bundle = new Bundle();
-                System.out.println("URL STORED: " + RecipeDBLayout.getRecipeUrl(position));
                 bundle.putString("url", RecipeDBLayout.getRecipeUrl(position));
 
                 Intent intent = new Intent(context, SlideMain.class);

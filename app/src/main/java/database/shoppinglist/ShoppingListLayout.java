@@ -4,14 +4,18 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import connectors.evernote.EvernoteManager;
 import database.fridge.FridgeDB;
 import database.fridge.FridgeLayout;
 import database.fridge.IngredientDisplayAdapter;
@@ -36,7 +40,7 @@ public class ShoppingListLayout extends NavBaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
     private EditText et;
-    private Button button;
+    private Button button, evernote;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,25 @@ public class ShoppingListLayout extends NavBaseActivity {
         populateListViewDB();
 
         et = (EditText)findViewById(R.id.edit);
+        et.setOnKeyListener(new View.OnKeyListener() {
+
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    String emptyString = et.getText().toString();
+                    if (TextUtils.isEmpty(emptyString)) {
+                        et.setError("Please enter an ingredient!");
+                    } else {
+                        addIngredient();
+                    }
+
+                    //do something
+                    //true because you handle the event
+                    return true;
+                }
+                return false;
+            }
+        });
+
         button = (Button)findViewById(R.id.addIngredientBtn);
         button.setText("Add to Shopping List");
         button.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +78,27 @@ public class ShoppingListLayout extends NavBaseActivity {
             }
         });
 
+
+        evernote = (Button)findViewById(R.id.evernote);
+        evernote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadToEvernote();
+
+            }
+        });
         // Nav Drawer
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
+    }
+
+    //TODO Connector to Evernote
+    private void uploadToEvernote(){
+        ArrayList<String> list = getIngredients();
+        EvernoteManager instance = EvernoteManager.getInstance(this);
+        instance.overwriteMainShoppingList(list.toString(), this);
+        Toast.makeText(this, "Uploaded to Evernote", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -119,9 +159,12 @@ public class ShoppingListLayout extends NavBaseActivity {
      */
     private void addIngredient() {
         String line = et.getText().toString();
-        if(line.length() > 0)
+        if(line.length() > 0) {
             db.insertRow(line);
+            et.setText("");
+        }
 
+        Toast.makeText(this, "Ingredient added to Shopping list", Toast.LENGTH_SHORT).show();
         populateListViewDB();
     }
 
@@ -153,7 +196,7 @@ public class ShoppingListLayout extends NavBaseActivity {
         populateListViewDB();
     }
 
-    public static ArrayList<String> getIngredients(){
+    private ArrayList<String> getIngredients(){
         Cursor cursor = db.getAllRows();
 
         ArrayList<String> args = new ArrayList<String>();

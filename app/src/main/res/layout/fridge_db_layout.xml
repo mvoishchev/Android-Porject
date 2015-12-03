@@ -27,6 +27,9 @@
                 android:layout_height="50dp"
                 android:id="@+id/edit"
                 android:layout_below="@+id/addIngredientBtn"
+                android:imeActionLabel="Add"
+                android:imeOptions="actionDone"
+                android:inputType="text"
                 />
 
             <ListView
@@ -36,7 +39,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/edit" />
+                android:layout_below="@+id/edit"
+                />
 
             <Button
                 android:layout_width="wrap_content"

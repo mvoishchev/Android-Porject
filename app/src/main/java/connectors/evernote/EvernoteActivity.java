@@ -26,6 +26,7 @@ import com.evernote.edam.error.EDAMUserException;
 import com.evernote.edam.type.Note;
 import com.evernote.thrift.TException;
 
+import database.shoppinglist.ShoppingListLayout;
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
@@ -245,7 +246,7 @@ public class EvernoteActivity extends NavBaseActivity {
 
         note = new Note();
         note.setTitle(MAIN_LIST_NAME);
-        note.setContent(EvernoteUtil.NOTE_PREFIX + ingredientList + EvernoteUtil.NOTE_SUFFIX);
+        note.setContent(EvernoteUtil.NOTE_PREFIX + ShoppingListLayout.GetShoppingList().toString() + EvernoteUtil.NOTE_SUFFIX);
 
         noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
             @Override

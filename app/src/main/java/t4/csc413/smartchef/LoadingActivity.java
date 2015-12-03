@@ -18,6 +18,8 @@ public class LoadingActivity extends Activity {
     String search;
     String allergies;
     String cuisine;
+    String url;
+    boolean searchingRecipes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,16 @@ public class LoadingActivity extends Activity {
         search = getIntent().getExtras().getString("search");
         allergies = getIntent().getExtras().getString("allergies");
         cuisine = getIntent().getExtras().getString("cuisine");
-        SearchTools.GetRecipes(search, allergies, cuisine, null);
+        url = getIntent().getExtras().getString("url");
+
+        if(search != null) {
+            SearchTools.GetRecipes(search, allergies, cuisine, null);
+            searchingRecipes = true;
+        }
+        else {
+            SearchTools.GetRecipeByUrl(url);
+
+        }
 
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
         final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
