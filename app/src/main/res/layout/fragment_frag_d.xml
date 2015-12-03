@@ -29,11 +29,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Click Youtube Icon for Video Instructions"
+        android:text="Click below to youtube,google maps,recipe site"
         android:id="@+id/T2"
-        android:layout_below="@+id/RB"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#222222"
+        />
 
     <ImageView
         android:layout_width="75dp"
@@ -44,6 +45,8 @@
         android:layout_below="@+id/T2"
         android:layout_centerHorizontal="true" />
 
+<<<<<<< HEAD
+=======
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,7 +54,9 @@
         android:text="Rating for Recipe"
         android:id="@+id/T1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#222222"
+        />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -60,6 +65,7 @@
         android:layout_below="@+id/T1"
         android:layout_centerHorizontal="true" />
 
+>>>>>>> affe0bea199d7431d5eeea24b2163ebe4ccc84cc
     <ImageButton
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -67,6 +73,9 @@
         android:src="@drawable/gmap"
         android:layout_below="@+id/YT"
         android:layout_alignLeft="@+id/YT"
+<<<<<<< HEAD
+        android:layout_alignStart="@+id/YT" />
+=======
         android:layout_alignStart="@+id/YT"
         android:layout_marginTop="61dp" />
 
@@ -78,7 +87,9 @@
         android:id="@+id/textView2"
         android:layout_below="@+id/YT"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#222222"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,15 +99,18 @@
         android:id="@+id/textView3"
         android:layout_below="@+id/GMButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#222222"
+        />
+>>>>>>> affe0bea199d7431d5eeea24b2163ebe4ccc84cc
 
     <ImageButton
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/SiteButton"
-        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/arrow" />
+        android:src="@drawable/arrow"
+        android:layout_below="@+id/GMButton" />
 
 </RelativeLayout>
 </ScrollView>
