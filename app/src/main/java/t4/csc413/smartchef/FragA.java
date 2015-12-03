@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +52,21 @@ public class FragA extends android.support.v4.app.Fragment
         anim.setStartOffset(20);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
-        myText.startAnimation(anim);
+      //  myText.startAnimation(anim);
+
+        TranslateAnimation animation = new TranslateAnimation(-80.0f, 0.0f,
+                0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animation.setDuration(1000);  // animation duration
+        animation.setRepeatCount(10);  // animation repeat count
+        animation.setRepeatMode(2);   // repeat animation (left to right, right to left )
+
+        TranslateAnimation animation2 = new TranslateAnimation(-500.0f, 0.0f,
+                0.0f, 0.0f);
+        animation2.setDuration(1000);
+        myText.startAnimation(animation2);
+        myText.startAnimation(animation);
+
+
 
 
 

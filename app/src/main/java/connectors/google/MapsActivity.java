@@ -43,6 +43,8 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
 
     private GoogleMap mMap;
     private LocationManager locMan;
+    boolean barsDisplayed;
+    boolean restarantDisplayed;
     // NavBar
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -59,6 +61,8 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        barsDisplayed=false;
+        restarantDisplayed=false;
 
         // Nav Drawer
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -217,18 +221,26 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
      * @param view
      */
     public void barSearch(View view) {
-        Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        double lat= lastLoc.getLatitude();
-        double lng=lastLoc.getLongitude();
-        updatePlaces(lat,lng,2);
-        LatLng currentMarker = new LatLng(lat,lng);
-        CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
-                .target(currentMarker)      // Sets the center of the map to to the new created marker
-                .zoom(15)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
-                .build();                   // Creates a CameraPosition from the builder
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
 
+        if (barsDisplayed ){
+            mMap.clear();
+            barsDisplayed=false;
+
+        }else{
+
+            Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            double lat = lastLoc.getLatitude();
+            double lng = lastLoc.getLongitude();
+            updatePlaces(lat, lng, 2);
+            LatLng currentMarker = new LatLng(lat, lng);
+            CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
+                    .target(currentMarker)      // Sets the center of the map to to the new created marker
+                    .zoom(15)                   // Sets the zoom
+                    .bearing(90)                // Sets the orientation of the camera to east
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+            barsDisplayed=true;
+        }
     }
 
     /**
@@ -240,17 +252,26 @@ public class MapsActivity extends NavBaseActivity implements OnMapReadyCallback,
      * @param view
      */
     public void restaurantSearch(View view) {
-        Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        double lat=lastLoc.getLatitude();
-        double lng=lastLoc.getLongitude();
-        updatePlaces(lat,lng,3);
-        LatLng currentMarker = new LatLng(lat,lng);
-        CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
-                .target(currentMarker)      // Sets the center of the map to to the new created marker
-                .zoom(15)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
-                .build();                   // Creates a CameraPosition from the builder
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+
+        if(restarantDisplayed){
+            mMap.clear();
+            restarantDisplayed=false;
+
+        }else{
+
+            Location lastLoc = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            double lat = lastLoc.getLatitude();
+            double lng = lastLoc.getLongitude();
+            updatePlaces(lat, lng, 3);
+            LatLng currentMarker = new LatLng(lat, lng);
+            CameraPosition userMarkerPosition = new CameraPosition.Builder()    //change camera on the map
+                    .target(currentMarker)      // Sets the center of the map to to the new created marker
+                    .zoom(15)                   // Sets the zoom
+                    .bearing(90)                // Sets the orientation of the camera to east
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(userMarkerPosition));  //move camera to marker
+            restarantDisplayed=true;
+        }
 
     }
 

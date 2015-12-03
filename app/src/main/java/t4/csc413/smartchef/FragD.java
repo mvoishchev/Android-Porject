@@ -29,7 +29,6 @@ public class FragD extends android.support.v4.app.Fragment
 {
     static TextView v;
     String url;
-    RatingBar star;
     View view;
     ImageView newPage;
     String siteUrl;
@@ -40,7 +39,6 @@ public class FragD extends android.support.v4.app.Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
     {
         view=inflater.inflate(R.layout.fragment_frag_d,container,false);
-        setStar(4);
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         url = "https://www.youtube.com/results?search_query=" + m.rr.getName();
@@ -93,11 +91,7 @@ public class FragD extends android.support.v4.app.Fragment
         return  view;
     }
 
-    public void setStar(float score)
-    {
-        star = (RatingBar) view.findViewById(R.id.RB);
-        star.setRating(score);
-    }
+
 
 
 }

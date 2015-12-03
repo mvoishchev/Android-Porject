@@ -2,6 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="t4.csc413.smartchef.FragF"
+    android:background="#eafff9"
+    android:backgroundTintMode="src_over"
+    android:scrollbarFadeDuration="0"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbarFadeDuration="0"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#eafff9"
     tools:context="t4.csc413.smartchef.FragA">
 
@@ -85,7 +101,6 @@
         android:layout_below="@+id/HourText"
         android:layout_centerHorizontal="true"
         />
-
-
-
+</RelativeLayout>
+</ScrollView>
 </RelativeLayout>
