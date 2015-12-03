@@ -1,6 +1,8 @@
 package database.recipedb;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,10 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
+
+import database.DataBaseManager;
 import t4.csc413.smartchef.R;
+
 
 /**
  * Created by Marc based on Harjit's IngredientDisplayAdapter
@@ -61,16 +66,25 @@ public class RecipeDisplayAdapter extends BaseAdapter implements ListAdapter{
         text.setText(getItem(position));
 
         Button button = (Button)view.findViewById(R.id.delete);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 recipes.remove(position);
-                ((RecipeDBLayout)context).removeRecipe(position);
+                ((RecipeDBLayout) context).removeRecipe(position);
                 notifyDataSetChanged();
             }
         });
 
+        // view recipe instructions
+        Button viewInstructions = (Button)view.findViewById(R.id.viewInstructions);
+        viewInstructions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO VIEW INSTRUCTIONS
+                //Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(rec.getRecipeUrl()));
+                //startActivity(intent);
+            }
+        });
         return view;
     }
 
