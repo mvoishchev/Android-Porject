@@ -78,6 +78,16 @@ public class RecipeDBLayout extends NavBaseActivity {
         populateListViewDB();
     }
 
+    public static String getRecipeUrl(int position){
+
+        String url;
+        Cursor cursor = db.getAllRows();
+        cursor.moveToPosition(position);
+        url = cursor.getString(2);
+        return url;
+    }
+
+
     public static ArrayList<String> getRecipes(){
         Cursor cursor = db.getAllRows();
 

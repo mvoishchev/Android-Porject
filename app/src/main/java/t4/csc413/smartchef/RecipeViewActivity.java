@@ -51,20 +51,20 @@ public class RecipeViewActivity extends ActionBarActivity
         setContentView(R.layout.recipe_view);
         String id = getIntent().getExtras().getString("id");
         String api = getIntent().getExtras().getString("api");
-
-        System.out.println("api: " + api);
-        System.out.println("id: " + id);
+        String url = getIntent().getExtras().getString("url");
 
         setStar(4);
 
         name = (TextView)findViewById(R.id.textView9001);
         v = (TextView)findViewById(R.id.text);
-
-
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        Recipe rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-
-        String title = recipe.getName();
+        Recipe rr;
+        if(api != null && id != null) {
+            Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
+            rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+        }else{
+            rr = SearchTools.GetRecipeByUrl(url);
+        }
+        String title = rr.getName();
         String text =  "Ingredients:\n\n";
         String text1 = "Ingredients:";
 

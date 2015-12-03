@@ -3,6 +3,7 @@ package database.recipedb;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 
 import database.DataBaseManager;
 import t4.csc413.smartchef.R;
+import t4.csc413.smartchef.RecipeViewActivity;
+import t4.csc413.smartchef.ResultsActivity;
+import t4.csc413.smartchef.SlideMain;
 
 
 /**
@@ -80,9 +84,14 @@ public class RecipeDisplayAdapter extends BaseAdapter implements ListAdapter{
         viewInstructions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO VIEW INSTRUCTIONS
-                //Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(rec.getRecipeUrl()));
-                //startActivity(intent);
+
+                Bundle bundle = new Bundle();
+                System.out.println("URL STORED: " + RecipeDBLayout.getRecipeUrl(position));
+                bundle.putString("url", RecipeDBLayout.getRecipeUrl(position));
+
+                Intent intent = new Intent(context, SlideMain.class);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
         return view;

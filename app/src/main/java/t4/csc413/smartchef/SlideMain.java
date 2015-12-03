@@ -62,6 +62,7 @@ public class SlideMain extends NavBaseActivity
 
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
+        String url = getIntent().getExtras().getString("url");
 
         String id1 = id;
         String api1 = api;
@@ -72,8 +73,12 @@ public class SlideMain extends NavBaseActivity
 
 
 
-        Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-        rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+        if(api != null && id != null) {
+            Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
+            rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+        }else{
+            rr = SearchTools.GetRecipeByUrl(url);
+        }
 
         String title = rr.getName();
         for(Ingredient ingredient: rr.getIngredients())
