@@ -54,9 +54,8 @@ public class FragC extends android.support.v4.app.Fragment
         int prep_Minutes = m.rr.getPrepTime_minutes();
 
         String text = "This recipe will take a total of " + prep_Hours + " hours and " + prep_Minutes
-                + " minutes to prepare. Please use the stop watch below to track your time." +
-                "Enter values for the textfields below and hit Go to set up the timer and then press " +
-                "Start to start the countdown! Anything left blank would automatically turn into 0";
+                + " minutes to prepare. input values for textfields below and press go then press start." +
+                "Blank input will be 0";
         v.setText(text);
 
         start = (Button) view.findViewById(StartB);
