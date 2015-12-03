@@ -44,7 +44,7 @@
 
     //NavBar - MG
     <string-array name="nav_drawer_items">
-        <item>Search Recipes</item>
+        <item>Search For Recipes</item>
         <item>Find Supermarkets</item>
         <item>Manage Evernote</item>
         <item>View Saved Recipes</item>
