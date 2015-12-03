@@ -25,7 +25,9 @@
         android:layout_below="@+id/recipe_name"
         android:background="@layout/button"
         android:layout_alignLeft="@+id/recipe_name"
-        android:layout_alignStart="@+id/recipe_name" />
+        android:layout_alignStart="@+id/recipe_name"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -37,5 +39,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp"
-        android:layout_marginEnd="44dp" />
+        android:layout_marginEnd="44dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"/>
 </RelativeLayout>
