@@ -8,14 +8,21 @@ import android.widget.TextView;
 
 import connectors.SearchTools;
 import tools.Recipe;
+/**
+ *
+ * Fragment to display information for instructions
+ * Created by Thomas X Mei
+ */
 
-public class FragB extends android.support.v4.app.Fragment {
+public class FragB extends android.support.v4.app.Fragment
+{
     static TextView v;
 
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
         View view=inflater.inflate(R.layout.fragment_frag_b,container,false);
 
         SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity

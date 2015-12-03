@@ -20,8 +20,13 @@ import tools.Ingredient;
 import static t4.csc413.smartchef.R.id.SiteButton;
 import static t4.csc413.smartchef.R.id.GMButton;
 import static t4.csc413.smartchef.R.id.YT;
-
-public class FragD extends android.support.v4.app.Fragment {
+/**
+ *
+ * Fragment to display information for accessing google maps, youtube and website
+ * Created by Thomas X Mei
+ */
+public class FragD extends android.support.v4.app.Fragment
+{
     static TextView v;
     String url;
     RatingBar star;
@@ -32,7 +37,8 @@ public class FragD extends android.support.v4.app.Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
         view=inflater.inflate(R.layout.fragment_frag_d,container,false);
         setStar(4);
 
@@ -47,7 +53,8 @@ public class FragD extends android.support.v4.app.Fragment {
         }
 
         newPage = (ImageView)view.findViewById(YT);
-        newPage.setOnClickListener(new View.OnClickListener() {
+        newPage.setOnClickListener(new View.OnClickListener()
+        {
 
             @Override
             public void onClick(View v) {
@@ -59,20 +66,24 @@ public class FragD extends android.support.v4.app.Fragment {
         //Changed to upload shopping list, instead of opening activity -Juris
         siteUrl = m.rr.getRecipeUrl();
         ImageButton newPage = (ImageButton)view.findViewById(SiteButton);
-        newPage.setOnClickListener(new View.OnClickListener() {
+        newPage.setOnClickListener(new View.OnClickListener()
+        {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(siteUrl) );
                 startActivity(u);
             }
         });
 
         ImageButton Gmaps = (ImageButton)view.findViewById(GMButton);
-        Gmaps.setOnClickListener(new View.OnClickListener() {
+        Gmaps.setOnClickListener(new View.OnClickListener()
+        {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(getActivity(), MapsActivity.class);
                 startActivity(intent);
             }

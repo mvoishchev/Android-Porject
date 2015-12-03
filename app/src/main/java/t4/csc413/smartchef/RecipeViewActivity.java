@@ -23,6 +23,7 @@ import tools.Recipe;
 
 /**
  * Created by Thomas X Mei on 10/21/2015.
+ * Also worked on by Harjit
  */
 public class RecipeViewActivity extends ActionBarActivity
 {

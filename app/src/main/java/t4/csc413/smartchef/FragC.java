@@ -24,8 +24,14 @@ import static t4.csc413.smartchef.R.id.SecondsText;
 import static t4.csc413.smartchef.R.id.StartB;
 import static t4.csc413.smartchef.R.id.StopB;
 import static t4.csc413.smartchef.R.id.textTimer;
+/**
+ *
+ * Fragment to display information for preparation time
+ * Created by Thomas X Mei
+ */
 
-public class FragC extends android.support.v4.app.Fragment {
+public class FragC extends android.support.v4.app.Fragment
+{
     static TextView v;
     View view;
     Button start, stop;
@@ -37,7 +43,8 @@ public class FragC extends android.support.v4.app.Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
         view=inflater.inflate(R.layout.fragment_frag_c,container,false);
 
         SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
@@ -61,29 +68,32 @@ public class FragC extends android.support.v4.app.Fragment {
 
 
         Button go_button = (Button) view.findViewById(Go_Button);
-        go_button.setOnClickListener(new View.OnClickListener() {
+        go_button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 hours_String = editHours.getText().toString();
-
-                if (TextUtils.isEmpty(hours_String)) {
+                if (TextUtils.isEmpty(hours_String))
+                {
                     input_hours = 0;
                 } else {
                     input_hours = new Integer(Integer.parseInt(hours_String));
                 }
-
-                minutes_String = editMinutes.getText().toString();
-                if (TextUtils.isEmpty(minutes_String)) {
+               
+                if (TextUtils.isEmpty(minutes_String))
+                {
                     input_minutes = 0;
                 } else {
                     input_minutes = new Integer(Integer.parseInt(minutes_String));
-                    if (input_minutes > 60) {
+                    if (input_minutes > 60)
+                    {
                         input_minutes = 60;
                     }
                 }
 
-                seconds_String = editeSeconds.getText().toString();
-                if (TextUtils.isEmpty(seconds_String)) {
+                if (TextUtils.isEmpty(seconds_String))
+                {
                     input_seconds = 0;
                 } else {
                     input_seconds = new Integer(Integer.parseInt(seconds_String));
@@ -92,7 +102,6 @@ public class FragC extends android.support.v4.app.Fragment {
                     }
                 }
 
-                input_seconds = new Integer(Integer.parseInt(seconds_String));
 
                 textViewTime.setText(input_hours + ":" + input_minutes + ":" + input_seconds);
 
@@ -104,45 +113,39 @@ public class FragC extends android.support.v4.app.Fragment {
                 int total = minute + hour + seconds;
 
                 final CounterClass timer = new CounterClass(total, 1000);
-                start.setOnClickListener(new OnClickListener() {
-
+                start.setOnClickListener(new OnClickListener()
+                {
                     @Override
                     public void onClick(View v) {
-                        // TODO Auto-generated method stub
                         timer.start();
-
-
                     }
                 });
 
-                stop.setOnClickListener(new OnClickListener() {
-
+                stop.setOnClickListener(new OnClickListener()
+                {
                     @Override
                     public void onClick(View v) {
-                        // TODO Auto-generated method stub
                         timer.cancel();
                         textViewTime.setText("00:00:00");
                     }
                 });
             }
         });
-
         return  view;
     }
 
+public class CounterClass extends CountDownTimer
+{
 
-public class CounterClass extends CountDownTimer {
-
-    public CounterClass(long millisInFuture, long countDownInterval) {
+    public CounterClass(long millisInFuture, long countDownInterval)
+    {
         super(millisInFuture, countDownInterval);
-        // TODO Auto-generated constructor stub
-    }
+     }
 
-    @SuppressLint("NewApi")
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+
     @Override
-    public void onTick(long millisUntilFinished) {
-        // TODO Auto-generated method stub
+    public void onTick(long millisUntilFinished)
+    {
 
         long millis = millisUntilFinished;
         String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
@@ -153,11 +156,9 @@ public class CounterClass extends CountDownTimer {
     }
 
     @Override
-    public void onFinish() {
-        // TODO Auto-generated method stub
+    public void onFinish()
+    {
         textViewTime.setText("Completed.");
     }
-
-
-}
+    }
 }

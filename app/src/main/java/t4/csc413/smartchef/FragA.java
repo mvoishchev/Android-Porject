@@ -21,9 +21,14 @@ import database.recipedb.RecipeDBLayout;
 import static t4.csc413.smartchef.R.id.SQLButton;
 import static t4.csc413.smartchef.R.id.SiteButton;
 import static t4.csc413.smartchef.R.id.shoppinglist;
+/**
+ *
+ * Fragment to display information for General information
+ * Created by Thomas X Mei
+ */
 
-
-public class FragA extends android.support.v4.app.Fragment {
+public class FragA extends android.support.v4.app.Fragment
+{
 
     static TextView v;
     View view;
@@ -31,7 +36,8 @@ public class FragA extends android.support.v4.app.Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
        view=inflater.inflate(R.layout.fragment_frag_a_,container,false);
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
@@ -65,8 +71,6 @@ public class FragA extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EvernoteActivity.class);
-                //TODO change this so that real values are uploaded insted of "Test" and random()
-                //TODO done
                 EvernoteManager.getInstance(getActivity().getApplicationContext()).createNewShoppingList(m.rr.getName(), text, getActivity());
             }
         });

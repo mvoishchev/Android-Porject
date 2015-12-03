@@ -1,6 +1,7 @@
 package t4.csc413.smartchef;
 
 /**
+ *
  * Created by Thomas X Mei on 11/2/2015.
  */
 
@@ -10,13 +11,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.Locale;
 
-public class TabAdapter extends FragmentPagerAdapter {
+public class TabAdapter extends FragmentPagerAdapter
+{
     public TabAdapter(FragmentManager fm)
     {
         super(fm);
     }
     @Override
-    public Fragment getItem(int i) {
+    public Fragment getItem(int i)
+    {
 
         switch (i) {
             case 0:
@@ -43,7 +46,8 @@ public class TabAdapter extends FragmentPagerAdapter {
 
 
     @Override
-    public CharSequence getPageTitle(int position) {
+    public CharSequence getPageTitle(int position)
+    {
         Locale l = Locale.getDefault();
         switch (position) {
             case 0:

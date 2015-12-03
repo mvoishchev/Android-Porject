@@ -1,6 +1,7 @@
 package t4.csc413.smartchef;
 
 /**
+ *
  * Created by Thomas X Mei on 11/2/2015.
  */
 
@@ -32,7 +33,8 @@ import tools.Ingredient;
 import tools.Recipe;
 
 
-public class SlideMain extends NavBaseActivity {
+public class SlideMain extends NavBaseActivity
+{
     ViewPager pager;
     PagerTabStrip tab_strp;
     static TextView v;
@@ -46,7 +48,8 @@ public class SlideMain extends NavBaseActivity {
     ImageView i;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slidemain);
         TabAdapter mapager=new TabAdapter(getSupportFragmentManager());
