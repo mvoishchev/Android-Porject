@@ -28,7 +28,9 @@
         android:id="@+id/TextFC"
         android:textSize="24sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#222222"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +40,9 @@
         android:id="@+id/textTimer"
         android:textSize="78sp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/Go_Button" />
+        android:layout_below="@+id/Go_Button"
+        android:textColor="#222222"
+        />
 
     <Button
         android:layout_width="wrap_content"
