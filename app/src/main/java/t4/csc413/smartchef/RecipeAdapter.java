@@ -71,7 +71,7 @@ class RecipeAdapter extends ArrayAdapter<String>
         theTextView.setText(results);
 
         TextView descText = (TextView) theView.findViewById(R.id.textView9);
-        descText.setText("Click for More!");
+        descText.setText("Click to view Recipe!");
 
         String yes = recipes.get(position).getImageUrl();
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
