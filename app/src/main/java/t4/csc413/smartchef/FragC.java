@@ -55,7 +55,7 @@ public class FragC extends android.support.v4.app.Fragment
         prep_Minutes = m.rr.getPrepTime_minutes();
 
         String text = "This recipe will take a total of " + prep_Hours + " hours and " + prep_Minutes
-                + " minutes to prepare.\nPress GO!, or input alternate time.";
+                + " minutes to prepare.\nPress GO!, or input an alternate time increment.";
         v.setText(text);
 
         start = (Button) view.findViewById(StartB);
