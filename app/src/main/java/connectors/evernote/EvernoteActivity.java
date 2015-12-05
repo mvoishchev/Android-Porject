@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +38,6 @@ import android.text.Html;
  */
 public class EvernoteActivity extends NavBaseActivity {
 
-    //TODO create view shopping list functionality
-
     //NavBar variables
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -61,107 +60,6 @@ public class EvernoteActivity extends NavBaseActivity {
 
     private static final String PL_LOGIN = "(Please Login to Evernote)";
     private static final String LST_EMPTY = "(Shoping List is Empty)";
-
-//    public void createNewShoppingList(String listName, String listContent) {
-//
-//        //Login and setup
-//        mEvernoteSession = new EvernoteSession.Builder(this)
-//                .setEvernoteService(EVERNOTE_SERVICE)
-//                .setSupportAppLinkedNotebooks(false)
-//                .build(CONSUMER_KEY, CONSUMER_SECRET)
-//                .asSingleton();
-//
-//        if (!EvernoteSession.getInstance().isLoggedIn()) {
-//            // Check if logged in
-//            mCachedIntent = this.getIntent();
-//            LoginActivity.launch(this);
-//        }
-//
-//        //Make the new note
-//        Note newList = new Note();
-//        newList.setTitle(listName);
-//        newList.setContent(listContent);
-//
-//        //Upload the note
-//        if (!EvernoteSession.getInstance().isLoggedIn()) {
-//            return;
-//        }
-//
-//        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-//
-//        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
-//            @Override
-//            public void onSuccess(Note result) {
-//                ingredientView.setText("Done!");
-//                ingredientList = "";
-//            }
-//
-//            @Override
-//            public void onException(Exception exception) {
-//                Log.e("Update Log", "Error updating note", exception);
-//            }
-//        });
-//    }
-
-
-
-
-//    public void updateMainShoppingList(String listContent) {
-//
-//        //Login and setup
-//        SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
-//        mainListGuid = settings.getString("mainListGuid", null);
-//        previousNoteExists = settings.getBoolean("listExists", false);
-//
-//        mEvernoteSession = new EvernoteSession.Builder(this)
-//                .setEvernoteService(EVERNOTE_SERVICE)
-//                .setSupportAppLinkedNotebooks(false)
-//                .build(CONSUMER_KEY, CONSUMER_SECRET)
-//                .asSingleton();
-//
-//        if (!EvernoteSession.getInstance().isLoggedIn()) {
-//            // Check if logged in
-//            mCachedIntent = this.getIntent();
-//            LoginActivity.launch(this);
-//        }
-//
-//        //Make the new note
-//        final Note newList = new Note();
-//        newList.setTitle(MAIN_LIST_NAME);
-//        newList.setContent(listContent);
-//
-//        //Upload the note
-//        if (!EvernoteSession.getInstance().isLoggedIn()) {
-//            return;
-//        }
-//
-//        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-//
-//        noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
-//            @Override
-//            public void onSuccess(Note result) {
-//                mainListGuid = result.getGuid();
-//                previousNoteExists = true;
-//
-//                // We need an Editor object to make preference changes.
-//                SharedPreferences settings = getSharedPreferences(EVERNOTE_PREF, 0);
-//                SharedPreferences.Editor editor = settings.edit();
-//                editor.putString("mainListGuid", mainListGuid);
-//                editor.putBoolean("listExists", previousNoteExists);
-//
-//                // Commit the edits!
-//                editor.commit();
-//
-//                ingredientView.setText("Done!");
-//                ingredientList = "";
-//            }
-//
-//            @Override
-//            public void onException(Exception exception) {
-//                Log.e("Update Log", "Error updating note", exception);
-//            }
-//        });
-//    }
 
     /**
      * This function is clalled when the clar button is pressede.
@@ -246,7 +144,8 @@ public class EvernoteActivity extends NavBaseActivity {
 
         note = new Note();
         note.setTitle(MAIN_LIST_NAME);
-        note.setContent(EvernoteUtil.NOTE_PREFIX + ShoppingListLayout.GetShoppingList().toString() + EvernoteUtil.NOTE_SUFFIX);
+        final String newSring = ShoppingListLayout.GetShoppingList().toString();
+        note.setContent(EvernoteUtil.NOTE_PREFIX + newSring + EvernoteUtil.NOTE_SUFFIX);
 
         noteStoreClient.createNoteAsync(note, new EvernoteCallback<Note>() {
             @Override
@@ -254,6 +153,10 @@ public class EvernoteActivity extends NavBaseActivity {
                 note = result;
                 mainListGuid = note.getGuid();
                 previousNoteExists = true;
+
+                //Update user's view
+                ingredientList = newSring;
+                ingredientView.setText(ingredientList);
 
                 Context context = getApplicationContext();
                 CharSequence text = "Evernote Updated";
@@ -298,7 +201,6 @@ public class EvernoteActivity extends NavBaseActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Evernotre", "Created!");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evernote);
@@ -313,25 +215,28 @@ public class EvernoteActivity extends NavBaseActivity {
                 .build(CONSUMER_KEY, CONSUMER_SECRET)
                 .asSingleton();
 
-        final EditText editText = (EditText) findViewById(R.id.add_ingredient_field);
         ingredientView = (TextView) findViewById(R.id.evernote_list_of_ingredients);
 
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                if (ingredientList.equals(LST_EMPTY))
-                    ingredientList = editText.getText().toString();
-                else if (ingredientList.equals(PL_LOGIN)){}
-                    //Do nothing
-                else
-                    ingredientList = editText.getText().toString() + "\n" + ingredientList;
-
-                ingredientView.setText(ingredientList);
-                editText.setText("");
-                return true;
-            }
-        });
+//        This text box allows for manually adding ingredients to Evernote. It was removed to simplify the UI in the final version.
+//
+//        final EditText editText = (EditText) findViewById(R.id.add_ingredient_field);
+//
+//        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//
+//                if (ingredientList.equals(LST_EMPTY))
+//                    ingredientList = editText.getText().toString();
+//                else if (ingredientList.equals(PL_LOGIN)){}
+//                    //Do nothing
+//                else
+//                    ingredientList = editText.getText().toString() + "\n" + ingredientList;
+//
+//                ingredientView.setText(ingredientList);
+//                editText.setText("");
+//                return true;
+//            }
+//        });
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
@@ -355,11 +260,11 @@ public class EvernoteActivity extends NavBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("Evernotre", "Resumed!");
         Button loginButton = (Button) findViewById(R.id.loginLogoutButton);
 
+        SystemClock.sleep(300);
+
         if (EvernoteSession.getInstance().isLoggedIn()) {
-            Log.d("Evernotre", "Logged in!");
             // Check if logged in
             loginButton.setText("Logout");
             if (previousNoteExists) {
@@ -382,7 +287,6 @@ public class EvernoteActivity extends NavBaseActivity {
 
         } else {
             //If not logged in
-            Log.d("Evernotre", "NOT Logged in!");
             loginButton.setText("Login");
             ingredientList = PL_LOGIN;
         }

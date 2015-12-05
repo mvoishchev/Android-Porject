@@ -44,7 +44,7 @@
                     android:text="Update Shopping List to Evernote"
                     android:background="@layout/button"
                     android:textColor="#040201"/>
-
+<!-- This text box allows for manually adding ingredients to evernote. It was removed to simplify the UI in the final version.
                 <EditText
                     android:id="@+id/add_ingredient_field"
                     android:layout_width="wrap_content"
@@ -55,6 +55,7 @@
                     android:imeActionLabel="Enter"
                     android:imeOptions="actionSend"
                     android:inputType="text" />
+                    -->
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -183,7 +183,7 @@ public class EvernoteManager {
 
     /**
      * Use this function to get the current contents of Evernote shopping list.
-     *
+     * <p/>
      * WARNING: will return null if not logged in, or shopping list does not exist
      *
      * @param parent needed to know where to go back to after login
