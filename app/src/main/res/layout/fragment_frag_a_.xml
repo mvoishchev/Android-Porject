@@ -20,6 +20,7 @@
     android:layout_height="match_parent"
     android:background="#eafff9">
 
+
     <!-- TODO: Update blank fragment layout -->
 
     <TextView android:layout_width="match_parent"
@@ -39,11 +40,11 @@
         android:id="@+id/SiteButton"
         android:background="@layout/button"
         android:textColor="#040201"
+        android:layout_below="@+id/TextFA"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/blinkText"
-        android:layout_alignEnd="@+id/blinkText"
-        android:layout_below="@+id/TextFA" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -53,10 +54,10 @@
         android:background="@layout/button"
         android:textColor="#040201"
         android:layout_below="@+id/SiteButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/swipeText"
+        android:layout_alignEnd="@+id/swipeText" />
 
     <Button
         android:layout_width="wrap_content"
@@ -68,20 +69,29 @@
         android:layout_below="@+id/SQLButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/blinkText"
-        android:layout_alignEnd="@+id/blinkText" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Swipe left to see more! --->"
+        android:text="Swipe left to see more!"
         android:id="@+id/blinkText"
         android:fontFamily="Bold"
         android:textColor="#222222"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/swipeText"
+        android:layout_above="@+id/TextFA"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:drawableRight="@drawable/swipe_right_second"/>
 
 </RelativeLayout>
 </ScrollView>

@@ -29,41 +29,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Click below to youtube,google maps,recipe site"
+        android:text="Click below buttons for more options!"
         android:id="@+id/T2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#222222"
         />
-
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to view video instructions on Youtube "
         android:id="@+id/YT"
-        android:src="@drawable/youtube"
-        android:onClick="bowser"
+        android:drawableRight="@drawable/youtube"
+        android:background="@layout/button"
         android:layout_below="@+id/T2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"/>
 
-
-    <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to find locations for restaurants and more nearby in Google Maps"
         android:id="@+id/GMButton"
-        android:src="@drawable/gmap"
-
+        android:drawableRight="@drawable/gmap"
         android:layout_below="@+id/YT"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@layout/button"/>
 
-
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to see the recipe&apos;s original site"
         android:id="@+id/SiteButton"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/arrow"
-        android:layout_below="@+id/GMButton" />
+        android:drawableRight="@drawable/recipe_icon_second"
+        android:layout_below="@+id/GMButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@layout/button"/>
+
 
 </RelativeLayout>
 </ScrollView>
-    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -43,16 +43,9 @@ public class FragA extends android.support.v4.app.Fragment
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFA);
-       // swipe = (TextView) view.findViewById(R.id.textView5);
 
-        TextView myText = (TextView)view.findViewById(R.id.blinkText);
 
-        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(15); //You can manage the time of the blink with this parameter
-        anim.setStartOffset(20);
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(Animation.INFINITE);
-      //  myText.startAnimation(anim);
+        TextView swipe = (TextView)view.findViewById(R.id.swipeText);
 
         TranslateAnimation animation = new TranslateAnimation(-80.0f, 0.0f,
                 0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
@@ -60,11 +53,7 @@ public class FragA extends android.support.v4.app.Fragment
         animation.setRepeatCount(10);  // animation repeat count
         animation.setRepeatMode(2);   // repeat animation (left to right, right to left )
 
-        TranslateAnimation animation2 = new TranslateAnimation(-500.0f, 0.0f,
-                0.0f, 0.0f);
-        animation2.setDuration(1000);
-        myText.startAnimation(animation2);
-        myText.startAnimation(animation);
+        swipe.startAnimation(animation);
 
 
 

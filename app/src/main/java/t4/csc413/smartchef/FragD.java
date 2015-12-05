@@ -30,7 +30,7 @@ public class FragD extends android.support.v4.app.Fragment
     static TextView v;
     String url;
     View view;
-    ImageView newPage;
+    Button newPage;
     String siteUrl;
     String text;
 
@@ -50,7 +50,7 @@ public class FragD extends android.support.v4.app.Fragment
             text = text.concat("--"+ingredient.original_discription + "\n");
         }
 
-        newPage = (ImageView)view.findViewById(YT);
+        newPage = (Button)view.findViewById(YT);
         newPage.setOnClickListener(new View.OnClickListener()
         {
 
@@ -61,12 +61,10 @@ public class FragD extends android.support.v4.app.Fragment
             }
         });
 
-        //Changed to upload shopping list, instead of opening activity -Juris
         siteUrl = m.rr.getRecipeUrl();
-        ImageButton newPage = (ImageButton)view.findViewById(SiteButton);
+        Button newPage = (Button)view.findViewById(SiteButton);
         newPage.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
@@ -75,7 +73,7 @@ public class FragD extends android.support.v4.app.Fragment
             }
         });
 
-        ImageButton Gmaps = (ImageButton)view.findViewById(GMButton);
+        Button Gmaps = (Button)view.findViewById(GMButton);
         Gmaps.setOnClickListener(new View.OnClickListener()
         {
 
@@ -86,7 +84,6 @@ public class FragD extends android.support.v4.app.Fragment
                 startActivity(intent);
             }
         });
-
 
         return  view;
     }
