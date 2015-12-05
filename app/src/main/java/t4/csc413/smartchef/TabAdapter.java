@@ -55,7 +55,7 @@ public class TabAdapter extends FragmentPagerAdapter
             case 1:
                 return "Instructions";
             case 2:
-                return "Preperation";
+                return "PrepTimer";
             case 3:
                 return "Google Maps & more";
         }

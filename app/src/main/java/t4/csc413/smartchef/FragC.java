@@ -39,6 +39,7 @@ public class FragC extends android.support.v4.app.Fragment
     EditText editHours, editMinutes , editeSeconds;
     String hours_String, minutes_String, seconds_String;
     int input_hours, input_minutes,input_seconds;
+    int prep_Hours, prep_Minutes;
 
 
 
@@ -50,12 +51,11 @@ public class FragC extends android.support.v4.app.Fragment
         SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFC);
 
-        int prep_Hours = m.rr.getPrepTime_hours();
-        int prep_Minutes = m.rr.getPrepTime_minutes();
+        prep_Hours = m.rr.getPrepTime_hours();
+        prep_Minutes = m.rr.getPrepTime_minutes();
 
         String text = "This recipe will take a total of " + prep_Hours + " hours and " + prep_Minutes
-                + " minutes to prepare. input values for textfields below and press go then press start." +
-                "Blank input will be 0";
+                + " minutes to prepare.\nPress GO!, or input alternate time.";
         v.setText(text);
 
         start = (Button) view.findViewById(StartB);
@@ -75,14 +75,14 @@ public class FragC extends android.support.v4.app.Fragment
                 hours_String = editHours.getText().toString();
                 if (TextUtils.isEmpty(hours_String))
                 {
-                    input_hours = 0;
+                    input_hours = prep_Hours;
                 } else {
                     input_hours = new Integer(Integer.parseInt(hours_String));
                 }
                
                 if (TextUtils.isEmpty(minutes_String))
                 {
-                    input_minutes = 0;
+                    input_minutes = prep_Minutes;
                 } else {
                     input_minutes = new Integer(Integer.parseInt(minutes_String));
                     if (input_minutes > 60)

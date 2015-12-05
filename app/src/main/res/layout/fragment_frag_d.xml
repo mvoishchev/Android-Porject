@@ -50,7 +50,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click here to find locations for restaurants and more nearby in Google Maps"
+        android:text="Click here to find supermarkets in Google Maps"
         android:id="@+id/GMButton"
         android:drawableRight="@drawable/gmap"
         android:layout_below="@+id/YT"
@@ -63,7 +63,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click here to see the recipe&apos;s original site"
+        android:text="Click here to see the recipe&apos;s original website"
         android:id="@+id/SiteButton"
         android:drawableRight="@drawable/recipe_icon_second"
         android:layout_below="@+id/GMButton"
