@@ -12,6 +12,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="45dp" />
 
+
     <ImageView
         android:layout_width="2500dp"
         android:layout_height="250dp"
