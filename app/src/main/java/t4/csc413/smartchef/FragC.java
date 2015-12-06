@@ -98,14 +98,14 @@ public class FragC extends android.support.v4.app.Fragment {
 
                 //get input from user and set it to variables for timer
                 hours_String = editHours.getText().toString();
-                if (TextUtils.isEmpty(hours_String))
+                if (hours_String.length() < 1)
                 {
                     input_hours = prep_Hours;
                 } else {
                     input_hours = new Integer(Integer.parseInt(hours_String));
                 }
                 minutes_String = editMinutes.getText().toString();
-                if (TextUtils.isEmpty(minutes_String))
+                if (minutes_String.length() < 1)
                 {
                     input_minutes = prep_Minutes;
                 } else {
@@ -116,7 +116,7 @@ public class FragC extends android.support.v4.app.Fragment {
                     }
                 }
                 seconds_String = editeSeconds.getText().toString();
-                if (TextUtils.isEmpty(seconds_String))
+                if (seconds_String.length() < 1)
                 {
                     input_seconds = 0;
                 } else {
