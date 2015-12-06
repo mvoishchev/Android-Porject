@@ -39,7 +39,7 @@ public class FragA extends android.support.v4.app.Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
     {
-       view=inflater.inflate(R.layout.fragment_frag_a_,container,false);
+        view=inflater.inflate(R.layout.fragment_frag_a_,container,false);
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFA);
@@ -96,11 +96,11 @@ public class FragA extends android.support.v4.app.Fragment
         Button shoppingList = (Button)view.findViewById(shoppinglist);
         shoppingList.setOnClickListener(new View.OnClickListener(){
 
-           @Override
+            @Override
             public void onClick(View v){
-               DataBaseManager.UpdateShoppingList(m.rr);
-               Toast.makeText(m, "Shopping List updated!", Toast.LENGTH_SHORT).show();
-           }
+                DataBaseManager.UpdateShoppingList(m.rr);
+                Toast.makeText(m, "Shopping List updated!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         return  view;

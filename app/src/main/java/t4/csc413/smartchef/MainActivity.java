@@ -41,18 +41,18 @@ public class MainActivity extends NavBaseActivity {
     protected boolean[] _fridgeSelection = new boolean[_useFridge.length];
 
     protected  Button advanceSearchButton;
-
     protected Button _cuisineButton;
     protected Button _allergiesButton;
     protected Button _goToFridgeButton;
     protected Button _useFridgeButton;
+    private TextView textView;
     EditText et;
     private String selections;
     private String selection;
     private String allergySelection = "";
     private String fridgeSelection = "";
 
-    private boolean visible = true;
+    private boolean visible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +66,18 @@ public class MainActivity extends NavBaseActivity {
         et.setOnKeyListener(new View.OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
-                        String emptyString = et.getText().toString();
-                        if(TextUtils.isEmpty(emptyString)) {
-                            et.setError("Please enter an ingredient!");
-                        }else {
-                            searchByIngredient();
-                        }
-
-                        //do something
-                        //true because you handle the event
-                        return true;
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    String emptyString = et.getText().toString();
+                    if (TextUtils.isEmpty(emptyString)) {
+                        et.setError("Please enter an ingredient!");
+                    } else {
+                        searchByIngredient();
                     }
+
+                    //do something
+                    //true because you handle the event
+                    return true;
+                }
                 return false;
             }
         });
@@ -88,12 +88,12 @@ public class MainActivity extends NavBaseActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-                    searchByIngredient();
+                searchByIngredient();
 
                 return true;
             }
         });
-
+        textView = (TextView) findViewById(R.id.fridgetext);
 
         _allergies = SearchTools.getSupportedAllergies();
         _cuisine = SearchTools.getSupportedCuisines();
@@ -104,6 +104,9 @@ public class MainActivity extends NavBaseActivity {
         _fridgeSelection = new boolean[_useFridge.length];
 
         advanceSearchButton = (Button) findViewById(R.id.advancedbutton);
+
+
+
 
         _cuisineButton = (Button) findViewById(R.id.cuisinebutton);
         _cuisineButton.setOnClickListener(new View.OnClickListener() {
@@ -147,14 +150,11 @@ public class MainActivity extends NavBaseActivity {
 
 
 
+
         advanceSearchButton.setVisibility(View.VISIBLE);
         advanceSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                _cuisineButton.setVisibility(View.VISIBLE);
-                _allergiesButton.setVisibility(View.VISIBLE);
-                _goToFridgeButton.setVisibility(View.VISIBLE);
-                _useFridgeButton.setVisibility(View.VISIBLE);
                 Toggle();
             }
         });
@@ -186,6 +186,9 @@ public class MainActivity extends NavBaseActivity {
             _allergiesButton.setVisibility(View.GONE);
             _goToFridgeButton.setVisibility(View.GONE);
             _useFridgeButton.setVisibility(View.GONE);
+            textView.setVisibility(View.GONE);
+
+
             visible = false;
 
         }
@@ -194,6 +197,7 @@ public class MainActivity extends NavBaseActivity {
             _allergiesButton.setVisibility(View.VISIBLE);
             _goToFridgeButton.setVisibility(View.VISIBLE);
             _useFridgeButton.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
             visible = true;
         }
     }
@@ -261,7 +265,7 @@ public class MainActivity extends NavBaseActivity {
                             fridgeSelection = fridgeSelection.concat((String) current[clicked]).concat(",");
                     }
 
-                        et.setText(fridgeSelection);
+                    et.setText(fridgeSelection);
                 }
             }else{
                 //if unclicked, remove them from being passed
