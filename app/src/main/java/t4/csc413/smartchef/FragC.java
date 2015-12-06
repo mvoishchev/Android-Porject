@@ -164,11 +164,11 @@ public class FragC extends android.support.v4.app.Fragment {
                 timer = new CountDownTimer(millisInFuture, countDownInterval) {
                     public void onTick(long millisUntilFinished) {
                         //do something in every tick
-                        if (isPaused || isCanceled) {
+                      //  if (isPaused || isCanceled) {
                             //If the user request to cancel or paused the
                             //CountDownTimer we will cancel the current instance
                             cancel();
-                        } else {
+                      //  } else {
                             //Display the remaining seconds to app interface
                             //1 second = 1000 milliseconds
                             String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(timeRemaining),
@@ -178,7 +178,7 @@ public class FragC extends android.support.v4.app.Fragment {
                             //Put count down timer remaining time in a variable
                             timeRemaining = millisUntilFinished;
                         }
-                    }
+                //    }
 
                     public void onFinish() {
                         //Do something when count down finished
@@ -201,7 +201,7 @@ public class FragC extends android.support.v4.app.Fragment {
             public void onClick(View v) {
                 //stop timer
                 timer.cancel();
-                timer = null;
+
                 //When user request to pause the CountDownTimer
                 isPaused = true;
 
@@ -227,6 +227,7 @@ public class FragC extends android.support.v4.app.Fragment {
             public void onClick(View v) {
                 //stop timer
                 timer.cancel();
+
 
 
                 //Disable the start and resume button
@@ -280,7 +281,7 @@ public class FragC extends android.support.v4.app.Fragment {
                         isCanceled = true;
                         //stop timer
                         timer.cancel();
-                        
+
 
                         //Disable the cancel, pause and resume button
                         pause.setEnabled(false);
