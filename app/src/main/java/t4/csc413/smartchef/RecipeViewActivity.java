@@ -38,12 +38,10 @@ public class RecipeViewActivity extends ActionBarActivity
     // to keep current Index of text
     int currentIndex = -1;
 
-
     static TextView v;
     static TextView name;
     String url;
     RatingBar star;
-
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -52,8 +50,6 @@ public class RecipeViewActivity extends ActionBarActivity
         String id = getIntent().getExtras().getString("id");
         String api = getIntent().getExtras().getString("api");
         String url = getIntent().getExtras().getString("url");
-
-        setStar(4);
 
         name = (TextView)findViewById(R.id.textView9001);
         v = (TextView)findViewById(R.id.text);
@@ -68,18 +64,11 @@ public class RecipeViewActivity extends ActionBarActivity
         String text =  "Ingredients:\n\n";
         String text1 = "Ingredients:";
 
-
         for(Ingredient ingredient: rr.getIngredients())
         {
             text = text.concat(ingredient.original_discription + "\n--");
             text1 = text.concat("--"+ingredient.original_discription + "\n");
         }
-
-
-
-
-
-
 
         String instructions = rr.getInstructions();
         int prep_Hours = rr.getPrepTime_hours();
@@ -87,25 +76,17 @@ public class RecipeViewActivity extends ActionBarActivity
         String cuisine_Type = rr.getCuisine();
 
         text = text.concat("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tInstructions:\n\n" +instructions + "\n");
-
         String text2 = "Instructions:\n\n" +instructions + "\n";
-
-
         text = text.concat("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tPreperation Time:\n\t\t\t\t\t\t" +
                 "\t\t\t\t\t\tHours: " + prep_Hours +
                 "\t\t\tMinutes: " + prep_Minutes);
         String text3 = "Preperation Time:" +
                 "\n\nHours: " + prep_Hours +
                 "\tMinutes: " + prep_Minutes;
-
-
-
         text = text.concat("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCuisine Type:" +
                 "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + cuisine_Type);
         String text4 = "Cuisine Type:\n\n" +
                 cuisine_Type;
-
-
 
         text = text.concat("Url:\n" + rr.getRecipeUrl());
         String text5 = "Url:\n\n" + rr.getRecipeUrl();
@@ -115,42 +96,28 @@ public class RecipeViewActivity extends ActionBarActivity
         v.setMovementMethod(new ScrollingMovementMethod());
         url = "https://www.youtube.com/results?search_query=" + rr.getName();
 
-
-
         // Call all the methods
         init();
         loadAnimations();
         setFactory();
         setListener();
 
-
         textToShow[0] = text1;
         textToShow[1] = text2;
         textToShow[2] = text3;
         textToShow[3] = text4;
         textToShow[4] = text5;
-
-
-
-
-
     }
 
+    /**
+     * Method to open up a browser from string input
+     * @param view
+     */
     public void bowser(View view)
     {
-
         Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(url) );
         startActivity(u);
     }
-    public void setStar(float score)
-    {
-        star = (RatingBar) findViewById(R.id.ratingBar);
-        star.setRating(score);
-    }
-
-
-
-
 
     void init() {
         next = (Button) findViewById(R.id.buttonNext);
@@ -209,9 +176,5 @@ public class RecipeViewActivity extends ActionBarActivity
                 return myText;
             }
         });
-
     }
-
-
-
 }
