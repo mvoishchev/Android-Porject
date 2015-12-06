@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:text="Click here to see the recipe&apos;s original website"
         android:id="@+id/SiteButton"
-        android:drawableRight="@drawable/recipe_icon_second"
+        android:drawableRight="@drawable/browser"
         android:layout_below="@+id/GMButton"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
