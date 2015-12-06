@@ -7,129 +7,117 @@
     android:backgroundTintMode="src_over"
     android:scrollbarFadeDuration="0"
     android:scrollbarAlwaysDrawVerticalTrack="true">
-<ScrollView
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:scrollbarFadeDuration="0"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
-    >
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#eafff9"
-    tools:context="t4.csc413.smartchef.FragA">
+    <ScrollView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        >
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eafff9"
+            tools:context="t4.csc413.smartchef.FragA">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fragment C"
-        android:id="@+id/TextFC"
-        android:textSize="24sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#222222"
-        />
+            <!-- TODO: Update blank fragment layout -->
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fragment C"
+                android:id="@+id/TextFC"
+                android:textSize="24sp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#222222"
+                />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="00:00:00"
-        android:id="@+id/textTimer"
-        android:textSize="78sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/Go_Button"
-        android:textColor="#222222"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="00:00:00"
+                android:id="@+id/textTimer"
+                android:textSize="78sp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#222222"
+                android:layout_below="@+id/HourText" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/StartB"
-        android:background="#f80b0b"
-        android:textColor="#fcf9f9"
-        android:layout_below="@+id/textTimer"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/MinutesText"
-        android:layout_toStartOf="@+id/MinutesText" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:id="@+id/StartB"
+                android:background="#f80b0b"
+                android:textColor="#fcf9f9"
+                android:layout_below="@+id/textTimer"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/MinutesText"
+                android:layout_toStartOf="@+id/MinutesText" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/HourText"
-        android:hint="hours"
-        android:layout_alignTop="@+id/MinutesText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:inputType="number"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/HourText"
+                android:hint="hours"
+                android:layout_alignTop="@+id/MinutesText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:inputType="number"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/MinutesText"
-        android:hint="minutes"
-        android:layout_alignTop="@+id/SecondsText"
-        android:layout_centerHorizontal="true"
-        android:inputType="number"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/MinutesText"
+                android:hint="minutes"
+                android:layout_alignTop="@+id/SecondsText"
+                android:layout_centerHorizontal="true"
+                android:inputType="number"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/SecondsText"
-        android:hint="seconds"
-        android:layout_below="@+id/TextFC"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:inputType="number"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/SecondsText"
+                android:hint="seconds"
+                android:layout_below="@+id/TextFC"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="number"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GO!"
-        android:id="@+id/Go_Button"
-        android:layout_below="@+id/HourText"
-        android:layout_centerHorizontal="true"
-        />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pause"
+                android:id="@+id/Pause_Button"
+                android:layout_alignTop="@+id/StartB"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resume"
+                android:id="@+id/Resume_Button"
+                android:layout_alignTop="@+id/StopB"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/StartB"
+                android:layout_alignRight="@+id/StartB"
+                android:layout_alignEnd="@+id/StartB" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pause"
-        android:id="@+id/Pause_Button"
-        android:layout_alignTop="@+id/StartB"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/Go_Button"
-        android:layout_toEndOf="@+id/Go_Button" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Resume"
-        android:id="@+id/Resume_Button"
-        android:layout_alignTop="@+id/StopB"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/StartB"
-        android:layout_toStartOf="@+id/Go_Button"
-        android:layout_alignRight="@+id/StartB"
-        android:layout_alignEnd="@+id/StartB" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RESET"
-        android:id="@+id/StopB"
-        android:layout_below="@+id/Pause_Button"
-        android:layout_alignRight="@+id/Pause_Button"
-        android:layout_alignEnd="@+id/Pause_Button"
-        android:layout_alignLeft="@+id/Pause_Button"
-        android:layout_alignStart="@+id/Pause_Button" />
-</RelativeLayout>
-</ScrollView>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RESET"
+                android:id="@+id/StopB"
+                android:layout_below="@+id/Pause_Button"
+                android:layout_alignRight="@+id/Pause_Button"
+                android:layout_alignEnd="@+id/Pause_Button"
+                android:layout_alignLeft="@+id/Pause_Button"
+                android:layout_alignStart="@+id/Pause_Button" />
+        </RelativeLayout>
+    </ScrollView>
 
 
 

@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:textColor="#FF0000"
         android:background="@layout/button"
         android:text="X"
         android:id="@+id/delete"

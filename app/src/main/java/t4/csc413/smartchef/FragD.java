@@ -43,7 +43,7 @@ public class FragD extends android.support.v4.app.Fragment
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         url = "https://www.youtube.com/results?search_query=" + m.rr.getName();
 
-         text =  "\n\nIngredients:\n\n";
+        text =  "\n\nIngredients:\n\n";
 
         for(Ingredient ingredient: m.rr.getIngredients())
         {
