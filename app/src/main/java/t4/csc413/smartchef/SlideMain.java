@@ -38,7 +38,6 @@ public class SlideMain extends NavBaseActivity
     ViewPager pager;
     PagerTabStrip tab_strp;
     static TextView v;
-
     public String id;
     public String api;
     public Recipe rr;
@@ -54,12 +53,12 @@ public class SlideMain extends NavBaseActivity
         setContentView(R.layout.slidemain);
         TabAdapter mapager=new TabAdapter(getSupportFragmentManager());
         pager=(ViewPager)findViewById(R.id.pager);
-
+        //using adapter to set up tab
         pager.setAdapter(mapager);
         tab_strp=(PagerTabStrip)findViewById(R.id.tab_strip);
         tab_strp.setTextColor(Color.WHITE);
         tab_strp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-
+        //retrieving information passed from a bundle
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
         String url = getIntent().getExtras().getString("url");
@@ -68,18 +67,12 @@ public class SlideMain extends NavBaseActivity
         String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
-
-
-
-
-
         if(api != null && id != null) {
             Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
             rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
         }else{
             rr = SearchTools.GetRecipeByUrl(url);
         }
-
         String title = rr.getName();
         for(Ingredient ingredient: rr.getIngredients())
         {
@@ -87,27 +80,21 @@ public class SlideMain extends NavBaseActivity
         }
         v.setText(title);
 
-
-        /*
-        Bitmap bitmap = getBitmapFromURL(rr.getImageUrl());
-        i.setImageBitmap(bitmap);
-        */
-
-
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
     }
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -115,6 +102,11 @@ public class SlideMain extends NavBaseActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Returns image from website string input
+     * @param src
+     * @return
+     */
     public static Bitmap getBitmapFromURL(String src) {
         try {
             Log.e("src", src);

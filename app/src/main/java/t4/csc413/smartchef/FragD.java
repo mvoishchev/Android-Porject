@@ -33,8 +33,6 @@ public class FragD extends android.support.v4.app.Fragment
     Button newPage;
     String siteUrl;
     String text;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
     {
@@ -42,20 +40,17 @@ public class FragD extends android.support.v4.app.Fragment
 
         final SlideMain m = (SlideMain)getActivity(); //grabs info from parent activity
         url = "https://www.youtube.com/results?search_query=" + m.rr.getName();
-
         text =  "\n\nIngredients:\n\n";
-
         for(Ingredient ingredient: m.rr.getIngredients())
         {
             text = text.concat("--"+ingredient.original_discription + "\n");
         }
-
         newPage = (Button)view.findViewById(YT);
         newPage.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent u = new Intent(Intent.ACTION_VIEW, Uri.parse(url) );
                 startActivity(u);
             }
@@ -76,7 +71,6 @@ public class FragD extends android.support.v4.app.Fragment
         Button Gmaps = (Button)view.findViewById(GMButton);
         Gmaps.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
@@ -84,11 +78,6 @@ public class FragD extends android.support.v4.app.Fragment
                 startActivity(intent);
             }
         });
-
         return  view;
     }
-
-
-
-
 }
