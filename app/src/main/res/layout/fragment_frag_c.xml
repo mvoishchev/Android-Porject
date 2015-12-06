@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="Start"
         android:id="@+id/StartB"
-        android:background="#f80b0b"
+        android:background="#13bd1d"
         android:textColor="#fcf9f9"
         android:layout_below="@+id/textTimer"
         android:layout_alignParentLeft="true"
@@ -93,7 +93,8 @@
         android:layout_alignTop="@+id/StartB"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/MinutesText"
+        android:layout_toEndOf="@+id/MinutesText" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,6 +112,7 @@
         android:layout_height="wrap_content"
         android:text="RESET"
         android:id="@+id/StopB"
+        android:background="#f71316"
         android:layout_below="@+id/Pause_Button"
         android:layout_alignRight="@+id/Pause_Button"
         android:layout_alignEnd="@+id/Pause_Button"
