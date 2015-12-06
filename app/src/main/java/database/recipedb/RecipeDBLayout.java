@@ -65,6 +65,14 @@ public class RecipeDBLayout extends NavBaseActivity {
         closeDB();
     }
 
+    public static String getRecipeTitle(int position){
+        String title;
+        Cursor cursor = db.getAllRows();
+        cursor.moveToPosition(position);
+        title = cursor.getString(1);
+        return title;
+    }
+
     // removes recipes from db
     public void removeAllRecipes(View v) {
         db.deleteAll();

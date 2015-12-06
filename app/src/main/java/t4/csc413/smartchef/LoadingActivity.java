@@ -34,7 +34,9 @@ public class LoadingActivity extends Activity {
             searchingRecipes = true;
         }
         else {
+
             SearchTools.GetRecipeByUrl(url);
+            searchingRecipes = false;
 
         }
 
@@ -50,18 +52,26 @@ public class LoadingActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 if(!SearchTools.isWaiting()) {
-                    finish();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("search", search);
-                    if(cuisine != null)
-                        bundle.putString("cuisine", cuisine);
-                    if(allergies != null)
-                        bundle.putString("allergies",allergies); /*allergies here**/
+                    if(searchingRecipes) {
+                        finish();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("search", search);
+                        if (cuisine != null)
+                            bundle.putString("cuisine", cuisine);
+                        if (allergies != null)
+                            bundle.putString("allergies", allergies); /*allergies here**/
 
-                    Intent i = new Intent(LoadingActivity.this, ResultsActivity.class);
-                    i.putExtras(bundle);
-                    startActivity(i);
-                }else
+                        Intent i = new Intent(LoadingActivity.this, ResultsActivity.class);
+                        i.putExtras(bundle);
+                        startActivity(i);
+                    }else{
+                        finish();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("url", url);
+                        Intent i = new Intent(LoadingActivity.this, SlideMain.class);
+                        startActivity(i);
+                    }
+                    }else
                 {
                     iv.startAnimation(an);
                 }

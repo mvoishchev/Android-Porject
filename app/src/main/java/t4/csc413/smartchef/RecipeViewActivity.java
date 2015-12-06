@@ -54,11 +54,15 @@ public class RecipeViewActivity extends ActionBarActivity
         name = (TextView)findViewById(R.id.textView9001);
         v = (TextView)findViewById(R.id.text);
         Recipe rr;
-        if(api != null && id != null) {
-            Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-            rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-        }else{
-            rr = SearchTools.GetRecipeByUrl(url);
+        try {
+            if (api != null && id != null) {
+                Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
+                rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+            } else {
+                rr = SearchTools.GetRecipeByUrl(url);
+            }
+        }catch(Exception e){
+            rr = new Recipe();
         }
         String title = rr.getName();
         String text =  "Ingredients:\n\n";

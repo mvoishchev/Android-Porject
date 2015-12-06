@@ -5,6 +5,7 @@ package t4.csc413.smartchef;
  * Created by Thomas X Mei on 11/2/2015.
  */
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,6 +22,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,22 +69,37 @@ public class SlideMain extends NavBaseActivity
         String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
-        if(api != null && id != null) {
-            Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-            rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-        }else{
-            rr = SearchTools.GetRecipeByUrl(url);
-        }
-        String title = rr.getName();
-        for(Ingredient ingredient: rr.getIngredients())
-        {
-            ingredients =ingredient.original_discription + "\n--";
-        }
-        v.setText(title);
+        try {
+            if (api != null && id != null) {
+                Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
+                rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+            } else {
+                rr = SearchTools.GetRecipeByUrl(url);
+            }
 
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
-        set(navMenuTitles, navMenuIcons);
+            if(rr.getPrepTime_hours() < 0 && rr.getPrepTime_hours() < 0){
+                displayError();
+            }
+
+            String title = rr.getName();
+
+            for (Ingredient ingredient : rr.getIngredients()) {
+                ingredients = ingredient.original_discription + "\n--";
+            }
+            v.setText(title);
+
+            navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+            navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+            set(navMenuTitles, navMenuIcons);
+        }catch (Exception e){
+
+        }
+    }
+
+    private void displayError(){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        Toast.makeText(this, "Spoonacular API is experiencing difficulties. 502 Bad Gateway error", Toast.LENGTH_LONG).show();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
