@@ -86,12 +86,13 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
                 rec.setPrepTime(fullRecipeResultModel.minutes / 60, fullRecipeResultModel.minutes % 60);
 
-                SearchTools.setWaitingAPI(2, false);
+                SearchTools.setWaitingAPI(1, false);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                SearchTools.setWaitingAPI(2, false);
+                System.out.println("SHIT HAPPENENING");
+                SearchTools.setWaitingAPI(1, false);
             }
         });
 

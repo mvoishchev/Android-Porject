@@ -42,6 +42,7 @@ public class SlideMain extends NavBaseActivity
     static TextView v;
     public String id;
     public String api;
+    String name;
     public Recipe rr;
     public String ingredients;
     private String[] navMenuTitles;
@@ -64,24 +65,24 @@ public class SlideMain extends NavBaseActivity
         id = getIntent().getExtras().getString("id");
         api = getIntent().getExtras().getString("api");
         String url = getIntent().getExtras().getString("url");
-
+        name = getIntent().getExtras().getString("name");
         String id1 = id;
         String api1 = api;
 
         v = (TextView)findViewById(R.id.title);
-        try {
-            if (api != null && id != null) {
-                Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
-                rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
-            } else {
-                rr = SearchTools.GetRecipeByUrl(url);
-            }
 
-            if(rr.getPrepTime_hours() < 0 && rr.getPrepTime_hours() < 0){
-                displayError();
-            }
+        if (api != null && id != null) {
+            Recipe recipe = SearchTools.GetRecipePreviewById(api, id);
+            rr = SearchTools.GetRecipeByUrl(recipe.getRecipeUrl());
+        } else {
+            rr = SearchTools.GetRecipeByUrl(url);
+        }
 
-            String title = rr.getName();
+        if(rr.getPrepTime_hours() < 0 && rr.getPrepTime_hours() < 0){
+            displayError();
+        }
+
+            String title = name;
 
             for (Ingredient ingredient : rr.getIngredients()) {
                 ingredients = ingredient.original_discription + "\n--";
@@ -91,9 +92,6 @@ public class SlideMain extends NavBaseActivity
             navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
             navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
             set(navMenuTitles, navMenuIcons);
-        }catch (Exception e){
-
-        }
     }
 
     private void displayError(){

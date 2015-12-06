@@ -93,9 +93,10 @@ public class ResultsActivity extends NavBaseActivity {
                                     int position, long id)
             {
                 Bundle bundle = new Bundle();
-                Intent i = new Intent(ResultsActivity.this, SlideMain.class);
+                Intent i = new Intent(ResultsActivity.this, LoadingActivity.class);
                 bundle.putString("api", recipes.get(position).getApi());
                 bundle.putString("id", recipes.get(position).getId());
+                bundle.putString("name", recipes.get(position).getName());
                 i.putExtras(bundle);
                 startActivity(i);
             }
