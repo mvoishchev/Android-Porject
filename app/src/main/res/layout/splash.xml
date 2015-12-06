@@ -14,7 +14,7 @@
 
     <ImageView
         android:layout_width="2500dp"
-        android:layout_height="250dp"
+        android:layout_height="750dp"
         android:id="@+id/imageView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
