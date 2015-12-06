@@ -134,7 +134,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
 
         setRequesting(true);
-        SearchTools.WAITING_API_1 = true;
+        SearchTools.setWaitingAPI(1, true);
         connector.getRecipeByIngredient(ingredients, new Callback<JsonArray>() {
             @Override
             public void success(JsonArray jsonElements, Response response) {
@@ -170,12 +170,12 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
                 SearchTools.UpdateCacheSearch(cachekey, recipes);
 
                 setRequesting(false);
-                SearchTools.WAITING_API_1 = false;
+                SearchTools.setWaitingAPI(1, false);
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                SearchTools.setWaitingAPI(1, false);
             }
         });
 
