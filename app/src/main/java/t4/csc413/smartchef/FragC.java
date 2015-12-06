@@ -23,6 +23,7 @@ import static t4.csc413.smartchef.R.id.Pause_Button;
 import static t4.csc413.smartchef.R.id.SecondsText;
 import static t4.csc413.smartchef.R.id.StartB;
 import static t4.csc413.smartchef.R.id.StopB;
+import static t4.csc413.smartchef.R.id.testResume;
 import static t4.csc413.smartchef.R.id.textTimer;
 /**
  *
@@ -75,9 +76,11 @@ public class FragC extends android.support.v4.app.Fragment {
         start = (Button) view.findViewById(StartB);
         stop = (Button) view.findViewById(StopB);
         pause = (Button) view.findViewById(Pause_Button);
+        resume = (Button) view.findViewById(testResume);
 
         pause.setEnabled(false);
         stop.setEnabled(false);
+        resume.setEnabled(false);
 
        /*
         //Initially disabled the pause, resume and cancel button
@@ -102,7 +105,7 @@ public class FragC extends android.support.v4.app.Fragment {
                     input_hours = new Integer(Integer.parseInt(hours_String));
                 }
                 minutes_String = editMinutes.getText().toString();
-                if (minutes_String.length() < 1)
+                if ((minutes_String.length()) < 1)
                 {
                     input_minutes = prep_Minutes;
                 } else {
@@ -188,6 +191,19 @@ public class FragC extends android.support.v4.app.Fragment {
                 textViewTime.setText("00:00:00");
             }
         });
+
+        resume.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                pause.setEnabled(true);
+                start.setEnabled(false);
+                timer = new CounterClass(millisUntilDoned, 1000);
+                timer.start();
+            }
+        });
+
         return view;
     }
 
@@ -208,7 +224,7 @@ public class FragC extends android.support.v4.app.Fragment {
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
             textViewTime.setText(hms);
-            millis = millisUntilDoned;
+            millisUntilDoned = millis;
         }
         @Override
         public void onFinish()
