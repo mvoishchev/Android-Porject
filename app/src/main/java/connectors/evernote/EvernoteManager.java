@@ -124,17 +124,17 @@ public class EvernoteManager {
 
         currentParent = parent;
 
-        //Login and setup
-        mainListGuid = evernoteSettings.getString("mainListGuid", null);
-        previousNoteExists = evernoteSettings.getBoolean("listExists", false);
-        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-
         if (!EvernoteSession.getInstance().isLoggedIn()) {
             DialogFragment dialog = new LoginDialog();
             FragmentManager manager = currentParent.getFragmentManager();
             dialog.show(manager, "LoginDialog");
             return;
         }
+        
+        //Login and setup
+        mainListGuid = evernoteSettings.getString("mainListGuid", null);
+        previousNoteExists = evernoteSettings.getBoolean("listExists", false);
+        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
 
         if (previousNoteExists) {
             try {
