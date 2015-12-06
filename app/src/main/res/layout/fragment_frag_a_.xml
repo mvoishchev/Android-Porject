@@ -44,7 +44,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/swipeText"
-        android:layout_alignEnd="@+id/swipeText" />
+        android:layout_alignEnd="@+id/swipeText"
+        android:drawableRight="@drawable/save"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -57,7 +58,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:drawableRight="@drawable/shoplist"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -70,7 +73,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:drawableRight="@drawable/Enote"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +95,7 @@
         android:layout_above="@+id/TextFA"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:drawableRight="@drawable/swipe_right_second"/>
+        android:drawableRight="@drawable/rightbluearrow"/>
 
 </RelativeLayout>
 </ScrollView>
