@@ -27,6 +27,7 @@ import static t4.csc413.smartchef.R.id.textTimer;
 /**
  *
  * Fragment to display information for preparation time
+ * and allows users to use a timer
  * Created by Thomas X Mei
  */
 
@@ -40,7 +41,6 @@ public class FragC extends android.support.v4.app.Fragment {
     int input_hours, input_minutes, input_seconds;
     int prep_Hours, prep_Minutes;
     int total;
-    //CountDownTimer timer;
     CounterClass timer;
     long millisUntilDoned;
 
@@ -59,7 +59,7 @@ public class FragC extends android.support.v4.app.Fragment {
 
         SlideMain m = (SlideMain) getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFC);
-
+        //grabbing info from slidemain
         prep_Hours = m.rr.getPrepTime_hours();
         prep_Minutes = m.rr.getPrepTime_minutes();
 
@@ -67,12 +67,9 @@ public class FragC extends android.support.v4.app.Fragment {
                 + " minutes to prepare.\nPress Start!, or input an alternate time increment.";
         v.setText(text);
 
-
         editHours = (EditText) view.findViewById(HourText);
         editMinutes = (EditText) view.findViewById(MinutesText);
         editeSeconds = (EditText) view.findViewById(SecondsText);
-
-
 
         textViewTime = (TextView) view.findViewById(textTimer);
         start = (Button) view.findViewById(StartB);
@@ -80,7 +77,6 @@ public class FragC extends android.support.v4.app.Fragment {
         pause = (Button) view.findViewById(Pause_Button);
 
         pause.setEnabled(false);
-
         stop.setEnabled(false);
 
        /*
@@ -92,10 +88,11 @@ public class FragC extends android.support.v4.app.Fragment {
 
 
         //Set a Click Listener for start button
-        start.setOnClickListener(new OnClickListener() {
+        start.setOnClickListener(new OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v)
+            {
                 //get input from user and set it to variables for timer
                 hours_String = editHours.getText().toString();
                 if (hours_String.length() < 1)
@@ -121,28 +118,24 @@ public class FragC extends android.support.v4.app.Fragment {
                     input_seconds = 0;
                 } else {
                     input_seconds = new Integer(Integer.parseInt(seconds_String));
-                    if (input_seconds > 60) {
+                    if (input_seconds > 60)
+                    {
                         input_seconds = 60;
                     }
                 }
-
                 //display the timer onto textField
                 textViewTime.setText(input_hours + ":" + input_minutes + ":" + input_seconds);
                 //converting from milliseconds to hours,minutes,seconds
                 int hour = input_hours * 3600000;
                 int minute = input_minutes * 60000;
                 int seconds = input_seconds * 1000;
-
                 //total time in milliseconds
                 total = minute + hour + seconds;
 
-
                 isPaused = false;
                 isCanceled = false;
-
                 //Disable the start and pause button
                 start.setEnabled(false);
-
                 //Enabled the pause and cancel button
                 pause.setEnabled(true);
                 stop.setEnabled(true);
@@ -153,23 +146,19 @@ public class FragC extends android.support.v4.app.Fragment {
 
                 timer = new CounterClass(millisInFuture, countDownInterval);
                 timer.start();
-
             }
         });
-
         //Set a Click Listener for pause button
-        pause.setOnClickListener(new OnClickListener() {
+        pause.setOnClickListener(new OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //stop timer
                 timer.cancel();
-
-
                 //When user request to pause the CountDownTimer
                 isPaused = true;
-
                 //Enable the resume and cancel button
-
                 stop.setEnabled(true);
                 //Disable the start and pause button
                 start.setEnabled(false);
@@ -177,55 +166,43 @@ public class FragC extends android.support.v4.app.Fragment {
 
                 long millisInFuture = timeRemaining;
                 long countDownInterval = 1000;
-
-
-
-
             }
         });
-
-
-
         //Set a Click Listener for cancel/stop button
-        stop.setOnClickListener(new OnClickListener() {
+        stop.setOnClickListener(new OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //stop the timer
                 timer.cancel();
                 timer = null;
                 //When user request to cancel the CountDownTimer
                 isCanceled = true;
-
                 //Disable the cancel, pause and resume button
                 pause.setEnabled(false);
-
                 stop.setEnabled(false);
                 //Enable the start button
                 start.setEnabled(true);
-
-
-
-                //Notify the user that CountDownTimer is canceled/stopped
+              //Notify the user that CountDownTimer is canceled/stopped
                 textViewTime.setText("00:00:00");
             }
         });
-
-
         return view;
     }
+
+    /**
+     * Customer class for CountDownTimer to display the timer in standard format
+     */
     public class CounterClass extends CountDownTimer
     {
-
         public CounterClass(long millisInFuture, long countDownInterval)
         {
             super(millisInFuture, countDownInterval);
         }
-
-
         @Override
         public void onTick(long millisUntilFinished)
         {
-
             long millis = millisUntilFinished;
             String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
@@ -233,7 +210,6 @@ public class FragC extends android.support.v4.app.Fragment {
             textViewTime.setText(hms);
             millis = millisUntilDoned;
         }
-
         @Override
         public void onFinish()
         {
@@ -241,7 +217,3 @@ public class FragC extends android.support.v4.app.Fragment {
         }
     }
 }
-
-
-
-

@@ -30,7 +30,7 @@ import tools.Recipe;
  */
 
 public class ResultsActivity extends NavBaseActivity {
-
+    //NavDrawer variables
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
     ListView list;
@@ -44,7 +44,6 @@ public class ResultsActivity extends NavBaseActivity {
     String allergies;
     String cuisine;
     String text_for_results;
-
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -70,16 +69,12 @@ public class ResultsActivity extends NavBaseActivity {
             toastTV.setTextSize(30);
             t.show();
         }
-
-
-
         for (int recipe = 0; recipe < recipes.size(); recipe++)
         {
             Recipe temp = recipes.get(recipe);
             name.add(temp.getName());
             desc.add(temp.getId());
             iv.add(temp.getImageUrl());
-
         }
 
         text_for_results = "Recipe Search results for: " +search;
@@ -91,28 +86,23 @@ public class ResultsActivity extends NavBaseActivity {
         ListAdapter theAdapter = new RecipeAdapter(this, name, recipes);
         list.setAdapter(theAdapter);
 
-
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id)
             {
-
                 Bundle bundle = new Bundle();
                 Intent i = new Intent(ResultsActivity.this, SlideMain.class);
                 bundle.putString("api", recipes.get(position).getApi());
                 bundle.putString("id", recipes.get(position).getId());
                 i.putExtras(bundle);
                 startActivity(i);
-
             }
         });
-
+        //to make NavDrawer display
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         set(navMenuTitles, navMenuIcons);
     }
-
 }
