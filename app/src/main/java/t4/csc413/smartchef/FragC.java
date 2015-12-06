@@ -103,14 +103,14 @@ public class FragC extends android.support.v4.app.Fragment {
                 hours_String = editHours.getText().toString();
                 if (TextUtils.isEmpty(hours_String))
                 {
-                    input_hours = 0;
+                    input_hours = prep_Hours;
                 } else {
                     input_hours = new Integer(Integer.parseInt(hours_String));
                 }
                 minutes_String = editMinutes.getText().toString();
                 if (TextUtils.isEmpty(minutes_String))
                 {
-                    input_minutes = 0;
+                    input_minutes = prep_Minutes;
                 } else {
                     input_minutes = new Integer(Integer.parseInt(minutes_String));
                     if (input_minutes > 60)
@@ -246,7 +246,7 @@ public class FragC extends android.support.v4.app.Fragment {
                 //Initialize a new CountDownTimer instance
                 long millisInFuture = timeRemaining;
                 long countDownInterval = 1000;
-                timer = new CounterClass(millisUntilDoned, 1000);
+                timer = new CounterClass(10000000, 1000);
 
                 timer.start();
 
