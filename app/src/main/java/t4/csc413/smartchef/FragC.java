@@ -42,8 +42,8 @@ public class FragC extends android.support.v4.app.Fragment {
     int input_hours, input_minutes, input_seconds;
     int prep_Hours, prep_Minutes;
     int total;
-    //CountDownTimer timer;
-    CounterClass timer;
+    CountDownTimer timer;
+    //CounterClass timer;
     long millisUntilDoned;
 
 
@@ -162,9 +162,9 @@ public class FragC extends android.support.v4.app.Fragment {
                 long millisInFuture = total;
                 long countDownInterval = 1000;
 
-                timer = new CounterClass(millisInFuture, countDownInterval);
-                timer.start();
-/*
+              //  timer = new CounterClass(millisInFuture, countDownInterval);
+               // timer.start();
+
 
                 //Initialize a new CountDownTimer instance
                 timer = new CountDownTimer(millisInFuture, countDownInterval) {
@@ -200,7 +200,7 @@ public class FragC extends android.support.v4.app.Fragment {
                 }.start();
 
 
-                */
+
             }
         });
 
@@ -253,12 +253,14 @@ public class FragC extends android.support.v4.app.Fragment {
 
                 //Initialize a new CountDownTimer instance
                 long millisInFuture = timeRemaining;
-                timer = new CounterClass(millisUntilDoned, 1000);
+                long countDownInterval = 1000;
+                //timer = new CounterClass(millisUntilDoned, 1000);
 
-                timer.start();
+               // timer.start();
+               // timer.getClass().
 
-                /*
-                CounterClass timer1
+
+                //CounterClass timer;
                 new CountDownTimer(millisInFuture, countDownInterval) {
                     public void onTick(long millisUntilFinished) {
                         //Do something in every tick
@@ -287,7 +289,7 @@ public class FragC extends android.support.v4.app.Fragment {
                         start.setEnabled(true);
                     }
                 }.start();
-                */
+
 
                 //Set a Click Listener for cancel/stop button
                 stop.setOnClickListener(new OnClickListener() {
@@ -297,6 +299,7 @@ public class FragC extends android.support.v4.app.Fragment {
                         isCanceled = true;
                         //stop timer
                         timer.cancel();
+
 
 
                         //Disable the cancel, pause and resume button

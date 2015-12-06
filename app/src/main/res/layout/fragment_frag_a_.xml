@@ -74,7 +74,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:drawableRight="@drawable/enote"/>
+        android:drawableRight="@drawable/evernote"/>
 
     <TextView
         android:layout_width="wrap_content"
