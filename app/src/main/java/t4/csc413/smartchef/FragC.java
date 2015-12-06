@@ -44,6 +44,7 @@ public class FragC extends android.support.v4.app.Fragment {
     int total;
     //CountDownTimer timer;
     CounterClass timer;
+    long millisUntilDoned;
 
 
     //Declare a variable to hold count down timer's paused status
@@ -208,7 +209,7 @@ public class FragC extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 //stop timer
-                //timer.cancel();
+                timer.cancel();
 
 
                 //When user request to pause the CountDownTimer
@@ -252,9 +253,10 @@ public class FragC extends android.support.v4.app.Fragment {
 
                 //Initialize a new CountDownTimer instance
                 long millisInFuture = timeRemaining;
-                timer = new CounterClass(millisInFuture, 1000);
+                timer = new CounterClass(millisUntilDoned, 1000);
+
                 timer.start();
-                timer.onTick(timeRemaining);
+
                 /*
                 CounterClass timer1
                 new CountDownTimer(millisInFuture, countDownInterval) {
@@ -433,7 +435,7 @@ public class FragC extends android.support.v4.app.Fragment {
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
             textViewTime.setText(hms);
-            millis = millisUntilFinished;
+            millis = millisUntilDoned;
         }
 
         @Override
