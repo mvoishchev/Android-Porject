@@ -61,8 +61,10 @@ public class FragC extends android.support.v4.app.Fragment {
         SlideMain m = (SlideMain) getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFC);
         //grabbing info from slidemain
-        prep_Hours = m.rr.getPrepTime_hours();
-        prep_Minutes = m.rr.getPrepTime_minutes();
+        //prep_Hours = m.rr.getPrepTime_hours();
+        //prep_Minutes = m.rr.getPrepTime_minutes();
+        prep_Hours = 7;
+        prep_Minutes = 7;
 
         String text = "This recipe will take a total of " + prep_Hours + " hours and " + prep_Minutes
                 + " minutes to prepare.\nPress Start!, or input an alternate time increment.";
@@ -98,16 +100,18 @@ public class FragC extends android.support.v4.app.Fragment {
             {
                 //get input from user and set it to variables for timer
                 hours_String = editHours.getText().toString();
+                minutes_String = editMinutes.getText().toString();
+                seconds_String = editeSeconds.getText().toString();
                 if (hours_String.length() < 1)
                 {
-                    input_hours = prep_Hours;
+                    input_hours = 0;
                 } else {
                     input_hours = new Integer(Integer.parseInt(hours_String));
                 }
-                minutes_String = editMinutes.getText().toString();
+
                 if ((minutes_String.length()) < 1)
                 {
-                    input_minutes = prep_Minutes;
+                    input_minutes = 0;
                 } else {
                     input_minutes = new Integer(Integer.parseInt(minutes_String));
                     if (input_minutes > 60)
@@ -115,7 +119,7 @@ public class FragC extends android.support.v4.app.Fragment {
                         input_minutes = 60;
                     }
                 }
-                seconds_String = editeSeconds.getText().toString();
+
                 if (seconds_String.length() < 1)
                 {
                     input_seconds = 0;
@@ -125,6 +129,12 @@ public class FragC extends android.support.v4.app.Fragment {
                     {
                         input_seconds = 60;
                     }
+                }
+
+                if ((input_hours==0)&&(input_minutes ==0)&&(input_seconds ==0))
+                {
+                        input_hours = prep_Hours;
+                        input_minutes = prep_Minutes;
                 }
                 //display the timer onto textField
                 textViewTime.setText(input_hours + ":" + input_minutes + ":" + input_seconds);
@@ -166,6 +176,7 @@ public class FragC extends android.support.v4.app.Fragment {
                 //Disable the start and pause button
                 start.setEnabled(false);
                 pause.setEnabled(false);
+                resume.setEnabled(true);
 
                 long millisInFuture = timeRemaining;
                 long countDownInterval = 1000;
@@ -199,6 +210,7 @@ public class FragC extends android.support.v4.app.Fragment {
             {
                 pause.setEnabled(true);
                 start.setEnabled(false);
+                resume.setEnabled(false);
                 timer = new CounterClass(millisUntilDoned, 1000);
                 timer.start();
             }
