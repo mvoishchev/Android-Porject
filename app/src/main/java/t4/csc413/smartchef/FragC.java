@@ -42,8 +42,8 @@ public class FragC extends android.support.v4.app.Fragment {
     int input_hours, input_minutes, input_seconds;
     int prep_Hours, prep_Minutes;
     int total;
-    CountDownTimer timer;
-    //CounterClass timer;
+    //CountDownTimer timer;
+    CounterClass timer;
     long millisUntilDoned;
 
 
@@ -74,14 +74,6 @@ public class FragC extends android.support.v4.app.Fragment {
         editMinutes = (EditText) view.findViewById(MinutesText);
         editeSeconds = (EditText) view.findViewById(SecondsText);
 
-
-        /*
-        final TextView tView = (TextView) findViewById(R.id.tv);
-        final Button btnStart = (Button) findViewById(R.id.btn_start);
-        final Button btnPause = (Button) findViewById(R.id.btn_pause);
-        final Button btnResume = (Button) findViewById(R.id.btn_resume);
-        final Button btnCancel = (Button) findViewById(R.id.btn_cancel);
-         */
 
 
         textViewTime = (TextView) view.findViewById(textTimer);
@@ -162,9 +154,9 @@ public class FragC extends android.support.v4.app.Fragment {
                 long millisInFuture = total;
                 long countDownInterval = 1000;
 
-              //  timer = new CounterClass(millisInFuture, countDownInterval);
-               // timer.start();
-
+                timer = new CounterClass(millisInFuture, countDownInterval);
+                timer.start();
+/*
 
                 //Initialize a new CountDownTimer instance
                 timer = new CountDownTimer(millisInFuture, countDownInterval) {
@@ -198,7 +190,7 @@ public class FragC extends android.support.v4.app.Fragment {
                         stop.setEnabled(false);
                     }
                 }.start();
-
+*/
 
 
             }
@@ -254,12 +246,12 @@ public class FragC extends android.support.v4.app.Fragment {
                 //Initialize a new CountDownTimer instance
                 long millisInFuture = timeRemaining;
                 long countDownInterval = 1000;
-                //timer = new CounterClass(millisUntilDoned, 1000);
+                timer = new CounterClass(millisUntilDoned, 1000);
 
-               // timer.start();
-               // timer.getClass().
+                timer.start();
 
 
+/*
                 //CounterClass timer;
                 new CountDownTimer(millisInFuture, countDownInterval) {
                     public void onTick(long millisUntilFinished) {
@@ -289,6 +281,7 @@ public class FragC extends android.support.v4.app.Fragment {
                         start.setEnabled(true);
                     }
                 }.start();
+                */
 
 
                 //Set a Click Listener for cancel/stop button
