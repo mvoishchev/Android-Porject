@@ -94,15 +94,17 @@
                 android:text="RESET"
                 android:id="@+id/StopB"
                android:layout_below="@+id/StartB" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resume"
+                android:id="@+id/testResume"
+                android:layout_alignTop="@+id/StopB"
+                android:layout_centerHorizontal="true" />
 
 
         </RelativeLayout>
     </ScrollView>
-
-
-
-
-
 
 
 

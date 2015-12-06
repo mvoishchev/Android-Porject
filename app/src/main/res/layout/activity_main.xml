@@ -117,7 +117,8 @@
             android:typeface="serif"
             android:layout_alignTop="@+id/gotofridge"
             android:layout_alignLeft="@+id/allergiesbutton"
-            android:layout_alignStart="@+id/allergiesbutton" />
+            android:layout_alignStart="@+id/allergiesbutton"
+            />
 
         <Button
             android:layout_width="wrap_content"
@@ -135,7 +136,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/cuisinebutton"
             android:layout_alignStart="@+id/cuisinebutton"
-            android:layout_marginBottom="18dp" />
+            android:layout_marginBottom="18dp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
