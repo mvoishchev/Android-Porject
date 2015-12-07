@@ -12,15 +12,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
         android:background="@layout/button"
-        android:text="X"
+        android:text="Remove"
         android:id="@+id/delete"
         android:layout_alignParentRight="true"
         />
