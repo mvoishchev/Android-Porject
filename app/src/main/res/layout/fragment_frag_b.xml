@@ -1,0 +1,29 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eafff9"
+    tools:context="t4.csc413.smartchef.FragA"
+    android:scrollbarFadeDuration="0"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        >
+        <TextView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Fragment B"
+            android:textSize="24sp"
+            android:id="@+id/TextFB"
+            android:textColor="#222222"
+            />
+    </ScrollView>
+
+</RelativeLayout>
+

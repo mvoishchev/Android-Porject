@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="google_maps_key"
+        tanslatable="false"
+        templateMergeStrategy="preserve">
+        AIzaSyDlupXDIsm7-hj62X-fKRqQQy3urCZwAnM
+        </string>
+
+    <string name="spoonacular_connector"
+        translatabe="false"
+        templateMergeStrategy="preserve">
+        X-Mashape-Key
+        </string>
+
+    <string name="spoonacular_key"
+        translatable="false"
+        templateMergeStrategy="preserve">
+        WJ0SImVjcAmshThFeMvrbwGTXVHEp12W62TjsnoSo6ixq8GwqR
+        </string>
+
+    <string name="yummly_username"
+        translatable="false"
+        templateMergeStrategy="preserve">
+        8f371517
+    </string>
+
+    <string name="yummly_key"
+        translatable="false"
+        templateMergeStrategy="preserve">
+        0d24ad13bad93da625d68ba50920fe9d
+        </string>
+
+
+
+
+</resources>

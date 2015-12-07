@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eafff9"
+    android:backgroundTintMode="src_over"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarFadeDuration="0"
+    tools:context="t4.csc413.smartchef.FragF">
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarFadeDuration="0">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="0">
+
+            <!-- TODO: Update blank fragment layout -->
+
+            <TextView
+                android:id="@+id/T2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Click below buttons for more options!"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#222222" />
+
+            <Button
+                android:id="@+id/YT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/T2"
+                android:background="@layout/button"
+                android:drawableRight="@drawable/youtube"
+                android:text="Click here to view video instructions on Youtube " />
+
+            <Button
+                android:id="@+id/GMButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/YT"
+                android:background="@layout/button"
+                android:drawableRight="@drawable/gmap"
+                android:text="Click here to find supermarkets in Google Maps" />
+
+            <Button
+                android:id="@+id/SiteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/GMButton"
+                android:background="@layout/button"
+                android:drawableRight="@drawable/browser"
+                android:text="Click here to see the recipe&apos;s original website" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

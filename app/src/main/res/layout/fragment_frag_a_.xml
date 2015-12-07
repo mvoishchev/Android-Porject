@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eafff9"
+    tools:context="t4.csc413.smartchef.FragA"
+    android:fadeScrollbars="false"
+    android:scrollbarFadeDuration="0"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+    <ScrollView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        >
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eafff9">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fragment A"
+                android:id="@+id/TextFA"
+                android:textSize="24sp"
+                android:textColor="#040201"
+                android:layout_below="@+id/blinkText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   Save Recipe   "
+                android:id="@+id/SQLButton"
+                android:background="@layout/button"
+                android:textColor="#040201"
+                android:layout_below="@+id/TextFA"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/swipeText"
+                android:layout_alignEnd="@+id/swipeText"
+                android:drawableRight="@drawable/recipe_icon_button"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shoppinglist"
+                android:background="@layout/button"
+                android:textColor="#040201"
+                android:text="Save ingredients to Shopping List"
+                android:layout_below="@+id/SQLButton"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:drawableRight="@drawable/shoppingcart_button"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   Add as new shopping list to Evernote   "
+                android:id="@+id/SiteButton"
+                android:background="@layout/button"
+                android:textColor="#040201"
+                android:layout_below="@+id/shoppinglist"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:drawableRight="@drawable/enote2"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Swipe left to see more!"
+                android:id="@+id/blinkText"
+                android:fontFamily="Bold"
+                android:textColor="#222222"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/swipeText"
+                android:layout_above="@+id/TextFA"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:drawableRight="@drawable/rightbluearrow"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
+
