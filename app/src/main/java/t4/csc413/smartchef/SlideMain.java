@@ -82,7 +82,8 @@ public class SlideMain extends NavBaseActivity
             displayError();
         }
 
-            String title = name;
+            rr.setName(name);
+            String title = rr.getName();
 
             for (Ingredient ingredient : rr.getIngredients()) {
                 ingredients = ingredient.original_discription + "\n--";

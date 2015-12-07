@@ -61,10 +61,9 @@ public class FragC extends android.support.v4.app.Fragment {
         SlideMain m = (SlideMain) getActivity(); //grabs info from parent activity
         v = (TextView) view.findViewById(R.id.TextFC);
         //grabbing info from slidemain
-        //prep_Hours = m.rr.getPrepTime_hours();
-        //prep_Minutes = m.rr.getPrepTime_minutes();
-        prep_Hours = 7;
-        prep_Minutes = 7;
+        prep_Hours = m.rr.getPrepTime_hours();
+        prep_Minutes = m.rr.getPrepTime_minutes();
+
 
         String text = "This recipe will take a total of " + prep_Hours + " hours and " + prep_Minutes
                 + " minutes to prepare.\nPress Start!, or input an alternate time increment.";
