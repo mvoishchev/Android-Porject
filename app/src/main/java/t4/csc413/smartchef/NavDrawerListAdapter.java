@@ -10,6 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Created by MG
+ * This adapter provides access to the data items.
+ * The Adapter is also responsible for making a View for each item in the data set.
+ */
+
 public class NavDrawerListAdapter extends BaseAdapter {
 
     private Context context;
@@ -46,11 +52,8 @@ public class NavDrawerListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
 
-
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
-
-
 
         return convertView;
     }

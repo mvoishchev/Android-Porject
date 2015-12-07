@@ -1,7 +1,8 @@
 package t4.csc413.smartchef;
 
-/*
+/**
  * Created by: MG
+ * Getters and Setters for the NavDrawer
  */
 
 public class NavDrawerItem {
@@ -9,6 +10,7 @@ public class NavDrawerItem {
     private int icon;
 
     public NavDrawerItem() {
+        // default constructor
     }
 
     public NavDrawerItem(String title, int icon) {
