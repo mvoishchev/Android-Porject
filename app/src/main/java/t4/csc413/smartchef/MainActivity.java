@@ -52,7 +52,7 @@ public class MainActivity extends NavBaseActivity {
     private String allergySelection = "";
     private String fridgeSelection = "";
 
-    private boolean visible = true;
+    private boolean visible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,13 +155,6 @@ public class MainActivity extends NavBaseActivity {
         advanceSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                _cuisineButton.setVisibility(View.VISIBLE);
-                _allergiesButton.setVisibility(View.VISIBLE);
-                _goToFridgeButton.setVisibility(View.VISIBLE);
-                _useFridgeButton.setVisibility(View.VISIBLE);
-                textView.setVisibility(View.VISIBLE);
-
-
                 Toggle();
             }
         });

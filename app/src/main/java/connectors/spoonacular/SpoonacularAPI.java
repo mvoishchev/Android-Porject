@@ -30,7 +30,7 @@ public interface SpoonacularAPI {
      */
     @Headers("X-Mashape-Key: WJ0SImVjcAmshThFeMvrbwGTXVHEp12W62TjsnoSo6ixq8GwqR")
     @GET("/recipes/extract{url}")
-    public FullRecipeResultModel getRecipe(@Path(value = "url", encode = false) String url);
+    public void getRecipe(@Path(value = "url", encode = false) String url, Callback<FullRecipeResultModel> model);
 
     /**
      *

@@ -10,6 +10,8 @@ import android.util.Log;
 /**
  *  Created by Marc
  *  DB to handle recipes
+ *  Used in RecipeDBLayout
+ *  Fridge and ShoppingList used this as reference
  */
 
 public class DBAdapter {
