@@ -18,19 +18,6 @@ import t4.csc413.smartchef.MainActivity;
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
 
-
-/**
- * Created by Marc
- * NOTE:  other classes(evernote) can use methods
- *          addRecipe - manually insert recipe to db.insertRow()
- *                      1) instantiate DBAdapter
- *                      2) use object to access DBAdapter's insertRow function
- *          removeRecipe
- *          getRecipe
- *
- * CHECK TO DO.  Small minor problem
- */
-
 public class FridgeLayout extends NavBaseActivity {
 
     // DB

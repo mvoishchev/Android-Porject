@@ -104,7 +104,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="     USE FRIDGE TO STORE INGREDIENT \n                                  ON HAND"
+            android:text="USE FRIDGE TO RECORD INGREDIENTS AVAILABLE ON HAND"
+            android:gravity="center"
             android:textStyle="bold"
             android:background="@drawable/text"
             android:textColor="#154D8E"
@@ -151,12 +152,12 @@
             android:typeface="serif"
             android:layout_below="@+id/fridgetext"
             android:layout_alignLeft="@+id/cuisinebutton"
-            android:layout_alignStart="@+id/cuisinebutton"
-            android:layout_marginBottom="18dp" />
+            android:layout_alignStart="@+id/cuisinebutton" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="WHAT TO COOK?"
             android:drawableLeft="@drawable/chef3"
             android:minHeight="5dp"

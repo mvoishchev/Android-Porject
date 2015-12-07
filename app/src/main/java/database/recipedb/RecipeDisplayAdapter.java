@@ -70,6 +70,7 @@ public class RecipeDisplayAdapter extends BaseAdapter implements ListAdapter{
         TextView text = (TextView) view.findViewById(R.id.recipe_name);
         text.setText(getItem(position));
 
+        // delete button
         Button button = (Button)view.findViewById(R.id.delete);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

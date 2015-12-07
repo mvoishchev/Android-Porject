@@ -56,7 +56,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:drawableRight="@drawable/shoppingcart_button"
+                android:drawableRight="@drawable/shoppingcartbutton"
                 />
 
             <Button
