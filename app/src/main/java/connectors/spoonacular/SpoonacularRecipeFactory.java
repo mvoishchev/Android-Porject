@@ -65,7 +65,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
      */
     public Recipe getRecipeByUrl(String url)
     {
-        Recipe rec = new Recipe();
+        final Recipe rec = new Recipe();
         rec.setRecipeUrl(url);
 
         RestAdapter spoonacularAdapter = new RestAdapter.Builder().setEndpoint(SpoonacularAPI.API_URL).build();
@@ -74,14 +74,27 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
         url = prepareUrlForExtraction(url);
 
-        FullRecipeResultModel result = connector.getRecipe(url);
+        SearchTools.setWaitingAPI(1, true);
+        connector.getRecipe(url, new Callback<FullRecipeResultModel>() {
+            @Override
+            public void success(FullRecipeResultModel fullRecipeResultModel, Response response) {
+                rec.setName(fullRecipeResultModel.title);
+                rec.addAllIngredientsFromModel(fullRecipeResultModel.ingredients);
+                rec.setInstruction(fullRecipeResultModel.instructions);
+                if (fullRecipeResultModel.imageUrls != null)
+                    rec.addAllImageUrls(fullRecipeResultModel.imageUrls);
 
-        rec.setName(result.title);
-        rec.addAllIngredientsFromModel(result.ingredients);
-        rec.setInstruction(result.instructions);
-        if(result.imageUrls != null)
-                rec.addAllImageUrls(result.imageUrls);
-        rec.setPrepTime(result.minutes/60,result.minutes%60);
+                rec.setPrepTime(fullRecipeResultModel.minutes / 60, fullRecipeResultModel.minutes % 60);
+
+                SearchTools.setWaitingAPI(1, false);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("SHIT HAPPENENING");
+                SearchTools.setWaitingAPI(1, false);
+            }
+        });
 
         return rec;
     }
@@ -134,7 +147,7 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
 
 
         setRequesting(true);
-        SearchTools.WAITING_API_1 = true;
+        SearchTools.setWaitingAPI(1, true);
         connector.getRecipeByIngredient(ingredients, new Callback<JsonArray>() {
             @Override
             public void success(JsonArray jsonElements, Response response) {
@@ -170,12 +183,12 @@ public class SpoonacularRecipeFactory extends AbstractRecipeFactory{
                 SearchTools.UpdateCacheSearch(cachekey, recipes);
 
                 setRequesting(false);
-                SearchTools.WAITING_API_1 = false;
+                SearchTools.setWaitingAPI(1, false);
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                SearchTools.setWaitingAPI(1, false);
             }
         });
 

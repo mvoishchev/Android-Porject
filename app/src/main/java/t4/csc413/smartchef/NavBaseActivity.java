@@ -23,7 +23,7 @@ import database.fridge.FridgeLayout;
 import database.recipedb.RecipeDBLayout;
 import database.shoppinglist.ShoppingListLayout;
 
-/*
+/**
  *  Create by: MG
  *  For every activity that wants to use nav drawer, class must extend NavBaseActivity
  *  Then do the following:
@@ -45,6 +45,7 @@ import database.shoppinglist.ShoppingListLayout;
  */
 
 public class NavBaseActivity extends ActionBarActivity {
+
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -60,12 +61,16 @@ public class NavBaseActivity extends ActionBarActivity {
         setContentView(R.layout.drawer);
     }
 
+    /**
+     * Method that handles menu name and icon and sets
+     * them to the nav drawer
+     * @param navMenuTitles set the menu titles on drawer
+     * @param navMenuIcons set the icons on drawer
+     */
     public void set(String[] navMenuTitles, TypedArray navMenuIcons) {
         mTitle = mDrawerTitle = getTitle();
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
         // adding nav drawer items
@@ -94,15 +99,14 @@ public class NavBaseActivity extends ActionBarActivity {
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.menu_icon, // nav menu toggle icon
-                R.string.drawer_open,
-                R.string.drawer_close
+                R.string.drawer_open, // required string paramater
+                R.string.drawer_close // require string parameter
         ) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(mTitle);
                 // calling onPrepareOptionsMenu() to show action bar icons
                 supportInvalidateOptionsMenu();
             }
-
             public void onDrawerOpened(View drawerView) {
                 getSupportActionBar().setTitle(mDrawerTitle);
                 // calling onPrepareOptionsMenu() to hide action bar icons
@@ -143,7 +147,6 @@ public class NavBaseActivity extends ActionBarActivity {
                 mDrawerLayout.openDrawer(mDrawerList);
             }
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -152,16 +155,15 @@ public class NavBaseActivity extends ActionBarActivity {
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // if nav drawer is opened, hide the action items
-        // boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         return super.onPrepareOptionsMenu(menu);
     }
 
     /**
-     * Diplaying fragment view for selected nav drawer list item
-     * */
+     * Displays the menu text and icon on nav drawer
+     * and open that activity
+     * @param position Position of menu title to access
+     */
     private void displayView(int position) {
-
         switch (position) {
             case 0:
                 Intent intent = new Intent(this, MainActivity.class);

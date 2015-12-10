@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import database.DataBaseManager;
+import t4.csc413.smartchef.LoadingActivity;
 import t4.csc413.smartchef.R;
 import t4.csc413.smartchef.RecipeViewActivity;
 import t4.csc413.smartchef.ResultsActivity;
@@ -69,6 +70,7 @@ public class RecipeDisplayAdapter extends BaseAdapter implements ListAdapter{
         TextView text = (TextView) view.findViewById(R.id.recipe_name);
         text.setText(getItem(position));
 
+        // delete button
         Button button = (Button)view.findViewById(R.id.delete);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,10 +88,9 @@ public class RecipeDisplayAdapter extends BaseAdapter implements ListAdapter{
             public void onClick(View v) {
 
                 Bundle bundle = new Bundle();
-                System.out.println("URL STORED: " + RecipeDBLayout.getRecipeUrl(position));
                 bundle.putString("url", RecipeDBLayout.getRecipeUrl(position));
-
-                Intent intent = new Intent(context, SlideMain.class);
+                bundle.putString("name", RecipeDBLayout.getRecipeTitle(position));
+                Intent intent = new Intent(context, LoadingActivity.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

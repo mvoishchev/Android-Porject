@@ -136,7 +136,7 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
         System.out.println("Yummly Search: " + search);
 
         setRequesting(true);
-        SearchTools.WAITING_API_2 = true;
+        SearchTools.setWaitingAPI(2, true);
         connector.getRecipeByIngredient(search, new Callback<GetRecipeListResult>() {
             @Override
             public void success(GetRecipeListResult getRecipeListResult, Response response) {
@@ -169,18 +169,16 @@ public class YummlyRecipeFactory extends AbstractRecipeFactory{
                         }
                     }
                 }
-                System.out.println("Yummly here, Array Size: " + recipes.size());
                 setRequesting(false);
                 SearchTools.UpdateCacheSearch(cachekey, recipes);
-                SearchTools.WAITING_API_2 = false;
+                SearchTools.setWaitingAPI(2, false);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 System.out.println("Error");
                 error.printStackTrace();
-                SearchTools.WAITING_API_2 = false;
-
+                SearchTools.setWaitingAPI(2, false);
             }
         });
 

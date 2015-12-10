@@ -124,17 +124,17 @@ public class EvernoteManager {
 
         currentParent = parent;
 
-        //Login and setup
-        mainListGuid = evernoteSettings.getString("mainListGuid", null);
-        previousNoteExists = evernoteSettings.getBoolean("listExists", false);
-        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-
         if (!EvernoteSession.getInstance().isLoggedIn()) {
             DialogFragment dialog = new LoginDialog();
             FragmentManager manager = currentParent.getFragmentManager();
             dialog.show(manager, "LoginDialog");
             return;
         }
+        
+        //Login and setup
+        mainListGuid = evernoteSettings.getString("mainListGuid", null);
+        previousNoteExists = evernoteSettings.getBoolean("listExists", false);
+        final EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
 
         if (previousNoteExists) {
             try {
@@ -183,7 +183,7 @@ public class EvernoteManager {
 
     /**
      * Use this function to get the current contents of Evernote shopping list.
-     *
+     * <p/>
      * WARNING: will return null if not logged in, or shopping list does not exist
      *
      * @param parent needed to know where to go back to after login

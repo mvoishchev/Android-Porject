@@ -11,7 +11,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/back">
+        android:background="#eafff9">
 
 
         <EditText
@@ -33,118 +33,136 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="80dp"
-            android:minWidth="100dp"
+            android:minHeight="100dp"
+            android:minWidth="130dp"
             android:id="@+id/searchbutton"
-            android:background="@mipmap/chafcap3"
+            android:background="@drawable/button"
             android:text="Find\nRecipes"
             android:onClick="search"
             android:textColor="#1F1C1C"
             android:textStyle="bold"
             android:textSize="18dp"
             android:layout_weight="2"
+            android:typeface="serif"
+            android:layout_marginTop="14dp"
             android:layout_below="@+id/EditText01"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:typeface="serif"/>
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="80dp"
-            android:minWidth="100dp"
+            android:minHeight="100dp"
+            android:minWidth="130dp"
             android:text="Advanced\noptions"
             android:textColor="#1F1C1C"
             android:id="@+id/advancedbutton"
-            android:background="@mipmap/chafcap3"
+            android:background="@drawable/button"
             android:textStyle="bold"
             android:textSize="18dp"
             android:layout_weight="2"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
+            android:typeface="serif"
             android:layout_alignTop="@+id/searchbutton"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:typeface="serif"/>
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/chafcap3"
-            android:minHeight="80dp"
-            android:minWidth="100dp"
-            android:text="Choose\nCuisine"
+            android:background="@drawable/button"
+            android:minHeight="100dp"
+            android:minWidth="130dp"
+            android:text="Favorite\nCuisine"
             android:textStyle="bold"
             android:textColor="#1F1C1C"
             android:id="@+id/cuisinebutton"
             android:textSize="18dp"
             android:layout_weight="2"
+            android:typeface="serif"
             android:layout_below="@+id/searchbutton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:typeface="serif"/>
+            android:layout_alignLeft="@+id/searchbutton"
+            android:layout_alignStart="@+id/searchbutton"
+            android:layout_marginTop="17dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/chafcap3"
-            android:minHeight="80dp"
-            android:minWidth="100dp"
-            android:text="Set\nAllergies"
+            android:background="@drawable/button"
+            android:minHeight="100dp"
+            android:minWidth="130dp"
+            android:text="My FOOD\nAllergies"
             android:textColor="#1F1C1C"
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_weight="2"
             android:id="@+id/allergiesbutton"
-            android:layout_below="@+id/advancedbutton"
+            android:typeface="serif"
+            android:layout_alignTop="@+id/cuisinebutton"
             android:layout_alignLeft="@+id/advancedbutton"
-            android:layout_alignStart="@+id/advancedbutton"
-            android:typeface="serif"/>
+            android:layout_alignStart="@+id/advancedbutton" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USE FRIDGE TO RECORD INGREDIENTS AVAILABLE ON HAND"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:background="@drawable/text"
+            android:textColor="#154D8E"
+            android:textSize="18dp"
+            android:id="@+id/fridgetext"
+            android:typeface="serif"
+            android:paddingTop="10dp"
+            android:layout_below="@+id/cuisinebutton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/chafcap3"
-            android:minHeight="80dp"
-            android:minWidth="100dp"
-            android:text= "Use\nFridge"
+            android:background="@drawable/button"
+            android:minHeight="100dp"
+            android:minWidth="130dp"
+            android:text= "Search\nUsing\nFridge"
             android:textStyle="bold"
             android:textColor="#1F1C1C"
             android:id="@+id/fridgebutton"
             android:textSize="18dp"
             android:layout_weight="2"
-            android:layout_below="@+id/cuisinebutton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:typeface="serif"/>
+            android:typeface="serif"
+            android:layout_alignTop="@+id/gotofridge"
+            android:layout_below="@+id/fridgetext"
+            android:layout_alignLeft="@+id/allergiesbutton"
+            android:layout_alignStart="@+id/allergiesbutton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/chafcap3"
-            android:minHeight="80dp"
-            android:minWidth="100dp"
-            android:text="View\nFridge"
+            android:background="@drawable/button"
+            android:minHeight="100dp"
+            android:minWidth="130dp"
+            android:text="UPDATE\nFridge\n Content"
             android:textStyle="bold"
             android:textColor="#1F1C1C"
             android:textSize="18dp"
             android:layout_weight="2"
             android:id="@+id/gotofridge"
-            android:layout_below="@+id/allergiesbutton"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:typeface="serif"/>
+            android:typeface="serif"
+            android:layout_below="@+id/fridgetext"
+            android:layout_alignLeft="@+id/cuisinebutton"
+            android:layout_alignStart="@+id/cuisinebutton" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="WHAT TO COOK?"
             android:drawableLeft="@drawable/chef3"
             android:minHeight="5dp"
             android:minWidth="5dp"
             android:id="@+id/textView2"
-
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="35dp"
@@ -153,6 +171,9 @@
             android:textIsSelectable="true"
             android:textColor="#040404"
             android:typeface="serif" />
+
+
+
 
     </RelativeLayout>
 
@@ -170,4 +191,3 @@
         android:dividerHeight="0dp" />
 
 </android.support.v4.widget.DrawerLayout>
-

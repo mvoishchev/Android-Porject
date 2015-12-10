@@ -5,12 +5,15 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:thickness="0dp"
 android:shape="rectangle">
-<stroke android:width="4dp"
-    android:color="#6980"/>
+<stroke android:width="5px"
+    android:color="#0b1cff"
+    />
 <corners android:radius="10dp" />
 <gradient
-    android:startColor="#C8C8C8"
+    android:startColor="#FFFFFF"
     android:endColor="#FFFFFF"
     android:type="linear"
     android:angle="270"/>
 </shape>
+
+

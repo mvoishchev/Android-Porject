@@ -4,29 +4,19 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import t4.csc413.smartchef.MainActivity;
 import t4.csc413.smartchef.NavBaseActivity;
 import t4.csc413.smartchef.R;
-
-
-/**
- * Created by Marc
- * NOTE:  other classes(evernote) can use methods
- *          addRecipe - manually insert recipe to db.insertRow()
- *                      1) instantiate DBAdapter
- *                      2) use object to access DBAdapter's insertRow function
- *          removeRecipe
- *          getRecipe
- *
- * CHECK TO DO.  Small minor problem
- */
 
 public class FridgeLayout extends NavBaseActivity {
 
@@ -47,6 +37,24 @@ public class FridgeLayout extends NavBaseActivity {
         populateListViewDB();
 
         et = (EditText)findViewById(R.id.edit);
+        et.setOnKeyListener(new View.OnKeyListener() {
+
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                    String emptyString = et.getText().toString();
+                    if(TextUtils.isEmpty(emptyString)) {
+                        et.setError("Please enter an ingredient!");
+                    }else {
+                        addIngredient();
+                    }
+
+                    //do something
+                    //true because you handle the event
+                    return true;
+                }
+                return false;
+            }
+        });
         // Nav Drawer
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
@@ -80,11 +88,16 @@ public class FridgeLayout extends NavBaseActivity {
      * @param v Mandatory argument for OnClick(View v)
      */
     public void addIngredient(View v) {
+       addIngredient();
+    }
+
+    private void addIngredient(){
         String line = et.getText().toString();
         if(line.length() > 0) {
             db.insertRow(line);
             et.setText("");
         }
+        Toast.makeText(this, "Ingredient added to Fridge", Toast.LENGTH_SHORT).show();
         populateListViewDB();
     }
 
